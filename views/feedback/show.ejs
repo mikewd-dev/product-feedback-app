@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <script src="/js/script.js"></script>
     <title>Show Feedback</title>
 </head>
 
@@ -77,12 +78,20 @@
 
                                     </p>
                                 </div>
-                                <p class="reply-link">Reply</p>
+                                <button class="reply-link" id="reply" onclick="dropReply('reply-box');">Reply</button>
 
 
                                 <p class="comment-content">
                                     <%=comment.content %>
                                 </p>
+
+                                <div class="row-reply" id="reply-box">
+                                    <textarea name="reply" class="reply-content">
+
+                                    </textarea>
+
+                                    <button class="post-reply">Post Reply</button>
+                                </div>
 
 
                                 <% for(let reply of comment.replies) { %>
@@ -96,12 +105,21 @@
                                                 <span>@<%=reply.user.username %></span>
                                             </p>
                                         </div>
+                                        <button class="reply-link" id="reply" onclick="dropReply('reply-box');">Reply</button>
                                         <div class="replyTo">
                                             <p class="reply-replyto">
 
                                                 <span class="replyingto">@<%=reply.replyingTo %></span>
                                                 <%=reply.content %>
                                             </p>
+
+                                            <div class="row-reply" id="reply-box">
+                                                <textarea name="reply" class="reply-reply-content">
+
+                                    </textarea>
+
+                                                <button class="post-reply">Post Reply</button>
+                                            </div>
 
                                             <!-- <p class="reply-content">
 

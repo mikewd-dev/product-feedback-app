@@ -121,35 +121,43 @@
     </div>
     <div class="feedback-screen-active">
         <!-- for(let [key, value] of Object.entries(request)) -->
-        <% for(let requests of request){ %>
+        <% for(let req of Object.values(request)){ %>
             <div class="feedback-suggestion">
                 <div class="d-flex flex-row feedback-suggested">
 
-                    <form action="/feedback/<%=requests._id%>">
-                        <button onclick="buttonClick()" id="content" class="btn feedback-suggested-numvotes">
+                    <form action="/feedback/suggestions/<%=req._id %>" method="POST ">
+                        <button id="content" class="btn feedback-suggested-numvotes" onclick="upvote('<%= req._id %>')">
+                            <img class="dropupCaret " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
+                                <div id="votes ">
+
+  <%= req.upvotes %>
+
+</button>
+
+                        <!-- <button id="content " class="btn feedback-suggested-numvotes" onclick="buttonClick()">
 
                                 <img class="dropupCaret " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
-                                <div id="votes">
+                                <div id="votes ">
 
-                                 <%= requests.upvotes %>
+
 
                                 </div>
 
-                            </button>
+                            </button> -->
                     </form>
 
 
-                    <a class="feedback-navlink " href="/feedback/<%=requests._id%>">
+                    <a class="feedback-navlink " href="/feedback/<%=req._id%>">
                         <div class="feeback-title-para">
                             <div id="counter" class="feedback-suggested-title">
-                                <%=requests.title%>
+                                <%=req.title%>
 
                             </div>
                             <div class="feedback-suggested-para">
-                                <%=requests.description%>
+                                <%=req.description%>
                             </div>
                         </div>
-                        <button class="btn-suggestion"><%=requests.category%></button>
+                        <button class="btn-suggestion"><%=req.category%></button>
                     </a>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+// const upvotes = require("../../models/upvotes");
 
 
 
@@ -13,42 +14,66 @@ $(document).ready(function(){
 })
 
 
+// function upvote(suggestionId) {
+//   fetch(`/feedback/suggestions/${suggestionId}/upvote`, {
+//     method: 'POST',
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       // Update the value of <%=req.upvotes%> in the DOM
+//       const upvotesElement = document.getElementById(`upvotes-${suggestionId}`);
+//       upvotesElement.textContent = data.upvotes;
+//     })
+//     .catch(error => console.error(error));
+// }
+
+// const contentButton = document.querySelector('#content');
+
+// contentButton.addEventListener('click', () => {
+//   fetch(`/feedback/suggestions/${suggestionId}/upvote`, { method: 'POST' })
+//     .then(response => response.json())
+//     .then(data => {
+//       const upvotesElement = document.querySelector('votes');
+//       upvotesElement.textContent = data.upvotes;
+//     })
+//     .catch(error => console.error(error));
+// });
+
 // axios.post('/feedback/suggestions/:id')
 
-// function buttonClick() {
-// $("#content").click (function(){
+// $(window).ready(function() {
+// $("#content").click (function(e){
 
-//     $('#votes').html(function(i, val){
-//         return val * 1 + 1
-//     })
+//     var obj = {
+//         requests: upvotes
+//     };
 //     $.ajax({
-//          method: "POST",
-//         url:"/feedback/suggestions",
+//         url:"/feedback/:id/suggestions",
+//         type: "POST",
+//         data: JSON.stringify(obj),
 //         contentType: "application/json; charset=utf-8",
-//         data: requests.upvotes,
 //         success:function(data){
-//             $("#votes").html(data)
-
+//             data
 //         },
 
 //     })
 
 // })
 
+// })
+
+// function buttonClick() {
+//     // const requestId = event.getAttribute();
+// const xhr = new XMLHttpRequest();
+// xhr.onload = function(){
+//     // var data = upvotes
+//    document.getElementById('votes').innerHTML;
+
+// xhr.open("POST")
+// xhr.setRequestHeader("Content-type", "application/json");
+// xhr.send()
 // }
-
-function buttonClick() {
-    // const requestId = event.getAttribute();
-const xhr = new XMLHttpRequest();
-xhr.onload = function(){
-    // var data = upvotes
-   document.getElementById('votes').innerHTML;
-
-xhr.open("POST")
-xhr.setRequestHeader("Content-type", "application/json");
-xhr.send()
-}
-};
+// };
 
 //     const handleUpvoteClick = (event) => {
 //   event.preventDefault();
@@ -70,6 +95,60 @@ xhr.send()
 //       alert('An error occurred while upvoting the suggestion.');
 //     });
 // }
+
+// $(document).ready(function() {
+//     $('#content').on("click", function(event){
+//         event.preventDefault();
+//         // let value = $('#votes').val();
+//         // value++
+//         // console.log(value)
+//         $.ajax({
+//             url: "feedback/suggestions",
+//             method: "PUT",
+//             contentType: "application/json",
+//             data: JSON.stringify({upvotes}),
+//             success: function(res){
+//                 $('div').html(`${res.response}`)
+//             }
+//         })
+//     })
+// })
+
+// function buttonClick() {
+//     var element = document.getElementById('votes');
+//     var value = element.innerHTML;
+//     ++value;
+//     console.log(value);
+// }
+
+function upvote(suggestionId) {
+  fetch(`/feedback/suggestions/${suggestionId}/upvote?_=${new Date().getTime()}`, {
+    method: 'POST',
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Update the value of <%=req.upvotes%> in the DOM
+      const upvotesElement = document.getElementById(`upvotes-${suggestionId}`);
+      upvotesElement.textContent = data.upvotes;
+    })
+    .catch(error => console.error(error));
+}
+
+
+
+function dropReply(id){
+let rep = document.querySelector('.row-reply')
+    if(rep.style.display == 'block'){
+       rep.style.display = 'none';
+    //    rep.style.visibility = 'hidden';
+
+    } else {
+        rep.style.display = 'block';
+
+    }
+}
+
+
 
 function selectUpvotes(){
 if(onselect){
