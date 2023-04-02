@@ -214,11 +214,10 @@ p {
   display: flex;
 }
 
-/* .row-reply {
-  display: flex;
-  text-align: center;
-  width: 594px;
-} */
+.row-reply {
+  display: none;
+  width: auto;
+}
 
 .dropdown-divider {
   margin-top: 12px;
@@ -448,10 +447,11 @@ p {
   border: 1px solid #4661e6;
   border-radius: 5px;
   width: 664px;
+  height: 80px;
   /* bottom: 37.4%; */
   background: #f7f8fd;
   border-radius: 5px;
-  margin: 24px 32px 92px 34px;
+  margin: 24px 32px 16px;
 }
 
 .arrows {
@@ -828,7 +828,7 @@ figcaption {
 .post-comment {
   height: 44px;
   width: 142px;
-  margin: 16px 32px 32px 556px;
+  /* margin: 32px 32px 556px; */
   left: 0px;
   top: 0px;
   border-radius: 10px;
@@ -1136,8 +1136,17 @@ p {
   border-radius: 5px;
   background: #f7f8fd;
   border: 1px solid #4661e6;
-  margin-left: 72px;
   margin-right: 32px;
+  width: 65%;
+}
+
+.reply-box {
+  height: 80px;
+  border-radius: 5px;
+  background: #f7f8fd;
+  border: 1px solid #4661e6;
+  margin-right: 32px;
+  margin-left: 72px;
   width: 65%;
 }
 
@@ -1150,17 +1159,17 @@ p {
   width: 65%;
 }
 
-#reply-box {
+/* #reply-box {
   width: auto;
   display: none;
-}
+} */
 
 #user-reply {
   width: 549px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* display: none; */
+  display: none;
   visibility: hidden;
   position: relative;
 }
