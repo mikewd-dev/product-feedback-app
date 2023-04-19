@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32x32.png">
     <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="/js/script.js"></script>
 
     <title>Frontend Mentor | Product feedback app</title>
@@ -78,7 +80,11 @@
                     <div class="container-fluid">
                         <img class="arrows" src="/assets/suggestions/icon-suggestions.svg " class="suggestion-icon " alt=" " srcset=" ">
                         <li class="suggestion">
-                            <span>0</span> Suggestions</a>
+                            <span>
+
+                                    <%=request.length %>
+
+                            </span> Suggestions
                         </li>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -89,14 +95,18 @@
                                     <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Sort by :<strong>Most Upvotes</strong><img class="arrow" src="/assets/shared/icon-arrow-down.svg" alt="" srcset="">
           </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item " href="# ">Most Upvotes</a></li>
+                                    <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            <a class="dropdown-item" href="#">Most Upvotes
+                                                <img class="checked" src="/assets/shared/icon-check.svg" alt="" src="">
+                                            </a>
+                                        </li>
                                         <hr class="dropdown-divider ">
-                                        <li><a class="dropdown-item " href="# ">Least Upvotes</a></li>
-                                        <hr class="dropdown-divider ">
-                                        <li><a class="dropdown-item " href="# ">Most Comments</a></li>
-                                        <hr class="dropdown-divider ">
-                                        <li><a class="dropdown-item " href="# ">Least Comments</a></li>
+                                        <li><a class="dropdown-item" id="leastup" href="# ">Least Upvotes<img class="checked" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <hr class="dropdown-divider">
+                                        <li><a class="dropdown-item" id="mostcomm" href="# ">Most Comments<img class="checked" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <hr class="dropdown-divider">
+                                        <li><a class="dropdown-item" id="leastcomm" href="# ">Least Comments<img class="checked" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -133,6 +143,11 @@
                             </div>
                             <div class="feedback-suggested-para">
                                 <%=req.description%>
+                            </div>
+                            <div class="comment-icon">
+                                <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
+
+                                <span class="comment-num"><%=req.comments.length %></span>
                             </div>
                         </div>
                         <button class="btn-suggestion"><%=req.category%></button>

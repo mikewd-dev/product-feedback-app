@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const methodOverride = require("method-override");
 const path = require("path")
-const fetch = require('fetch')
+
 const mongoose = require("mongoose");
 // const addNewCount = require("./public/javascript/javascript")
 require('dotenv').config()
@@ -15,12 +15,10 @@ const ejsMate = require("ejs-mate");
 const CurrentUser = require("./models/user");
 const Request = require("./models/request");
 const Comment = require("./models/comment");
-const Upvote = require("./models/upvotes")
 const Roadmap = require("./models/roadmap")
-const User = require("./models/user")
 const catchAsync = require("./utils/catchAsync");
 const bodyParser = require('body-parser');
-const upvotes = require("./models/upvotes");
+
 
 
 const db = mongoose.connection;
@@ -45,8 +43,12 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'));
 
 app.get('/feedback', catchAsync(async (req, res, next) => {
-    res.render('feedback/index')
+     const roadmap  = await Roadmap.find({}).where('status').equals('planned')
+const progress = await Roadmap.find({}).where('status').equals('in-progress');
+    const live = await Roadmap.find({}).where('status').equals('live');
+res.render('feedback/index', {roadmap, progress, live })
 }));
+
 
 app.get('/feedback/new', catchAsync(async (req, res) => {
     res.render('feedback/new')
@@ -64,8 +66,36 @@ app.get('/feedback/none', catchAsync(async (req, res, next) => {
 
 app.get('/feedback/suggestions', catchAsync(async (req, res, next) => {
 const request = await Request.find({})
-res.render('feedback/suggestions', { request })
+ const roadmap  = await Roadmap.find({}).where('status').equals('planned')
+const progress = await Roadmap.find({}).where('status').equals('in-progress');
+    const live = await Roadmap.find({}).where('status').equals('live');
+res.render('feedback/suggestions', { request, roadmap, progress, live })
 }));
+
+// app.get('/feedback/suggestions', catchAsync(async(req, res, next)=>{
+
+//     res.render('feedback/suggestions', { roadmap, progress, live })
+// }));
+
+// app.get('/feedback/roadmap', async(req, res) =>{
+//     const progress = await Roadmap.find({}).where('status').equals('in-progress');
+
+//     res.render('feedback/roadmap', { progress })
+// })
+
+
+
+
+app.get('/feedback/roadmap', async(req, res)=>{
+    let roadmap  = await Roadmap.find({}).where('status').equals('planned')
+    let progress = await Roadmap.find({}).where('status').equals('in-progress');
+    let live = await Roadmap.find({}).where('status').equals('live');
+    res.render('feedback/roadmap', { roadmap, progress, live })
+});
+
+
+
+
 
 
 app.put('/feedback/:id', catchAsync(async (req, res) => {
@@ -158,6 +188,8 @@ app.put('/feedback/:id', catchAsync(async (req, res) => {
     const request = await Request.findByIdAndUpdate(id, {...req.body.request})
     res.redirect(`/feedback/${request._id}`)
 }));
+
+
 
 app.get('/feedback/suggestions/:id', async(req, res)=>{
     // const request = await Request.findById(req.params.id)

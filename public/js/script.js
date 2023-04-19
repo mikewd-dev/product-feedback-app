@@ -35,6 +35,7 @@ function upvoteSuggestion(suggestionId) {
     .catch(error => console.error(error));
 }
 
+
 function upvoteFeature(featureId) {
 
   fetch(`/feedback/feature/${featureId}/upvote?_=${new Date().getTime()}`, {
@@ -49,6 +50,8 @@ function upvoteFeature(featureId) {
     })
     .catch(error => console.error(error));
 }
+
+
 
 function upvoteEnhancement(enhancementId) {
 
@@ -110,12 +113,88 @@ function upvoteUX(uxId) {
     .catch(error => console.error(error));
 }
 
-function selectUpvotes(){
-if(onselect){
-    document.querySelector(".checked");
-    display: inline
+// function mostUp(mostId){
+//   fetch(`/feedback/suggestions/most?_=${new Date().getTime}`, {
+//     method: 'GET',
+//   })
+//     // .then(response => response.json())
+
+//       const mostupvote = document.getElementById(`mostup-${mostId}`)
+//       mostupvote.addEventListener('select', ()=>{
+//         Request.find({}).sort({upvotes: - 1})
+//     })
+
+//   }
+
+
+
+// function leastUp(leastId){
+
+// fetch(`/feedback/suggestions?_=${new Date().getTime}`, {
+//     method: 'POST',
+//   })
+//     .then(response => response.json())
+//     .then(data =>{
+//       const mostupvote = document.getElementById(`mostup-${leastId}}`)
+//       mostupvote.addEventListener('click', ()=>{
+//         db.requests.find().sort({upvotes: 1})
+//     })
+//   })
+
+// }
+
+function dropReply(replyBoxId){
+var rep = document.getElementById(replyBoxId)
+    if(rep.style.display == 'block'){
+       rep.style.display = 'none';
+    } else {
+        rep.style.display = 'block';
+    }
 }
 
-}
+
+
+$(document).ready(function(){
+  $('.dropdown-menu > li > a').click(function(){
+    $('.dropdown-menu > li > a').removeClass('selected');
+    $(this).addClass('selected')
+  })
+})
+
+$(document).ready(function(){
+  $('#mostup').click(function(){
+    $('#menu-item').html('Most Upvotes')
+    })
+  })
+
+// function sortByUpvotes(data) {
+//   data.sort(function(a, b) {
+//     return b.upvotes - a.upvotes;
+//   });
+// }
+
+$(document).ready(function() {
+  $('#mostup').click(function() {
+    $('#menu-item').html('Most Upvotes');
+  });
+});
+
+$(document).ready(function(){
+  $('#leastup').click(function(){
+    $('#menu-item').html('Least Upvotes')
+  })
+})
+
+$(document).ready(function(){
+  $('#mostcomm').click(function(){
+    $('#menu-item').html('Most Comments')
+  })
+})
+
+$(document).ready(function(){
+  $('#leastcomm').click(function(){
+    $('#menu-item').html('Least Comments')
+  })
+})
 
 

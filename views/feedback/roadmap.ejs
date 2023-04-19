@@ -6,47 +6,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 
     <title>Frontend Mentor | Product feedback app</title>
 </head>
 
 <body style="background-color: #F2F2F2;">
-    <div class="col-lg">
-        <div class="container">
-            <div class="grid-container">
-                <!-- <nav class="navbar navbar-expand-lg navbar-light"> -->
-                <div class="navigation">
-                    <div class="container-fluid">
+    <!-- <div class="container">
+        <div class="grid-container"> -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light"> -->
+    <div class="roadmap-nav">
+        <div class="go-back-roadmap">
+            <div class="go-back-rmap">
+                <a class="roadmap-go-back" href="/feedback">
+                    <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=" "></span>Go Back
+                </a>
+                <h1 class="go-back-heading">Roadmap</h1>
+                <!-- <div class="my-lg-0">
 
-                        <div class="go-back-roadmap">
-                            <a href="/feedback">
-                                <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=" "></span>Go Back
-                            </a>
-                            <h1 class="go-back-heading">Roadmap</h1>
-
-
-                            <!-- </div><a class="add-feedback-roadmap text-center" href="/feedback/feedback-new" type="button">+Add Feedback</a> -->
-
-                            <!-- </ul> -->
-
-                        </div>
-                        <div class="my-lg-0">
-                            <a class="add-feedback-roadmap text-center" href="/feedback/new" type="button">+Add Feedback</a>
-
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                    <!-- </nav> -->
-                </div>
+            </div> -->
             </div>
+            <a class="add-feedback-roadmap" href="/feedback/new" role="button">+Add Feedback</a>
+
         </div>
     </div>
 
-    <!-- Roadmap Add Feedback Planned -->
+    <div class="row row-roadmap">
+        <div class="column">
+            <div class="planned">
+                <%# for(let rmap of Object.values(roadmap)) { %>
+
+
+                    <%# } %>
+                        Planned (
+                        <%=roadmap.length%>)
+            </div>
+            <div class="ideas">Ideas prioritized for research</div>
+
+            <% for(let rmap of Object.values(roadmap)){ %>
+                <div class="planned-bar">
+
+                </div>
+
+                <div>
+
+                    <p class="planned-heading"><span class="oval-planned"></span>
+                        <%=rmap.status.charAt(0).toUpperCase() + rmap.status.slice(1)%>
+                    </p>
+                    <p class="report-title">
+                        <%=rmap.title %>
+                    </p>
+                    <p class="report-desc">
+                        <%=rmap.description %>
+                    </p>
+                    <button class="btn-roadmap"><%=rmap.category %></button>
+                    <div class="roadmap-upvotes">
+                        <button class="roadmap-btn-upvotes">
+                                <img class="dropupCaret-rmap " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
+                                <%=rmap.upvotes %></button>
+                        <div class="roadmap-comment-icon">
+                            <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
+
+                            <span class="comment-num"><%=rmap.comments.length%></span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <% } %>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
+
+
+        <!-- <div class="row"> -->
+        <div class="column">
+            <div class="planned">
+                In-Progress(
+                <%=progress.length %>)
+            </div>
+            <div class="progress">Currently being developed</div>
+
+            <% for(let prog of Object.values(progress)){ %>
+                <div class="progress-bar">
+
+                </div>
+
+                <div class="progress-reports">
+
+                    <p class="progress-heading"><span class="oval-progress"></span>
+                        <%=prog.status.charAt(0).toUpperCase() + prog.status.slice(1)%>
+                    </p>
+                    <p class="report-title">
+                        <%=prog.title %>
+                    </p>
+                    <p class="report-desc">
+                        <%=prog.description %>
+                    </p>
+                    <button class="btn-roadmap"><%=prog.category %></button>
+                    <div class="roadmap-upvotes">
+                        <button class="roadmap-btn-upvotes">
+                                <img class="dropupCaret-rmap " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
+                                <%=prog.upvotes %></button>
+                        <div class="roadmap-comment-icon">
+                            <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
+
+                            <span class="comment-num"><%=prog.comments.length%></span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <% } %>
+        </div>
+        <!-- </div> -->
+
+        <!-- <div class="row"> -->
+        <div class="column">
+            <div class="planned">
+                <%# for(let rmap of Object.values(roadmap)) { %>
+
+
+                    <%# } %>
+                        In-Progress(
+                        <%=live.length %>)
+            </div>
+
+            <div class="progress">Released Features</div>
+
+            <% for(let lv of Object.values(live)){ %>
+                <div class="live-bar">
+
+                </div>
+
+                <div>
+
+                    <p class="live-heading"><span class="oval-live"></span>
+                        <%=lv.status.charAt(0).toUpperCase() + lv.status.slice(1)%>
+                    </p>
+                    <p class="report-title">
+                        <%=lv.title %>
+                    </p>
+                    <p class="report-desc">
+                        <%=lv.description %>
+                    </p>
+                    <button class="btn-roadmap"><%=lv.category %></button>
+                    <div class="roadmap-upvotes">
+                        <button class="roadmap-btn-upvotes">
+                                <img class="dropupCaret-rmap " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
+                                <%=lv.upvotes %></button>
+                        <div class="roadmap-comment-icon">
+                            <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
+
+                            <span class="comment-num"><%=lv.comments.length%></span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <% } %>
+        </div>
+
+    </div>
+
+
     <!-- Add number here -->
-    <!-- Ideas prioritized for research In-Progress -->
+    <!--  In-Progress -->
     <!-- Add number here -->
     <!-- Currently being developed Live -->
     <!-- Add number here -->
