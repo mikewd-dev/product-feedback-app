@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon-32x32.png">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32x32.png">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="/js/script.js"></script>
 
     <title>Frontend Mentor | Product feedback app</title>
 </head>
@@ -17,120 +20,124 @@
     <div class="col-lg">
         <div class="container">
             <div class="grid-container">
-
                 <div class="feedback">
                     <div class="board">
-                        <img class="feedback-board" src="images/feedback-board.png" alt="" srcset="">
+                        <img class="feedback-board" src="/images/feedback-board.png" alt="" srcset="">
                     </div>
                     <div class="buttons">
                         <div class="d-flex">
-                            <a href="./feedback/feedback-all.ejs">
-                                <img class='btn' src=" images/allbtn.jpg " alt=" " srcset=" ">
+                            <a href="/feedback/suggestions">
+                                <img class='btn' src=" /images/allbtn.jpg " alt=" " srcset=" ">
                             </a>
-                            <!-- <a href="./feedback/feedback-ui">
-                                <img class='btn' src="images/UIbtn.jpg " alt=" " srcset=" ">
-                            </a> -->
-                            <a href="./feedback/feedback-ux">
-                                <img class='btn' src="images/UXbtn.jpg " alt=" " srcset=" ">
+                            <a href="/feedback/ui">
+                                <img class='btn' src="/images/UIbtn.jpg " alt=" " srcset=" ">
+                            </a>
+                            <a href="/feedback/ux">
+                                <img class='btn' src="/images/UXbtn.jpg " alt=" " srcset=" ">
                             </a>
                         </div>
 
                         <div class="d-flex ">
-                            <img class='btn' src="images/enhancementbtn.jpg " alt=" " srcset=" ">
-                            <img class='btn' src="images/bugbtn.jpg " alt=" " srcset=" ">
+                            <a href="/feedback/enhancement">
+                                <img class='btn' src="/images/enhancementbtn.jpg " alt=" " srcset=" ">
+                            </a>
+                            <a href="/feedback/bug">
+                                <img class='btn' src="/images/bugbtn.jpg " alt=" " srcset=" ">
+                            </a>
                         </div>
                         <div class="d-flex flex-row ">
-                            <img class='btn' src="images/featurebtn.jpg " alt=" " srcset=" ">
+                            <a href="/feedback/feature">
+                                <img class='btn' src="/images/featurebtn.jpg " alt=" " srcset=" ">
+                            </a>
                         </div>
                     </div>
-                    <div class="list ">
-                        <div class="row ">
-                            <div class="column ">
-                                <ul>
-                                    <li class="roadmap ">Roadmap</li>
-                                </ul>
-                                <ul class="map ">
-                                    <li>Planned</li>
-                                    <li>In-Progress</li>
-                                    <li>Live</li>
-                                </ul>
-                            </div>
-                            <div class="column ">
-                                <ul>
-                                    <li class="view ">View</li>
-                                </ul>
-                                <ul class="viewing ">
-                                    <li>0</li>
-                                    <li>0</li>
-                                    <li>0</li>
-                                </ul>
-
-                            </div>
+                    <div class="d-flex flex-row list ">
+                        <!-- <div class="row "> -->
+                        <!-- <div class="column "> -->
+                        <div class="map ">
+                            <h5>
+                                <p class="roadmap ">Roadmap</p>
+                            </h5>
+                            <p>Planned </p>
+                            <p>In-Progress</p>
+                            <p>Live</p>
                         </div>
+                        <!-- <div class="column "> -->
+                        <ul>
+                            <li class="view"><a href="feedback/roadmap">View</a></li>
+                        </ul>
+                        <ul class="view-count">
+                            <li>
+                                <%=roadmap.length %>
+                            </li>
+                            <li>
+                                <%=progress.length%>
+                            </li>
+                            <li>
+                                <%=live.length%>
+                            </li>
+                        </ul>
+
+
+                        <!-- </div> -->
+                        <!-- </div> -->
                     </div>
 
                 </div>
-                <nav class="navbar navbar-expand-lg navbar-light ">
-                    <div class="container-fluid ">
-                        <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
-    <span class="navbar-toggler-icon "></span>
-  </button>
-
-                        <div class="collapse navbar-collapse " id="navbarSupportedContent ">
-                            <ul class="navbar-nav me-auto ">
-                                <img src="assets/suggestions/icon-suggestions.svg " class="suggestion-icon " alt=" " srcset=" ">
-                                <div class="suggestion ">
-                                    <li class="nav-item suggestion ">
-                                        <a class="nav-link " href="# "><span>0</span> Suggestions</a>
-                                    </li>
-                                </div>
-
-                                <div class="nav-item dropdown ">
-                                    <a class="nav-link " href="# " id="navbarDropdown " role="button " data-bs-toggle="dropdown " aria-haspopup="true " aria-expanded="false ">
-                                        <span class=sr-only>Sort By: Most Upvotes<span class="dropdown-arrow ">
-                                        <img src="assets/shared/icon-arrow-down.svg " class="dropdownCaret text-white " id="dropDownFeatures " alt=" ">
-                                    </span></span>
-                                    </a>
-                                    <div class="dropdown-menu text-muted " aria-labelledby="navbarDropdown ">
-                                        <li><a class="dropdown-item " href="# ">Most Upvotes</a></li>
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <img class="arrows" src="/assets/suggestions/icon-suggestions.svg " class="suggestion-icon " alt=" " srcset=" ">
+                        <li class="suggestion">
+                            <span>0</span> Suggestions</a>
+                        </li>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sort by :<strong>Most Upvotes</strong><img class="arrow" src="/assets/shared/icon-arrow-down.svg" alt="" srcset="">
+                  </a>
+                                    <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li>
-                                            <hr class="dropdown-divider ">
+                                            <a class="dropdown-item" id="mostup" href="/feedback/suggestions?sort=mostup">Most Upvotes
+                                                <img class = 'checked' id="mostCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="" src="">
+                                            </a>
                                         </li>
-
-                                        <li><a class="dropdown-item " href="# ">Least Upvotes</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider ">
-                                        </li>
-                                        <li><a class="dropdown-item " href="# ">Most Comments</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider ">
-                                        </li>
-                                        <li><a class="dropdown-item " href="# ">Least Comments</a></li>
-                                    </div>
-                                </div>
+                                        <hr class="dropdown-divider ">
+                                        <li><a class="dropdown-item" id="leastup" href="/feedback/suggestions?sort=leastup">Least Upvotes<img class = 'checked' id="leastCheckUp" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <hr class="dropdown-divider">
+                                        <li><a class="dropdown-item" id="mostcomm" href="/feedback/suggestions?sort=mostcomm ">Most Comments<img class = 'checked' id="mostCheckComm"src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <hr class="dropdown-divider">
+                                        <li><a class="dropdown-item" id="leastcomm" href="/feedback/suggestions?sort=leastcomm ">Least Comments<img class = 'checked' id="leastCheckComm" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                    </ul>
+                                </li>
                             </ul>
-                            <div class="my-lg-0 ">
-                                <a class="add-feedback-top text-center " href="/feedback/feedback-new " type="button ">+Add Feedback</a>
-                                <!-- <button type="link "=>+ Add Feedback</button> -->
-                            </div>
                         </div>
+                    </div>
+                    <div class="my-lg-0 ">
+                        <a class="add-feedback-top text-center " href="/feedback/new " type="button ">+Add Feedback</a>
                     </div>
                 </nav>
-                <div class="d-flex justify-content-center feedback-screen ">
-                    <figure class="figure-item ">
-                        <img class="no-feedback " src="assets/suggestions/illustration-empty.svg " alt=" " srcset=" ">
-                        <figcaption>
-                            <h1 class="feedback-title ">There is no feedback yet.</h1>
-                            <p class="got-suggestion ">
-                                Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.
-                            </p>
-                            <a class="add-feedback" href="/feedback/feedback-new " type="button ">+Add Feedback</a>
-                        </figcaption>
-                    </figure>
-                </div>
-
             </div>
         </div>
+    </div>
+    <div class="feedback-screen ">
+        <figure class="figure-item ">
+            <img class="no-feedback " src="/assets/suggestions/illustration-empty.svg " alt=" " srcset=" ">
+            <figcaption>
+                <h1 class="feedback-title ">There is no feedback yet.</h1>
+                <p class="got-suggestion ">
+                    Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.
+                </p>
+                <a href="/feedback/new" class="add-feedback">+Add Feedback</a>
+            </figcaption>
+        </figure>
+    </div>
+
+    </div>
+    </div>
     </div>
 
 

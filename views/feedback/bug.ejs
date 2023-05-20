@@ -66,9 +66,15 @@
                             <li class="view"><a href="roadmap">View</a></li>
                         </ul>
                         <div class="view-num">
-                            <p>1</p>
-                            <p>2</p>
-                            <p>3</p>
+                            <p>
+                                <%=roadmap.length %>
+                            </p>
+                            <p>
+                                <%=progress.length %>
+                            </p>
+                            <p>
+                                <%=live.length %>
+                            </p>
                         </div>
 
                     </div>
@@ -93,18 +99,18 @@
                                     <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Sort by :<strong>Most Upvotes</strong><img class="arrow" src="/assets/shared/icon-arrow-down.svg" alt="" srcset="">
           </a>
-                                    <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                 <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li>
-                                            <a class="dropdown-item" href="#">Most Upvotes
-                                                <img class="checked" src="/assets/shared/icon-check.svg" alt="" src="">
+                                            <a class="dropdown-item" id="mostup" href="/feedback/suggestions?sort=mostup">Most Upvotes
+                                                <img class = 'checked' id="mostCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="" src="">
                                             </a>
                                         </li>
                                         <hr class="dropdown-divider ">
-                                        <li><a class="dropdown-item" id="leastup" href="# ">Least Upvotes<img class="checked" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <li><a class="dropdown-item" id="leastup" href="/feedback/suggestions?sort=leastup">Least Upvotes<img class = 'checked' id="leastCheckUp" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
                                         <hr class="dropdown-divider">
-                                        <li><a class="dropdown-item" id="mostcomm" href="# ">Most Comments<img class="checked" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <li><a class="dropdown-item" id="mostcomm" href="/feedback/suggestions?sort=mostcomm ">Most Comments<img class = 'checked' id="mostCheckComm"src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
                                         <hr class="dropdown-divider">
-                                        <li><a class="dropdown-item" id="leastcomm" href="# ">Least Comments<img class="checked" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <li><a class="dropdown-item" id="leastcomm" href="/feedback/suggestions?sort=leastcomm ">Least Comments<img class = 'checked' id="leastCheckComm" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -120,15 +126,14 @@
                     <div class="feedback-suggestion">
                         <div class="d-flex flex-row feedback-suggested">
 
-                            <form id="vote" action="/feedback/enhancement/<%=req._id %>" method="POST ">
-                                <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteBug('<%= req._id %>')">
-                            <img class="dropupCaret " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
-                                <div id="votes ">
-
-  <%= req.upvotes %>
-
-</button>
-                            </form>
+             <form id="vote" onsubmit="event.preventDefault();">
+  <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteBug('<%= req._id %>')">
+    <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
+    <div id="votes-<%= req._id %>">
+      <%= req.upvotes %>
+    </div>
+  </button>
+</form>
                             <a class="feedback-navlink" href="/feedback/<%=req._id%>">
                                 <div class="feeback-title-para">
                                     <div class="feedback-suggested-title">

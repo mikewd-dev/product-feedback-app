@@ -62,19 +62,17 @@
                 </div>
                 <div class="col-sm">
                     <div class="comments">
-
-                        <!-- <div class="mb-3"> -->
-
                         <% for(let comment of request.comments) { %>
+                            <% if(comment){ %>
                             <div class="comment">
                                 <div class="user-details">
-                                    <img class="user-image" src="../<%=comment.user.image%>" alt="">
+                                    <img class="user-image" src="" alt="">
 
                                     <p class="comment-user">
-                                        <%=comment.user.name %>
+
                                     </p>
                                     <p class="comment-username">
-                                        <span>@<%=comment.user.username %></span>
+                                        <span>@</span>
 
                                     </p>
                                 </div>
@@ -84,25 +82,22 @@
                                 <p class="comment-content">
                                     <%=comment.content %>
                                 </p>
-
-                                <div class="row-reply" id="reply-box-<%=comment._id%>">
-                                    <textarea name="reply" class="reply-box">
-
-                                    </textarea>
-
-                                    <button class="post-reply">Post Reply</button>
-                                </div>
-
+                                <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" novalidate>
+                                    <div class="row-reply" id="reply-box-<%=comment._id%>">
+                                        <textarea name="reply[content]" class="reply-box"></textarea>
+                                        <button class="post-reply">Post Reply</button>
+                                    </div>
+                                </form>
 
                                 <% for(let reply of comment.replies) { %>
                                     <div class="reply">
                                         <div class="user-reply-details">
-                                            <img class="user-reply-image" src="../<%= reply.user.image %>" alt="">
+                                            <img class="user-reply-image" src="" alt="">
                                             <p class="reply-user">
-                                                <%=reply.user.name %>
+
                                             </p>
                                             <p class="reply-username">
-                                                <span>@<%=reply.user.username %></span>
+                                                <span>@</span>
                                             </p>
                                         </div>
                                         <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=reply._id %>');">Reply</button>
@@ -112,13 +107,12 @@
                                                 <span class="replyingto">@<%=reply.replyingTo %></span>
                                                 <%=reply.content %>
                                             </p>
-
-                                            <div class="row-reply" id="reply-box-<%=reply._id %>">
-                                                <textarea name="reply" class="reply-content">
-
-                                                 </textarea>
-                                                <button class="post-reply">Post Reply</button>
-                                            </div>
+                                            <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form" novalidate>
+                                                <div class="row-reply" id="reply-box-<%=reply._id %>">
+                                                    <textarea name="reply" class="reply-content"></textarea>
+                                                    <button class="post-reply">Post Reply</button>
+                                                </div>
+                                            </form>
 
                                             <!-- <p class="reply-content">
 
@@ -126,11 +120,8 @@
                                         </div>
                                     </div>
                                     <% } %>
-
-
-
                             </div>
-
+<% } %>
                             <% } %>
 
 
