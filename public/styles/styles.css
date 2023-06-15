@@ -12,12 +12,6 @@ body {
   right: 0;
 }
 
-.navbar {
-  position: absolute;
-  width: 825px;
-  margin-left: 35px;
-}
-
 .container {
   margin: 0 !important;
 }
@@ -131,14 +125,24 @@ li {
 
 .navbar {
   background: #373f68;
+  /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+  /* border-radius: 10px; */
   position: absolute;
-  width: 825px;
+  width: auto;
   height: 72px;
   /* left: 450px; */
-  margin-left: 30px;
+  /* margin-left: 30px; */
+  resize: horizontal;
   top: 94px;
-  color: white;
-  border-radius: 10px;
+  /* color: white; */
+}
+
+.nav-login {
+  background: #ad1fea;
+}
+
+.navbar-brand {
+  color: #ffffff !important;
 }
 
 .nav-link {
@@ -209,10 +213,6 @@ p {
   font-size: 16px;
 }
 
-/* .row {
-  display: flex;
-} */
-
 .row-reply {
   display: none;
   width: auto;
@@ -238,6 +238,28 @@ p {
   margin-left: 345px;
   top: 190px;
   background-color: #ffffff;
+}
+
+.login-screen {
+  border: 0.5px solid grey;
+  border-radius: 2%;
+  position: absolute;
+  padding: 12% 3% 9% 3%;
+  /* margin-left: 35px; */
+  /* justify-content: center;
+  align-items: center; */
+  width: 33.3%;
+  margin-left: 33.3%;
+  margin-right: 33.3%;
+  top: 190px;
+  background-color: #ffffff;
+  /* warning: gradient us
+  es a rotation that is not supported by CSS and may not behave as expected */
+  border-radius: 10px;
+}
+
+.login-center {
+  background-color: #4661e6;
 }
 
 .feedback-screen-active {
@@ -658,6 +680,21 @@ p {
   color: #f2f4fe;
   font-weight: 700;
   font-size: 14px;
+}
+
+.btn-login {
+  border-radius: 0px;
+  float: right;
+  margin-right: 0;
+  margin-top: 0%;
+  padding: 12.5px 24px 11.5px 24px;
+  border-radius: 10px;
+  background: #ad1fea;
+  text-decoration: none;
+  color: #f2f4fe;
+  font-weight: 700;
+  font-size: 14px;
+  width: 100%;
 }
 
 .add-feedback-new {

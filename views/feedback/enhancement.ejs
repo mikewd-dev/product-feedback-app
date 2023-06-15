@@ -98,20 +98,20 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Sort by :<strong>Most Upvotes</strong><img class="arrow" src="/assets/shared/icon-arrow-down.svg" alt="" srcset="">
+            Sort by :<strong id="menu-item">Most Upvotes</strong><img class="arrow" src="/assets/shared/icon-arrow-down.svg" alt="" srcset="">
           </a>
                                    <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li>
-                                            <a class="dropdown-item" id="mostup" href="/feedback/suggestions?sort=mostup">Most Upvotes
+                                            <a class="dropdown-item" id="mostup" href="/feedback/enhancement?sort=mostup">Most Upvotes
                                                 <img class = 'checked' id="mostCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="" src="">
                                             </a>
                                         </li>
                                         <hr class="dropdown-divider ">
-                                        <li><a class="dropdown-item" id="leastup" href="/feedback/suggestions?sort=leastup">Least Upvotes<img class = 'checked' id="leastCheckUp" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <li><a class="dropdown-item" id="leastup" href="/feedback/enhancement?sort=leastup">Least Upvotes<img class = 'checked' id="leastCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
                                         <hr class="dropdown-divider">
-                                        <li><a class="dropdown-item" id="mostcomm" href="/feedback/suggestions?sort=mostcomm ">Most Comments<img class = 'checked' id="mostCheckComm"src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <li><a class="dropdown-item" id="mostcomm" href="/feedback/enhancement?sort=mostcomm ">Most Comments<img class = 'checked' id="mostCheckComm" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
                                         <hr class="dropdown-divider">
-                                        <li><a class="dropdown-item" id="leastcomm" href="/feedback/suggestions?sort=leastcomm ">Least Comments<img class = 'checked' id="leastCheckComm" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
+                                        <li><a class="dropdown-item" id="leastcomm" href="/feedback/enhancement?sort=leastcomm ">Least Comments<img class = 'checked' id="leastCheckComm" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="" src=""></a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -163,7 +163,5 @@
 
     <!-- Sidebar end -->
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
-
 
 </html>
