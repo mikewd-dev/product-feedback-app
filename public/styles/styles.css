@@ -318,7 +318,7 @@ p {
   margin-top: 24px !important;
   margin-right: 355px !important;
   margin-left: 355px;
-  margin-bottom: 78px !important;
+  /* margin-bottom: 78px !important; */
   border-radius: 10px;
   background-color: #ffffff;
 }
@@ -426,7 +426,7 @@ p {
   height: 246px;
   left: 355px;
   top: 1094px;
-  /* margin: 24px 355px 24px 355px; */
+  margin: 24px 355px 24px 355px;
   background-color: #ffffff;
 }
 
@@ -438,11 +438,21 @@ p {
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  /* line-height: 26px;
-    line-height: 100%; */
   letter-spacing: -0.25px;
   margin: 24px 578px 0px 34px;
   color: #3a4374;
+}
+
+.add-comment-text {
+  background: #f7f8fd;
+  border: 1px solid #4661e6;
+  border-radius: 5px;
+  width: 664px;
+  height: 80px;
+  /* bottom: 37.4%; */
+  background: #f7f8fd;
+  border-radius: 5px;
+  margin: 24px 32px 16px;
 }
 
 .user-details {
@@ -463,18 +473,6 @@ p {
   letter-spacing: -0.194444px;
   color: #3a4374;
   margin-top: 5px;
-}
-
-.add-comment-text {
-  background: #f7f8fd;
-  border: 1px solid #4661e6;
-  border-radius: 5px;
-  width: 664px;
-  height: 80px;
-  /* bottom: 37.4%; */
-  background: #f7f8fd;
-  border-radius: 5px;
-  margin: 24px 32px 16px;
 }
 
 .arrows {
@@ -879,7 +877,7 @@ figcaption {
 .post-comment {
   height: 44px;
   width: 142px;
-  margin: 32px 32px 556px;
+  margin: 0px 32px 556px;
   right: 0px;
   float: right;
   top: 0px;

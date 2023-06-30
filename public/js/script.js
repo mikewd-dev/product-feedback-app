@@ -243,6 +243,10 @@ function upvoteUX(uxId) {
     .catch(error => console.error(error));
 }
 
+// s
+// Call the function
+// updateParentUserValue();
+
 
 function dropReply(replyBoxId){
 var rep = document.getElementById(replyBoxId)
