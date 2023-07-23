@@ -9,6 +9,66 @@ $(document).ready(function(){
     });
 })
 
+
+
+function navButton() {
+  const navbarToggler = document.querySelector('.navbar-toggler-icon');
+  const overlay = document.querySelector('.overlay');
+  const navbarNav = document.querySelector('.navbar-nav');
+
+  // Toggle the "icon-close" class on navbarToggler
+  navbarToggler.classList.toggle('icon-close');
+
+  // Toggle the display of the navbar
+  if (navbarNav.classList.contains('show')) {
+    navbarNav.classList.remove('show');
+    navbarNav.style.display = 'none';
+    overlay.style.display = 'none';
+  } else {
+    navbarNav.classList.add('show');
+    navbarNav.style.display = 'block';
+    overlay.style.display = 'block';
+  }
+}
+
+
+// function navButton() {
+//   const navbarToggler = document.querySelector('.navbar-toggler-icon');
+//   const overlay = document.querySelector('.overlay');
+//   const navbarNav = document.querySelector('.navbar-nav');
+
+//   // Toggle the "icon-close" class on navbarToggler
+//   navbarToggler.classList.toggle('icon-close');
+
+//   // Toggle the display of the navbar
+//   if (navbarNav.classList.contains('show')) {
+//     navbarNav.classList.remove('show');
+//     navbarNav.style.display = 'none';
+//     overlay.style.display = 'block';
+//     setTimeout(() => {
+//       navbarNav.style.display = 'block';
+//     }, 1000);
+//   } else {
+//     navbarNav.style.display = 'block';
+//     overlay.style.display = 'none';
+//   }
+// }
+
+
+// window.onload = navButton(); // this is the line to add
+
+
+   if (window.innerWidth <= 768) {
+        // Change the `div` element with the class `board` to a navbar with dropdown
+        const board = document.querySelector('.board');
+        board.classList.add('navbar');
+        board.classList.add('dropdown');
+
+        // Add the `close-icon` element to the navbar
+        const closeIcon = document.querySelector('.close-icon');
+        board.appendChild(closeIcon);
+    }
+
 window.onload = function checkMark() {
   console.log('Window loaded')
   let linkmostup = document.getElementById('mostup');
