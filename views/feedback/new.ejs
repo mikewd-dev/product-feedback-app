@@ -26,16 +26,12 @@
                 <a href="/feedback/suggestions">
                     <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=" "></span>Go Back
                 </a>
-
-                <!-- <a href="/">Go Back</a> -->
             </div>
             <div class="col-sm offset-3">
 
                 <div class="new-feedback-form">
                     <embed class="new-feedback-icon" src="/assets/shared/icon-new-feedback.svg" type="">
                     <form action="/feedback" class="form-control-lg" method="POST">
-
-                        <!-- <div class="create-feedback"> -->
                         <h2 class="new-feedback">Create New Feedback </h2>
                         <h4 id='feedback-title' class="sub-heading">
                             Feedback Title
@@ -46,33 +42,25 @@
                         <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
                         <div class="select-options">
                             <select class="form-select" name="request[category]" id="features">
-                            <!-- <select name="" id="" class="form-select"> -->
                             <option value="Feature" class="feedback-options">Feature</option>
                             <option value="UI" class="feedback-options">UI</option>
                             <option value="UX" class="feedback-options">UX</option>
                             <option value="Enhancement" class="feedback-options">Enhancement</option>
                             <option value="Bug" class="feedback-options">Bug</option>
-                            <!-- </select> -->
                             </select>
                         </div>
-
                         <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
                         <label for="feedback" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
-                        <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3"></textarea>
-
-
+                        <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3" placeholder="Type your comment here"></textarea>
+                        <p class="char-left">250 Characters left</p>
                         <div class="add-cancel-feedback">
                             <a class="cancel-feedback-btn text-center" href="index" type="button">Cancel</a>
                             <button class="add-feedback-new">+Add Feedback</button>
                         </div>
                     </form>
                 </div>
-                <!-- </div> -->
-
-
             </div>
             <div class="col-sm">
-
             </div>
         </div>
     </div>

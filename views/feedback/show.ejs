@@ -13,11 +13,8 @@
 
 <body>
   <div class="col-md">
-    <div class="container">
-      <div class="row">
-        <!-- <div class="col-sm">
-
-        </div> -->
+    <div class="row">
+      <div class="container ">
         <div class="go-back-show">
           <a href="/feedback">
             <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=""></span>Go Back
@@ -26,18 +23,18 @@
           <!-- <a href="/">Go Back</a> -->
         </div>
         <div class="col-sm">
-          <!-- <div class="feedback-suggestion "> -->
+
           <div>
             <div class="feedback-show">
               <div class="d-flex flex-row feedback-suggested">
-                <div class="d-flex flex-column feedback-suggested-numvotes">
-                  <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-                  <h6>
-                    <p>
-                      <%=request.upvotes%>
-                    </p>
-                  </h6>
-                </div>
+                <form id="vote" onsubmit="event.preventDefault();">
+          <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
+            <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
+            <div class="votes" id="votes-<%= request._id %>">
+              <%= request.upvotes %>
+            </div>
+          </button>
+        </form>
                 <a class="feedback-navlink-show" href="/feedback/<%=request._id%>">
                   <div class="feeback-title-para">
                     <div class="feedback-suggested-title">
@@ -52,15 +49,19 @@
               </div>
             </div>
           </div>
-          <!-- </div> -->
+
         </div>
         <div class="col-sm">
+
+
+
           <div class="comments">
+             <p class="comment-length"><%=request.comments.length%> Comments</p>
             <% for (let comment of request.comments) { %>
-            <% if (comment) { %>
+            <%# if (comment && comment.user.image) { %>
             <div class="comment">
               <div class="user-details">
-                <img class="user-image" src="<%=comment.user.image%>" alt="">
+                <img class="user-image" src="<%= comment.user.image %>" alt="">
                 <p class="comment-user">
                   <%=comment.user.name %>
                 </p>
@@ -74,7 +75,7 @@
               </p>
               <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" novalidate>
                 <div class="row-reply" id="reply-box-<%=comment._id%>">
-                  <textarea name="reply[content]" class="reply-box"></textarea>
+                  <textarea name="reply[content]" class="comment-box"></textarea>
                   <button class="post-reply">Post Reply</button>
                 </div>
               </form>
@@ -114,10 +115,11 @@
               <% } %>
             </div>
             <% } %>
-            <% } %>
+            <%# } %>
 
-          </div>
+
           <div class="add-comment ">
+
           <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
 
               <label class="add-comment-label " for="addcomment ">Add Comment</label>
