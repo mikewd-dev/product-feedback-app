@@ -352,9 +352,6 @@ function upvoteUX(uxId) {
     .catch(error => console.error(error));
 }
 
-// s
-// Call the function
-// updateParentUserValue();
 
 
 function dropReply(replyBoxId){
@@ -380,6 +377,4 @@ $(document).ready(function(){
     $('#menu-item').html('Most Upvotes')
     })
   })
-
-
 

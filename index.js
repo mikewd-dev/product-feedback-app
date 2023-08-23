@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== "production"){
+  require('dotenv').config()
+}
 const express = require("express");
 const app = express();
 const methodOverride = require("method-override");
@@ -56,6 +59,11 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash())
 
+app.use ((req, res, next)=>{
+    res.locals.messages = req.flash('success')
+    next()
+})
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()))
@@ -64,47 +72,217 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser())
 
 
-app.use((req, res, next) => {
-    // console.log(req.session)
-    res.locals.user = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
+// app.use((req, res, next) => {
+//     // console.log(req.session)
+//     res.locals.user = req.user;
+//     res.locals.messages = req.flash('success');
+//     res.locals.error = req.flash('error');
+//     next();
+// })
+
+// ========POST ROUTES==========
+
+
+app.post("/feedback/register", upload.single('image'), async (req, res) => {
+    try {
+        const { name, email, username, password } = req.body;
+
+        // Create a new User instance
+        const user = new User({ name, email, username });
+
+        // Check if a file was uploaded and set the image property accordingly
+        if (req.file) {
+            user.image.push({
+                url: req.file.path, // Store the Cloudinary URL here
+                filename: req.file.filename // Store the Cloudinary filename here
+            });
+        }
+
+        // Register the user using passport-local-mongoose
+        const registeredUser = await User.register(user, password);
+
+        req.login(registeredUser, err => {
+            if (err) {
+                console.log(err);
+                return res.render("feedback/register");
+            }
+
+            res.redirect("/feedback");
+            req.flash('Success', 'Registration successfull')
+        });
+    } catch (e) {
+        console.log(e); // Log the error for debugging
+        req.flash('error', e.message);
+        res.redirect('register');
+    }
+});
+
+
+app.post("/feedback/login", passport.authenticate("local",
+    {
+        successRedirect: "/feedback/suggestions",
+        failureRedirect: "/feedback/login"
+    }), (req, res)=> {
+        req.flash('success', 'Welcome Back!')
 })
 
-app.get('/feedback', catchAsync(async (req, res, next) => {
+app.post('/feedback', isLoggedIn, catchAsync(async(req, res)=>{
+    const request = new Request(req.body.request)
+    await request.save();
+    req.flash('success', 'Successfully added new feedback')
+    res.redirect(`/feedback/${request._id}`)
+}))
+
+app.post('/feedback/suggestions/:id/upvote', async (req, res) => {
+  const suggestion = await Request.findById(req.params.id);
+
+  // Update the upvotes value in your database
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes });
+});
+
+app.post('/feedback/enhancement/:id/upvote', isLoggedIn, catchAsync(async (req, res) => {
+  const suggestion = await Request.findById(req.params.id);
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+  res.json({ upvotes: suggestion.upvotes});
+}));
+
+app.post('/feedback/bug/:id/upvote', async (req, res) => {
+  const suggestion = await Request.findById(req.params.id);
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+  res.json({ upvotes: suggestion.upvotes});
+});
+
+app.post('/feedback/ui/:id/upvote', async (req, res) => {
+  const suggestion = await Request.findById(req.params.id);
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+  res.json({ upvotes: suggestion.upvotes});
+});
+app.get('/feedback/ux/:id', async(req, res)=>{
+    res.redirect('/feedback/ux')
+})
+
+app.post('/feedback/ux/:id/upvote', isLoggedIn, async (req, res) => {
+  const suggestion = await Request.findById(req.params.id);
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+  res.json({ upvotes: suggestion.upvotes});
+});
+
+app.post('/feedback/:id/comments', async (req, res) => {
+  try {
+    const request = await Request.findById(req.params.id);
+    if (!request) {
+      return res.status(404).send('Request not found');
+    }
+    const imageUrl = req.user.image[0].url;
+    const newComment = {
+      content: req.body.comment.content,
+      user: {
+        _id: req.user._id,
+        image: imageUrl,
+        name: req.user.name,
+        username: req.user.username
+      }
+    };
+
+    request.comments.push(newComment);
+    await request.save();
+req.flash('success', 'Your comment has been added successfully')
+    res.redirect(`/feedback/${req.params.id}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.post('/feedback/:id/comment/:commentId/replies', isLoggedIn, async (req, res) => {
+  const request = await Request.findById(req.params.id);
+  const comment = await request.comments.id(req.params.commentId);
+   const imageUrl = req.user.image[0].url;
+
+//   let reply = req.user.username;
+   const newReply = {
+      content: req.body.reply.content,
+      replyingTo: comment.user.username,
+      user: {
+        _id: req.user._id,
+        image: imageUrl,
+        name: req.user.name,
+        username: req.user.username
+      }
+    };
+
+  comment.replies.push(newReply);
+  await request.save();
+  req.flash('success', 'Your reply was successfull')
+  res.redirect(`/feedback/${request._id}`);
+});
+
+app.post('/feedback/:id/comment/:commentId/reply/:replyId/replies', isLoggedIn, async (req, res) => {
+  const request = await Request.findById(req.params.id);
+  const comment = await request.comments.id(req.params.commentId);
+  const reply = comment.replies.id(req.params.replyId);
+   const imageUrl = req.user.image[0].url;
+  const newReply = {
+    content: req.body.reply.content,
+    replyingTo: reply.user.username, // Use the username of the user being replied to
+    user: {
+      _id: req.user._id,
+      name: req.user.name,
+      image: imageUrl,
+      username: req.user.username
+    }
+  };
+
+  comment.replies.push(newReply);
+  await request.save();
+  req.flash('success', 'Your reply was successfull')
+  console.log(newReply);
+  res.redirect(`/feedback/${request._id}`);
+});
+
+
+// app.post('/feedback/:id/comment/:commentId/reply/:replyId/rep', isLoggedIn, async (req, res) => {
+//   const request = await Request.findById(req.params.id);
+//   const comment = await request.comments.id(req.params.commentId);
+//   const reply = await comment.replies.id(req.params.replyId);
+//    const newRep = {
+//       content: req.body.reply.content,
+//       user: {
+//         _id: req.user._id,
+//         //image: req.user.image,
+//         name: req.user.name,
+//         username: req.user.username
+//       }
+//     };
+//   reply.replies.push(newRep);
+//   await request.save();
+//   res.redirect(`/feedback/${request._id}`);
+// });
+
+
+// ====GET ROUTES=======
+
+app.get('/feedback', catchAsync(async (req, res) => {
      const roadmap  = await Roadmap.find({}).where('status').equals('planned')
     const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
 res.render('feedback/index', {roadmap, progress, live })
+
 }));
 
 app.get('/feedback/register', (req, res)=>{
     res.render('feedback/register')
 });
 
-app.post("/feedback/register", (req, res)=>{
-    var newUser = new User({name: req.body.name, username: req.body.username});
-    User.register(newUser, req.body.password, function(err, user){
-        if(err){
-            console.log(err);
-            return res.render("feedback/register");
-        }
-        passport.authenticate("local")(req, res, function(){
-           res.redirect("/feedback");
-        });
-    });
-});
-
 app.get("/feedback/login", (req, res)=>{
     res.render('feedback/login')
-})
-
-app.post("/feedback/login", passport.authenticate("local",
-    {
-        successRedirect: "/feedback",
-        failureRedirect: "/feedback/login"
-    }), (req, res)=> {
 })
 
 app.get("/feedback/logout", (req, res)=>{
@@ -112,23 +290,14 @@ app.get("/feedback/logout", (req, res)=>{
     res.redirect('/feedback/login')
 })
 
-function isLoggedIn(req, res, next){
-    // console.log("REQ.USER...", req.user);
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/feedback/login");
-}
+
 
 app.get('/feedback/new', isLoggedIn, catchAsync(async (req, res) => {
+
     res.render('feedback/new')
 }));
 
-app.post('/feedback', isLoggedIn, catchAsync(async(req, res, next)=>{
-    const request = new Request(req.body.request)
-    await request.save();
-    res.redirect(`/feedback/${request._id}`)
-}))
+
 
 app.get('/feedback/suggestions', catchAsync(async (req, res, next) => {
   let sortOrder;
@@ -207,7 +376,7 @@ if (req.query.sort === 'mostup') {
   sortOrder = 'leastcomm';
 }
 
-  let request = await Request.find({}).where('category').equals('ui');
+  let request = await Request.find({}).where('category').equals('UI');
 
   if (sortOrder === 'mostcomm') {
   request = request.sort((a, b) => b.comments.length - a.comments.length);
@@ -240,7 +409,7 @@ if (req.query.sort === 'mostup') {
   sortOrder = 'leastcomm';
 }
 
-  let request = await Request.find({}).where('category').equals('ux');
+  let request = await Request.find({}).where('category').equals('UX');
 
   if (sortOrder === 'mostcomm') {
   request = request.sort((a, b) => b.comments.length - a.comments.length);
@@ -341,14 +510,6 @@ app.get('/feedback/roadmap', async(req, res)=>{
     res.render('feedback/roadmap', { roadmap, progress, live })
 });
 
-app.put('/feedback/:id', isLoggedIn, catchAsync(async (req, res) => {
-        const {id} = req.params;
-    const request = await Request.findByIdAndUpdate(id, {...req.body.request})
-    res.redirect(`/feedback/${request._id}`)
-}));
-
-
-
 app.get('/feedback/:id', isLoggedIn, async(req, res) => {
   const request = await Request.findById(req.params.id);
   if (isLoggedIn) {
@@ -362,12 +523,9 @@ app.get('/feedback/:id', isLoggedIn, async(req, res) => {
   }
 });
 
-
-
 app.get('/feedback/:id/comments', isLoggedIn, async(req, res)=>{
     const request = await Request.findById(req.params.id)
     const comment = await Comment.findById(req.params.id).populate('user')
-    //const user = await User.findById(comment.userId)
     res.render('feedback/show', {request, comment})
 })
 
@@ -387,28 +545,11 @@ app.get('/feedback/:id/edit', isLoggedIn, catchAsync(async (req, res) => {
     res.render('feedback/edit', { request })
 }));
 
-app.put('/feedback/:id', isLoggedIn, catchAsync(async (req, res) => {
-    const {id} = req.params;
-    const request = await Request.findByIdAndUpdate(id, {...req.body.request})
-    res.redirect(`/feedback/${request._id}`)
-}));
-
-app.post('/feedback/suggestions/:id/upvote', async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-
-  // Update the upvotes value in your database
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-
-  res.json({ upvotes: suggestion.upvotes });
-});
-
 app.get('/feedback/suggestions/:id', async(req, res) => {
   // Return the suggestion object as JSON
   const suggestion = await Request.findById(req.params.id);
   res.json(suggestion);
 });
-
 
 app.get('/feedback/feature/:id', async(req, res)=>{
     res.redirect('/feedback/feature')
@@ -418,45 +559,21 @@ app.get('/feedback/enhancement/:id', async(req, res)=>{
     res.redirect('/feedback/enhancement')
 })
 
-app.post('/feedback/enhancement/:id/upvote', isLoggedIn, catchAsync(async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-  res.json({ upvotes: suggestion.upvotes});
-}));
-
 app.get('/feedback/bug/:id', async(req, res)=>{
     // const request = await Request.findById(req.params.id)
     res.redirect('/feedback/bug')
 })
 
-app.post('/feedback/bug/:id/upvote', async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-  res.json({ upvotes: suggestion.upvotes});
-});
-
 app.get('/feedback/ui/:id', async(req, res)=>{
     res.redirect('/feedback/ui')
 })
 
-app.post('/feedback/ui/:id/upvote', async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-  res.json({ upvotes: suggestion.upvotes});
-});
-app.get('/feedback/ux/:id', async(req, res)=>{
-    res.redirect('/feedback/ux')
-})
-
-app.post('/feedback/ux/:id/upvote', isLoggedIn, async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-  res.json({ upvotes: suggestion.upvotes});
-});
+// =====EDIT AND DELETE ROUTES========
+app.put('/feedback/:id', isLoggedIn, catchAsync(async (req, res) => {
+        const {id} = req.params;
+    const request = await Request.findByIdAndUpdate(id, {...req.body.request})
+    res.redirect(`/feedback/${request._id}`)
+}));
 
 app.delete('/feedback/:id',isLoggedIn, catchAsync(async (req, res, next) => {
     const { id } = req.params;
@@ -464,96 +581,15 @@ app.delete('/feedback/:id',isLoggedIn, catchAsync(async (req, res, next) => {
     res.redirect('/feedback');
 }));
 
-app.post('/feedback/:id/comments', async (req, res) => {
-  try {
-    const request = await Request.findById(req.params.id);
-    if (!request) {
-      return res.status(404).send('Request not found');
+// ===============END OF ROUTES==============
+
+function isLoggedIn(req, res, next){
+    // console.log("REQ.USER...", req.user);
+    if(req.isAuthenticated()){
+        return next();
     }
-    const imageUrl = req.user.image[0].url;
-    const newComment = {
-      content: req.body.comment.content,
-      user: {
-        _id: req.user._id,
-        image: imageUrl,
-        name: req.user.name,
-        username: req.user.username
-      }
-    };
-
-    request.comments.push(newComment);
-    await request.save();
-
-    res.redirect(`/feedback/${req.params.id}`);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-app.post('/feedback/:id/comment/:commentId/replies', isLoggedIn, async (req, res) => {
-  const request = await Request.findById(req.params.id);
-  const comment = await request.comments.id(req.params.commentId);
-   const imageUrl = req.user.image[0].url;
-
-  let reply = req.user.username;
-   const newReply = {
-      content: req.body.reply.content,
-      replyingTo: comment.user.username,
-      user: {
-        _id: req.user._id,
-        image: imageUrl,
-        name: req.user.name,
-        username: req.user.username
-      }
-    };
-
-  comment.replies.push(newReply);
-  await request.save();
-  res.redirect(`/feedback/${request._id}`);
-});
-
-app.post('/feedback/:id/comment/:commentId/reply/:replyId/replies', isLoggedIn, async (req, res) => {
-  const request = await Request.findById(req.params.id);
-  const comment = await request.comments.id(req.params.commentId);
-  const reply = comment.replies.id(req.params.replyId);
-   const imageUrl = req.user.image[0].url;
-  const newReply = {
-    content: req.body.reply.content,
-    replyingTo: reply.user.username, // Use the username of the user being replied to
-    user: {
-      _id: req.user._id,
-      name: req.user.name,
-      image: imageUrl,
-      username: req.user.username
-    }
-  };
-
-  comment.replies.push(newReply);
-  await request.save();
-  console.log(newReply);
-  res.redirect(`/feedback/${request._id}`);
-});
-
-
-// app.post('/feedback/:id/comment/:commentId/reply/:replyId/rep', isLoggedIn, async (req, res) => {
-//   const request = await Request.findById(req.params.id);
-//   const comment = await request.comments.id(req.params.commentId);
-//   const reply = await comment.replies.id(req.params.replyId);
-//    const newRep = {
-//       content: req.body.reply.content,
-//       user: {
-//         _id: req.user._id,
-//         //image: req.user.image,
-//         name: req.user.name,
-//         username: req.user.username
-//       }
-//     };
-//   reply.replies.push(newRep);
-//   await request.save();
-//   res.redirect(`/feedback/${request._id}`);
-// });
-
+    res.redirect("/feedback/login");
+}
 
 app.listen(3000, () => {
     console.log('Serving on port 3000')

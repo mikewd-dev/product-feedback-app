@@ -17,8 +17,9 @@
 </head>
 
 <body style="background-color: #F2F2F2;">
-
-  <!-- <div class="col-lg"> -->
+  <div class="flash">
+  <%= messages %>
+  </div>
   <div class="container">
     <div class="grid-container">
 
@@ -166,6 +167,7 @@
                 <%=request.length %>
               </span> Suggestions
             </li>
+
             <a class="nav-link" href="/feedback/suggestions?sort=mostup" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Sort by :<strong id="menu-item">Most Upvotes</strong>
               <span><img class="down-arrow" src="/assets/shared/icon-arrow-down.svg" alt="" srcset=""></span>
@@ -192,7 +194,7 @@
           </div>
                         <a class="add-feedback-top text-center" href="/feedback/new " type="button ">+Add Feedback</a>
 
-</nav>
+
       </div>
       </nav>
     </div>
@@ -206,13 +208,15 @@
     <% for(let req of Object.values(request)){ %>
     <div class="feedback-suggestion">
       <div class="d-flex flex-row feedback-suggested">
-        <form id="vote" onsubmit="event.preventDefault();">
-          <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
-            <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-            <div class="votes" id="votes-<%= req._id %>">
-              <%= req.upvotes %>
-            </div>
-          </button>
+                 <form id="vote" onsubmit="event.preventDefault();">
+   <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
+    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= req._id %>">
+        <path d="M1 6l4-4 4 4" stroke-width="2"/>
+    </svg>
+    <div class="votes" id="votes-<%= req._id %>">
+        <%= req.upvotes %>
+    </div>
+</button>
         </form>
 
 

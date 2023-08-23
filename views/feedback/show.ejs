@@ -12,15 +12,19 @@
 </head>
 
 <body>
+  <div class="flash">
+  <%= messages %>
+  </div>
   <div class="col-md">
     <div class="row">
       <div class="container ">
+
         <div class="go-back-show">
-          <a href="/feedback">
+
+          <a href="/feedback/suggestions">
             <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=""></span>Go Back
           </a>
           <a class="btn btn-primary edit-button" href="/feedback/<%=request._id%>/edit" type="button">Edit Feedback</a>
-          <!-- <a href="/">Go Back</a> -->
         </div>
         <div class="col-sm">
 
@@ -28,13 +32,15 @@
             <div class="feedback-show">
               <div class="d-flex flex-row feedback-suggested">
                 <form id="vote" onsubmit="event.preventDefault();">
-          <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
-            <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-            <div class="votes" id="votes-<%= request._id %>">
-              <%= request.upvotes %>
-            </div>
-          </button>
-        </form>
+                       <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
+    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= request._id %>">
+        <path d="M1 6l4-4 4 4" stroke-width="2"/>
+    </svg>
+    <div class="votes" id="votes-<%= request._id %>">
+        <%= request.upvotes %>
+    </div>
+</button>
+                </form>
                 <a class="feedback-navlink-show" href="/feedback/<%=request._id%>">
                   <div class="feeback-title-para">
                     <div class="feedback-suggested-title">
@@ -52,13 +58,9 @@
 
         </div>
         <div class="col-sm">
-
-
-
           <div class="comments">
-             <p class="comment-length"><%=request.comments.length%> Comments</p>
+            <p class="comment-length"><%=request.comments.length%> Comments</p>
             <% for (let comment of request.comments) { %>
-            <%# if (comment && comment.user.image) { %>
             <div class="comment">
               <div class="user-details">
                 <img class="user-image" src="<%= comment.user.image %>" alt="">
@@ -115,24 +117,21 @@
               <% } %>
             </div>
             <% } %>
-            <%# } %>
 
+            <div class="add-comment ">
 
-          <div class="add-comment ">
+              <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
 
-          <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
-
-              <label class="add-comment-label " for="addcomment ">Add Comment</label>
-              <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
-              <button class="post-comment">Post Comment</button>
-          </form>
+                <label class="add-comment-label " for="addcomment ">Add Comment</label>
+                <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
+                <button class="post-comment">Post Comment</button>
+              </form>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
-    <!-- </div> -->
-  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 
