@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const methodOverride = require("method-override");
 const flash = require('connect-flash')
+const Joi  = require('joi')
 const path = require("path")
 const {storage} = require('./cloudinary')
 const multer = require('multer')
@@ -27,6 +28,7 @@ const Reply = require('./models/reply')
 const Roadmap = require("./models/roadmap")
 const catchAsync = require("./utils/catchAsync");
 const bodyParser = require('body-parser');
+const ExpressError = require('./utils/ExpressError');
 
 const db = mongoose.connection;
 
@@ -83,8 +85,58 @@ passport.deserializeUser(User.deserializeUser())
 // ========POST ROUTES==========
 
 
-app.post("/feedback/register", upload.single('image'), async (req, res) => {
+// app.post("/feedback/register", upload.single('image'), async (req, res) => {
+//     try {
+//         const { name, email, username, password } = req.body;
+
+//         // Create a new User instance
+//         const user = new User({ name, email, username });
+
+//         // Check if a file was uploaded and set the image property accordingly
+//         if (req.file) {
+//             user.image.push({
+//                 url: req.file.path, // Store the Cloudinary URL here
+//                 filename: req.file.filename // Store the Cloudinary filename here
+//             });
+//         }
+
+//         // Register the user using passport-local-mongoose
+//         const registeredUser = await User.register(user, password);
+
+//         req.login(registeredUser, err => {
+//             if (err) {
+//                 console.log(err);
+//                 return res.render("feedback/register");
+//             }
+
+//             res.redirect("/feedback");
+//             req.flash('Success', 'Registration successfull')
+//         });
+//     } catch (e) {
+//         console.log(e); // Log the error for debugging
+//         req.flash('error', e.message);
+//         res.redirect('register');
+//     }
+// });
+
+app.post("/feedback/register", upload.single('image'), catchAsync(async (req, res) => {
     try {
+        const registerSchema = Joi.object({
+            // register: Joi.object({
+                email: Joi.string().required(),
+                name: Joi.string().required(),
+                username: Joi.string().required(),
+                password: Joi.string().required(),
+                // image: Joi.any().required()
+            // }).required()
+        });
+        const { error } = registerSchema.validate(req.body);
+
+        if (error) {
+            const msg = error.details.map(el => el.message).join(',');
+            throw new ExpressError(msg, 400);
+        }
+
         const { name, email, username, password } = req.body;
 
         // Create a new User instance
@@ -108,15 +160,14 @@ app.post("/feedback/register", upload.single('image'), async (req, res) => {
             }
 
             res.redirect("/feedback");
-            req.flash('Success', 'Registration successfull')
+            req.flash('success', 'Registration successful'); // "success" instead of "Success"
         });
     } catch (e) {
         console.log(e); // Log the error for debugging
         req.flash('error', e.message);
         res.redirect('register');
     }
-});
-
+}));
 
 app.post("/feedback/login", passport.authenticate("local",
     {
@@ -129,7 +180,7 @@ app.post("/feedback/login", passport.authenticate("local",
 app.post('/feedback', isLoggedIn, catchAsync(async(req, res)=>{
     const request = new Request(req.body.request)
     await request.save();
-    req.flash('success', 'Successfully added new feedback')
+    req.flash('success', 'Thank you for your feedback')
     res.redirect(`/feedback/${request._id}`)
 }))
 
@@ -591,6 +642,15 @@ function isLoggedIn(req, res, next){
     res.redirect("/feedback/login");
 }
 
+app.all('*', (req, res, next)=>{
+    next(new ExpressError('Page Not Found', 404))
+})
+
+app.use((err, req, res, next)=>{
+    const { statusCode = 500 } = err;
+    if(!err.message) err.message = 'Something went wrong'
+    res.status(statusCode).render('error', {err})
+})
 app.listen(3000, () => {
     console.log('Serving on port 3000')
 });

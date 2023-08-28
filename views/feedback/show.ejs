@@ -75,9 +75,9 @@
               <p class="comment-content">
                 <%=comment.content %>
               </p>
-              <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" novalidate>
+              <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" data-parsley-validate novalidate>
                 <div class="row-reply" id="reply-box-<%=comment._id%>">
-                  <textarea name="reply[content]" class="comment-box"></textarea>
+                  <textarea name="reply[content]" class="comment-box" required></textarea>
                   <button class="post-reply">Post Reply</button>
                 </div>
               </form>
@@ -99,9 +99,9 @@
                     <span class="replyingto">@<%=reply.replyingTo %></span>
                     <%=reply.content %>
                   </p>
-                  <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form" novalidate>
+                  <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form" data-parsley-validate novalidate>
                     <div class="row-reply" id="reply-box-<%=reply._id%>">
-                      <textarea name="reply[content]" class="reply-box"></textarea>
+                      <textarea name="reply[content]" class="reply-box" required></textarea>
                       <button class="post-reply">Post Reply</button>
                     </div>
                   </form>
@@ -120,10 +120,10 @@
 
             <div class="add-comment ">
 
-              <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
+              <form action="/feedback/<%=request._id%>/comments" method="POST" data-parsley-validate class="validated-form" novalidate>
 
                 <label class="add-comment-label " for="addcomment ">Add Comment</label>
-                <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
+                <textarea class="add-comment-text" name="comment[content]" id="content " cols="30 " rows="4"placeholder="Type your comment here " required></textarea>
                 <button class="post-comment">Post Comment</button>
               </form>
             </div>
@@ -133,6 +133,7 @@
       </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="/js/script.js"></script>
 </html>
