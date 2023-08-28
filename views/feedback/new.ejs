@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
-
+ <script src="/js/script.js"></script>
     <title>Frontend Mentor | Product feedback app</title>
 </head>
 
@@ -31,13 +31,13 @@
 
                 <div class="new-feedback-form">
                     <embed class="new-feedback-icon" src="/assets/shared/icon-new-feedback.svg" type="">
-                    <form action="/feedback" class="form-control-lg" method="POST">
+                    <form action="/feedback" class="form-control-lg" method="POST" data-parsley-validate novalidate>
                         <h2 class="new-feedback">Create New Feedback </h2>
                         <h4 id='feedback-title' class="sub-heading">
                             Feedback Title
                         </h4>
                         <label for="title" class="sub-heading-paragraph">Add a short, descriptive headline</label>
-                        <input class="feedback-text" name="request[title]" id="feedbacktitle" cols="5" rows="1">
+                        <input class="feedback-text" name="request[title]" id="feedbacktitle" cols="5" rows="1" required>
                         <h4 id="category" class="sub-heading">Category</h4>
                         <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
                         <div class="select-options">
@@ -51,7 +51,7 @@
                         </div>
                         <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
                         <label for="feedback" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
-                        <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3" placeholder="Type your comment here"></textarea>
+                        <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3" placeholder="Type your comment here" required></textarea>
                         <p class="char-left">250 Characters left</p>
                         <div class="add-cancel-feedback">
                             <a class="cancel-feedback-btn text-center" href="index" type="button">Cancel</a>
