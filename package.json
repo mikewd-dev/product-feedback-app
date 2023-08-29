@@ -4,12 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "netlify deploy --prod"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "body-parser": "^1.20.1",
+        "body-parser": "^1.20.2",
         "caniuse-lite": "^1.0.30001439",
         "cloudinary": "^1.37.2",
         "connect-flash": "^0.1.1",

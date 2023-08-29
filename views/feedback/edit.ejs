@@ -68,14 +68,16 @@
                                 <a href="/feedback/suggestions"><button class="cancel-feedback-btn text-center" type="button">Cancel</button></a>
                                 <button class="add-feedback-edit">Save Changes</button>
 
-
-                            <form method="POST" class="d-inline" action="/feedback/<%=request._id%>?_method=DELETE">
-                                <button class="delete-feedback-btn text-center">Delete</button>
+<form action="/feedback/<%=request._id%>?_method=DELETE" method="POST" class="d-inline">
+                                <button class="hidden-delete">Delete</button>
                             </form>
 
-                        </div>
-                </div>
 
+                        </div>
+
+<form action="/feedback/<%=request._id%>?_method=DELETE" method="POST" class="delete-form">
+                                <button class="delete-feedback-btn">Delete</button>
+                            </form>
             </div>
         </div>
     </div>
