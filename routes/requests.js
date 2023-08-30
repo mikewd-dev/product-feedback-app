@@ -581,9 +581,6 @@ function isLoggedIn(req, res, next){
     res.redirect("/feedback/login");
 }
 
-router.all('*', (req, res, next)=>{
-    next(new ExpressError('Page Not Found', 404))
-})
 
 router.use((err, req, res, next)=>{
     const { statusCode = 500 } = err;
