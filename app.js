@@ -33,7 +33,7 @@ const db = mongoose.connection;
 
 // app.use('/.product-feedback-app/functions/product-feedback-app-figma', router)
 
-app.use('/', requestRoutes)
+app.use('/feedback', requestRoutes)
 
 app.use(express.static('public'))
 app.use('/styles', express.static(__dirname + 'public/styles'))
