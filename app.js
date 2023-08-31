@@ -99,6 +99,6 @@ app.all('*', (req, res, next)=>{
 
 module.exports.handler = serverless(app);
 
-app.listen(3000, () => {
-    console.log('Serving on port 3000')
+app.listen(3002, () => {
+    console.log('Serving on port 3002')
 });

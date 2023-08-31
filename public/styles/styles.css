@@ -87,6 +87,12 @@ textarea.parsley-error {
   line-height: 100%;
 }
 
+.reg-login {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 .delete-form {
   width: fit-content;
 }
@@ -2829,6 +2835,14 @@ p {
     width: 327px;
     margin-right: 0;
     height: auto;
+  }
+
+  .reg-login {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    text-align: center;
+    margin: 0 74px auto;
   }
 
   .comment-user {

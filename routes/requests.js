@@ -575,7 +575,6 @@ router.delete('/feedback/:id',isLoggedIn, catchAsync(async (req, res, next) => {
 // ===============END OF ROUTES==============
 
 function isLoggedIn(req, res, next){
-    // console.log("REQ.USER...", req.user);
     if(req.isAuthenticated()){
         return next();
     }
