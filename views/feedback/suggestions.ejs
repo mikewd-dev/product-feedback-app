@@ -17,8 +17,8 @@
 </head>
 
 <body style="background-color: #F2F2F2;">
-        <div class="flash">
-  <%= messages %>
+  <div class="flash">
+    <%= messages %>
   </div>
   <div class="container">
     <div class="grid-container">
@@ -69,9 +69,12 @@
                           <h5>
                             <p class="roadmap ">Roadmap</p>
                           </h5>
-                          <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
-                          <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
-                          <span class="oval-live"></span><p class="roadmap-options">Live</p>
+                          <span class="oval-planned"></span>
+                          <p class="roadmap-options">Planned </p>
+                          <span class="oval-progress"></span>
+                          <p class="roadmap-options">In-Progress</p>
+                          <span class="oval-live"></span>
+                          <p class="roadmap-options">Live</p>
                         </div>
                         <ul class="view-roadmap">
                           <li class="view"><a href="/feedback/roadmap">View</a></li>
@@ -97,9 +100,9 @@
               </ul>
             </div>
           </div>
-           <div class="board-text">
-          <p class="navboard-title">Frontend Mentor</p>
-          <p class="navboard-subtitle">FeedBack Board</p>
+          <div class="board-text">
+            <p class="navboard-title">Frontend Mentor</p>
+            <p class="navboard-subtitle">FeedBack Board</p>
           </div>
         </nav>
 
@@ -135,14 +138,17 @@
           </div>
           <span class="space"></span>
           <div class="d-flex flex-row list ">
-             <div class="map">
-                          <h5>
-                            <p class="roadmap ">Roadmap</p>
-                          </h5>
-                          <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
-                          <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
-                          <span class="oval-live"></span><p class="roadmap-options">Live</p>
-                        </div>
+            <div class="map">
+              <h5>
+                <p class="roadmap ">Roadmap</p>
+              </h5>
+              <span class="oval-planned"></span>
+              <p class="roadmap-options">Planned </p>
+              <span class="oval-progress"></span>
+              <p class="roadmap-options">In-Progress</p>
+              <span class="oval-live"></span>
+              <p class="roadmap-options">Live</p>
+            </div>
             <ul class="view-roadmap">
               <li class="view"><a href="/feedback/roadmap">View</a></li>
             </ul>
@@ -193,31 +199,31 @@
             </ul>
 
           </div>
-                        <a class="add-feedback-top text-center" href="/feedback/new " type="button ">+Add Feedback</a>
+          <a class="add-feedback-top text-center" href="/feedback/new " type="button ">+Add Feedback</a>
 
 
       </div>
       </nav>
     </div>
-  </div>
-  <!-- </div> -->
 
-  <div class="feedback-screen-active">
+  <!-- </div> -->
 <div class="overlay"></div>
+  <div class="feedback-screen-active">
+
 
     <!-- for(let [key, value] of Object.entries(request)) -->
     <% for(let req of Object.values(request)){ %>
     <div class="feedback-suggestion">
       <div class="d-flex flex-row feedback-suggested">
-                 <form id="vote" onsubmit="event.preventDefault();">
-   <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
-    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= req._id %>">
-        <path d="M1 6l4-4 4 4" stroke-width="2"/>
-    </svg>
-    <div class="votes" id="votes-<%= req._id %>">
-        <%= req.upvotes %>
-    </div>
-</button>
+        <form id="vote" onsubmit="event.preventDefault();">
+          <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= req._id %>">
+              <path d="M1 6l4-4 4 4" stroke-width="2" />
+            </svg>
+            <div class="votes" id="votes-<%= req._id %>">
+              <%= req.upvotes %>
+            </div>
+          </button>
         </form>
 
 
@@ -251,10 +257,11 @@
 
 
   <!-- Sidebar end -->
-
+</div>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script src="/js/script.js"></script>
+<script src="/js/script.js"></script>
+
 </html>
