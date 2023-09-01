@@ -3016,6 +3016,7 @@ p {
     text-align: center;
     font-style: normal;
 width:fit-content;
+margin-left:85%
   }
 
   .feedback-title {
@@ -3055,7 +3056,7 @@ margin-right: 0;
   }
 
   .add-feedback {
-    margin-left: -71px;
+    margin-left:0px;
     margin-top: 0px;
   }
 
