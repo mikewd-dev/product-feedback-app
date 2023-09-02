@@ -173,7 +173,7 @@ textarea.parsley-error {
   grid-template-columns: 255px 825px;
   grid-auto-columns: 1fr;
   column-gap: 60px;
-  left: 450px;
+  margin-left: 55px;
 }
 
 .feedback-board {
@@ -393,7 +393,7 @@ p {
 .feedback-screen {
   position: absolute;
   width: 825px;
-  margin-left: 345px;
+  margin-left: 404px;
   top: 190px;
   background-color: #ffffff;
 }
@@ -419,7 +419,7 @@ p {
   position: absolute;
   width: 825px;
   border-radius: 10px;
-  margin-left: 325px;
+  margin-left: 404px;
   top: 190px;
 }
 
@@ -1837,7 +1837,6 @@ p {
     padding: auto;
     margin-top: 56px;
     margin-left: 0px;
-    left: 0;
   }
 
   .new-feedback {
@@ -2688,6 +2687,13 @@ p {
     height: 77px;
   }
 
+  .grid-container {
+    display: grid;
+    grid-template-columns: 255px 825px;
+    grid-auto-columns: 1fr;
+    column-gap: 60px;
+    margin-left: 0;
+  }
   .list {
     display: block;
     width: 274px;
