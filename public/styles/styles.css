@@ -2464,7 +2464,7 @@ p {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   body,
   html {
     top: 0 !important;
@@ -2741,7 +2741,7 @@ p {
     font-size: 13px;
     height: 40px;
     flex-shrink: 0;
-    margin: 6px 17px 40px 230px;
+    margin: 6px 17px 40px 208px;
     padding: 10.5px 17px 10.5px 16px;
   }
 
