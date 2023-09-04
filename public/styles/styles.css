@@ -2640,7 +2640,8 @@ p {
   }
 
   .navbar-toggler {
-    margin: 0px 24px 28px 321px;
+    margin: 0 0 28px auto;
+    float: right;
   }
 
   .navbar-toggler:focus {
