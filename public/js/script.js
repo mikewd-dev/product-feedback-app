@@ -367,7 +367,7 @@ $(document).ready(function(){
 
 
  function checkWidth() {
-       var boardDiv = document.querySelectorAll('.board-text')
+       var boardDiv = document.querySelector('.board-text')
 
     if(window.innerWidth > 768){
       boardDiv.style.display = "none";
