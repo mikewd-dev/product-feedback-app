@@ -370,7 +370,7 @@ $(document).ready(function(){
        var boardDiv = document.querySelectorAll('.board-text')
 
     if(window.innerWidth > 768){
-      boardDiv.style.display="none"
+      boardDiv.style.display="none";
     }
     }
     checkWidth()
