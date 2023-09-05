@@ -116,7 +116,7 @@ router.post("/feedback/register", upload.single('image'), catchAsync(async (req,
                 return res.render("feedback/register");
             }
 
-            res.redirect("/feedback");
+            res.redirect("/");
             req.flash('success', 'Registration successful'); // "success" instead of "Success"
         });
     } catch (e) {
