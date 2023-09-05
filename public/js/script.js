@@ -366,13 +366,16 @@ $(document).ready(function(){
   })
 
 
- function checkWidth() {
-       var boardDiv = document.querySelector('.board-text')
+function checkWidth() {
+    var boardDiv = document.querySelector('.board-text');
 
-    if(window.innerWidth > 768){
-      boardDiv.style.display = "none";
+    if (boardDiv && window.innerWidth > 768) {
+        boardDiv.style.display = "none";
     }
-    }
-    checkWidth()
+}
+
+// Call the function when the page loads or when needed
+document.addEventListener('DOMContentLoaded', checkWidth);
+
 
 
