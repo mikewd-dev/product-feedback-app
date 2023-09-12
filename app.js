@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI,
     .catch(err=> console.error(err))
 
 const ejsMate = require("ejs-mate");
+const mongoSanitize = require('express-mongo-sanitize');
 const requestRoutes = require('./routes/requests');
 const User = require("./models/user");
 
@@ -39,6 +40,8 @@ app.use(express.static('public'))
 app.use('/styles', express.static(__dirname + 'public/styles'))
 app.use('/js', express.static(__dirname + 'public/js'))
 app.use('/images', express.static(__dirname + 'public/images'))
+
+app.use(mongoSanitize());
 
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
