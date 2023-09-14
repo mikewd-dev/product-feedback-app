@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== "production"){
+// if (process.env.NODE_ENV !== "production"){
   require('dotenv').config()
-}
+// }
 const express = require("express");
 const app = express();
 const router = express.Router();
@@ -16,6 +16,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const mongoose = require("mongoose");
 const session = require('express-session')
+const helmet = require('helmet');
 require('dotenv').config()
 mongoose.connect(process.env.MONGO_URI,
     { useUnifiedTopology: true})
@@ -66,6 +67,59 @@ const sessionConfig = {
 }
 app.use(session(sessionConfig));
 app.use(flash())
+app.use(helmet());
+
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+    "https://kit.fontawesome.com/",
+    "https://cdnjs.cloudflare.com/",
+    "https://cdn.jsdelivr.net/",
+    "https://res.cloudinary.com/dxarelvy7/"
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com/",
+    "https://stackpath.bootstrapcdn.com/",
+    "https://fonts.googleapis.com/",
+    "https://use.fontawesome.com/",
+    "https://cdn.jsdelivr.net/",
+    "https://res.cloudinary.com/dxarelvy7/"
+];
+const connectSrcUrls = [
+    "https://res.cloudinary.com/dxarelvy7/",
+    "https://fonts.gstatic.com/"
+
+];
+const fontSrcUrls = [
+    "https://res.cloudinary.com/dxarelvy7/",
+    "https://fonts.gstatic.com/",
+ ];
+
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            directives : {
+                defaultSrc : [],
+                connectSrc : [ "'self'", ...connectSrcUrls ],
+                scriptSrc  : [ "'unsafe-inline'", "'self'", ...scriptSrcUrls ],
+                styleSrc   : [ "'self'", "'unsafe-inline'", ...styleSrcUrls ],
+                workerSrc  : [ "'self'", "blob:" ],
+                objectSrc  : [],
+                imgSrc     : [
+                    "'self'",
+                    "blob:",
+                    "data:",
+                    "https://res.cloudinary.com/dxarelvy7/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
+                    "https://images.unsplash.com/"
+                ],
+                fontSrc    : [ "'self'", ...fontSrcUrls ],
+                mediaSrc   : [ "https://res.cloudinary.com/dxarelvy7/", ],
+                childSrc   : [ "blob:" ]
+            }
+        },
+        crossOriginEmbedderPolicy: false
+    })
+);
+
 
 app.use ((req, res, next)=>{
     res.locals.messages = req.flash('success')
