@@ -301,7 +301,7 @@ function upvoteBug(bugId) {
     .then(response => response.json())
     .then(data => {
       // Update the value of <%=req.upvotes%> in the DOM
-      const upvotesElement = document.getElementById(`upvotes-${bugId}}`);
+      const upvotesElement = document.getElementById(`upvotes-${bugId}`);
       upvotesElement.textContent = data.upvotes;
     })
     .catch(error => console.error(error));
