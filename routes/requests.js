@@ -57,17 +57,17 @@ const sessionConfig = {
   cookie: {
       httpOnly: true,
       // secure: true,
-      expires: Date.now() * 1000 * 60 * 60 * 24 * 7,
-      maxAge: 1000 * 60 * 60 * 24 * 7
+      expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
   }
 }
 router.use(session(sessionConfig));
 router.use(flash())
 
-router.use ((req, res, next)=>{
-    res.locals.messages = req.flash('success')
-    next()
-})
+router.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+});
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -117,13 +117,13 @@ router.post("/feedback/register", upload.single('image'), catchAsync(async (req,
 
 
 
-router.post("/feedback/login", passport.authenticate("local",
-    {
-        successRedirect: "/feedback/suggestions",
-        failureRedirect: "/feedback/login"
-    }), (req, res)=> {
-        req.flash('success', 'Welcome Back!')
-})
+router.post("/feedback/login", passport.authenticate("local", {
+    successRedirect: "/feedback/suggestions",
+    failureRedirect: "/feedback/login",
+    failureFlash: true
+}), (req, res) => {
+    req.flash('success', 'Welcome Back!');
+});
 
 router.post('/feedback', isLoggedIn, catchAsync(async(req, res)=>{
     const request = new Request(req.body.request)
@@ -134,8 +134,6 @@ router.post('/feedback', isLoggedIn, catchAsync(async(req, res)=>{
 
 router.post('/feedback/suggestions/:id/upvote', async (req, res) => {
   const suggestion = await Request.findById(req.params.id);
-
-  // Update the upvotes value in your database
   suggestion.upvotes = suggestion.upvotes + 1;
   await suggestion.save();
 
@@ -173,7 +171,7 @@ router.post('/feedback/ux/:id/upvote', isLoggedIn, async (req, res) => {
   res.json({ upvotes: suggestion.upvotes});
 });
 
-router.post('/feedback/:id/comments', async (req, res) => {
+router.post('/feedback/:id/comments', isLoggedIn, async (req, res) => {
   try {
     const request = await Request.findById(req.params.id);
     if (!request) {
@@ -205,7 +203,6 @@ router.post('/feedback/:id/comment/:commentId/replies', isLoggedIn, async (req, 
   const comment = await request.comments.id(req.params.commentId);
    const imageUrl = req.user.image[0].url;
 
-//   let reply = req.user.username;
    const newReply = {
       content: req.body.reply.content,
       replyingTo: comment.user.username,
@@ -230,7 +227,7 @@ router.post('/feedback/:id/comment/:commentId/reply/:replyId/replies', isLoggedI
    const imageUrl = req.user.image[0].url;
   const newReply = {
     content: req.body.reply.content,
-    replyingTo: reply.user.username, // Use the username of the user being replied to
+    replyingTo: reply.user.username, 
     user: {
       _id: req.user._id,
       name: req.user.name,
@@ -254,7 +251,13 @@ router.get('/', catchAsync(async (req, res) => {
      const roadmap  = await Roadmap.find({}).where('status').equals('planned')
     const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
-res.render('feedback/index', {roadmap, progress, live })
+res.render('feedback/index', {
+  roadmap: roadmap || [],
+  progress: progress || [],
+  live: live || [],
+  success: req.flash('success'),
+  error: req.flash('error')
+});
 
 }));
 
@@ -262,14 +265,21 @@ router.get('/feedback/register', (req, res)=>{
     res.render('feedback/register')
 });
 
-router.get("/feedback/login", (req, res)=>{
-    res.render('feedback/login')
+router.post("/feedback/login", passport.authenticate("local",
+    {
+        successRedirect: "/feedback/suggestions",
+        failureRedirect: "/feedback/login"
+    }), (req, res)=> {
+        req.flash('success', 'Welcome Back!')
 })
 
-router.get("/feedback/logout", (req, res)=>{
-    req.logout;
-    res.redirect('/feedback/login')
-})
+router.get("/feedback/logout", (req, res, next) => {
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        req.flash('success', 'Logged out successfully.');
+        res.redirect('/feedback/login');
+    });
+});
 
 
 
@@ -299,7 +309,6 @@ if (req.query.sort === 'mostup') {
 } else if (sortOrder === 'leastcomm') {
   request = request.sort((a, b) => a.comments.length - b.comments.length);
 } else {
-  // Default sort order when sortOrder is undefined or has an invalid value
   request = request.sort(sortOrder || ((a, b) => 0));
 }
 
@@ -330,7 +339,6 @@ if (req.query.sort === 'mostup') {
 } else if (sortOrder === 'leastcomm') {
   request = request.sort((a, b) => a.comments.length - b.comments.length);
 } else {
-  // Default sort order when sortOrder is undefined or has an invalid value
   request = request.sort(sortOrder || ((a, b) => 0));
 }
 
@@ -338,9 +346,9 @@ if (req.query.sort === 'mostup') {
    const roadmap  = await Roadmap.find({}).where('status').equals('planned')
    const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
-    if(request == "" || null){
-        res.redirect('/feedback/none')
-    } else {
+    if (!request || request.length === 0) {
+    res.redirect('/feedback/none');
+} else {
         res.render('feedback/enhancement', {request, roadmap, progress, live})
     }
 }));
@@ -364,16 +372,16 @@ if (req.query.sort === 'mostup') {
 } else if (sortOrder === 'leastcomm') {
   request = request.sort((a, b) => a.comments.length - b.comments.length);
 } else {
-  // Default sort order when sortOrder is undefined or has an invalid value
+
   request = request.sort(sortOrder || ((a, b) => 0));
 }
 
  const roadmap  = await Roadmap.find({}).where('status').equals('planned')
 const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
-    if(request == "" || null){
-        res.redirect('/feedback/none')
-    } else {
+    if (!request || request.length === 0) {
+    res.redirect('/feedback/none');
+} else {
         res.render('feedback/ui', {request, roadmap, progress, live})
     }
 }));
@@ -397,16 +405,16 @@ if (req.query.sort === 'mostup') {
 } else if (sortOrder === 'leastcomm') {
   request = request.sort((a, b) => a.comments.length - b.comments.length);
 } else {
-  // Default sort order when sortOrder is undefined or has an invalid value
+  
   request = request.sort(sortOrder || ((a, b) => 0));
 }
 
  const roadmap  = await Roadmap.find({}).where('status').equals('planned')
 const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
-    if(request == "" || null){
-        res.redirect('/feedback/none')
-    } else {
+    if (!request || request.length === 0) {
+    res.redirect('/feedback/none');
+} else {
         res.render('feedback/ux', {request, roadmap, progress, live})
     }
 }));
@@ -430,16 +438,16 @@ if (req.query.sort === 'mostup') {
 } else if (sortOrder === 'leastcomm') {
   request = request.sort((a, b) => a.comments.length - b.comments.length);
 } else {
-  // Default sort order when sortOrder is undefined or has an invalid value
+  
   request = request.sort(sortOrder || ((a, b) => 0));
 }
 
  const roadmap  = await Roadmap.find({}).where('status').equals('planned')
 const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
-    if(request == "" || null){
-        res.redirect('/feedback/none')
-    } else {
+    if (!request || request.length === 0) {
+    res.redirect('/feedback/none');
+} else {
         res.render('feedback/feature', {request, roadmap, progress, live})
     }
 }));
@@ -463,16 +471,16 @@ if (req.query.sort === 'mostup') {
 } else if (sortOrder === 'leastcomm') {
   request = request.sort((a, b) => a.comments.length - b.comments.length);
 } else {
-  // Default sort order when sortOrder is undefined or has an invalid value
+  
   request = request.sort(sortOrder || ((a, b) => 0));
 }
 
  const roadmap  = await Roadmap.find({}).where('status').equals('planned')
 const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
-    if(request == "" || null){
-        res.redirect('/feedback/none')
-    } else {
+    if (!request || request.length === 0) {
+    res.redirect('/feedback/none');
+} else {
         res.render('feedback/bug', {request, roadmap, progress, live})
     }
 }));
@@ -528,7 +536,7 @@ router.get('/feedback/:id/edit', isLoggedIn, catchAsync(async (req, res) => {
 }));
 
 router.get('/feedback/suggestions/:id', async(req, res) => {
-  // Return the suggestion object as JSON
+
   const suggestion = await Request.findById(req.params.id);
   res.json(suggestion);
 });
@@ -542,7 +550,6 @@ router.get('/feedback/enhancement/:id', async(req, res)=>{
 })
 
 router.get('/feedback/bug/:id', async(req, res)=>{
-    // const request = await Request.findById(req.params.id)
     res.redirect('/feedback/bug')
 })
 

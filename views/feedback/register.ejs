@@ -17,6 +17,14 @@
 </head>
 
 <body>
+<% if (success && success.length > 0) { %>
+  <div class="alert alert-success"><%= success[0] %></div>
+<% } %>
+
+<% if (error && error.length > 0) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+  
   <div class="row login-center">
     <div class="col-md-3">
       <div class="login-screen ">
@@ -42,7 +50,6 @@
   <input type="file" class="form-control" id="image" name="image" required>
 </div>
 
-<!-- <input type="file" name="image" id="image" > -->
           <button class="btn-login">Register</button>
         </form>
       </div>
