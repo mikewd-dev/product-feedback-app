@@ -12,8 +12,8 @@
   <title>Show Feedback</title>
 </head>
 
-<body>
-  <div class="flash">
+<body style="background-color: #F2F2F2;">
+  <div>
     <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
       <div class="flash">
         <% messages.forEach((msg) => { %>
@@ -36,7 +36,7 @@
 
           <div>
             <div class="feedback-show">
-              <div class="d-flex flex-row feedback-suggested">
+              <div id="suggested-feedback"  class="feedback-suggested">
                 <form id="vote" onsubmit="event.preventDefault();">
                   <button type="button" id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
                     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= request._id %>">
@@ -83,8 +83,8 @@
               </p>
               <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" data-parsley-validate novalidate>
                 <div class="row-reply" id="reply-box-<%=comment._id%>">
-                  <textarea name="reply[content]" class="comment-box" required></textarea>
-                  <button class="post-reply">Post Reply</button>
+                  <textarea name="reply[content]" id="comment-reply-box" class="comment-box" required></textarea>
+                  <button id="post-comment-reply" class="post-reply">Post Reply</button>
                 </div>
               </form>
               <% for (let reply of comment.replies) { %>
@@ -108,7 +108,7 @@
                   <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form reply-form" data-parsley-validate novalidate>
                     <div class="row-reply" id="reply-box-<%=reply._id%>">
                       <textarea name="reply[content]" class="reply-box" required></textarea>
-                      <button class="post-reply">Post Reply</button>
+                      <button id="post-reply-reply" class="post-reply">Post Reply</button>
                     </div>
                   </form>
                 </div>
@@ -124,11 +124,11 @@
             </div>
             <% } %>
 
-            <div class="add-comment ">
+            <div class="add-comment">
 
-              <form action="/feedback/<%=request._id%>/comments" method="POST" data-parsley-validate class="validated-form" novalidate>
+              <form action="/feedback/<%=request._id%>/comments" method="POST" data-parsley-validate id="#posted-comment" class="validated-form" novalidate>
 
-                <label class="add-comment-label " for="addcomment ">Add Comment</label>
+                <label class="add-comment-label" for="addcomment">Add Comment</label>
                 <textarea class="add-comment-text" name="comment[content]" id="content " cols="30 " rows="4" placeholder="Type your comment here " required></textarea>
                 <button class="post-comment">Post Comment</button>
               </form>

@@ -91,12 +91,9 @@ function liveDisplay() {
 
   document.addEventListener("DOMContentLoaded", function() {
    if (window.innerWidth <= 768) {
-        // Change the `div` element with the class `board` to a navbar with dropdown
         const board = document.querySelector('.board');
         board.classList.add('navbar');
         board.classList.add('dropdown');
-
-        // Add the `close-icon` element to the navbar
         const closeIcon = document.querySelector('.close-icon');
         board.appendChild(closeIcon);
    }
@@ -122,8 +119,7 @@ window.onload = function checkMark() {
 
 
 
-  // Check which link was clicked before and set the display of the checkmark accordingly
- if (sessionStorage.getItem('mostupClicked') === 'true'){
+  if (sessionStorage.getItem('mostupClicked') === 'true'){
       checkmostup.style.display = 'inline'
       checkleastup.style.display = 'none'
       checkmostcomm.style.display = 'none'
@@ -161,7 +157,6 @@ if(sessionStorage.getItem('leastcommClicked') === 'true'){
     // e.preventDefault();
     e.stopPropagation();
 
-    // Set a flag in localStorage to indicate that the link was clicked
     sessionStorage.setItem('mostupClicked', 'true');
     sessionStorage.setItem('leastupClicked', 'false')
     sessionStorage.setItem('mostcommClicked', 'false')
@@ -188,9 +183,6 @@ if(sessionStorage.getItem('leastcommClicked') === 'true'){
     checkmostup.style.display = 'none';
     checkmostcomm.style.display = 'none'
     checkleastcomm.style.display = 'none'
-
-    //document.getElementById('menu-item').innerText = "Least Upvotes";
-
   })
 
   linkmostcomm.addEventListener('click', (e) => {
@@ -205,8 +197,6 @@ if(sessionStorage.getItem('leastcommClicked') === 'true'){
   checkmostup.style.display = 'none';
   checkmostcomm.style.display = 'inline';
   checkleastcomm.style.display = 'none';
-
-    //document.getElementById('menu-item').innerText = "Most Comments";
 
 });
 
@@ -269,7 +259,6 @@ function upvoteFeature(featureId) {
   })
     .then(response => response.json())
     .then(data => {
-      // Update the value of <%=req.upvotes%> in the DOM
       const upvotesElement = document.getElementById(`upvotes-${featureId}`);
       upvotesElement.textContent = data.upvotes;
     })
@@ -300,7 +289,6 @@ function upvoteBug(bugId) {
   })
     .then(response => response.json())
     .then(data => {
-      // Update the value of <%=req.upvotes%> in the DOM
       const upvotesElement = document.getElementById(`upvotes-${bugId}`);
       upvotesElement.textContent = data.upvotes;
     })
@@ -315,7 +303,6 @@ function upvoteUI(uiId) {
   })
     .then(response => response.json())
     .then(data => {
-      // Update the value of <%=req.upvotes%> in the DOM
       const upvotesElement = document.getElementById(`upvotes-${uiId}}`);
       upvotesElement.textContent = data.upvotes;
     })
@@ -330,7 +317,6 @@ function upvoteUX(uxId) {
   })
     .then(response => response.json())
     .then(data => {
-      // Update the value of <%=req.upvotes%> in the DOM
       const upvotesElement = document.getElementById(`upvotes-${uxId}}`);
       upvotesElement.textContent = data.upvotes;
     })
@@ -345,7 +331,7 @@ function dropReply(replyBoxId) {
     rep.style.display = 'none';
   } else {
     rep.style.display = 'block';
-    rep.querySelector(".reply-box").focus(); // Focus on the textarea
+    rep.querySelector(".reply-box").focus(); 
   }
 }
 
@@ -374,7 +360,6 @@ function checkWidth() {
     }
 }
 
-// Call the function when the page loads or when needed
 document.addEventListener('DOMContentLoaded', checkWidth);
 
 
