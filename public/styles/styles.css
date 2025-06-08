@@ -1,4 +1,4 @@
-@media (min-width: 1024px) and (max-width: 1440px)
+
 * {
   box-sizing: border-box;
 }
@@ -45,7 +45,6 @@ textarea.parsley-error {
   opacity: 0;
   color: #b94a48;
   position: absolute;
-
   transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
@@ -300,7 +299,6 @@ li {
   font-weight: 700;
   font-size: 18px;
   line-height: 26px;
-  /* identical to box height */
   letter-spacing: -0.25px;
   color: #ffffff !important;
 }
@@ -391,7 +389,7 @@ p {
   display:flex;
   justify-content:center;
   align-items:center;
-  width: 70vw;
+  width: 80vw;
   margin-right:0;
   top: 150px;
   right:0;
@@ -404,7 +402,6 @@ p {
   border: 0.5px solid grey;
   border-radius: 2%;
   position: absolute;
-  /* padding: 12% 3% 12% 3%; */
   width: 75vw;
   left:197px;
   margin: 0 auto;  
@@ -427,7 +424,7 @@ p {
 
 .feedback-screen-active {
   position: absolute;
-  width: 825px;
+  width: 80vw;
   border-radius: 10px;
   margin-left: 334px;
   top: 146px;
@@ -449,7 +446,7 @@ p {
 
 .feedback-suggestion {
   position: relative;
-  width: 70vw;
+  width: 80vw;
   height: 151px;
   left:65px;
   margin: 0px 5px 20px 0px;
@@ -468,7 +465,7 @@ p {
 .feedback-suggested {
 position: relative;
     height: 151px;
-    width: 65vw;
+    width: 80vw;
     left: 0;
     top: 0;
     display: flex;
@@ -479,16 +476,14 @@ position: relative;
     border-radius: 5px;
     margin: 40px 0px 28px 0;
     padding: 10px;
-    width: 90vw;
     background-color: #ffff;
 }
 
 .comments {
   position: relative;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
-    width: 90vw;
+    width: 80vw;
     left: 0;
     margin-top: 24px !important;
     border-radius: 10px;
@@ -499,7 +494,7 @@ position: relative;
   border-radius: 5px;
   margin: 28px 32px 28px 0;
   padding:10px;
-  width: 90vw;
+  width: 80vw;
   background-color: #ffff;
 }
 
@@ -760,7 +755,7 @@ position: relative;
   width: 142px;
   height: 44px;
   flex-shrink: 0;
-}:
+}
 
 .figure-item {
   width: 825px;
@@ -1114,20 +1109,21 @@ figcaption {
   margin-top: 27px;
 }
 
-.feedback-show {
+/*.feedback-show {
   position:relative;
   left:-16px;
    border-radius: 5px;
     margin: 28px 0px 28px 0px;
-}
+}*/
 
 .go-back-show {
   position: relative;
     left: 102px;
+    top:0px;
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 44px;
-    margin-bottom: 0 !important;
+    margin-bottom: 20px !important;
     width: 80vw;
     flex-direction: row;
     height: 0px;
@@ -1832,7 +1828,8 @@ p {
 
 
 
-media screen and (min-width: 768px)  {
+
+@media screen and (min-width: 768px) and (max-width:1020px) {
   body {
     top: 0;
     bottom: 0;
@@ -1971,7 +1968,7 @@ media screen and (min-width: 768px)  {
   .feedback-suggested {
    position: relative;
     height: 151px;
-    width: 90vw;
+    width: 80vw;
     left: 16px;
     top: 25px;
     margin: 0 2px 28px 0px;
@@ -1980,7 +1977,6 @@ media screen and (min-width: 768px)  {
     flex-direction: row;
     border-radius: 5px;
     align-items: center;
-    width: 85vw;
     background-color: #ffff;
   }
   #feedbackdetail {
@@ -2016,7 +2012,7 @@ media screen and (min-width: 768px)  {
     top:365px;
     left:12.3%;
     margin-left:0;
-  l }
+  }
 
   .comment-num {
     margin-top: -3px;
@@ -2075,7 +2071,7 @@ media screen and (min-width: 768px)  {
   }
 
   .comment {
-    background-color: ##f2f4fe;
+    background-color: #ffff;
     height: auto;
   }
 
@@ -2174,7 +2170,7 @@ media screen and (min-width: 768px)  {
     margin-bottom: 8px;
   }
   .dropped {
-    width:60vw !imporant;
+    width:60vw !important;
     display: flex;
     flex-direction: row;
     background-color: #fff;
@@ -2524,15 +2520,15 @@ display: flex;
   }
 
   .feedback-screen-active {
-    width: 85vw !important;
+    width: 80vw !important;
     border-radius: 10px;
     top: 370px;
     margin-left: 0px;
   }
 
   .feedback-suggestion {
-    position:85vw !important;
-    /* width: 689px; */
+    position:relative;
+    width:80vw !important;
     margin-bottom: 20px;
     left:13.3%;
   }
@@ -2703,9 +2699,10 @@ display: flex;
 
   .comments {
     position:relative;
-    width: 90vw;
+    width: 100vw;
     height: 181px;
-    left:20px;
+    left:0px;
+    right:0;
     margin-left: 0px;
     flex-shrink: 0;
   }
@@ -2971,8 +2968,7 @@ display: flex;
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* justify-items: center; */
-        width: 90vw;
+        width: 100vw;
         flex-shrink: 0;
         border-radius: 10px;
         background: #fff;
@@ -3015,7 +3011,7 @@ display: flex;
   height: 14px;
   width: 14px;
   vertical-align: middle; 
-  display: inline-block;  /
+  display: inline-block;  
   margin-right: 6px; 
 }
 
@@ -3023,7 +3019,7 @@ display: flex;
   color: #3a4374;
   font-size: 13px;
   font-weight: 700;
-  line-height: 32px; /
+  line-height: 32px; 
   letter-spacing: -0.181px;
   display: inline-block; 
   vertical-align: middle;
@@ -3051,12 +3047,13 @@ display: flex;
   }
 
   .comment {
-    margin-left: 0px !important;
+    position:relative;
+    left: 0px !important;
     margin-top: 15px;
     padding-top: 10px;
     padding-left:4px;
-    width: 90vw;
-    margin-right: 0;
+    width: 100vw;
+    right: 0;
     height: auto;
     background-color: #ffff;
   }
@@ -3741,7 +3738,7 @@ display: flex;
     margin-left: 0;
   }
 
-  .feedback-suggested {
+  /*.feedback-suggested {
    position: relative;
         top: 0;
     bottom:10px !important;
@@ -3754,23 +3751,22 @@ display: flex;
         height: auto;
         margin: 0;
         padding-top: 5px;
-  }
+  }*/
 
   #suggested-feedback{
     position: relative;
-        top: 0;
-    bottom:10px !important;
-    margin-top:10px;
-    margin-bottom: 10px;
-        left: 0;
+    top:-50px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    left: 0;
     right: 0;
-        display: flex;
-        flex-direction: row;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-        width: 100vw;
-        height: auto;
-        margin: 0;
-        padding-top: 5px;
+    width: 100vw;
+    height: auto;
+    margin:40px 0 28px 0;
+    padding-top: 5px;
   }
   .feedback-suggestion {
     position: relative;
