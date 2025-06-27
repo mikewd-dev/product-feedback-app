@@ -236,6 +236,18 @@ document.querySelectorAll(".reply-link").forEach(button => {
   });
 });
 
+function dropReplyReply(id) {
+  const replytextarea = document.getElementById(id);
+  replytextarea.focus();
+}
+
+document.querySelectorAll(".reply-reply-link").forEach(button => {
+  button.addEventListener("click", function(event) {
+    const replyReplyBoxId = event.target.dataset.id;
+    dropReplyReply(replyReplyBoxId);
+  });
+});
+
 function upvoteSuggestion(suggestionId) {
   fetch(`/feedback/suggestions/${suggestionId}/upvote?_=${new Date().getTime()}`, {
     method: 'POST',
@@ -274,7 +286,7 @@ function upvoteEnhancement(enhancementId) {
   })
     .then(response => response.json())
     .then(data => {
-      // Update the value of req.upvotes in the DOM
+
       const upvotesElement = document.getElementById(`votes-${enhancementId}`);
       upvotesElement.textContent = data.upvotes;
     })
@@ -335,6 +347,15 @@ function dropReply(replyBoxId) {
   }
 }
 
+function dropReplyReply(replyReplyBoxId) {
+  var rep = document.getElementById(replyReplyBoxId);
+  if (rep.style.display === 'block') {
+    rep.style.display = 'none';
+  } else {
+    rep.style.display = 'block';
+    rep.querySelector(".reply-box").focus(); 
+  }
+}
 
 
 
@@ -353,14 +374,11 @@ $(document).ready(function(){
 
 
 function checkWidth() {
-    var boardDiv = document.querySelector('.board-text');
+  var boardDiv = document.querySelector('.board-text');
 
-    if (boardDiv && window.innerWidth > 768) {
-        boardDiv.style.display = "none";
-    }
+  if (boardDiv && window.innerWidth <= 600) {
+      boardDiv.style.display = "none";
+  }
 }
-
 document.addEventListener('DOMContentLoaded', checkWidth);
-
-
 

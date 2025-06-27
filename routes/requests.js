@@ -347,6 +347,8 @@ if (req.query.sort === 'mostup') {
     }
 }));
 
+
+
 router.get('/feedback/ui', catchAsync(async (req, res, next) => {
   let sortOrder;
 if (req.query.sort === 'mostup') {
@@ -563,6 +565,7 @@ router.delete('/feedback/:id',isLoggedIn, catchAsync(async (req, res, next) => {
     const request = await Request.findByIdAndDelete(id)
     res.redirect('/feedback/suggestions');
 }));
+
 
 // ===============END OF ROUTES==============
 

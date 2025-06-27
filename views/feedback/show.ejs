@@ -1,146 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
+                            <!DOCTYPE html>
+                            <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles/styles.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="/js/script.js"></script>
-  <title>Show Feedback</title>
-</head>
+                            <head>
+                              <meta charset="UTF-8">
+                              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                              <link rel="stylesheet" href="/styles/styles.css">
+                              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+                              <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                              <script src="/js/script.js"></script>
+                              <title>Show Feedback</title>
+                            </head>
 
-<body style="background-color: #F2F2F2;">
-  <div>
-    <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
-      <div class="flash">
-        <% messages.forEach((msg) => { %>
-          <p><%= msg %></p>
-        <% }) %>
-      </div>
-    <% } %>
-  <div class="col-md">
-    <div class="row">
-      <div class="container ">
+                            <body>
+                              <div>
+                                <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
+                                  <div class="flash">
+                                    <% messages.forEach((msg) => { %>
+                                      <p><%= msg %></p>
+                                    <% }) %>
+                                  </div>
+                                <% } %>
+                              <!-- <div class="col-md"> -->
+                                <!-- <div class="row"> -->
+                                  <!-- <div class="container "> -->
 
-        <div class="go-back-show">
+                                    <div class="go-back-show">
 
-          <a href="/feedback/suggestions">
-            <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=""></span>Go Back
-          </a>
-          <a class="btn btn-primary edit-button" href="/feedback/<%=request._id%>/edit" type="button">Edit Feedback</a>
-        </div>
-        <div class="col-sm">
+                                      <a href="/feedback/suggestions">
+                                        <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=""></span>Go Back
+                                      </a>
+                                      <a class="btn btn-primary edit-button" href="/feedback/<%=request._id%>/edit" type="button">Edit Feedback</a>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="feedback-show">
+                                          <div class="feedback-show-suggested">
+                                                    <form id="vote" onsubmit="event.preventDefault();">
+                                            <button id="content" class="feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
+                                                <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= request._id %>">
+                                                    <path d="M1 6l4-4 4 4" stroke-width="2"/>
+                                                </svg>
+                                                <div class="votes" id="votes-<%= request._id %>">
+                                                    <%= request.upvotes %>
+                                                </div>
+                                            </button>
+                                                    </form>
+                                            <a class="feedback-navlink-show" href="/feedback/<%=request._id%>">
+                                              <div class="feeback-title-para">
+                                                <div class="feedback-suggested-title">
+                                                  <%=request.title%>
+                                                </div>
+                                                <div class="feedback-suggested-para">
+                                                  <%=request.description%>
+                                                </div>
+                                              </div>
+                                              <button class="btn-suggestion"><%=request.category%></button>
+                                            </a>
+                                          </div>
+                                        </div>
+                                      <!-- </div> -->
 
-          <div>
-            <div class="feedback-show">
-              <div id="suggested-feedback"  class="feedback-suggested">
-                <form id="vote" onsubmit="event.preventDefault();">
-                  <button type="button" id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
-                    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= request._id %>">
-                      <path d="M1 6l4-4 4 4" stroke-width="2" />
-                    </svg>
-                    <div class="votes" id="votes-<%= request._id %>">
-                      <%= request.upvotes %>
-                    </div>
-                  </button>
-                </form>
-                <a class="feedback-navlink-show" href="/feedback/<%=request._id%>">
-                  <div class="feeback-title-para">
-                    <div class="feedback-suggested-title">
-                      <%=request.title%>
-                    </div>
-                    <div class="feedback-suggested-para">
-                      <%=request.description%>
-                    </div>
-                  </div>
-                  <button class="btn-suggestion"><%=request.category%></button>
-                </a>
-              </div>
-            </div>
-          </div>
+                                    </div>
+                                    <div class="col-sm">
+                                      <div class="comments">
+                                        <p class="comment-length"><%=request.comments.length%> Comments</p>
+                                        <% for (let comment of request.comments) { %>
+                                        <div class="comment">
+                                          <div class="user-details">
+                                            <img class="user-image" src="<%= comment.user.image %>" alt="">
+                                            <p class="comment-user">
+                                              <%=comment.user.name %>
+                                            </p>
+                                            <p class="comment-username">
+                                              <span>@<%=comment.user.username %></span>
+                                            </p>
+                                          </div>
+                                          <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=comment._id %>');">Reply</button>
+                                          <p class="comment-content">
+                                            <%=comment.content %>
+                                          </p>
+                                          <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" data-parsley-validate novalidate>
+                                            <div class="row-reply" id="reply-box-<%=comment._id%>">
+                                              <textarea name="reply[content]" id="comment-reply-box" class="comment-box" required></textarea>
+                                              <button id="post-comment-reply" class="post-reply">Post Reply</button>
+                                            </div>
+                                            <hr class="comment-divider">
 
-        </div>
-        <div class="col-sm">
-          <div class="comments">
-            <p class="comment-length"><%=request.comments.length%> Comments</p>
-            <% for (let comment of request.comments) { %>
-            <div class="comment">
-              <div class="user-details">
-                <img class="user-image" src="<%= comment.user.image %>" alt="">
-                <p class="comment-user">
-                  <%=comment.user.name %>
-                </p>
-                <p class="comment-username">
-                  <span>@<%=comment.user.username %></span>
-                </p>
-              </div>
-              <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=comment._id %>');">Reply</button>
-              <p class="comment-content">
-                <%=comment.content %>
-              </p>
-              <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" data-parsley-validate novalidate>
-                <div class="row-reply" id="reply-box-<%=comment._id%>">
-                  <textarea name="reply[content]" id="comment-reply-box" class="comment-box" required></textarea>
-                  <button id="post-comment-reply" class="post-reply">Post Reply</button>
-                </div>
-              </form>
-              <% for (let reply of comment.replies) { %>
-              <% function displayReplies(reply) { %>
-              <div class="reply">
-                <div class="user-reply-details">
-                  <img class="user-reply-image" src="<%=reply.user.image%>" alt="">
-                  <p class="reply-user">
-                    <%=reply.user.name %>
-                  </p>
-                  <p class="reply-username">
-                    <span>@<%=reply.user.username %></span>
-                  </p>
-                </div>
-                <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=reply._id %>');">Reply</button>
-                <div class="replyTo">
-                  <p class="reply-replyto">
-                    <span class="replyingto">@<%=reply.replyingTo %></span>
-                    <%=reply.content %>
-                  </p>
-                  <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form reply-form" data-parsley-validate novalidate>
-                    <div class="row-reply" id="reply-box-<%=reply._id%>">
-                      <textarea name="reply[content]" class="reply-box" required></textarea>
-                      <button id="post-reply-reply" class="post-reply">Post Reply</button>
-                    </div>
-                  </form>
-                </div>
-                <% if (reply.replies) { %>
-                <% for (let childReply of reply.replies) { %>
-                <%= displayReplies(childReply) %>
-                <% } %>
-                <% } %>
-              </div>
-              <% } %>
-              <%= displayReplies(reply) %>
-              <% } %>
-            </div>
-            <% } %>
+                                          </form>
+                                          <% for (let reply of comment.replies) { %>
+                                          <% function displayReplies(reply) { %>
+                                          <div class="reply">
+                                            <div class="user-reply-details">
+                                              <img class="user-reply-image" src="<%=reply.user.image%>" alt="">
+                                              <p class="reply-user">
+                                                <%=reply.user.name %>
+                                              </p>
+                                              <p class="reply-username">
+                                                <span>@<%=reply.user.username %></span>
+                                              </p>
+                                            </div>
+                                            <button class="reply-reply-link" id="reply-reply" onclick="dropReplyReply('reply-box-<%=reply._id %>');">Reply</button>
+                                            <div class="replyTo">
+                                              <p class="reply-replyto">
+                                                <span class="replyingto">@<%=reply.replyingTo %></span>
+                                                <%=reply.content %>
+                                              </p>
+                                              <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form reply-form" data-parsley-validate novalidate>
+                                                <div class="row-reply" id="reply-box-<%=reply._id%>">
+                                                  <textarea name="reply[content]" id="reply-reply-box" class="reply-box" required></textarea>
+                                                  <button id="post-reply-reply" class="post-reply">Post Reply</button>
+                                                </div>
+                                              </form>
 
-            <div class="add-comment">
 
-              <form action="/feedback/<%=request._id%>/comments" method="POST" data-parsley-validate id="#posted-comment" class="validated-form" novalidate>
+                                            </div>
+                                            <% if (reply.replies) { %>
+                                            <% for (let childReply of reply.replies) { %>
+                                            <%= displayReplies(childReply) %>
+                                            <% } %>
+                                            <% } %>
+                                          </div>
+                                          <% } %>
+                                          <%= displayReplies(reply) %>
+                                          <% } %>
+                                        </div>
+                                        <% } %>
 
-                <label class="add-comment-label" for="addcomment">Add Comment</label>
-                <textarea class="add-comment-text" name="comment[content]" id="content " cols="30 " rows="4" placeholder="Type your comment here " required></textarea>
-                <button class="post-comment">Post Comment</button>
-              </form>
-            </div>
-          </div>
+                                        <div class="add-comment">
 
-        </div>
-      </div>
-    </div>
-</body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="/js/script.js"></script>
+                                          <form action="/feedback/<%=request._id%>/comments" method="POST" data-parsley-validate id="posted-comment" class="validated-form" novalidate>
 
-</html>
+                                            <label class="add-comment-label" for="addcomment">Add Comment</label>
+                                            <textarea class="add-comment-text" name="comment[content]" id="content " cols="30 " rows="4" placeholder="Type your comment here " required></textarea>
+                                            <button class="post-comment">Post Comment</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                            </body>
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                            <script src="/js/script.js"></script>
+
+                            </html>
