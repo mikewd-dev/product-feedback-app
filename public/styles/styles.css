@@ -250,6 +250,38 @@ li {
   display: none;
 }
 
+.new-feedback-form {
+  width: 100vw;position: fixed;
+      display: flex;
+      flex-direction: column;
+      width: 85vw;
+      justify-content: center;
+      align-content: center;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      min-height: 100%;
+      flex-wrap: wrap;
+      background-color: #ffff;
+      border-radius: 10px;
+}
+
+.form-control-lg {
+  position: relative;
+  margin-left: 10px;
+  display: flex;
+  /* flex-direction: column; */
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* flex-shrink: 0; */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
 .roadmap-options {
   margin-left: 48px;
   height: 23px;
@@ -995,11 +1027,11 @@ figcaption {
 }
 
 .add-cancel-feedback {
-  display: flex;
-  float: right;
-  margin-right: -12px;
-  margin-left: auto;
-  margin-top: 9px;
+      display: flex;
+      float: right;
+      margin-right: 0;
+      margin-left: auto;
+      margin-top: 9px;
 }
 
 .column {
@@ -1651,7 +1683,7 @@ p {
 
 #feedbacktitle {
   position: relative;
-  width: 98vw;
+  width: 100vw;
   left: 0;
   right: 47.41%;
   top: 5px;
@@ -1757,7 +1789,7 @@ p {
 }
 
 #feedbackdetail {
-  width: 98vw;
+  width: 100vw;
   height: 96px;
   padding-left: 10px;
   padding-right: -10px;
@@ -2121,14 +2153,21 @@ p {
 
   .feedback-screen {
     position: absolute;
-    width: 85vw;
-    height: 600px;
-    flex-shrink: 0;
-    flex-shrink: 0;
-    top: 365px;
-    left: 12.3%;
-    margin-left: 0;
-    border-radius: 10px;
+            width: 85vw;
+            height: 600px;
+            flex-shrink: 0;
+            flex-shrink: 0;
+            top: 365px;
+            left: 0;
+            right: 0;
+            margin-left: 0;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-content: center;
   }
 
   #features {
@@ -3264,19 +3303,18 @@ p {
 
   .form-control-lg {
     position: relative;
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: center;
-    justify-content: flex-start;
-    width: 100vw !important;
-    height: auto;
-    flex-shrink: 0;
-    left: 1%;
-    right: 48px;
-    margin: 0;
-    overflow: hidden;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            width: 100vw !important;
+            height: auto;
+            flex-shrink: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            flex-wrap: wrap;
   }
 
   .feeback-title-para {
