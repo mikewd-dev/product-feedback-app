@@ -132,6 +132,10 @@ textarea.parsley-error {
   margin-left: 32px;
 }
 
+.select-options {
+  width: 100vw;
+}
+
 .columns {
   max-width: 85vw;
   margin: 0 auto; /* center it */
@@ -309,9 +313,9 @@ li {
   background: #373f68;
   border-radius: 10px;
   width: 70vw;
-  left: -30px;
+  left: 0;
   height: 72px;
-  margin-left: 334px;
+  margin-left: 308px;
   top: 0;
 }
 
@@ -453,33 +457,36 @@ p {
 
 .feedback-screen {
   position: absolute;
-  display: flex;
+  display: flex
+  ;
   justify-content: center;
   align-items: center;
   width: 70vw;
   margin-right: 0;
   top: 150px;
   right: 0;
-  left: 321px;
+  left: 307px;
   background-color: #ffffff;
+  border-radius: 10px;
 }
 
+
 .login-screen {
-  /* position:relative; */
-  border: 0.5px solid grey;
-  border-radius: 2%;
-  position: absolute;
-  width: 80vw;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  height: 540px;
-  top: 5%;
-  background-color: #fdfaff;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+      border: 0.5px solid grey;
+      border-radius: 2%;
+      position: absolute;
+      width: 80vw;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      height: 540px;
+      top: 5%;
+      background-color: #fdfaff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 }
 
 .login-screen > form {
@@ -1773,7 +1780,6 @@ p {
 }
 
 #features {
-  width: 98vw;
   padding-left: 10px;
   padding-right: -10px;
   background-color: #ffff;
