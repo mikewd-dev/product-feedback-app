@@ -312,7 +312,7 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  width: 70vw;
+  width: 80vw;
   left: 0;
   height: 72px;
   margin-left: 308px;
@@ -528,7 +528,7 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 70vw;
+  width: 80vw;
   height: auto;
   margin: 40px 19px 28px 0;
   padding-top: 5px;
@@ -538,7 +538,7 @@ p {
 
 .feedback-suggestion {
   position: relative;
-  width: 70vw;
+  width: 80vw;
   height: auto;
   left: -30px;
   margin: 40px 0px 28px 0px;
@@ -3178,7 +3178,7 @@ p {
   }
 
   .select-options {
-    width: 90vw;
+    width: 75vw;
   }
 
   .row-reply {
@@ -3308,19 +3308,16 @@ p {
   }
 
   .form-control-lg {
-    position: relative;
-            margin-left: 10px;
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-            justify-content: center;
-            width: 100vw !important;
-            height: auto;
-            flex-shrink: 0;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-            flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    /* justify-content: center; */
+    /* width: 100vw !important; */
+    height: auto;
+    flex-shrink: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  
   }
 
   .feeback-title-para {
@@ -3473,14 +3470,13 @@ p {
     top: 0;
     min-height: 100vh;
     right: 0;
-    width: 100vw;
     background-color: #ffff;
     margin-top: 0;
     max-height: 100%;
     border-radius: 10px;
   }
   .new-feedback-icon {
-    position: relative;
+    position: absolute;
     top: -18px;
     left: 31px;
     bottom: 0px;
@@ -3772,7 +3768,7 @@ p {
   }
 
   #feedbacktitle {
-    width: 90vw;
+    width:75vw;
   }
 
   .plan,
@@ -4050,7 +4046,7 @@ p {
 
   #features {
     margin-bottom: 24px;
-    width: 90vw;
+    width: 75vw;
   }
 
   .feedback-options {
@@ -4080,7 +4076,7 @@ p {
     position: relative;
     top: 0;
     left: 0;
-    width: 90vw;
+    width: 75vw;
     height: 120px;
     flex-shrink: 0;
   }
@@ -4094,7 +4090,7 @@ p {
   }
 
   .cancel-feedback-btn {
-    width: 90vw;
+    width: 75vw;
     height: 40px;
     flex-shrink: 0;
     margin-left: 0;
@@ -4102,7 +4098,7 @@ p {
   }
 
   .add-feedback-new {
-    width: 90vw;
+    width: 75vw;
     height: 40px;
     flex-shrink: 0;
     margin-left: 0;
