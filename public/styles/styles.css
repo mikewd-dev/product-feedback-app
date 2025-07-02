@@ -99,6 +99,7 @@ textarea.parsley-error {
 }
 
 .container {
+  width:100vw;
   margin: 0 !important;
 }
 
@@ -255,7 +256,8 @@ li {
 }
 
 .new-feedback-form {
-  width: 100vw;position: fixed;
+  width: 100vw;
+  position: fixed;
       display: flex;
       flex-direction: column;
       width: 85vw;
@@ -264,7 +266,6 @@ li {
       margin: 0 auto;
       left: 0;
       right: 0;
-      min-height: 100%;
       flex-wrap: wrap;
       background-color: #ffff;
       border-radius: 10px;
@@ -272,18 +273,18 @@ li {
 
 .form-control-lg {
   position: relative;
-  margin-left: 10px;
-  display: flex;
-  /* flex-direction: column; */
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  /* flex-shrink: 0; */
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  flex-wrap: wrap;
+          margin-left: 10px;
+          display: flex ;
+          flex-direction: column;
+          align-items: flex-start;
+          align-content: center;
+          justify-content: flex-start;
+          flex-shrink: 0;
+          top: 6px;
+          margin: 0;
+          overflow: hidden;
+          width: 100%;
+          background-color: #ffff;
 }
 
 .roadmap-options {
@@ -313,7 +314,7 @@ li {
   background: #373f68;
   border-radius: 10px;
   width: 80vw;
-  left: 0;
+  left: -20px;
   height: 72px;
   margin-left: 308px;
   top: 0;
@@ -457,11 +458,10 @@ p {
 
 .feedback-screen {
   position: absolute;
-  display: flex
-  ;
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 70vw;
+  width: 80vw;
   margin-right: 0;
   top: 150px;
   right: 0;
@@ -540,7 +540,7 @@ p {
   position: relative;
   width: 80vw;
   height: auto;
-  left: -30px;
+  left: -48px;
   margin: 40px 0px 28px 0px;
   border-radius: 10px;
   background-color: #ffff;
@@ -550,7 +550,7 @@ p {
   position: absolute;
   width: 255px;
   height: 529px;
-  top: 30px;
+  top: 50px;
   left: 0px;
 }
 
@@ -1203,9 +1203,9 @@ display: flex;
 }
 
 .go-back {
-  z-index: 1000;
-  margin-top: 10% !important;
-  margin-left: 17px;
+  margin-top: 7%;
+  margin-bottom: 36px;
+  margin-left: 85px;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -1690,7 +1690,7 @@ p {
 
 #feedbacktitle {
   position: relative;
-  width: 100vw;
+  width: 80vw;
   left: 0;
   right: 47.41%;
   top: 5px;
@@ -1711,7 +1711,7 @@ p {
 .new-feedback {
   position: relative;
   height: 35px;
-  left: 7.78%;
+  left: 0;
   right: 47.41%;
   top: calc(50% - 35px / 2 - 245px);
   font-weight: 700;
@@ -1755,7 +1755,7 @@ p {
 
 .new-feedback-icon {
   position: relative;
-  top: 50px;
+  top:-28px;
   left: 17px;
 }
 
@@ -1784,7 +1784,7 @@ p {
   padding-right: -10px;
   background-color: #ffff;
   border-radius: 5px;
-  /* border: none; */
+  width:80vw;
   font-size: 15px;
 }
 
@@ -1795,7 +1795,7 @@ p {
 }
 
 #feedbackdetail {
-  width: 100vw;
+  width: 80vw;
   height: 96px;
   padding-left: 10px;
   padding-right: -10px;
@@ -2153,7 +2153,7 @@ p {
     align-items: flex-start;
     left: 0;
     right: 0;
-    top: 10px;
+    top: 50px;
     margin: 0 auto;
   }
 
@@ -2183,6 +2183,8 @@ p {
   .comment-num {
     margin-top: -3px;
   }
+
+  
 
   .feedback-show {
     position: relative;
@@ -2272,6 +2274,23 @@ p {
     background-color: #ffff;
   }
 
+  .new-feedback-form {
+    position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 90vw;
+            justify-content: center;
+            align-content: center;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+    top:35px;
+            height: 100%;
+            flex-wrap: wrap;
+            background-color: #ffff;
+            border-radius: 10px;
+  }
+
   .form-control-lg {
     position: relative;
     margin-left: 10px;
@@ -2280,14 +2299,11 @@ p {
     align-items: flex-start;
     align-content: center;
     justify-content: flex-start;
-    width: 89vw !important;
-    height: auto;
     flex-shrink: 0;
-    left: 6%;
-    right: 48px;
     top: 6px;
     margin: 0;
     overflow: hidden;
+    width: 100%;
     background-color: #ffff;
   }
 
@@ -2477,7 +2493,7 @@ p {
     justify-items: center;
     flex-wrap: inherit;
     margin: 0 auto;
-    top: 274px;
+    top: 216px;
     left: 0;
     right: 0;
     width: 85vw;
@@ -2560,8 +2576,8 @@ p {
 
   .new-feedback-icon {
     position: relative;
-    top: 45px;
-    left: 59px;
+    top: -26px;
+    left: 25px;
     z-index: 100;
   }
 
