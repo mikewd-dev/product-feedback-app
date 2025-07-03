@@ -98,10 +98,10 @@ textarea.parsley-error {
   width: fit-content;
 }
 
-.container{
+/* .container{
   width:100vw !important;
   margin: 0 !important;
-}
+} */
 
 .char-left {
   margin-top: 47px;
@@ -315,7 +315,7 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  width: 65vw;
+  width: 60vw;
   left: 289px;
   height: 72px;
   top: 0;
@@ -1618,13 +1618,14 @@ display: flex;
 }
 
 .button {
+  position:relative;
   width: 255px;
   height: auto;
   flex-shrink: 0;
   border-radius: 10px;
   background: #fff;
   margin-bottom: 24px;
-  margin-left: 10px;
+  left: 10px;
 }
 
 .live-bar {
@@ -1683,14 +1684,18 @@ p {
 }
 
 .custom {
-  /* margin-top: 92px;
-  margin-left: 450px; */
-  width: 100vw !important;
-  height: 100vh;
-  padding:0 !important;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  width: 100vw; important;
+      height: 100vh;
+      padding: 0 !important;
+      display: flex ;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      position: relative;
+      left: 0;
+      right: 0;
 }
 
 #feedbacktitle {
