@@ -192,8 +192,8 @@ textarea.parsley-error {
   background-image: url("../images/feedback-board.png");
   background-size: center;
   background-repeat: no-repeat;
-  margin-bottom: 50px;
-  margin-left: 10px;
+  bottom: 0;
+  left: 10px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -208,15 +208,17 @@ textarea.parsley-error {
 }
 
 .list {
-  width: 255px;
-  height: 178px !important;
-  background: #ffffff;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-color: #979797;
-  margin-left: 10px;
-  left: 165px;
-  top: 94px;
+  position: relative;
+      width: 255px;
+      height: 178px !important;
+      background: #ffffff;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-color: #979797;
+      left: 10px;
+      /* left: 165px; */
+      top: 0px;
+  
 }
 
 /* .list {
@@ -314,9 +316,8 @@ li {
   background: #373f68;
   border-radius: 10px;
   width: 65vw;
-  left: -20px;
+  left: 289px;
   height: 72px;
-  margin-left: 308px;
   top: 0;
 }
 
@@ -1681,7 +1682,7 @@ p {
   height: auto;
 }
 
-.container {
+.custom {
   /* margin-top: 92px;
   margin-left: 450px; */
   width: 100vw !important;
@@ -2974,7 +2975,7 @@ p {
     margin-top: 26px;
   }
 
-  .container {
+  .custom {
     padding-left: 0 !important;
     
   }
