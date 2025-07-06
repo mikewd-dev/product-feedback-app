@@ -143,7 +143,7 @@ textarea.parsley-error {
   min-width: 100vw !important;
   margin: 0 auto;
   display: grid;
-  left: 10%;
+  left: 3%;
   gap: 2rem;
   padding: 1rem;
   /* overflow: hidden; */
@@ -475,7 +475,7 @@ p {
 
 
 .login-screen {
-      border: 0.5px solid grey;
+border: 0.5px solid grey;
       border-radius: 2%;
       position: absolute;
       width: 80vw;
@@ -483,7 +483,7 @@ p {
       right: 0;
       margin: 0 auto;
       height: 540px;
-      top: 5%;
+      top: 15%;
       background-color: #fdfaff;
       border-radius: 10px;
       display: flex;
@@ -1273,7 +1273,7 @@ figcaption {
 }
 
 .roadmap-nav {
-  width: 90vw !important;
+  width: 95vw !important;
   height: 113px;
   background-color: #373f68;
   border-radius: 10px;
@@ -1451,13 +1451,16 @@ figcaption {
 }
 
 .report-desc {
-  height: 46px;
-  left: 0%;
-  right: 0%;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
-  color: #647196;
+     height: 46px;
+    width: fit-content;
+    left: 0%;
+    right: 0%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #647196;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .btn-roadmap {
@@ -1492,12 +1495,9 @@ figcaption {
 }
 
 .roadmap-upvotes {
-  display: flex;
-  flex-direction: row;
-  width: 287px;
-  height: 40px;
-  left: 196px;
-  top: 524px;
+  display: inline-block;
+    width: 237px;
+    height: 28px;
 }
 
 .progress-reports {
@@ -1507,11 +1507,20 @@ figcaption {
 .planned-reports,
 .progress-reports,
 .live-reports {
-  width: 350px;
-  height: 272px;
-  background: #fff;
-  margin-top: 32px;
+  width: 253px;
+    height: 272px;
+    background: #fff;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
+.planned-heading,
+.report-title,
+.report-desc{
+  margin-left: 10px !important;
+}
+
 
 .planned-heading,
 .progress-heading,
@@ -1542,19 +1551,24 @@ figcaption {
   color: #3a4374;
   border: none;
 }
-
-.report-title {
-  height: 26px;
-  left: 0%;
-  right: 17.48%;
-  top: calc(50% - 26px / 2 - 25px);
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 26px;
-  /* identical to box height */
-  letter-spacing: -0.25px;
-  color: #3a4374;
+.progress-heading,
+.planned-heading,
+.live-heading {
+ position: relative;
+    height: 53px;
+    width: fit-content;
+    left: 0%;
+    right: 17.48%;
+    /* top: calc(50% - 26px / 2 - 25px); */
+    font-style: normal;
+    top: 0px;
+    bottom: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.25px;
+    color: #3a4374;
+    margin-bottom: 11px;
 }
 
 .report-planned {
@@ -1605,7 +1619,6 @@ figcaption {
 }
 
 .planned-bar {
-  width: 350px;
   height: 6px;
   left: 165px;
   top: 324px;
@@ -1613,12 +1626,19 @@ figcaption {
   border-radius: 5px 5px 0px 0px;
 }
 
-.progress-bar {
-  width: 350px;
+.live-bar {
   height: 6px;
   left: 165px;
   top: 324px;
-  background: #ad1fea;
+  background: #62bcfa;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.progress-bar {
+  height: 6px;
+  left: 165px;
+  top: 324px;
+  background: #ad1fea !important;
   border-radius: 5px 5px 0px 0px;
 }
 
@@ -1633,14 +1653,7 @@ figcaption {
   left: 10px;
 }
 
-.live-bar {
-  width: 350px;
-  height: 6px;
-  left: 165px;
-  top: 324px;
-  background: #62bcfa;
-  border-radius: 5px 5px 0px 0px;
-}
+
 
 .navbar-expand-lg {
   margin-bottom: 30px !important;
@@ -1653,26 +1666,33 @@ figcaption {
 }
 
 .roadmap-comment-icon {
-  display: flex;
-  width: 44px;
-  height: 23px;
-  left: 439px;
-  top: 533px;
-  height: 23px;
-  left: 59.09%;
-  right: 0%;
-  top: calc(50% - 23px / 2);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 23px;
-  text-align: center;
-  letter-spacing: -0.222222px;
-  color: #3a4374;
-  margin-left: 174px;
-  margin-top: 25px;
-  gap: 8px;
+    position: relative;
+    display: flex
+;
+    width: 44px;
+    height: 23px;
+    left: 439px;
+    top: -66px;
+    height: 23px;
+    left: 5.09%;
+    right: 0%;
+    /* top: calc(50% - 23px / 2); */
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: -0.222222px;
+    color: #3a4374;
+    margin-left: 174px;
+    /* margin-top: 14px; */
+    gap: 8px;
 }
 
+.planned-bar,
+.progress-bar,
+.live-bar {
+  width: 254px;
+}
 p {
   margin-bottom: 1px !important;
 }
@@ -1689,7 +1709,7 @@ p {
 }
 
 .custom {
-  width: 100vw; important;
+  width: 100vw !important;
       height: 100vh;
       padding: 0 !important;
       display: flex ;
@@ -2595,7 +2615,7 @@ p {
         color: #3a4374;
         margin-left: 24px;
     }
-  }
+  
   .roadmap {
     color: #3a4374;
     font-size: 18px;
@@ -2622,11 +2642,11 @@ p {
     z-index: 100;
   }
 
- /* .columns {
-    grid-template-columns: repeat(3, 1fr);
-    margin-left: 10%;
+ .columns {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 5%;
   }
- */
+
   .column {
     flex-shrink: 0;
     margin-right: 10px;
@@ -2906,9 +2926,9 @@ p {
     width: 80vw;
     margin: 0 auto;
     right: 0;
-    top: 5%;
+    top: 15%;
     left: 0;
-    height: 56px;
+    height: 540px;
   }
 
   /* .nav-link {
