@@ -2628,7 +2628,7 @@ p {
     width: 80vw;
     height: 113px;
     flex-shrink: 0;
-    margin-left: 70px;
+    margin:0 auto;
   }
 
   .add-feedback {
@@ -2712,7 +2712,7 @@ p {
     text-justify: auto;
     width: 158px;
     right: 90px;
-    top: 113px;
+    top: 70px;
   }
 
   .planned-bar,
