@@ -323,7 +323,7 @@ li {
   background: #373f68;
   border-radius: 10px;
   width: 80vw;
-  left: 289px;
+  left: 287px;
   height: 72px;
   top: 0;
 }
@@ -1153,7 +1153,7 @@ figcaption {
 
 .delete-feedback-btn {
   position: relative;
-  left: 15px;
+  left: 65%;
   border-radius: 10px;
   width: 144px;
   height: 44px;
@@ -1164,7 +1164,7 @@ figcaption {
   font-size: 14px;
   line-height: 20px;
   color: #f2f4fe;
-  top: 2px;
+  top: -46px;
 }
 
 .sr-only {

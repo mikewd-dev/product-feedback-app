@@ -27,7 +27,7 @@
 
                                         <!-- <div class="col-sm"> -->
                                           <div class="new-feedback-form">
-                                            <img class="new-feedback-icon" src="/assets/shared/icon-edit-feedback.svg" alt="Edit Icon" />
+                                            <embed class="new-feedback-icon" src="/assets/shared/icon-edit-feedback.svg" alt="Edit Icon" />
 
                                             <!-- Main Edit Form -->
                                             <form action="/feedback/<%= request._id %>?_method=PUT" method="POST"
@@ -38,19 +38,17 @@
                                                 value="<%= request.title %>" required />
                                               <h4 id="category" class="sub-heading">Category</h4>
                                               <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
-                                              <div class="select-options">
-                                                <select name="request[category]" id="features" class="form-select">
-                                                  <option value="Feature" <%= request.category === 'Feature' ? 'selected' : '' %>>Feature</option>
-                                                  <option value="UI" <%= request.category === 'UI' ? 'selected' : '' %>>UI</option>
-                                                  <option value="UX" <%= request.category === 'UX' ? 'selected' : '' %>>UX</option>
-                                                  <option value="Enhancement" <%= request.category === 'Enhancement' ? 'selected' : '' %>>Enhancement</option>
-                                                  <option value="Bug" <%= request.category === 'Bug' ? 'selected' : '' %>>Bug</option>
-                                                </select>
-                                              </div>
-                                              <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
-                                              <label for="feedbackdetail" class="sub-heading-paragraph">
-                                                Include any specific comments on what should be improved, added, etc.
-                                              </label>
+                                             <div >
+                            <select class="form-select" name="request[category]" id="features">
+                            <option value="Feature" class="feedback-options">Feature</option>
+                            <option value="UI" class="feedback-options">UI</option>
+                            <option value="UX" class="feedback-options">UX</option>
+                            <option value="Enhancement" class="feedback-options">Enhancement</option>
+                            <option value="Bug" class="feedback-options">Bug</option>
+                            </select>
+                        </div>
+                        <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
+                        <label for="feedback" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
                                               <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3"
                                                 required><%= request.description %></textarea>
 
