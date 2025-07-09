@@ -1243,12 +1243,6 @@ figcaption {
   margin-top: 27px;
 }
 
-/*.feedback-show {
-  position:relative;
-  left:-16px;
-   border-radius: 5px;
-    margin: 28px 0px 28px 0px;
-}*/
 
 .go-back-show {
   position: relative;
@@ -2400,7 +2394,7 @@ p {
     left: 20px;
     display: flex;
     flex-direction: row;
-    padding-top: 92px;
+    padding-top: 28px;
     margin-left: 40px;
     justify-content: space-between;
     align-content: center;
@@ -2439,8 +2433,7 @@ p {
 
   .post-comment {
               position: absolute;
-        /* left: 73%; */
-        right: 6%;
+        right: 8%;
         bottom: 0;
         width: 142px;
         top: 80%;
@@ -3451,6 +3444,7 @@ p {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.181px;
+    padding-left:15px;
   }
 
   .feedback-screen {
@@ -3475,8 +3469,7 @@ p {
   .form-control-lg {
     flex-direction: column;
     align-content: center;
-    /* justify-content: center; */
-    /* width: 100vw !important; */
+    padding:0 !important;
     height: auto;
     flex-shrink: 0;
     left: 0;
@@ -3495,7 +3488,7 @@ p {
   #content {
     position: relative;
     left: 30px;
-    top: 64px;
+    top: 71px;
     background-color: #dee2e6;
     width: 59px;
     height: 32px;
@@ -3505,6 +3498,7 @@ p {
     padding-left: 1px;
     padding-top: 2px;
   }
+
   .dropupCaret {
     stroke: #3a4374;
     height: 14px;
@@ -3630,15 +3624,16 @@ p {
     left: 0px;
   }
   .new-feedback-form {
-    position: relative;
     left: 0;
-    top: 0;
-    min-height: 100vh;
+    top: 64px;
     right: 0;
     background-color: #ffff;
     margin-top: 0;
-    max-height: 100%;
+    height: 100%;
     border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    width:100vw;
   }
   .new-feedback-icon {
     position: absolute;
@@ -3666,7 +3661,7 @@ p {
   }
 
   .reply-link {
-    margin-left: 65%;
+    margin-left: 85%;
   }
 
   .reply-reply-link {
@@ -3727,6 +3722,8 @@ p {
     font-weight: 400;
     line-height: normal;
   }
+
+ 
 
   .menu-item {
     font-size: 13px;
@@ -3933,7 +3930,7 @@ p {
   }
 
   #feedbacktitle {
-    width:75vw;
+    width:100vw;
   }
 
   .plan,
@@ -4194,6 +4191,7 @@ p {
     margin-top: 0px;
     top: 0;
     height: 100%;
+    padding-left:15px;
   }
 
   .sub-heading-paragraph {
@@ -4207,11 +4205,15 @@ p {
     line-height: normal;
     margin-bottom: 16px;
     flex-wrap: wrap;
+    padding-left:15px;
   }
+
+  
 
   #features {
     margin-bottom: 24px;
-    width: 75vw;
+    width: 100vw;
+    padding-left:15px;
   }
 
   .feedback-options {
@@ -4241,7 +4243,7 @@ p {
     position: relative;
     top: 0;
     left: 0;
-    width: 75vw;
+    width: 100vw;
     height: 120px;
     flex-shrink: 0;
   }
@@ -4249,13 +4251,14 @@ p {
   .add-cancel-feedback {
     display: flex;
     flex-direction: column-reverse;
-    width: 90vw;
+    width: 100vw;
     margin-left: 0;
     margin-top: 16px;
+    margin-right:0
   }
 
   .cancel-feedback-btn {
-    width: 75vw;
+    width: 100vw;
     height: 40px;
     flex-shrink: 0;
     margin-left: 0;
@@ -4263,7 +4266,7 @@ p {
   }
 
   .add-feedback-new {
-    width: 75vw;
+    width:100vw;
     height: 40px;
     flex-shrink: 0;
     margin-left: 0;
@@ -4272,7 +4275,7 @@ p {
   }
 
   .add-feedback-edit {
-    width: 90vw;
+    width: 100vw;
     height: 40px;
     margin-left: 0;
     margin-bottom: 16px;
@@ -4281,7 +4284,7 @@ p {
 
   .delete-feedback-btn {
     position: relative;
-    width: 90vw;
+    width: 100vw;
     height: 40px;
     margin-left: 0;
     margin-bottom: 16px;
@@ -4308,6 +4311,7 @@ p {
     /* flex-wrap: wrap; */
     align-content: center;
     background-color: #ffff;
+    border-radius:10px;
   }
 
   .col-sm {
@@ -4373,6 +4377,7 @@ p {
     height: 40px;
     flex-shrink: 0;
     background: lightgray 50% / cover no-repeat;
+    margin-left:15px;
   }
 
   .edit-button {
@@ -4416,14 +4421,13 @@ p {
 
 
   .post-comment {
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 100vw;
     bottom: 0;
-    top: 168px;
+    top: 54px;
     height: 40px;
-    margin: 0 auto;
     color: #f2f4fe;
     font-size: 13px !important;
     font-style: normal !important;
@@ -4435,14 +4439,15 @@ p {
   }
 
   .add-comment-label {
-    position: relative;
-    left: 40px;
-    color: #3a4374;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.25px;
+ position: relative;
+        left: 15px;
+        top: 36px;
+        color: #3a4374;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.25px;
   }
 
   .add-comment-text {
@@ -4453,6 +4458,8 @@ p {
     flex-shrink: 0;
     width: 100%;
     box-sizing: border-box;
+    font-size:12px;
+    padding-left:15px;
   }
 
 
@@ -4514,10 +4521,12 @@ p {
     left: 0;
     width: 90vw;
     top: 0;
+    padding-left:15px;
   }
   .char-left {
     margin-top: 5px;
     margin-bottom: 5px;
+    padding-left:15px;
   }
 
   .reply-form {
@@ -4564,6 +4573,7 @@ p {
     width: 90vw;
     left: 0;
     top: 0;
+    padding-left:15px
   }
 
   .go-back-heading {
