@@ -1,3 +1,5 @@
+const path = require("path");
+
 $(document).ready(function(){
     $('.down-arrow').on({
         'click': function() {
@@ -9,7 +11,18 @@ $(document).ready(function(){
     });
 })
 
+window.addEventListener('DOMContentLoaded', () =>{
+  const url = window.location.pathname;
+  const segments =url.split('/');
+  const currentURL = segments[segments.length - 1];
 
+  const buttons = document.querySelectorAll('.btn[data-type]');
+  buttons.forEach(btn => {
+    if(btn.getAttribute('data-type') === currentURL) {
+      btn.classList.add('active')
+    }
+  })
+})
 
 function navButton() {
   const navbarToggler = document.querySelector('.navbar-toggler-icon');
