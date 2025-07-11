@@ -1,4 +1,30 @@
-const path = require("path");
+console.log("script.js loaded");
+
+window.addEventListener('DOMContentLoaded', () => {
+  console.log("script.js loaded");
+  const url = window.location.pathname;
+  console.log("window.location.pathname:", url);
+
+  const segments = url.split('/');
+  console.log("URL segments:", segments);
+
+  const currentURL = segments[segments.length - 1];
+  console.log("currentURL:", currentURL);
+
+  const buttons = document.querySelectorAll('.btn[data-type]');
+  console.log("Found buttons:", buttons);
+
+  buttons.forEach(btn => {
+    const type = btn.getAttribute('data-type');
+    console.log("Checking button:", type);
+    if (type === currentURL) {
+      console.log("Match found! Activating:", btn);
+      btn.classList.add('active');
+    }
+  });
+});
+
+const path = window.location.pathname;
 
 $(document).ready(function(){
     $('.down-arrow').on({
@@ -12,9 +38,9 @@ $(document).ready(function(){
 })
 
 window.addEventListener('DOMContentLoaded', () =>{
-  const url = window.location.pathname;
+  const url = window.location.pathname.split('/');
   const segments =url.split('/');
-  const currentURL = segments[segments.length - 1];
+  const currentURL = segments[2];
 
   const buttons = document.querySelectorAll('.btn[data-type]');
   buttons.forEach(btn => {
