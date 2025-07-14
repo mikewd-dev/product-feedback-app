@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const segments = url.split('/');
   console.log("URL segments:", segments);
 
-  const currentURL = segments[segments.length - 1];
+  const currentURL = url[url.length - 1];
   console.log("currentURL:", currentURL);
 
   const buttons = document.querySelectorAll('.btn[data-type]');
@@ -39,8 +39,7 @@ $(document).ready(function(){
 
 window.addEventListener('DOMContentLoaded', () =>{
   const url = window.location.pathname.split('/');
-  const segments =url.split('/');
-  const currentURL = segments[2];
+  const currentURL = url[url.length - 1] || url[url.length-2];
 
   const buttons = document.querySelectorAll('.btn[data-type]');
   buttons.forEach(btn => {
@@ -131,7 +130,7 @@ function liveDisplay() {
   tabLive.style.display = 'block'
   tabInProg.style.display = 'none';
   tabPlanned.style.display = 'none';
-}
+// }
 
 // tabLive.style.display="none";
 
@@ -145,7 +144,7 @@ function liveDisplay() {
    }
     })
 
-
+}
 
 
 window.onload = function checkMark() {
