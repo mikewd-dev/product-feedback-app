@@ -1,28 +1,5 @@
 console.log("script.js loaded");
 
-window.addEventListener('DOMContentLoaded', () => {
-  console.log("script.js loaded");
-  const url = window.location.pathname;
-  console.log("window.location.pathname:", url);
-
-  const segments = url.split('/');
-  console.log("URL segments:", segments);
-
-  const currentURL = url[url.length - 1];
-  console.log("currentURL:", currentURL);
-
-  const buttons = document.querySelectorAll('.btn[data-type]');
-  console.log("Found buttons:", buttons);
-
-  buttons.forEach(btn => {
-    const type = btn.getAttribute('data-type');
-    console.log("Checking button:", type);
-    if (type === currentURL) {
-      console.log("Match found! Activating:", btn);
-      btn.classList.add('active');
-    }
-  });
-});
 
 const path = window.location.pathname;
 
@@ -37,17 +14,18 @@ $(document).ready(function(){
     });
 })
 
-window.addEventListener('DOMContentLoaded', () =>{
+window.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.split('/');
-  const currentURL = url[url.length - 1] || url[url.length-2];
+  const currentURL = url[url.length - 1] || url[url.length - 2];
 
-  const buttons = document.querySelectorAll('.btn[data-type]');
-  buttons.forEach(btn => {
-    if(btn.getAttribute('data-type') === currentURL) {
-      btn.classList.add('active')
+  const links = document.querySelectorAll('a.btn');
+  links.forEach(link => {
+    const dataType = link.getAttribute('href').split('/').pop(); // e.g. 'bug'
+    if (dataType === currentURL) {
+      link.classList.add('active');
     }
-  })
-})
+  });
+});
 
 function navButton() {
   const navbarToggler = document.querySelector('.navbar-toggler-icon');
