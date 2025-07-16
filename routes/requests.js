@@ -254,7 +254,8 @@ res.render('feedback/index', {
   progress: progress || [],
   live: live || [],
   success: req.flash('success'),
-  error: req.flash('error')
+  error: req.flash('error'),
+  currentType: 'suggestions'
 });
 
 }));
@@ -311,7 +312,7 @@ if (req.query.sort === 'mostup') {
   const progress = await Roadmap.find({}).where('status').equals('in-progress');
   const live = await Roadmap.find({}).where('status').equals('live');
 
-  res.render('feedback/suggestions', { request, roadmap, progress, live });
+  res.render('feedback/suggestions', { request, roadmap, progress, live,currentType: 'suggestions' });
 }));
 
 router.get('/feedback/enhancement', catchAsync(async (req, res, next) => {
@@ -343,7 +344,7 @@ if (req.query.sort === 'mostup') {
     if (!request || request.length === 0) {
     res.redirect('/feedback/none');
 } else {
-        res.render('feedback/enhancement', {request, roadmap, progress, live})
+        res.render('feedback/enhancement', {request, roadmap, progress, live, currentType: 'enhancement'})
     }
 }));
 
@@ -378,7 +379,7 @@ const progress = await Roadmap.find({}).where('status').equals('in-progress');
     if (!request || request.length === 0) {
     res.redirect('/feedback/none');
 } else {
-        res.render('feedback/ui', {request, roadmap, progress, live})
+        res.render('feedback/ui', {request, roadmap, progress, live, currentType: 'ui'})
     }
 }));
 
@@ -411,7 +412,7 @@ const progress = await Roadmap.find({}).where('status').equals('in-progress');
     if (!request || request.length === 0) {
     res.redirect('/feedback/none');
 } else {
-        res.render('feedback/ux', {request, roadmap, progress, live})
+        res.render('feedback/ux', {request, roadmap, progress, live, currentType: 'ux'})
     }
 }));
 
@@ -444,7 +445,7 @@ const progress = await Roadmap.find({}).where('status').equals('in-progress');
     if (!request || request.length === 0) {
     res.redirect('/feedback/none');
 } else {
-        res.render('feedback/feature', {request, roadmap, progress, live})
+        res.render('feedback/feature', {request, roadmap, progress, live, currentType: 'feature'})
     }
 }));
 
@@ -477,7 +478,7 @@ const progress = await Roadmap.find({}).where('status').equals('in-progress');
     if (!request || request.length === 0) {
     res.redirect('/feedback/none');
 } else {
-        res.render('feedback/bug', {request, roadmap, progress, live})
+        res.render('feedback/bug', {request, roadmap, progress, live, currentType: 'bug'})
     }
 }));
 
@@ -486,11 +487,11 @@ router.get('/feedback/none', catchAsync(async (req, res, next) => {
      const roadmap  = await Roadmap.find({}).where('status').equals('planned')
 const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
-res.render('feedback/none', {roadmap, progress, live })
+res.render('feedback/none', {roadmap, progress, live, currentType: 'suggestions' })
 }));
 
 router.get('/feedback/roadmap', async(req, res)=>{
-    let roadmap  = await Roadmap.find({}).where('status').equals('planned')
+    let roadmap  = await Roadmap.find({}).where('status').equals('planned');
     let progress = await Roadmap.find({}).where('status').equals('in-progress');
     let live = await Roadmap.find({}).where('status').equals('live');
     res.render('feedback/roadmap', { roadmap, progress, live })
