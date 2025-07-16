@@ -14,6 +14,17 @@ $(document).ready(function(){
     });
 })
 
+// function changeButton(){
+//   let button = document.querySelectorAll('.blue');
+//   if(button.addEventListener('click')){
+//     button.style.backgroundColor = '#4661e6';
+//     button.style.color = '#f2f2f2';
+//   } else {
+//     button.style.backgroundColor ='#f2f2f2';
+//     button.style.color = '#4661e6';
+// }
+//   }
+
 window.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.split('/');
   const currentURL = url[url.length - 1] || url[url.length - 2];
