@@ -1,4 +1,3 @@
-<%-include ('../layouts/boilerplate') %>
 <div class="container">
     <div class="grid-container">
 
@@ -13,7 +12,7 @@
 
                 <li class="dropdowns">
                   <a class="nav-link" href="#" id="navbarDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
+                    <!-- Menu -->
 
                     <div class="drop">
                       <div class="buttons">
@@ -45,15 +44,15 @@
                                     </div>
                                     <div class="d-flex flex-row ">
                                       <a href="/feedback/feature" >
-                                        <button class="blue <%= currentType === 'feature' ? 'active' : '' %>" 
-                                          data-type="feature">Feature</button>
+                                        <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" 
+                                          data-type="ui">Feature</button>
                                       </a>
                         </div>
                       </div>
                       <div class="list">
                         <div class="map">
                           <h5>
-                            <p class="roadmap">Roadmap</p>
+                            <p class="roadmap ">Roadmap</p>
                           </h5>
                           <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
                           <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
@@ -158,7 +157,7 @@
             </li>
             <a class="nav-link" href="/feedback/bug?sort=mostup" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Sort by :<strong id="menu-item">Most Upvotes</strong>
-              <span><img class="down-arrow" src="/assets/shared/icon-=arrow-down.svg" alt="" srcset=""></span>
+              <span><img class="down-arrow"  alt="" src="/assets/shared/icon-arrow-down.svg"></span>
 
             </a>
             <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

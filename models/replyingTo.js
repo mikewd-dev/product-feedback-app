@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ReplyingToSchema = new Schema({
@@ -6,5 +6,4 @@ const ReplyingToSchema = new Schema({
   username: String,
 });
 
-
-module.exports = mongoose.model('ReplyingTo', ReplyingToSchema);
+module.exports = mongoose.model("ReplyingTo", ReplyingToSchema);
