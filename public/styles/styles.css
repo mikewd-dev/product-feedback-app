@@ -385,7 +385,7 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  width: 79vw;
+  width: 80vw;
   left: 287px;
   height: 72px;
   top: 0;
@@ -624,7 +624,7 @@ p {
   position: relative;
   width: 80vw;
   height: auto;
-  left: -48px;
+  left: 22px;
   margin: 40px 0px 28px 0px;
   border-radius: 10px;
   background-color: #ffff;
@@ -635,7 +635,6 @@ p {
   width: 255px;
   height: 529px;
   top: 50px;
-  left: 0px;
 }
 
 .go-back-show > a {
@@ -957,7 +956,7 @@ p {
   font-weight: 700;
   font-size: 14px;
   line-height: normal;
-  color: #f2f4fe;
+  color: #f2f4fe !important;
 }
 
 .add-feedback-edit {
@@ -989,7 +988,7 @@ p {
   border-radius: 10px;
   background: #ad1fea;
   text-decoration: none;
-  color: #f2f4fe;
+  color: #f2f4fe !important;
   font-weight: 700;
   font-size: 14px;
 }
@@ -2798,7 +2797,8 @@ p {
   }
 
   .suggestion {
-    color: #fff;
+    color: #ffff;
+    align-content:center;
     font-size: 18px;
     font-family: Jost;
     margin-top: 0;
