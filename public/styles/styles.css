@@ -385,7 +385,7 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  width: 80vw;
+  width: 70vw;
   left: 287px;
   height: 72px;
   top: 0;
@@ -438,7 +438,7 @@ li {
 
 .dropdown-menu.show {
   width: 255px;
-  height: 192px;
+  height: auto;
   left: 0;
   top: 182px;
   margin-top: 23px !important;
@@ -544,13 +544,11 @@ p {
 .feedback-screen {
   position: absolute;
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 70vw;
-  margin-right: 0;
+  margin: auto auto;
   top: 150px;
   right: 0;
-  left: 288px;
   border-radius: 10px;
   height: 53%;
 }
@@ -578,7 +576,6 @@ p {
 }
 .validated-form {
   width: 100%;
-  align-items: center;
 }
 
 .feedback-screen-active {
@@ -612,7 +609,7 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 80vw;
+  width: 70vw;
   height: auto;
   margin: 40px 19px 28px 0;
   padding-top: 5px;
@@ -622,7 +619,7 @@ p {
 
 .feedback-suggestion {
   position: relative;
-  width: 80vw;
+  width: 70vw;
   height: auto;
   left: 22px;
   margin: 40px 0px 28px 0px;
@@ -2937,12 +2934,12 @@ p {
 
   .btn-login {
     justify-content: center;
-    width:100% !important;
+    width: 100% !important;
   }
 
   .validated-form {
-      width: 100%;
-      align-items: center;
+    width: 100%;
+    align-items: center;
   }
 
   .form-control {
@@ -2954,7 +2951,7 @@ p {
     display: flex;
     flex-direction: column;
   }
-  
+
   .feedback-title {
     color: #3a4374;
     font-size: 24px;
@@ -3728,7 +3725,7 @@ p {
   }
   .dropdown-menu.show {
     width: 172px;
-    height: 192px;
+    height: auto;
     left: 0;
     top: 182px;
     margin-top: 21px !important;
@@ -4086,7 +4083,7 @@ p {
     width: 375px;
   }
   .tab-planned-bar {
-    width: 125px;
+    width: 33.3%;
     height: 4px;
     flex-shrink: 0;
     background: #f49f85;
@@ -4094,7 +4091,7 @@ p {
   }
 
   .tab-inprog-bar {
-    width: 125px;
+    width: 33.3%;;
     height: 4px;
     flex-shrink: 0;
     background: #ad1fea;
@@ -4104,7 +4101,7 @@ p {
   }
 
   .tab-lv-bar {
-    width: 125px;
+    width: 33.3%;
     height: 4px;
     flex-shrink: 0;
     background: #62bcfa;

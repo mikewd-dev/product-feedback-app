@@ -3,175 +3,7 @@
 
   <%-include ('../partials/navbar') %>
 
-   <!-- 
-    <div class="container">
-      <div class="custom">
-          <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
-            <div class="flash alert alert-warning">
-              <% messages.forEach((msg) => { %>
-                <p><%= msg %></p>
-              <% }) %>
-            </div>
-          <% } %>
-
-
-      <div class="feedback">
-
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span id="ChangeToggle" class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse justify-content-between collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="dropdowns">
-                  <a class="nav-link" href="#" id="navbarDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="drop">
-                      <div class="buttons">
-                        <div class="d-flex">
-                           <a href="/feedback/suggestions" >
-                             <button class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" 
-                               data-type="suggestions">All</button>
-                                      </a>
-                                      <a href="/feedback/ui">
-                                        <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" 
-                                          data-type="ui">UI</button>
-                                      </a>
-                                      <a href="/feedback/ux">
-                                        <button class="blue <%= currentType === 'ux' ? 'active' : '' %>" 
-                                            data-type="ux">UX</button>
-                                      </a>
-                                    </div>
-
-                                    <div class="d-flex ">
-                                      <a href="/feedback/enhancement">
-                                      <button class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" 
-                                        data-type="enhancement">Enhancement</button></a>
-                                      <a href="/feedback/bug">
-                                        <button 
-                                          class="blue <%= currentType === 'bug' ? 'active' : '' %>" 
-                                          data-type="bug"
-                                        >Bug</button>
-                                      </a>
-                                    </div>
-                                    <div class="d-flex flex-row ">
-                                      <a href="/feedback/feature" >
-                                        <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" 
-                                          data-type="ui">Feature</button>
-                                      </a>
-                        </div>
-                      </div>
-                      <div class="list">
-                        <div class="map">
-                          <h5>
-                            <p class="roadmap ">Roadmap</p>
-                          </h5>
-                          <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
-                          <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
-                          <span class="oval-live"></span><p class="roadmap-options">Live</p>
-                        </div>
-                        <ul class="view-roadmap">
-                          <li class="view"><a href="/feedback/roadmap">View</a></li>
-                        </ul>
-                        <div class="view-num">
-                          <p>
-                            <%=roadmap.length %>
-                          </p>
-                          <p>
-                            <%=progress.length %>
-                          </p>
-                          <p>
-                            <%=live.length %>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                  </a>
-
-                </li>
-
-              </ul>
-            </div>
-          </div>
-           <div class="board-text">
-          <p class="navboard-title">Frontend Mentor</p>
-          <p class="navboard-subtitle">FeedBack Board</p>
-          </div>
-        </nav>
-        <div class="dropped">
-          <div class="button">
-            <div class="d-flex">
-               <a href="/feedback/suggestions" >
-                 <button class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" 
-                   data-type="suggestions">All</button>
-                          </a>
-                          <a href="/feedback/ui">
-                            <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" 
-                              data-type="ui">UI</button>
-                          </a>
-                          <a href="/feedback/ux">
-                            <button class="blue <%= currentType === 'ux' ? 'active' : '' %>" 
-                                data-type="ux">UX</button>
-                          </a>
-                        </div>
-
-                        <div class="d-flex ">
-                          <a href="/feedback/enhancement">
-                          <button class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" 
-                            data-type="enhancement">Enhancement</button></a>
-                          <a href="/feedback/bug">
-                            <button 
-                              class="blue <%= currentType === 'bug' ? 'active' : '' %>" 
-                              data-type="bug"
-                            >Bug</button>
-                          </a>
-                        </div>
-                        <div class="d-flex flex-row ">
-                          <a href="/feedback/feature" >
-                            <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" 
-                              data-type="ui">Feature</button>
-                          </a>
-            </div>
-          </div>
-          <div class="list">
-            <div class="map">
-                          <h5>
-                            <p class="roadmap ">Roadmap</p>
-                          </h5>
-                          <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
-                          <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
-                          <span class="oval-live"></span><p class="roadmap-options">Live</p>
-                        </div>
-            <ul class="view-roadmap">
-              <li class="view"><a href="/feedback/roadmap">View</a></li>
-            </ul>
-            <div class="view-num">
-              <p>
-                <%=roadmap.length %>
-              </p>
-              <p>
-                <%=progress.length %>
-              </p>
-              <p>
-                <%=live.length %>
-              </p>
-            </div>
-          </div>
-        </div>
-        <nav class="dropdown-main">
-          <div class="container-fluid">
-            <img class="arrows" src="/assets/suggestions/icon-suggestions.svg " class="suggestion-icon " alt=" " srcset=" ">
-            <li class="suggestion">
-              <span>
-              </span> Suggestions
-            </li>
-          </div>
-                        <a class="add-feedback-top text-center" href="/feedback/new " type="button ">+Add Feedback</a>
-
-           </nav>
-      </div> -->
-
+  
   <div class="feedback-screen">
     <div class="overlay"></div>
     <figure class="figure-item ">
@@ -179,26 +11,18 @@
       <figcaption>
         <h1 class="feedback-title ">Product Feedback</h1>
         <div class="reg-login">
-        <!-- <p class="got-suggestion "> -->
+
           <a href="/feedback/login" class="btn-logon" type="button">Login</a>
-        <!-- </p>
-        <p> -->
+     
           <a class ="reg"href="/feedback/register">No account. Please register</a>
-        <!-- </p> -->
+     
         </div>
-        <!-- <a href="/feedback/new" class="add-feedback">+Add Feedback</a> -->
+   
       </figcaption>
     </figure>
   </div>
 
   </div>
           </div>
-  <!-- Sidebar end -->
-            <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-             <script src="/js/script.js"></script>
-</body>
-
-</html> -->
 
             <%-include ('../partials/footer') %>
