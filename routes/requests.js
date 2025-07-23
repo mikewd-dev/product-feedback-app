@@ -184,7 +184,11 @@ router.post("/feedback/:id/comments", isLoggedIn, async (req, res) => {
     if (!request) {
       return res.status(404).send("Request not found");
     }
-    const imageUrl = req.user.image[0].url;
+
+    const imageUrl = Array.isArray(req.user.image)
+      ? req.user.image[0]?.url
+      : req.user.image;
+
     const newComment = {
       content: req.body.comment.content,
       user: {
@@ -204,7 +208,6 @@ router.post("/feedback/:id/comments", isLoggedIn, async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
 router.post(
   "/feedback/:id/comment/:commentId/replies",
   isLoggedIn,
