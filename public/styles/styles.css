@@ -553,7 +553,8 @@ p {
   height: 53%;
 }
 
-.login-screen {
+.login-screen,
+.register-screen {
   border: 0.5px solid grey;
   border-radius: 2%;
   position: absolute;
@@ -561,7 +562,7 @@ p {
   left: 0;
   right: 0;
   margin: 135px auto auto;
-  height: 75vh;
+  height: auto;
   top: 15%;
   background-color: #fdfaff;
   border-radius: 10px;
@@ -2036,7 +2037,7 @@ p {
   }
 
   .navboard-title {
-    color: #fff;
+    color: #ffff;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -2045,7 +2046,7 @@ p {
   }
 
   .navboard-subtitle {
-    color: #fff;
+    color: #ffff;
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
@@ -2919,7 +2920,8 @@ p {
     width: 65vw;
   }
 
-  .login-screen {
+  .login-screen,
+  .register-screen {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -2929,7 +2931,7 @@ p {
     right: 0;
     top: 15%;
     left: 0;
-    height: 75vh;
+    height: 100%;
   }
 
   .btn-login {
@@ -3045,7 +3047,7 @@ p {
     padding-left: 25px;
     width: 100vw;
     left: 0;
-    top: 72px;
+    top: 65px;
     height: 56px;
     flex-shrink: 0;
     font-size: 15px;
@@ -3296,24 +3298,31 @@ p {
     flex-shrink: 0;
     margin-left: 0px;
     border-bottom: none !important;
-    border-color: none;
-    margin-top: 39px;
+    margin-top: 0;
+    padding-bottom: 15px;
+    align-content: space-evenly;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-items: flex-start;
   }
 
   .list {
-    position:relative;
+    position: relative;
     left: 0;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
+    border-radius: 10px;
+    border-color: #979797;
+    box-shadow: black;
     width: 100%;
     height: 178px;
     flex-shrink: 0;
     margin-left: 0;
-    border-radius: 0;
-    margin-left: 0px;
-    border-bottom: none !important;
-    border-color: none;
-    margin-top: 39px;
+    border-radius: 10px;
+    margin-left: 0;
+    margin-top: -18px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
 
   .select-options {
@@ -3332,7 +3341,6 @@ p {
     margin-left: 0;
   }
 
-
   .roadmap {
     color: #3a4374;
     font-size: 18px;
@@ -3350,7 +3358,8 @@ p {
     font-weight: 600;
     line-height: normal;
     text-decoration-line: underline;
-    margin-left: 67px;
+    margin-left: 48px;
+    margin-top: 15px;
   }
 
   .suggestion {
@@ -3381,10 +3390,6 @@ p {
 
   .btn {
     padding-right: 0px !important;
-  }
-
-  .list {
-    margin-left: 0 !important;
   }
 
   .go-back {
@@ -3709,7 +3714,7 @@ p {
     flex-direction: column;
     float: right;
     right: 0;
-    top: 72px;
+    top: 52px;
     position: absolute;
     z-index: 3;
   }
@@ -3830,7 +3835,7 @@ p {
     line-height: normal;
   }
 
-  .login-screen {
+  /* .login-screen {
     position: relative;
     left: 0;
     right: 0;
@@ -3839,6 +3844,19 @@ p {
     justify-content: center;
     width: 100vw;
     margin: 0 auto;
+  } */
+
+  .login-screen,
+  .register-screen {
+    position: relative;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0 auto;
+    height: auto;
   }
 
   .feeback-title {
@@ -4100,7 +4118,7 @@ p {
   }
 
   .tab-inprog-bar {
-    width: 33.3%;;
+    width: 33.3%;
     height: 4px;
     flex-shrink: 0;
     background: #ad1fea;
