@@ -61,15 +61,14 @@ textarea.parsley-error {
   position: relative;
 }
 
-.row {
-  display: flex;
-  width: 95vw;
+.login-center {
+  min-width: 100vw;
   flex-direction: row;
   position: relative;
   top: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
+  margin: 0;
 }
 
 #column-planned,
@@ -185,7 +184,7 @@ a {
 }
 
 .char-left {
-  margin-top: 47px;
+  margin-top: 18px;
   color: #647196;
   font-size: 15px;
   font-style: normal;
@@ -223,7 +222,7 @@ a {
   margin: 0 auto;
   display: grid;
   left: 3%;
-  gap: 2rem;
+  gap: 10rem;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -455,6 +454,7 @@ li {
   margin-bottom: -24px;
   height: 20px;
   background-color: #f4d7d5 !important;
+  width:25vw;
 }
 
 .suggestion {
@@ -553,6 +553,7 @@ p {
   height: 53%;
 }
 
+
 .login-screen,
 .register-screen {
   border: 0.5px solid grey;
@@ -572,9 +573,6 @@ p {
   align-items: center;
 }
 
-.login-screen > form {
-  padding: 40px;
-}
 .validated-form {
   width: 100%;
 }
@@ -1024,10 +1022,23 @@ p {
 }
 
 .btn-login {
+  display: block !important;
   border-radius: 0px;
-  float: right;
-  margin-right: 0;
-  margin-top: 0%;
+  margin: 0 auto 19px auto;
+  padding: 12.5px 24px 11.5px 24px;
+  border-radius: 10px;
+  background: #ad1fea !important;
+  text-decoration: none;
+  color: #f2f4fe;
+  font-weight: 700;
+  font-size: 14px;
+  width: 90%;
+}
+
+.btn-register {
+  display: block;
+  border-radius: 0px;
+  margin: 0 auto 19px auto;
   padding: 12.5px 24px 11.5px 24px;
   border-radius: 10px;
   background: #ad1fea;
@@ -1035,7 +1046,7 @@ p {
   color: #f2f4fe;
   font-weight: 700;
   font-size: 14px;
-  width: 100%;
+  width: 90%;
 }
 
 .add-feedback-new {
@@ -1541,13 +1552,14 @@ figcaption {
 .planned-reports,
 .progress-reports,
 .live-reports {
-  width: 30vw;
+  width: 25vw;
   height: 272px;
   background: #fff;
   margin-top: 32px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  overflow: hidden;
+  }
 }
 .planned-heading,
 .report-title,
@@ -1789,6 +1801,19 @@ p {
 }
 
 .sub-heading-paragraph {
+  position: relative;
+  left: 0;
+  top: 0;
+  color: #647196;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sub-heading-paragraph {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -1800,6 +1825,17 @@ p {
 }
 
 .form-control {
+  display: block !important;
+  width: 90% !important;
+  margin: 0 auto;
+}
+
+.form-label {
+  padding-left: 60px;
+  padding-top: 20px;
+}
+
+/* .form-control {
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
@@ -1807,7 +1843,7 @@ p {
   width: 540px;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .new-feedback-icon {
   position: relative;
@@ -2687,6 +2723,9 @@ p {
     line-height: normal;
     margin-bottom: -24px;
     height: 20px;
+    border-radius: 0 !important;
+    padding-left:5px;
+    width: 29vw;
   }
 
   .row-roadmap {
@@ -2920,10 +2959,20 @@ p {
     width: 65vw;
   }
 
+  .login-center {
+    min-width: 100vw;
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+
+
   .login-screen,
   .register-screen {
     right: 0;
-  
     left: 0;
   }
 
@@ -2937,7 +2986,7 @@ p {
     align-items: center;
   }
 
-  .form-control {
+  /* .form-control {
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
@@ -2945,7 +2994,7 @@ p {
     width: 540px;
     display: flex;
     flex-direction: column;
-  }
+  } */
 
   .feedback-title {
     color: #3a4374;
@@ -3244,6 +3293,10 @@ p {
     gap: 5px;
   }
 
+  .form-label {
+    padding-left: 20px;
+  }
+
   .navbar-toggler {
     margin-left: auto;
     margin-right: 5%;
@@ -3318,8 +3371,19 @@ p {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
 
+  .planned-heading,
+  .progress-heading,
+  .live-heading,
+  .report-title,
+  .report-desc,
+  .btn-roadmap,
+  .roadmap-btn-upvotes {
+    margin-left: 12px;
+  }
   .select-options {
-    width: 75vw;
+    width: 90vw;
+    display: block;
+    margin: 0 auto;
   }
 
   .row-reply {
@@ -3415,7 +3479,6 @@ p {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.181px;
-    padding-left: 15px;
   }
 
   .feedback-screen {
@@ -3536,7 +3599,7 @@ p {
     top: 0;
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 60%;
     text-align: center;
     margin: 0 auto;
   }
@@ -3828,16 +3891,6 @@ p {
     line-height: normal;
   }
 
-  /* .login-screen {
-    position: relative;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    margin: 0 auto;
-  } */
 
   .login-screen,
   .register-screen {
@@ -3910,7 +3963,9 @@ p {
   }
 
   #feedbacktitle {
-    width: 100vw;
+    display: block;
+    margin: 0 auto;
+    width: 90vw;
   }
 
   .plan,
@@ -3933,12 +3988,13 @@ p {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    padding-left:13px;
   }
 
   .planned-bar,
   .progress-bar,
   .live-bar {
-    width: 327px;
+    width: 100vw;
     height: 6px;
     flex-shrink: 0;
   }
@@ -3951,13 +4007,14 @@ p {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    width: 108px;
+    width: 82px;
+    margin-left: 0;
   }
 
   .planned-reports,
   .progress-reports,
   .live-reports {
-    width: 327px;
+    width: 100vw;
     height: 251px;
     flex-shrink: 0;
     border-radius: 5px;
@@ -3982,6 +4039,8 @@ p {
 
   .columns {
     grid-template-columns: 1fr;
+    left: 0;
+    padding-right: 0;  
   }
 
   .report-title {
@@ -4039,22 +4098,8 @@ p {
     flex-shrink: 0;
   }
 
-  .live {
-    margin-right: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-  }
-
-  .ideas {
-    margin-right: 0;
-    right: 0;
-    margin-left: 0px;
-    left: 0;
-    top: 0;
-    margin-top: 5px;
-    width: 159px;
-  }
+  .live ,
+  .ideas ,
   .progress {
     margin-right: 0;
     right: 0;
@@ -4062,7 +4107,7 @@ p {
     left: 0;
     top: 0;
     margin-top: 5px;
-    width: 159px;
+    width: 100vw;
   }
 
   .add-comment {
@@ -4075,7 +4120,7 @@ p {
     left: 0;
     top: 0;
     margin-top: 5px;
-    width: 159px;
+    width: 100vw;
   }
 
   .row {
@@ -4170,26 +4215,17 @@ p {
     margin-top: 0px;
     top: 0;
     height: 100%;
-    padding-left: 15px;
+    padding-left: 20px;
   }
 
+  .sub-heading,
   .sub-heading-paragraph {
-    position: relative;
-    left: 0;
-    top: 0;
-    color: #647196;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-    padding-left: 15px;
+    padding-left: 20px;
   }
 
   #features {
     margin-bottom: 24px;
-    width: 100vw;
+    width: 90vw;
     padding-left: 15px;
   }
 
@@ -4218,9 +4254,11 @@ p {
 
   #feedbackdetail {
     position: relative;
+    display: block;
+    margin: 0 auto;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 90vw;
     height: 120px;
     flex-shrink: 0;
   }
@@ -4235,20 +4273,19 @@ p {
   }
 
   .cancel-feedback-btn {
-    width: 100vw;
+    display: block;
+    width: 90vw;
     height: 40px;
     flex-shrink: 0;
-    margin-left: 0;
-    margin-bottom: 16px;
+    margin: 0 auto 5px auto;
   }
 
   .add-feedback-new {
-    width: 100vw;
+    display: block;
+    width: 90vw;
     height: 40px;
     flex-shrink: 0;
-    margin-left: 0;
-    margin-top: 0px;
-    margin-bottom: 5px;
+    margin: 0 auto 5px auto;
   }
 
   .add-feedback-edit {
@@ -4489,12 +4526,12 @@ p {
     left: 0;
     width: 90vw;
     top: 0;
-    padding-left: 15px;
   }
+  
   .char-left {
     margin-top: 5px;
     margin-bottom: 5px;
-    padding-left: 15px;
+     padding-left: 20px;
   }
 
   .reply-form {
@@ -4522,7 +4559,7 @@ p {
   .oval-planned,
   .oval-progress,
   .oval-live {
-    margin-left: 24px;
+    margin-left: 0;
     width: 8px;
     height: 8px;
     flex-shrink: 0;
@@ -4541,7 +4578,6 @@ p {
     width: 90vw;
     left: 0;
     top: 0;
-    padding-left: 15px;
   }
 
   .go-back-heading {
