@@ -157,7 +157,6 @@ window.onload = function checkMark() {
   }
 
   linkmostup.addEventListener("click", (e) => {
-    console.log("Most up clicked");
     e.stopPropagation();
 
     sessionStorage.setItem("mostupClicked", "true");
@@ -260,69 +259,82 @@ function upvoteSuggestion(suggestionId) {
     .catch((error) => console.error(error));
 }
 
-function upvoteFeature(featureId) {
-  fetch(`/feedback/feature/${featureId}/upvote?_=${new Date().getTime()}`, {
+// function upvoteFeature(featureId) {
+//   fetch(`/feedback/feature/${featureId}/upvote?_=${new Date().getTime()}`, {
+//     method: "POST",
+//     mode: "cors",
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const upvotesElement = document.getElementById(`votes-${featureId}`);
+//       upvotesElement.textContent = data.upvotes;
+//     })
+//     .catch((error) => console.error(error));
+// }
+
+// function upvoteEnhancement(enhancementId) {
+//   fetch(
+//     `/feedback/suggestions/${enhancementId}/upvote?_=${new Date().getTime()}`,
+//     {
+//       method: "POST",
+//       mode: "cors",
+//     },
+//   )
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const upvotesElement = document.getElementById(`votes-${enhancementId}`);
+//       upvotesElement.textContent = data.upvotes;
+//     })
+//     .catch((error) => console.error(error));
+// }
+
+// function upvoteBug(bugId) {
+//   fetch(`/feedback/bug/${bugId}/upvote?_=${new Date().getTime()}`, {
+//     method: "POST",
+//     mode: "cors",
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const upvotesElement = document.getElementById(`votes-${bugId}`);
+//       upvotesElement.textContent = data.upvotes;
+//     })
+//     .catch((error) => console.error(error));
+// }
+
+// function upvoteUI(uiId) {
+//   fetch(`/feedback/ui/${uiId}/upvote?_=${new Date().getTime()}`, {
+//     method: "POST",
+//     mode: "cors",
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const upvotesElement = document.getElementById(`votes-${uiId}`);
+//       upvotesElement.textContent = data.upvotes;
+//     })
+//     .catch((error) => console.error(error));
+// }
+
+// function upvoteUX(uxId) {
+//   fetch(`/feedback/ux/${uxId}/upvote?_=${new Date().getTime()}`, {
+//     method: "POST",
+//     mode: "cors",
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const upvotesElement = document.getElementById(`votes-${uxId}`);
+//       upvotesElement.textContent = data.upvotes;
+//     })
+//     .catch((error) => console.error(error));
+// }
+
+function upvoteRoadmap(roadmapId) {
+  fetch(`/feedback/roadmap/${roadmapId}/upvote?_=${new Date().getTime()}`, {
     method: "POST",
     mode: "cors",
   })
     .then((response) => response.json())
     .then((data) => {
-      const upvotesElement = document.getElementById(`upvotes-${featureId}`);
-      upvotesElement.textContent = data.upvotes;
-    })
-    .catch((error) => console.error(error));
-}
-
-function upvoteEnhancement(enhancementId) {
-  fetch(
-    `/feedback/suggestions/${enhancementId}/upvote?_=${new Date().getTime()}`,
-    {
-      method: "POST",
-      mode: "cors",
-    },
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`votes-${enhancementId}`);
-      upvotesElement.textContent = data.upvotes;
-    })
-    .catch((error) => console.error(error));
-}
-
-function upvoteBug(bugId) {
-  fetch(`/feedback/bug/${bugId}/upvote?_=${new Date().getTime()}`, {
-    method: "POST",
-    mode: "cors",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`upvotes-${bugId}`);
-      upvotesElement.textContent = data.upvotes;
-    })
-    .catch((error) => console.error(error));
-}
-
-function upvoteUI(uiId) {
-  fetch(`/feedback/ui/${uiId}/upvote?_=${new Date().getTime()}`, {
-    method: "POST",
-    mode: "cors",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`upvotes-${uiId}}`);
-      upvotesElement.textContent = data.upvotes;
-    })
-    .catch((error) => console.error(error));
-}
-
-function upvoteUX(uxId) {
-  fetch(`/feedback/ux/${uxId}/upvote?_=${new Date().getTime()}`, {
-    method: "POST",
-    mode: "cors",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`upvotes-${uxId}}`);
+      const upvotesElement = document.getElementById(`votes-${roadmapId}`);
       upvotesElement.textContent = data.upvotes;
     })
     .catch((error) => console.error(error));

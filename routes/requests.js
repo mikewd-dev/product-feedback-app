@@ -135,13 +135,14 @@ router.post(
   }),
 );
 
-router.post("/feedback/suggestions/:id/upvote", async (req, res) => {
+router.post("/feedback/suggestions/:id/upvote",isLoggedIn,
+              catchAsync(async (req, res) => {
   const suggestion = await Request.findById(req.params.id);
   suggestion.upvotes = suggestion.upvotes + 1;
   await suggestion.save();
 
   res.json({ upvotes: suggestion.upvotes });
-});
+}));
 
 router.post(
   "/feedback/enhancement/:id/upvote",
@@ -151,35 +152,43 @@ router.post(
     suggestion.upvotes = suggestion.upvotes + 1;
     await suggestion.save();
     res.json({ upvotes: suggestion.upvotes });
-  }),
-);
+  }));
 
-router.post("/feedback/bug/:id/upvote", async (req, res) => {
+router.post("/feedback/bug/:id/upvote", isLoggedIn,
+    catchAsync(async (req, res) => {
   const suggestion = await Request.findById(req.params.id);
   suggestion.upvotes = suggestion.upvotes + 1;
   await suggestion.save();
   res.json({ upvotes: suggestion.upvotes });
-});
+}));
 
-router.post("/feedback/ui/:id/upvote", async (req, res) => {
+router.post("/feedback/ui/:id/upvote", isLoggedIn,
+    catchAsync(async (req, res) => {
   const suggestion = await Request.findById(req.params.id);
   suggestion.upvotes = suggestion.upvotes + 1;
   await suggestion.save();
   res.json({ upvotes: suggestion.upvotes });
-});
-router.get("/feedback/ux/:id", async (req, res) => {
-  res.redirect("/feedback/ux");
-});
+}));
 
-router.post("/feedback/ux/:id/upvote", isLoggedIn, async (req, res) => {
+router.post("/feedback/ux/:id/upvote", isLoggedIn,
+    catchAsync(async (req, res) => {
   const suggestion = await Request.findById(req.params.id);
   suggestion.upvotes = suggestion.upvotes + 1;
   await suggestion.save();
   res.json({ upvotes: suggestion.upvotes });
-});
+}));
 
-router.post("/feedback/:id/comments", isLoggedIn, async (req, res) => {
-  try {
+router.post("/feedback/roadmap/:id/upvote", isLoggedIn,
+catchAsync(async (req, res) => {
+  const suggestion = await Roadmap.findById(req.params.id);
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes });
+}));
+
+router.post("/feedback/:id/comments", isLoggedIn,
+  catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
     if (!request) {
       return res.status(404).send("Request not found");
@@ -201,17 +210,14 @@ router.post("/feedback/:id/comments", isLoggedIn, async (req, res) => {
 
     request.comments.push(newComment);
     await request.save();
+
     req.flash("success", "Your comment has been added successfully");
     res.redirect(`/feedback/${req.params.id}`);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-});
+}));
 router.post(
   "/feedback/:id/comment/:commentId/replies",
-  isLoggedIn,
-  async (req, res) => {
+    isLoggedIn,
+      catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
     const comment = await request.comments.id(req.params.commentId);
     const imageUrl = req.user.image[0].url;
@@ -231,13 +237,13 @@ router.post(
     await request.save();
     req.flash("success", "Your reply was successfull");
     res.redirect(`/feedback/${request._id}`);
-  },
+  }),
 );
 
 router.post(
   "/feedback/:id/comment/:commentId/reply/:replyId/replies",
-  isLoggedIn,
-  async (req, res) => {
+    isLoggedIn,
+      catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
     const comment = await request.comments.id(req.params.commentId);
     const reply = comment.replies.id(req.params.replyId);
@@ -258,7 +264,7 @@ router.post(
     req.flash("success", "Your reply was successfull");
     console.log(newReply);
     res.redirect(`/feedback/${request._id}`);
-  },
+  }),
 );
 
 // ====GET ROUTES=======
@@ -272,15 +278,7 @@ router.get(
       .where("status")
       .equals("in-progress");
     const live = await Roadmap.find({}).where("status").equals("live");
-    // res.render("feedback/index", {
-    //   roadmap: roadmap || [],
-    //   progress: progress || [],
-    //   live: live || [],
-    //   success: req.flash("success"),
-    //   error: req.flash("error"),
-    //   currentType: "suggestions",
-    //   request: request || []
-    // });
+    
     res.render("feedback/index", {
       request,
       roadmap,

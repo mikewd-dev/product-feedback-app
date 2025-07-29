@@ -172,6 +172,21 @@ a {
   width: auto;
 }
 
+.feedback-suggested-numvotes{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #dee2e6;
+  width: 40px;
+  height: 53px;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+}
+
+
+
 .reg-login {
   display: flex;
   justify-items: center;
@@ -213,6 +228,10 @@ a {
   margin-left: 32px;
 }
 
+
+#roadmapup{}vote{
+  margin-left: 32px;
+}
 .select-options {
   width: 100vw;
 }
@@ -857,6 +876,39 @@ p {
   background: #cfd7ff;
   border-radius: 10px;
   border-radius: 10px;
+}
+
+.feedback-suggested-numvotes{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #dee2e6;
+  height: 30px;
+  width: 53px;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  margin-left:9px;
+  margin-top:15px;
+  gap:6px;
+}
+
+.feedback-suggested-numvotes:active,
+.feedback-suggested-numvotes:focus{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #4661e6;
+  height: 30px;
+  width: 53px;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  margin-left:9px;
+  margin-top:15px;
+  gap:6px;
 }
 
 .votes {
@@ -1536,7 +1588,6 @@ figcaption {
   height: 13px;
   bottom: 36.84%;
   border: none;
-  margin-right: 12.5px;
   padding-top: 5px;
 }
 
@@ -1565,7 +1616,7 @@ figcaption {
 .planned-heading,
 .report-title,
 .report-desc {
-  margin-left: 5px !important;
+  margin-left: 9px !important;
 }
 
 .planned-heading,
@@ -1711,22 +1762,21 @@ figcaption {
 
 .roadmap-comment-icon {
   position: relative;
-  display: flex;
-  width: 44px;
-  height: 23px;
-  left: 439px;
-  top: -66px;
-  height: 23px;
-  left: 5.09%;
-  right: 0%;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 23px;
-  text-align: center;
-  letter-spacing: -0.222222px;
-  color: #3a4374;
-  margin-left: 174px;
-  gap: 8px;
+      display: flex
+  ;
+      width: 44px;
+      height: 23px;
+      top: -28px;
+      height: 23px;
+      left: 80%;
+      right: 0;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 23px;
+      text-align: center;
+      letter-spacing: -0.222222px;
+      color: #3a4374;
+      gap: 5px;
 }
 
 .planned-bar,
@@ -3439,6 +3489,45 @@ p {
     width: 30px;
   }
 
+  #roadmapupvote{
+    margin-left: 0px;
+    width: 30px;
+    height: 250px;
+    }
+
+  .feedback-suggested-numvotes{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #dee2e6;
+    height: 30px;
+    width: 53px;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    margin-left:9px;
+    margin-top:15px;
+    gap:6px;
+  }
+
+  .feedback-suggested-numvotes:active,
+  .feedback-suggested-numvotes:focus{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #4661e6;
+    height: 30px;
+    width: 53px;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    margin-left:9px;
+    margin-top:15px;
+    gap:6px;
+  }
+
   .add-feedback-top {
     position: absolute;
     width: 114px;
@@ -4087,6 +4176,8 @@ p {
     width: 69px;
     height: 32px;
     flex-shrink: 0;
+    top: 0;
+    
   }
 
   .roadmap-comment-icon {
@@ -4095,11 +4186,11 @@ p {
     display: flex;
     width: 40px;
     height: 19px;
-  float: right;;
+  float: right;
     gap: 4px;
     flex-shrink: 0;
-    margin-left:auto;
-    margin-right:0;
+
+    
   }
 
   .live ,
