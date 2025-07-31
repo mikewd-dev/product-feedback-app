@@ -387,7 +387,6 @@ data = [
   },
 ];
 
-// Insert the data into the collection
 collection.insertMany(data, function (err, result) {
   if (err) {
     console.error("Error inserting data:", err);
@@ -395,6 +394,4 @@ collection.insertMany(data, function (err, result) {
     console.log(`${result.insertedCount} documents inserted successfully`);
   }
 
-  // Close the connection
-  // client.close();
 });

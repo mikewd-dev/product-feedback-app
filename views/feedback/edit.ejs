@@ -14,7 +14,7 @@
                                     </head>
 
                                     <body>
-                                      <!-- <div class="row"> -->
+                    
                                         <div class="go-back">
                                           <a href="/feedback/suggestions">
                                             <span class="arrow">
@@ -24,11 +24,10 @@
                                           </a>
                                         </div>
 
-                                        <!-- <div class="col-sm"> -->
                                           <div class="new-feedback-form">
                                             <embed class="new-feedback-icon" src="/assets/shared/icon-edit-feedback.svg" alt="Edit Icon" />
 
-                                            <!-- Main Edit Form -->
+                                          
                                             <form action="/feedback/<%= request._id %>?_method=PUT" method="POST"
                                               class="form-control-lg validated-form" data-parsley-validate novalidate>
                                               <h4 class="sub-heading">Feedback Title</h4>
@@ -63,8 +62,4 @@
                                               <button class="delete-feedback-btn">Delete</button>
                                             </form>
                                           </div>
-                                        <!-- </div> -->
-                                      <!-- </div> -->
-
-                                      <!-- Scripts -->
-                                      <%-include ('../partials/footer') %>
+                                          <%-include ('../partials/footer') %>
