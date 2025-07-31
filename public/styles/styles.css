@@ -172,7 +172,7 @@ a {
   width: auto;
 }
 
-.feedback-suggested-numvotes{
+.feedback-suggested-numvotes {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -184,8 +184,6 @@ a {
   border-radius: 10px;
   border: none;
 }
-
-
 
 .reg-login {
   display: flex;
@@ -228,10 +226,9 @@ a {
   margin-left: 32px;
 }
 
-
-#roadmapup{}vote{
+/* #roadmapup{}vote{
   margin-left: 32px;
-}
+} */
 .select-options {
   width: 100vw;
 }
@@ -441,7 +438,19 @@ li {
 .navbar-brand {
   color: #ffffff !important;
 }
-
+.login-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-left: 36px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+   color: #9799b7;
+}
 .nav-link {
   margin-left: 36px;
   left: 25%;
@@ -473,8 +482,8 @@ li {
   margin-bottom: -24px;
   height: 20px;
   background-color: #f4d7d5 !important;
-  width:25vw;
-  padding-left:5px;
+  width: 25vw;
+  padding-left: 5px;
 }
 
 .suggestion {
@@ -572,7 +581,6 @@ p {
   border-radius: 10px;
   height: 53%;
 }
-
 
 .login-screen,
 .register-screen {
@@ -878,7 +886,7 @@ p {
   border-radius: 10px;
 }
 
-.feedback-suggested-numvotes{
+.feedback-suggested-numvotes {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -889,13 +897,13 @@ p {
   text-align: center;
   border-radius: 10px;
   border: none;
-  margin-left:9px;
-  margin-top:15px;
-  gap:6px;
+  margin-left: 9px;
+  margin-top: 15px;
+  gap: 6px;
 }
 
 .feedback-suggested-numvotes:active,
-.feedback-suggested-numvotes:focus{
+.feedback-suggested-numvotes:focus {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -906,9 +914,9 @@ p {
   text-align: center;
   border-radius: 10px;
   border: none;
-  margin-left:9px;
-  margin-top:15px;
-  gap:6px;
+  margin-left: 9px;
+  margin-top: 15px;
+  gap: 6px;
 }
 
 .votes {
@@ -1611,7 +1619,7 @@ figcaption {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  }
+}
 
 .planned-heading,
 .report-title,
@@ -1762,21 +1770,20 @@ figcaption {
 
 .roadmap-comment-icon {
   position: relative;
-      display: flex
-  ;
-      width: 44px;
-      height: 23px;
-      top: -28px;
-      height: 23px;
-      left: 80%;
-      right: 0;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 23px;
-      text-align: center;
-      letter-spacing: -0.222222px;
-      color: #3a4374;
-      gap: 5px;
+  display: flex;
+  width: 44px;
+  height: 23px;
+  top: -28px;
+  height: 23px;
+  left: 80%;
+  right: 0;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: -0.222222px;
+  color: #3a4374;
+  gap: 5px;
 }
 
 .planned-bar,
@@ -2735,7 +2742,7 @@ p {
     width: 100vw !important;
     margin: 0 auto;
     display: grid;
-    gap:2rem;
+    gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }
   .column {
@@ -2774,7 +2781,7 @@ p {
     margin-bottom: -24px;
     height: 20px;
     border-radius: 0 !important;
-    padding-left:5px;
+    padding-left: 5px;
     width: 45vw;
   }
 
@@ -2829,7 +2836,7 @@ p {
   }
 
   #column-planned {
-    margin-left:0;
+    margin-left: 0;
   }
 
   .report-title {
@@ -2964,10 +2971,12 @@ p {
   }
 
   .feedback-screen-active {
+    position: absolute;
     width: 100vw;
     border-radius: 10px;
     top: 370px;
     margin-left: 0px;
+    left: 0;
   }
 
   #suggested-feedback {
@@ -3022,7 +3031,6 @@ p {
     right: 0;
     margin: 0;
   }
-
 
   .login-screen,
   .register-screen {
@@ -3351,6 +3359,21 @@ p {
     padding-left: 20px;
   }
 
+  .login-register {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 53px;
+    margin-left: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    width: 223px;
+    color: #9799b7;
+  }
+
   .navbar-toggler {
     margin-left: auto;
     margin-right: 5%;
@@ -3365,6 +3388,12 @@ p {
     background-image: url("../assets/shared/mobile/icon-hamburger.svg") !important;
   }
 
+  .nav-link-logout {
+    width: 20px;
+  }
+  /* .nav-link-logout > p {
+   color:black;
+ } */
   .close-icon {
     content: url("../assets/shared/mobile/icon-close.svg") !important;
   }
@@ -3392,7 +3421,7 @@ p {
 
   .buttons {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     width: 100%;
     height: auto;
     flex-shrink: 0;
@@ -3401,7 +3430,7 @@ p {
     margin-top: 0;
     padding-bottom: 15px;
     align-content: space-evenly;
-    justify-content: center;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
     align-items: flex-start;
     justify-items: flex-start;
@@ -3489,13 +3518,13 @@ p {
     width: 30px;
   }
 
-  #roadmapupvote{
+  #roadmapupvote {
     margin-left: 0px;
     width: 30px;
     height: 250px;
-    }
+  }
 
-  .feedback-suggested-numvotes{
+  .feedback-suggested-numvotes {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -3506,13 +3535,13 @@ p {
     text-align: center;
     border-radius: 10px;
     border: none;
-    margin-left:9px;
-    margin-top:15px;
-    gap:6px;
+    margin-left: 9px;
+    margin-top: 15px;
+    gap: 6px;
   }
 
   .feedback-suggested-numvotes:active,
-  .feedback-suggested-numvotes:focus{
+  .feedback-suggested-numvotes:focus {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -3523,9 +3552,9 @@ p {
     text-align: center;
     border-radius: 10px;
     border: none;
-    margin-left:9px;
-    margin-top:15px;
-    gap:6px;
+    margin-left: 9px;
+    margin-top: 15px;
+    gap: 6px;
   }
 
   .add-feedback-top {
@@ -3613,7 +3642,7 @@ p {
 
   #content {
     position: relative;
-    left: 30px;
+    left: 20px;
     top: 71px;
     background-color: #dee2e6;
     width: 44px;
@@ -3624,6 +3653,7 @@ p {
     padding-left: 1px;
     display: flex;
     flex-direction: row;
+    margin-right: 0;
   }
 
   .dropupCaret {
@@ -3806,7 +3836,7 @@ p {
     flex-direction: row;
     background-color: #f2f4fe;
     right: 0px;
-    top: 75px;
+    top: 88px;
     width: 32px;
     height: 19px;
     gap: 4px;
@@ -3984,7 +4014,6 @@ p {
     line-height: normal;
   }
 
-
   .login-screen,
   .register-screen {
     position: relative;
@@ -4009,7 +4038,6 @@ p {
   }
 
   .roadmap-nav {
-
     width: 100vw !important;
     height: 100px;
     flex-shrink: 0;
@@ -4023,7 +4051,7 @@ p {
   .go-back-roadmap {
     margin-top: 0;
     margin-left: 0;
-    
+
     margin-bottom: 0px;
     top: 0;
     left: 0;
@@ -4082,7 +4110,7 @@ p {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding-left:13px;
+    padding-left: 13px;
   }
 
   .planned-bar,
@@ -4124,13 +4152,13 @@ p {
     margin: 30px 0 30px auto;
     padding: 10.5px 2% 5px 2%;
     top: 0;
-    right:0;
+    right: 0;
   }
 
   .columns {
     grid-template-columns: 1fr;
     left: 0;
-    padding-right: 0;  
+    padding-right: 0;
   }
 
   .report-title {
@@ -4177,7 +4205,6 @@ p {
     height: 32px;
     flex-shrink: 0;
     top: 0;
-    
   }
 
   .roadmap-comment-icon {
@@ -4186,15 +4213,13 @@ p {
     display: flex;
     width: 40px;
     height: 19px;
-  float: right;
+    float: right;
     gap: 4px;
     flex-shrink: 0;
-
-    
   }
 
-  .live ,
-  .ideas ,
+  .live,
+  .ideas,
   .progress {
     margin-right: 0;
     right: 0;
@@ -4243,40 +4268,38 @@ p {
     width: 100vw;
   }
   .tab-planned-bar {
-    width: 33.3%;
+    width: 79px;
     height: 4px;
     flex-shrink: 0;
     background: #f49f85;
-    top: 0;
-    margin-left:0px;
+    /* top: 0; */
+    margin-left: 26px;
   }
 
   .tab-inprog-bar {
-    width: 33.3%;
+    width: 79px;
     height: 4px;
     flex-shrink: 0;
     background: #ad1fea;
-    top: 0;
-    margin-left: 145px;
-    display: none;
+    /* top: 0; */
+    margin-left: 44%;
   }
 
   .tab-lv-bar {
-    width: 33.3%;
+    width: 56px;
     height: 4px;
     flex-shrink: 0;
     background: #62bcfa;
     top: 0;
-    margin-left: 280px;
-    display: none;
+    margin-left: 74%;
   }
   hr {
     position: relative;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
     margin-top: 0;
     margin-bottom: 24px;
-    max-width:30vw;
+    max-width: 30vw;
     height: 1px;
     flex-shrink: 0;
     opacity: 0.25;
@@ -4626,11 +4649,11 @@ p {
     width: 90vw;
     top: 0;
   }
-  
+
   .char-left {
     margin-top: 5px;
     margin-bottom: 5px;
-     padding-left: 20px;
+    padding-left: 20px;
   }
 
   .reply-form {

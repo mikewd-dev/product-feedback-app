@@ -1,65 +1,44 @@
 // if (process.env.NODE_ENV !== "production"){
 require("dotenv").config();
-// }
+
 const express = require("express");
 const app = express();
-const router = express.Router();
-const serverless = require("serverless-http");
+const path = require("path");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const Joi = require("joi");
-const path = require("path");
-const { storage } = require("./cloudinary");
-const multer = require("multer");
-const upload = multer({ storage });
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
 const helmet = require("helmet");
-require("dotenv").config();
+const multer = require("multer");
+const { storage } = require("./cloudinary");
+const upload = multer({ storage });
+const ejsMate = require("ejs-mate");
+const mongoSanitize = require("express-mongo-sanitize");
+const requestRoutes = require("./routes/requests");
+const User = require("./models/user");
+const Request = require("./models/request");
+const Comment = require("./models/comment");
+const Reply = require("./models/reply");
+const Roadmap = require("./models/roadmap");
+const bodyParser = require("body-parser");
+const catchAsync = require("./utils/catchAsync");
+const ExpressError = require("./utils/ExpressError");
+
+// --- MongoDB connection ---
 mongoose
   .connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   .then(() => console.log("DB Connected!!"))
   .catch((err) => console.error(err));
 
-const ejsMate = require("ejs-mate");
-const mongoSanitize = require("express-mongo-sanitize");
-const requestRoutes = require("./routes/requests");
-const User = require("./models/user");
-
-const bodyParser = require("body-parser");
-const ExpressError = require("./utils/ExpressError");
-
-const db = mongoose.connection;
-
-
-app.use("/", requestRoutes);
-
-app.use(express.static("public"));
-app.use("/styles", express.static(__dirname + "public/styles"));
-app.use("/js", express.static(__dirname + "public/js"));
-app.use("/images", express.static(__dirname + "public/images"));
-
-app.use(mongoSanitize());
-
-app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(methodOverride("_method"));
-
-app.engine("ejs", ejsMate);
-
-app.set("view engine", "ejs");
-
-app.set("views", path.join(__dirname, "views"));
-
+// --- Session store ---
 const dbstore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI,
   touchAfter: 24 * 60 * 60,
-  crypto: {
-    secret: "thisshouldbeabettersecret!",
-  },
+  crypto: { secret: "thisshouldbeabettersecret!" },
 });
 
 dbstore.on("error", function (e) {
@@ -73,15 +52,17 @@ const sessionConfig = {
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), // 1 week
   },
 };
+// ✅ Session must come BEFORE Passport
 app.use(session(sessionConfig));
 app.use(flash());
 app.use(helmet());
 
+// --- Helmet CSP ---
 const scriptSrcUrls = [
   "https://stackpath.bootstrapcdn.com/",
   "https://kit.fontawesome.com/",
@@ -112,7 +93,7 @@ app.use(
       directives: {
         defaultSrc: [],
         connectSrc: ["'self'", ...connectSrcUrls],
-        scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+        scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
         styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
         workerSrc: ["'self'", "blob:"],
         objectSrc: [],
@@ -120,42 +101,95 @@ app.use(
           "'self'",
           "blob:",
           "data:",
-          "https://res.cloudinary.com/dxarelvy7/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
+          "https://res.cloudinary.com/dxarelvy7/",
           "https://images.unsplash.com/",
         ],
         fontSrc: ["'self'", ...fontSrcUrls],
         mediaSrc: ["https://res.cloudinary.com/dxarelvy7/"],
         childSrc: ["blob:"],
+        scriptSrcAttr: ["'unsafe-inline'"], // <-- Add this line
       },
     },
     crossOriginEmbedderPolicy: false,
   }),
 );
-[];
-
-app.use((req, res, next) => {
-  res.locals.messages = req.flash("success") || req.flash("error") || [];
-  next();
-});
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
 
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// --- Flash & current user middleware ---
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+//--- Middleware ---
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(methodOverride("_method"));
+app.use(mongoSanitize());
+
+// Provide navbar-related data to all views
+app.use((req, res, next) => {
+  res.locals.roadmap = [];
+  res.locals.progress = [];
+  res.locals.live = [];
+  res.locals.request = [];
+  next();
+});
+
+// --- View engine ---
+app.engine("ejs", ejsMate);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// --- Static assets ---
+app.use(express.static("public"));
+app.use("/styles", express.static(path.join(__dirname, "public/styles")));
+app.use("/js", express.static(path.join(__dirname, "public/js")));
+app.use("/images", express.static(path.join(__dirname, "public/images")));
+
+app.use((req, res, next) => {
+  const match = req.path.match(/\/feedback\/([^\/\?]+)/);
+  res.locals.currentType = match ? match[1] : "suggestions";
+  next();
+});
+
+// --- Routes ---
+app.use("/", requestRoutes);
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500, message = "Something went wrong" } = err;
+  //display error message and stack
+  if (!err.message) err.message = "Oh no, something went wrong!";
+  //err should be passed through to the error template
+  res.status(statusCode).render("error", { err });
+});
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError("Page Not Found", 404));
+});
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Oh No, Something Went Wrong!";
+  res.status(statusCode).render("error", { err });
+});
+
+// --- Auth guard example ---
 function isLoggedIn(req, res, next) {
-  // console.log("REQ.USER...", req.user);
-  if (req.isAuthenticated()) {
-    return next();
-  }
+  if (req.isAuthenticated()) return next();
   res.redirect("/feedback/login");
 }
 
-
-
-const PORT = process.env.PORT ||3002;
+// --- Start server ---
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });

@@ -32,50 +32,6 @@ const ExpressError = require("../utils/ExpressError");
 
 const db = mongoose.connection;
 
-router.use(express.static("public"));
-router.use("/styles", express.static(__dirname + "public/styles"));
-router.use("/js", express.static(__dirname + "public/js"));
-router.use("/images", express.static(__dirname + "public/images"));
-
-router.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.json())
-router.use(methodOverride("_method"));
-
-app.engine("ejs", ejsMate);
-
-app.set("view engine", "ejs");
-
-app.set("views", path.join(__dirname, "views"));
-
-const sessionConfig = {
-  name: "prodfb-session",
-  secure: true,
-  secret: "thisshouldbeabettersecret!",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-    sameSite: "lax",
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-  },
-};
-router.use(session(sessionConfig));
-router.use(flash());
-
-router.use((req, res, next) => {
-  res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
-  next();
-});
-
-router.use(passport.initialize());
-router.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
 // ========POST ROUTES==========
 
 router.post(
@@ -135,14 +91,17 @@ router.post(
   }),
 );
 
-router.post("/feedback/suggestions/:id/upvote",isLoggedIn,
-              catchAsync(async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
+router.post(
+  "/feedback/suggestions/:id/upvote",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const suggestion = await Request.findById(req.params.id);
+    suggestion.upvotes = suggestion.upvotes + 1;
+    await suggestion.save();
 
-  res.json({ upvotes: suggestion.upvotes });
-}));
+    res.json({ upvotes: suggestion.upvotes });
+  }),
+);
 
 router.post(
   "/feedback/enhancement/:id/upvote",
@@ -152,42 +111,57 @@ router.post(
     suggestion.upvotes = suggestion.upvotes + 1;
     await suggestion.save();
     res.json({ upvotes: suggestion.upvotes });
-  }));
+  }),
+);
 
-router.post("/feedback/bug/:id/upvote", isLoggedIn,
-    catchAsync(async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-  res.json({ upvotes: suggestion.upvotes });
-}));
+router.post(
+  "/feedback/bug/:id/upvote",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const suggestion = await Request.findById(req.params.id);
+    suggestion.upvotes = suggestion.upvotes + 1;
+    await suggestion.save();
+    res.json({ upvotes: suggestion.upvotes });
+  }),
+);
 
-router.post("/feedback/ui/:id/upvote", isLoggedIn,
-    catchAsync(async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-  res.json({ upvotes: suggestion.upvotes });
-}));
+router.post(
+  "/feedback/ui/:id/upvote",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const suggestion = await Request.findById(req.params.id);
+    suggestion.upvotes = suggestion.upvotes + 1;
+    await suggestion.save();
+    res.json({ upvotes: suggestion.upvotes });
+  }),
+);
 
-router.post("/feedback/ux/:id/upvote", isLoggedIn,
-    catchAsync(async (req, res) => {
-  const suggestion = await Request.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
-  res.json({ upvotes: suggestion.upvotes });
-}));
+router.post(
+  "/feedback/ux/:id/upvote",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const suggestion = await Request.findById(req.params.id);
+    suggestion.upvotes = suggestion.upvotes + 1;
+    await suggestion.save();
+    res.json({ upvotes: suggestion.upvotes });
+  }),
+);
 
-router.post("/feedback/roadmap/:id/upvote", isLoggedIn,
-catchAsync(async (req, res) => {
-  const suggestion = await Roadmap.findById(req.params.id);
-  suggestion.upvotes = suggestion.upvotes + 1;
-  await suggestion.save();
+router.post(
+  "/feedback/roadmap/:id/upvote",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const suggestion = await Roadmap.findById(req.params.id);
+    suggestion.upvotes = suggestion.upvotes + 1;
+    await suggestion.save();
 
-  res.json({ upvotes: suggestion.upvotes });
-}));
+    res.json({ upvotes: suggestion.upvotes });
+  }),
+);
 
-router.post("/feedback/:id/comments", isLoggedIn,
+router.post(
+  "/feedback/:id/comments",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
     if (!request) {
@@ -213,11 +187,12 @@ router.post("/feedback/:id/comments", isLoggedIn,
 
     req.flash("success", "Your comment has been added successfully");
     res.redirect(`/feedback/${req.params.id}`);
-}));
+  }),
+);
 router.post(
   "/feedback/:id/comment/:commentId/replies",
-    isLoggedIn,
-      catchAsync(async (req, res) => {
+  isLoggedIn,
+  catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
     const comment = await request.comments.id(req.params.commentId);
     const imageUrl = req.user.image[0].url;
@@ -242,8 +217,8 @@ router.post(
 
 router.post(
   "/feedback/:id/comment/:commentId/reply/:replyId/replies",
-    isLoggedIn,
-      catchAsync(async (req, res) => {
+  isLoggedIn,
+  catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
     const comment = await request.comments.id(req.params.commentId);
     const reply = comment.replies.id(req.params.replyId);
@@ -278,7 +253,7 @@ router.get(
       .where("status")
       .equals("in-progress");
     const live = await Roadmap.find({}).where("status").equals("live");
-    
+
     res.render("feedback/index", {
       request,
       roadmap,
@@ -486,6 +461,10 @@ router.get(
   }),
 );
 
+router.get("/test", (req, res) => {
+  console.log("User from req.user", req.user);
+  res.send("Check console");
+});
 router.get(
   "/feedback/feature",
   catchAsync(async (req, res, next) => {

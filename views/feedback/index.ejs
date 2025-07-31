@@ -1,28 +1,21 @@
-  <%-include ('../layouts/boilerplate') %>
-  <body>
+                <%-include('../layouts/boilerplate') %>
 
-  <%-include ('../partials/navbar') %>
+                <% block('content') %>
 
-  
-  <div class="feedback-screen">
-    <div class="overlay"></div>
-    <figure class="figure-item ">
-      <img class="no-feedback " src="/assets/suggestions/illustration-empty.svg " alt=" " srcset=" ">
-      <figcaption>
-        <h1 class="feedback-title ">Product Feedback</h1>
-        <div class="reg-login">
+                  <%- include('../partials/navbar') %>
 
-          <a href="/feedback/login" class="btn-logon" type="button">Login</a>
-     
-          <a class ="reg"href="/feedback/register">No account. Please register</a>
-     
-        </div>
-   
-      </figcaption>
-    </figure>
-  </div>
+                  <div class="feedback-screen">
+                    <div class="overlay"></div>
+                    <figure class="figure-item">
+                      <img class="no-feedback" src="/assets/suggestions/illustration-empty.svg" alt="">
+                      <figcaption>
+                        <h1 class="feedback-title">Product Feedback</h1>
+                        <div class="reg-login">
+                          <a href="/feedback/login" class="btn-logon" type="button">Login</a>
+                          <a class="reg" href="/feedback/register">No account? Please register</a>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </div>
 
-  </div>
-          </div>
-
-            <%-include ('../partials/footer') %>
+                  <%- include('../partials/footer') %>
