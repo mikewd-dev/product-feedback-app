@@ -438,18 +438,36 @@ li {
 .navbar-brand {
   color: #ffffff !important;
 }
-.login-register {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-left: 36px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
-   color: #9799b7;
+
+.alert {
+  z-index: 1;
+  width: 40vw;
+  top: 0;
+  height: 130px;
+  margin: 0 auto !important;
+}
+
+.btn-close {
+  
+}
+.login-register-desk {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height:45px;
+    gap: 22px;
+    width: 100vw;
+    margin-left: auto;
+    padding-right: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    color: #f2f2f2;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../assets/suggestions/mobile/background-header.png);
 }
 .nav-link {
   margin-left: 36px;
@@ -3359,19 +3377,23 @@ p {
     padding-left: 20px;
   }
 
-  .login-register {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 53px;
-    margin-left: 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    width: 223px;
-    color: #9799b7;
+  .login-register-mob {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 26px;
+            margin-left: 0;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 23px;
+            width: 241px;
+            height: 161px;
+            color: #ffff;
+            margin-top: 3px;
+            background-size: cover;
+            background-image: url(../assets/suggestions/mobile/background-header.png);
   }
 
   .navbar-toggler {
@@ -3389,11 +3411,10 @@ p {
   }
 
   .nav-link-logout {
-    width: 20px;
+    width: 88px;
+    color: #cbbebeff;
   }
-  /* .nav-link-logout > p {
-   color:black;
- } */
+
   .close-icon {
     content: url("../assets/shared/mobile/icon-close.svg") !important;
   }
