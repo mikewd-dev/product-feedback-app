@@ -1,4 +1,4 @@
-* {
+-* {
   box-sizing: border-box;
 }
 
@@ -102,6 +102,12 @@ a > .blue {
 a {
   text-decoration: none !important;
 }
+.nav-link-logout,
+.nav-link-login,
+.nav-link-register{
+  color: #f2f2f2 !important;
+}
+
 
 .blue {
   display: flex;
@@ -3380,15 +3386,16 @@ p {
   .login-register-mob {
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            /* justify-content: center; */
             align-items: center;
             gap: 26px;
-            margin-left: 0;
+            margin-left:0;
+    padding-left: 20px;
             font-style: normal;
             font-weight: 600;
             font-size: 16px;
             line-height: 23px;
-            width: 241px;
+            width: 100vw;
             height: 161px;
             color: #ffff;
             margin-top: 3px;
