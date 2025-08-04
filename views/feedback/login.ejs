@@ -14,18 +14,23 @@
   <title>Frontend Mentor | Product feedback app</title>
 </head>
 <body>
-  <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
-    <div class="flash alert alert-warning">
-      <% messages.forEach((msg) => { %>
-        <p><%= msg %></p>
-      <% }) %>
-    </div>
-  <% } %>
+
+
+
 
   <div class="row login-center">
+   
     <div class="col-md-4">
       <div class="login-screen border p-4 shadow">
+        
         <form action="/feedback/login" method="POST" data-parsley-validate class="validated-form" novalidate>
+          <% if (success && success.length > 0) { %>
+            <div class="alert alert-success"><%= success[0] %></div>
+          <% } %>
+
+          <% if (error && error.length > 0) { %>
+            <div class="alert alert-danger"><%= error[0] %></div>
+          <% } %>
           <div class="mb-4 align-items-center">
             <label class="form-label" for="username">Username</label>
             <input class="form-control" type="text" id="username" name="username" autofocus required>
