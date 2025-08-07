@@ -11,7 +11,7 @@
   <title>Frontend Mentor | Product feedback app</title>
 </head>
   <body class="d-flex flex-column vh-100">
-    <div class="login-register-desk">
+    <nav class="login-register-desk">
       <% if (!currentUser) { %>
         <a class="nav-link-login" href="/feedback/login">Login</a>
         <a class="nav-link-register" href="/feedback/register">Register</a>
@@ -20,7 +20,7 @@
          <a class="nav-link-logout" href="/feedback/logout">Logout</a>
       <% } %>
        
-    </div>
+    </nav>
       <%- include('../partials/navbar') %>
 
     <main class="container mt-5">

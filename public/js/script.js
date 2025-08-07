@@ -217,6 +217,7 @@ function isLoggedIn(req, res, next) {
   }
   res.redirect("/feedback/login");
 }
+
 function dropReply(id) {
   const textarea = document.getElementById(id);
   textarea.focus();

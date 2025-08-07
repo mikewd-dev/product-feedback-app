@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const sanitizeHtml = require("sanitize-html");
-// const serverless = require('serverless-http')
+const serverless = require('serverless-http')
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const Joi = require("joi");
@@ -24,9 +24,9 @@ const ejsMate = require("ejs-mate");
 const User = require("../models/user");
 const Request = require("../models/request");
 const Comment = require("../models/comment");
-const Reply = require("../models/reply");
+// const Reply = require("../models/reply");
 const Roadmap = require("../models/roadmap");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
 
@@ -659,6 +659,16 @@ router.put(
     res.redirect(`/feedback/${request._id}`);
   }),
 );
+
+router.put("/feedback/:id/comments", isLoggedIn, catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const commentData = req.body.comment;
+
+    const comment = await Comment.findByIdAndUpdate(id, commentData, { new: true });
+
+    res.redirect(`/feedback/comment/${comment._id}`);
+  }));
+
 
 router.delete(
   "/feedback/:id",
