@@ -82,6 +82,20 @@ textarea.parsley-error {
   align-items: center;
 }
 
+.figure-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 749px;
+  flex-shrink: 0;
+}
+
 .btn-logon {
   background: #198754;
   float: right;
@@ -408,7 +422,7 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  width: 85vw;
+  width: 2290px;
   left: 287px;
   height: 72px;
   top: 0;
@@ -460,26 +474,26 @@ li {
 }
 .login-register-desk {
   position: fixed;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-      height: 45px;
-      gap: 22px;
-      width: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      overflow: hidden;
-      padding-right: 28px;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 23px;
-      color: #f2f2f2;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-image: url(../assets/suggestions/mobile/background-header.png);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height:45px;
+    gap: 22px;
+    width: 100%;
+  top: 0;
+  left:0;
+  right: 0;
+  overflow: hidden;
+    padding-right: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    color: #f2f2f2;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../assets/suggestions/mobile/background-header.png);
 }
 .nav-link {
   margin-left: 36px;
@@ -601,13 +615,14 @@ p {
 }
 
 .feedback-screen {
-  position: absolute;
-  display: flex;
+  position: fixed;
   align-items: center;
-  width: 70vw;
-  margin: auto auto;
+  justify-content: center;
+  width: 0vw;
+  margin: 0 auto;
   top: 150px;
   right: 0;
+  left: 0;
   border-radius: 10px;
   height: 53%;
 }
@@ -1012,13 +1027,16 @@ p {
 }
 
 .no-feedback {
-  position: relative;
-  width: 129.64px;
-  height: 136.74px;
-  left: 41.3%;
-  right: 0;
-  top: 24px;
-}
+  width: 170.64px;
+  height: 187.74px;
+      left: 41.3%;
+      right: 0;
+      top: 24px;
+      margin-left: 379px;
+      margin-right: 206px;
+  }
+
+
 
 .no-feedback-new {
   width: 129.64px;
@@ -1186,7 +1204,7 @@ figcaption {
   height: 189px;
   left: 659px;
   top: 491px;
-  margin-left: 209px;
+  margin-left: 233px;
   margin-right: 206px;
   font-weight: 400;
   font-size: 16px;
@@ -1786,6 +1804,7 @@ figcaption {
   border-radius: 10px;
   background: #fff;
   margin-bottom: 24px;
+  padding-top:9px;
   left: 10px;
 }
 
@@ -2233,7 +2252,7 @@ p {
   }
 
   .container {
-    max-width:900px !impor;
+    max-width:900px !important;
   }
   .container-fluid {
     margin-right: auto !important;
@@ -2361,11 +2380,11 @@ p {
     align-items: flex-start;
     left: 0;
     right: 0;
-    top: 50px;
+    top: 65px;
   }
 
   .feedback-screen {
-    position: absolute;
+    position: fixed;
     width: 85vw;
     height: 600px;
     flex-shrink: 0;
@@ -2408,14 +2427,14 @@ p {
   }
 
   .login-register-desk {
-    position:absolute;
+    position:fixed;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-end;
       height:45px;
       gap: 22px;
-      width: 100vw;
+      width: 100%;
     top: 0;
     left:0;
       padding-right: 20px;
@@ -2636,7 +2655,7 @@ p {
     margin-top: 6px;
   }
   .dropped {
-    width: 60vw !important;
+    width: 65vw !important;
     display: flex;
     flex-direction: row;
     background-color: #fff;
@@ -2684,7 +2703,7 @@ p {
     flex-shrink: 0;
     margin-bottom: 50px;
     margin-right: 0px;
-    width: 191px;
+    width: 235px;
     height: 178px;
     flex-shrink: 0;
     background-image: url("../assets/suggestions/tablet/background-header.png");
@@ -2704,7 +2723,7 @@ p {
     top: 216px;
     left: 0;
     right: 0;
-    width: 85vw;
+    width: 95vw;
   }
 
   .dropdown-main {
@@ -2741,14 +2760,15 @@ p {
 
   
   .button {
-    width: 205px;
+    width: 235px;
     height: 178px;
     flex-shrink: 0;
     margin-left: 0;
     margin-bottom: 0;
     margin-top: 0px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #ffff;
+    padding-top:9px;
   }
 
   #column-planned {
@@ -2761,6 +2781,7 @@ p {
     height: 178px;
     flex-shrink: 0;
     margin-left: 0;
+    padding-left:12px
   }
 
   .view-num {
@@ -3490,21 +3511,23 @@ p {
 
   .buttons {
     display: flex;
-    /* flex-direction: column; */
     width: 100%;
-    height: auto;
+    height: 131px;
     flex-shrink: 0;
     margin-left: 0px;
     border-bottom: none !important;
     margin-top: 0;
     padding-bottom: 15px;
     align-content: space-evenly;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
     align-items: flex-start;
     justify-items: flex-start;
   }
 
+  .alert {
+    top:121px;
+  }
+  
   .list {
     position: relative;
     left: 0;
@@ -3632,7 +3655,7 @@ p {
     font-size: 13px;
     height: 40px;
     flex-shrink: 0;
-    margin: 6px 4% 40px 0;
+    margin: 11px 4% 4px 0;
     padding: 10.5px 2% 5px 2%;
   }
 
@@ -3711,7 +3734,7 @@ p {
 
   #content {
     position: relative;
-    left: 20px;
+    left: 45px;
     top: 71px;
     background-color: #dee2e6;
     width: 44px;
@@ -3986,11 +4009,11 @@ p {
     z-index: 2;
   }
   .dropdown-menu.show {
+    display:block;
     width: 172px;
     height: auto;
-    left: 0;
-    top: 182px;
-    margin-top: 21px !important;
+    left: 0px !important;
+    top: 0px !important;
   }
 
   .overlay {
@@ -4735,7 +4758,8 @@ p {
   }
 
   .dropdown-divider {
-    width: 170px;
+    /* width: 170px; */
+    min-width: 100%;
   }
 
   .navbar-expand-lg {
