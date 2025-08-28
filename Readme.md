@@ -17,7 +17,7 @@ This project is an application where users can register to provide feedback on a
 
 ## How To Use
 
-Head over to /https://product-feedback-app-e45s.onrender.com/. Sometimes loading maybe slow due to Render spinning down free web services. You will be presented with the options to log in or register. Once logged in you can add feedback by clicking on the Add Feedback button. To comment on other user’s feedback and reply to comments you can select individual feedbacks and see other comments and replies and to add your own comment type in a comment at the bottom and click Post Comment button. To reply click on the link showing reply. You can also arrange feedback by comments (least, most) or upvotes (least, most)
+Head over to /https://product-feedback-app-production.up.railway.app/. Sometimes loading maybe slow due to Render spinning down free web services. You will be presented with the options to log in or register. Once logged in you can add feedback by clicking on the Add Feedback button. To comment on other user’s feedback and reply to comments you can select individual feedbacks and see other comments and replies and to add your own comment type in a comment at the bottom and click Post Comment button. To reply click on the link showing reply. You can also arrange feedback by comments (least, most) or upvotes (least, most)
 
 ## How To Contribute
 
