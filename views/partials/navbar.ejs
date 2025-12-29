@@ -23,21 +23,21 @@
     </div>
   </nav>
 
- <nav class="bar-container p-3 d-flex align-items-center text-white" style="background-color: #373F68; border-radius: 10px;">
+<nav class="bar-container p-3 d-flex align-items-center text-white" style="background-color: #373F68; border-radius: 10px;">
   
-  <div class="d-flex align-items-center" style="min-width: 150px;">
-    <img class="arrows me-3" src="/assets/suggestions/icon-suggestions.svg" alt="suggestions icon">
+  <div class="d-flex align-items-center" style="flex: 1;">
+    <img class="arrows me-3" src="/assets/suggestions/icon-suggestions.svg" alt="">
     <div class="suggestion d-none d-md-block">
       <span class="fw-bold"><%= request.length %></span> Suggestions
     </div>
   </div>
 
-  <div class="flex-grow-1 text-center">
+  <div class="text-center" style="flex: 1;">
     <div class="dropdown">
       <button class="btn btn-link dropdown-toggle text-white text-decoration-none p-0" type="button" id="sortMenu" data-bs-toggle="dropdown" aria-expanded="false">
         Sort by : <strong id="current-sort">Most Upvotes</strong>
       </button>
-      <ul class="dropdown-menu shadow text-start" aria-labelledby="sortMenu">
+      <ul class="dropdown-menu shadow" aria-labelledby="sortMenu">
         <li><a class="dropdown-item" href="?sort=most-upvotes">Most Upvotes</a></li>
         <li><a class="dropdown-item" href="?sort=least-upvotes">Least Upvotes</a></li>
         <li><hr class="dropdown-divider"></li>
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <div class="add-btn-wrapper text-end" style="min-width: 150px;">
+  <div class="text-end" style="flex: 1;">
      <a class="btn btn-primary add-feedback-top" href="/feedback/new" style="background-color: #AD1FEA; border: none; font-weight: bold; border-radius: 10px; padding: 10px 20px;">
         + Add Feedback
      </a>
