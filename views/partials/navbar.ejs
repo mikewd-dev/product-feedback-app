@@ -10,31 +10,29 @@
           <div class="navbar-collapse justify-content-between collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="dropdown">
-                <div class="nav-link" id="navbarDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                <div class="nav-link" id="navbarDropdownMenu" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
                   <div class="drop">
                     <div class="buttons">
                       <div class="d-flex">
-                        <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" data-type="suggestions">All</a>
-                        <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>" data-type="ui">UI</a>
-                        <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>" data-type="ux">UX</a>
+                        <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>">All</a>
+                        <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>">UI</a>
+                        <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>">UX</a>
                       </div>
-
                       <div class="d-flex">
-                        <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" data-type="enhancement">Enhancement</a>
-                        <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>" data-type="bug">Bug</a>
+                        <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>">Enhancement</a>
+                        <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>">Bug</a>
                       </div>
-
                       <div class="d-flex flex-row">
-                        <a href="/feedback/feature" class="blue <%= currentType === 'feature' ? 'active' : '' %>" data-type="feature">Feature</a>
+                        <a href="/feedback/feature" class="blue <%= currentType === 'feature' ? 'active' : '' %>">Feature</a>
                       </div>
                     </div>
 
                     <div class="list">
                       <div class="map">
-                        <h5><p class="roadmap">Roadmap</p></h5>
-                        <span class="oval-planned"></span><p class="roadmap-options">Planned</p>
-                        <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
-                        <span class="oval-live"></span><p class="roadmap-options">Live</p>
+                        <h5 class="roadmap">Roadmap</h5>
+                        <span class="oval-planned"></span><span class="roadmap-options">Planned</span>
+                        <span class="oval-progress"></span><span class="roadmap-options">In-Progress</span>
+                        <span class="oval-live"></span><span class="roadmap-options">Live</span>
                       </div>
                       <ul class="view-roadmap">
                         <li class="view"><a href="/feedback/roadmap">View</a></li>
@@ -49,7 +47,7 @@
                           <a class="nav-link-login" href="/feedback/login">Login</a>
                           <a class="nav-link-register" href="/feedback/register">Register</a>
                         <% } else { %>
-                          <p>Welcome <%= currentUser ? currentUser.username : "" %></p>
+                          <p>Welcome <%= currentUser.username %></p>
                           <a class="nav-link-logout" href="/feedback/logout">Logout</a>
                         <% } %>
                       </div>
@@ -60,96 +58,36 @@
             </ul>
           </div>
         </div>
-
-        <div class="board-text">
-          <p class="navboard-title">Frontend Mentor</p>
-          <p class="navboard-subtitle">Feedback Board</p>
-        </div>
       </nav>
 
-      <div class="dropped">
-        <div class="button">
-          <div class="d-flex">
-            <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>">All</a>
-            <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>">UI</a>
-            <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>">UX</a>
-          </div>
-          <div class="d-flex">
-            <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>">Enhancement</a>
-            <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>">Bug</a>
-          </div>
-          <div class="d-flex flex-row">
-            <a href="/feedback/feature" class="blue <%= currentType === 'feature' ? 'active' : '' %>">Feature</a>
-          </div>
-        </div>
-        <div class="list">
-          <div class="map">
-            <h5><p class="roadmap">Roadmap</p></h5>
-            <span class="oval-planned"></span><p class="roadmap-options">Planned</p>
-            <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
-            <span class="oval-live"></span><p class="roadmap-options">Live</p>
-          </div>
-          <ul class="view-roadmap">
-            <li class="view"><a href="/feedback/roadmap">View</a></li>
-          </ul>
-          <div class="view-num">
-            <p><%= roadmap.length %></p>
-            <p><%= progress.length %></p>
-            <p><%= live.length %></p>
-          </div>
-        </div>
-      </div>
-
-     <div class="dropdown">
-  <nav class="navbar-expand-lg">
-    <div class="container-fluid d-flex align-items-center position-relative">
-      
-      <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" alt="Suggestions">
-      <li class="suggestion" style="list-style: none;">
-        <span><%= request.length %></span> Suggestions
-      </li>
-      
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Sort by : <strong id="menu-item">Most Upvotes</strong>
-          <span><img class="down-arrow" alt="" src="/assets/shared/icon-arrow-down.svg"></span>
-        </a>
+        <nav class="navbar-expand-lg">
+          <div class="container-fluid d-flex align-items-center position-relative">
+            <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" alt="">
+            
+            <div class="suggestion-count" style="margin-left: 10px;">
+              <span><%= request.length %></span> Suggestions
+            </div>
 
-        <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <a class="dropdown-item d-flex justify-content-between align-items-center" id="mostup" href="/feedback/bug?sort=mostup">
-              Most Upvotes
-              <img class="checked" id="mostCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-            </a>
-          </li>
-          <hr class="dropdown-divider">
-          <li>
-            <a class="dropdown-item d-flex justify-content-between align-items-center" id="leastup" href="/feedback/bug?sort=leastup">
-              Least Upvotes
-              <img class="checked" id="leastCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-            </a>
-          </li>
-          <hr class="dropdown-divider">
-          <li>
-            <a class="dropdown-item d-flex justify-content-between align-items-center" id="mostcomm" href="/feedback/bug?sort=mostcomm">
-              Most Comments
-              <img class="checked" id="mostCheckComm" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-            </a>
-          </li>
-          <hr class="dropdown-divider">
-          <li>
-            <a class="dropdown-item d-flex justify-content-between align-items-center" id="leastcomm" href="/feedback/bug?sort=leastcomm">
-              Least Comments
-              <img class="checked" id="leastCheckComm" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-            </a>
-          </li>
-        </ul>
+            <div class="dropdown ms-3">
+              <a class="nav-link dropdown-toggle" href="#" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Sort by : <strong>Most Upvotes</strong>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                <li><a class="dropdown-item" href="/feedback/bug?sort=mostup">Most Upvotes</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/feedback/bug?sort=leastup">Least Upvotes</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/feedback/bug?sort=mostcomm">Most Comments</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/feedback/bug?sort=leastcomm">Least Comments</a></li>
+              </ul>
+            </div>
+
+            <a class="add-feedback-top text-center" href="/feedback/new">+Add Feedback</a>
+          </div>
+        </nav>
       </div>
-
-      <a class="add-feedback-top text-center" href="/feedback/new">+Add Feedback</a>
-    </div>
-  </nav>
-</div>
     </div>
   </div>
 </div>
