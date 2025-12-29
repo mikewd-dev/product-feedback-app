@@ -95,12 +95,12 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: [],
+        defaultSrc: ["'self'"], 
         connectSrc: ["'self'", ...connectSrcUrls],
         scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
         styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
         workerSrc: ["'self'", "blob:"],
-        objectSrc: [],
+        objectSrc: ["'none'"],
         imgSrc: [
           "'self'",
           "blob:",
