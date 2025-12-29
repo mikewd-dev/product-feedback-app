@@ -1,60 +1,54 @@
-<div class="container">
-  <div class="grid-container">
-    <div class="feedback">
+<div class="feedback-nav-wrapper">
+  <nav class="navbar navbar-expand-lg mb-3">
+    <div class="container-fluid p-0">
+      <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span id="ChangeToggle" class="navbar-toggler-icon"></span>
+      </button>
       
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span id="ChangeToggle" class="navbar-toggler-icon"></span>
-          </button>
-          
-          <div class="navbar-collapse justify-content-between collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <div class="nav-link" id="navbarDropdownMenu" role="group">
-                  <div class="drop">
-                    <div class="buttons">
-                      <div class="d-flex">
-                        <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>">All</a>
-                        <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>">UI</a>
-                        <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>">UX</a>
-                      </div>
-                      <div class="d-flex">
-                        <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>">Enhancement</a>
-                        <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>">Bug</a>
-                      </div>
-                    </div>
-                  </div> 
-                </div> 
-              </li>
-            </ul>
+      <div class="navbar-collapse collapse" id="navbarNavDropdown">
+        <div class="drop w-100">
+          <div class="buttons p-3 bg-white rounded shadow-sm">
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>">All</a>
+              <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>">UI</a>
+              <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>">UX</a>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>">Enhancement</a>
+              <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>">Bug</a>
+            </div>
           </div>
-        </div>
-      </nav>
-
-      <nav class="navbar-expand-lg bar-container">
-        <div class="container-fluid d-flex align-items-center position-relative">
-          <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" alt="">
-          
-          <div class="suggestion ms-2">
-            <span><%= request.length %></span> Suggestions
-          </div>
-
-          <div class="dropdown ms-4">
-             <button class="btn btn-link dropdown-toggle text-white text-decoration-none" type="button" id="sortMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                Sort by : <strong>Most Upvotes</strong>
-             </button>
-             <ul class="dropdown-menu" aria-labelledby="sortMenu">
-                <li><a class="dropdown-item" href="/feedback/bug?sort=mostup">Most Upvotes</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/feedback/bug?sort=leastup">Least Upvotes</a></li>
-             </ul>
-          </div>
-
-          <a class="add-feedback-top text-center" href="/feedback/new">+Add Feedback</a>
-        </div>
-      </nav>
-
+        </div> 
+      </div>
     </div>
-   </div>
- </div> 
+  </nav>
+
+  <nav class="bar-container p-3 d-flex align-items-center justify-content-between text-white" style="background-color: #373F68; border-radius: 10px;">
+    
+    <div class="d-flex align-items-center">
+      <img class="arrows me-3" src="/assets/suggestions/icon-suggestions.svg" alt="suggestions icon">
+      <div class="suggestion d-none d-md-block">
+        <span class="fw-bold"><%= request.length %></span> Suggestions
+      </div>
+    </div>
+
+    <div class="dropdown mx-auto">
+       <button class="btn btn-link dropdown-toggle text-white text-decoration-none p-0" type="button" id="sortMenu" data-bs-toggle="dropdown" aria-expanded="false">
+          Sort by : <strong id="current-sort">Most Upvotes</strong>
+       </button>
+       <ul class="dropdown-menu shadow" aria-labelledby="sortMenu">
+          <li><a class="dropdown-item" href="?sort=most-upvotes">Most Upvotes</a></li>
+          <li><a class="dropdown-item" href="?sort=least-upvotes">Least Upvotes</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="?sort=most-comments">Most Comments</a></li>
+          <li><a class="dropdown-item" href="?sort=least-comments">Least Comments</a></li>
+       </ul>
+    </div>
+
+    <div class="add-btn-wrapper">
+       <a class="btn btn-primary add-feedback-top" href="/feedback/new" style="background-color: #AD1FEA; border: none; font-weight: bold; border-radius: 10px; padding: 10px 20px;">
+          + Add Feedback
+       </a>
+    </div>
+  </nav>
+</div>
