@@ -1,116 +1,30 @@
-            <div class="container">
-             
-              <div class="grid-container">
-                
-                <div class="feedback">
-                  <nav class="navbar navbar-expand-lg">
-                    <div class="container-fluid">
-                      <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span id="ChangeToggle" class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="navbar-collapse justify-content-between collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                          <li class="dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              <div class="drop">
-                                <div class="buttons">
-                                  <div class="d-flex">
-                                    <a href="/feedback/suggestions">
-                                      <button class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" data-type="suggestions">All</button>
-                                    </a>
-                                    <a href="/feedback/ui">
-                                      <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" data-type="ui">UI</button>
-                                    </a>
-                                    <a href="/feedback/ux">
-                                      <button class="blue <%= currentType === 'ux' ? 'active' : '' %>" data-type="ux">UX</button>
-                                    </a>
-                                  </div>
-
-                                  <div class="d-flex">
-                                    <a href="/feedback/enhancement">
-                                      <button class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" data-type="enhancement">Enhancement</button>
-                                    </a>
-                                    <a href="/feedback/bug">
-                                      <button class="blue <%= currentType === 'bug' ? 'active' : '' %>" data-type="bug">Bug</button>
-                                    </a>
-                                  </div>
-
-                                  <div class="d-flex flex-row">
-                                    <a href="/feedback/feature">
-                                      <button class="blue <%= currentType === 'feature' ? 'active' : '' %>" data-type="feature">Feature</button>
-                                    </a>
-                                  </div>
-                                </div>
-
-                                <div class="list">
-                                  <div class="map">
-                                    <h5><p class="roadmap">Roadmap</p></h5>
-                                    <span class="oval-planned"></span>
-                                    <p class="roadmap-options">Planned</p>
-                                    <span class="oval-progress"></span>
-                                    <p class="roadmap-options">In-Progress</p>
-                                    <span class="oval-live"></span>
-                                    <p class="roadmap-options">Live</p>
-                                  </div>
-                                  <ul class="view-roadmap">
-                                    <li class="view"><a href="/feedback/roadmap">View</a></li>
-                                  </ul>
-                                  <div class="view-num">
-                                    <p><%= roadmap.length %></p>
-                                    <p><%= progress.length %></p>
-                                    <p><%= live.length %></p>
-                                  </div>
-                  <div class="login-register-mob">
-                  <% if (!currentUser) { %>
-        <a class="nav-link-login" href="/feedback/login">Login</a>
-        <a class="nav-link-register" href="/feedback/register">Register</a>
-      <% } else { %>
-         <p>Welcome <%= currentUser ? currentUser.username : "" %></p>
-         <a class="nav-link-logout" href="/feedback/logout">Logout</a>
-      <% } %>
-       
-    </div>
-                                </div>
-                              </div>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="board-text">
-                      <p class="navboard-title">Frontend Mentor</p>
-                      <p class="navboard-subtitle">Feedback Board</p>
-                    </div>
-                  </nav>
-
-                  <div class="dropped">
-                    <div class="button">
+<div class="container">
+  <div class="grid-container">
+    <div class="feedback">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span id="ChangeToggle" class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse justify-content-between collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="dropdown">
+                <div class="nav-link" id="navbarDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                  <div class="drop">
+                    <div class="buttons">
                       <div class="d-flex">
-                        <a href="/feedback/suggestions">
-                          <button class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" data-type="suggestions">All</button>
-                        </a>
-                        <a href="/feedback/ui">
-                          <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" data-type="ui">UI</button>
-                        </a>
-                        <a href="/feedback/ux">
-                          <button class="blue <%= currentType === 'ux' ? 'active' : '' %>" data-type="ux">UX</button>
-                        </a>
+                        <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" data-type="suggestions">All</a>
+                        <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>" data-type="ui">UI</a>
+                        <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>" data-type="ux">UX</a>
                       </div>
 
                       <div class="d-flex">
-                        <a href="/feedback/enhancement">
-                          <button class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" data-type="enhancement">Enhancement</button>
-                        </a>
-                        <a href="/feedback/bug">
-                          <button class="blue <%= currentType === 'bug' ? 'active' : '' %>" data-type="bug">Bug</button>
-                        </a>
+                        <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" data-type="enhancement">Enhancement</a>
+                        <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>" data-type="bug">Bug</a>
                       </div>
 
                       <div class="d-flex flex-row">
-                        <a href="/feedback/feature">
-                          <button class="blue <%= currentType === 'feature' ? 'active' : '' %>" data-type="feature">Feature</button>
-                        </a>
+                        <a href="/feedback/feature" class="blue <%= currentType === 'feature' ? 'active' : '' %>" data-type="feature">Feature</a>
                       </div>
                     </div>
 
@@ -127,63 +41,94 @@
                       <ul class="view-roadmap">
                         <li class="view"><a href="/feedback/roadmap">View</a></li>
                       </ul>
-
                       <div class="view-num">
                         <p><%= roadmap.length %></p>
                         <p><%= progress.length %></p>
                         <p><%= live.length %></p>
                       </div>
-
-                      
+                      <div class="login-register-mob">
+                        <% if (!currentUser) { %>
+                          <a class="nav-link-login" href="/feedback/login">Login</a>
+                          <a class="nav-link-register" href="/feedback/register">Register</a>
+                        <% } else { %>
+                          <p>Welcome <%= currentUser.username %></p>
+                          <a class="nav-link-logout" href="/feedback/logout">Logout</a>
+                        <% } %>
+                      </div>
                     </div>
                   </div>
-                  <div class = "dropdown"
-                  <nav class=" navbar-expand-lg">
-                    <div class="container-fluid">
-                      <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" class="suggestion-icon" alt="">
-                      <li class="suggestion">
-                        <span><%= request.length %></span> Suggestions
-                      </li>
-                      <a class="nav-link" href="/feedback/bug?sort=mostup" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sort by : <strong id="menu-item">Most Upvotes</strong>
-                        <span><img class="down-arrow" alt="" src="/assets/shared/icon-arrow-down.svg"></span>
-                      </a>
+                </div> </li>
+            </ul>
+          </div>
+        </div>
 
-                      <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                          <a class="dropdown-item" id="mostup" href="/feedback/bug?sort=mostup">
-                            Most Upvotes
-                            <img class="checked" id="mostCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-                          </a>
-                        </li>
-                        <hr class="dropdown-divider">
-                        <li>
-                          <a class="dropdown-item" id="leastup" href="/feedback/bug?sort=leastup">
-                            Least Upvotes
-                            <img class="checked" id="leastCheckUp" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-                          </a>
-                        </li>
-                        <hr class="dropdown-divider">
-                        <li>
-                          <a class="dropdown-item" id="mostcomm" href="/feedback/bug?sort=mostcomm">
-                            Most Comments
-                            <img class="checked" id="mostCheckComm" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-                          </a>
-                        </li>
-                        <hr class="dropdown-divider">
-                        <li>
-                          <a class="dropdown-item" id="leastcomm" href="/feedback/bug?sort=leastcomm">
-                            Least Comments
-                            <img class="checked" id="leastCheckComm" onclick="checkMark();" src="/assets/shared/icon-check.svg" alt="">
-                          </a>
-                        </li>
-                      </ul>
+        <div class="board-text">
+          <p class="navboard-title">Frontend Mentor</p>
+          <p class="navboard-subtitle">Feedback Board</p>
+        </div>
+      </nav>
 
-                      <a class="add-feedback-top text-center" href="/feedback/new" type="button">+Add Feedback</a>
-                    </div>
-                  </nav>
-                    </div
-                </div>
+      <div class="dropped">
+        <div class="button">
+          <div class="d-flex">
+            <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>">All</a>
+            <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>">UI</a>
+            <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>">UX</a>
+          </div>
+          <div class="d-flex">
+            <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>">Enhancement</a>
+            <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>">Bug</a>
+          </div>
+          <div class="d-flex flex-row">
+            <a href="/feedback/feature" class="blue <%= currentType === 'feature' ? 'active' : '' %>">Feature</a>
+          </div>
+        </div>
 
-              </div>
-            </div>
+        <div class="list">
+          <div class="map">
+            <h5><p class="roadmap">Roadmap</p></h5>
+            <span class="oval-planned"></span>
+            <p class="roadmap-options">Planned</p>
+            <span class="oval-progress"></span>
+            <p class="roadmap-options">In-Progress</p>
+            <span class="oval-live"></span>
+            <p class="roadmap-options">Live</p>
+          </div>
+          <ul class="view-roadmap">
+            <li class="view"><a href="/feedback/roadmap">View</a></li>
+          </ul>
+          <div class="view-num">
+            <p><%= roadmap.length %></p>
+            <p><%= progress.length %></p>
+            <p><%= live.length %></p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center">
+          <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" alt="Suggestions">
+          <li class="suggestion" style="list-style: none;">
+            <span><%= request.length %></span> Suggestions
+          </li>
+          
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort by : <strong id="menu-item">Most Upvotes</strong>
+              <span><img class="down-arrow" alt="" src="/assets/shared/icon-arrow-down.svg"></span>
+            </a>
+
+            <ul id="mydropdown" class="dropdown-menu">
+              <li><a class="dropdown-item" href="/feedback/bug?sort=mostup">Most Upvotes</a></li>
+              <li><a class="dropdown-item" href="/feedback/bug?sort=leastup">Least Upvotes</a></li>
+              <li><a class="dropdown-item" href="/feedback/bug?sort=mostcomm">Most Comments</a></li>
+              <li><a class="dropdown-item" href="/feedback/bug?sort=leastcomm">Least Comments</a></li>
+            </ul>
+          </div>
+
+          <a class="add-feedback-top text-center" href="/feedback/new">+Add Feedback</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
