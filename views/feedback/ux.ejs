@@ -3,7 +3,6 @@
 
 <%-include ('../layouts/boilerplate') %>
 <body>
-<body>
   <div class="container">
     <div class="grid-container">
       <div class="feedback">
@@ -111,7 +110,7 @@
            <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
   <li>
     <a class="dropdown-item" id="mostup" href="/feedback/<%= currentType %>?sort=mostup">Most Upvotes
-      <img class='checked' id="mostCheckUp" src="/assets/shared/icon-check.svg" alt="">
+      <img class='checked' id="mostCheckUp" src="/assets/shared/icon-check.svg" alt="check">
     </a>
   </li>
   <hr class="dropdown-divider">
@@ -166,7 +165,7 @@
               <%=req.description%>
             </div>
             <div class="comment-icon">
-              <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
+              <img src="/assets/shared/icon-comments.svg" alt="comment icon" srcset="">
               <span class="comment-num"><%=req.comments.length %></span>
             </div>
           </div>
