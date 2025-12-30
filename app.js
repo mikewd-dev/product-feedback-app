@@ -127,7 +127,8 @@ app.use(async (req, res, next) => {
   const match = req.path.match(/\/feedback\/([^\/\?]+)/);
   res.locals.currentType = match ? match[1] : "suggestions";
 
-
+next(); 
+});
 app.use("/", requestRoutes);
 
 
