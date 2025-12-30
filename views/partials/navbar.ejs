@@ -1,7 +1,7 @@
 <div class="feedback-nav-wrapper">
   <nav class="navbar navbar-expand-lg mb-3">
     <div class="container-fluid p-0">
-      <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
         <span id="ChangeToggle" class="navbar-toggler-icon"></span>
       </button>
       
@@ -23,34 +23,31 @@
     </div>
   </nav>
 
-<nav class="bar-container p-3 d-flex align-items-center text-white" style="background-color: #373F68; border-radius: 10px;">
-  
-  <div class="d-flex align-items-center" style="flex: 1;">
-    <img class="arrows me-3" src="/assets/suggestions/icon-suggestions.svg" alt="">
-    <div class="suggestion d-none d-md-block">
-      <span class="fw-bold"><%= request.length %></span> Suggestions
-    </div>
-  </div>
+  <nav class="bar-container p-3 d-flex align-items-center text-white" style="background-color: #373F68; border-radius: 10px;">
+    <div class="d-flex align-items-center me-4">
+      <img class="arrows me-3" src="/assets/suggestions/icon-suggestions.svg" alt="">
+      <div class="suggestion d-none d-md-block">
+      <span class="fw-bold"><%= request.length %><span/> Suggestions
 
-  <div class="text-center" style="flex: 1;">
-    <div class="dropdown">
-      <button class="btn btn-link dropdown-toggle text-white text-decoration-none p-0" type="button" id="sortMenu" data-bs-toggle="dropdown" aria-expanded="false">
-        Sort by : <strong id="current-sort">Most Upvotes</strong>
-      </button>
-      <ul class="dropdown-menu shadow" aria-labelledby="sortMenu">
-        <li><a class="dropdown-item" href="?sort=most-upvotes">Most Upvotes</a></li>
-        <li><a class="dropdown-item" href="?sort=least-upvotes">Least Upvotes</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="?sort=most-comments">Most Comments</a></li>
-        <li><a class="dropdown-item" href="?sort=least-comments">Least Comments</a></li>
-      </ul>
+      </div>
     </div>
-  </div>
 
-  <div class="text-end" style="flex: 1;">
-     <a class="btn btn-primary add-feedback-top" href="/feedback/new" style="background-color: #AD1FEA; border: none; font-weight: bold; border-radius: 10px; padding: 10px 20px;">
-        + Add Feedback
-     </a>
-  </div>
-</nav>
+    <div class="flex-grow-1">
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle text-white text-decoration-none p-0" type="button" id="sortMenu" data-bs-toggle="dropdown">
+          <span class="text-white-50">Sort by :</span> <strong id="current-sort">Most Upvotes</strong>
+        </button>
+        <ul class="dropdown-menu shadow">
+          <li><a class="dropdown-item" href="?sort=most-upvotes">Most Upvotes</a></li>
+          <li><a class="dropdown-item" href="?sort=least-upvotes">Least Upvotes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-end">
+       <a class="btn btn-primary add-feedback-top" href="/feedback/new" style="background-color: #AD1FEA; border: none; font-weight: bold; border-radius: 10px;">
+          + Add Feedback
+       </a>
+    </div>
+  </nav>
 </div>
