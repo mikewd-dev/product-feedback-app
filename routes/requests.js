@@ -278,7 +278,7 @@ router.get("/feedback/logout", (req, res, next) => {
       return next(err);
     }
     req.flash("success", "Logged out successfully.");
-    res.redirect("/feedback/login");
+    res.redirect("/");
   });
 });
 

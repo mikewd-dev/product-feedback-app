@@ -1,6 +1,7 @@
             <div class="container">
+             
               <div class="grid-container">
-
+                
                 <div class="feedback">
                   <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
@@ -59,15 +60,16 @@
                                     <p><%= progress.length %></p>
                                     <p><%= live.length %></p>
                                   </div>
-                                  <div class="login-register">
-                                    <% if (!currentUser) { %>
-                                      <a class="nav-link-login" href="/feedback/login">Login</a>
-                                      <a class="nav-link-register" href="/feedback/register">Register</a>
-                                    <% } else { %>
-                                      <a class="nav-link-logout" href="/feedback/logout">Logout</a>
-                                    <% } %>
-                                    <p>Welcome: <%= currentUser ? currentUser.username : "None" %></p>
-                                  </div>
+                  <div class="login-register-mob">
+                  <% if (!currentUser) { %>
+        <a class="nav-link-login" href="/feedback/login">Login</a>
+        <a class="nav-link-register" href="/feedback/register">Register</a>
+      <% } else { %>
+         <p>Welcome <%= currentUser ? currentUser.username : "" %></p>
+         <a class="nav-link-logout" href="/feedback/logout">Logout</a>
+      <% } %>
+       
+    </div>
                                 </div>
                               </div>
                             </a>
@@ -132,15 +134,7 @@
                         <p><%= live.length %></p>
                       </div>
 
-                      <div class="login-register">
-                        <% if (!currentUser) { %>
-                          <a class="nav-link-login" href="/feedback/login">Login</a>
-                          <a class="nav-link-register" href="/feedback/register">Register</a>
-                        <% } else { %>
-                          <a class="nav-link-logout" href="/feedback/logout">Logout</a>
-                        <% } %>
-                        <p>Welcome: <%= currentUser ? currentUser.username : "None" %></p>
-                      </div>
+                      
                     </div>
                   </div>
 
