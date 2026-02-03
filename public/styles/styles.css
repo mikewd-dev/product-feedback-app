@@ -2767,7 +2767,7 @@ p {
     border-radius: 10px;
     background: #fff;
     margin-top: 0px;
-    z-index: -1;
+    z-index: 0;
   }
 
   .offset-3 {
