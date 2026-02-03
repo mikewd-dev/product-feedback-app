@@ -80,7 +80,7 @@ flex-direction: row;
   align-items: center;
 }
 
-img.btn {
+.btn > img {
   background: #f2f2f2;
   color: #4661e6;
   bottom: 0%;
@@ -99,7 +99,7 @@ img.btn {
   box-shadow: none;
 }
 
-img.btn.active{
+.btn > img .active{
   background-color: #4661e6 !important;
   color: #f2f2f2 !important;
   outline:none;
@@ -344,7 +344,7 @@ li {
   position: absolute !important;
       background: #373f68;
       border-radius: 10px;
-      width: 60vw;
+      width: 70vw;
       left: 289px;
       height: 72px;
       top: 0;
@@ -497,7 +497,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 79vw;
+  width: 70vw;
   margin-right: 0;
   top: 150px;
   right: 0;
@@ -2509,8 +2509,7 @@ p {
   }
 
   .dropupCaret {
-    margin-top: 14px;
-    margin-bottom: 8px;
+    margin-top: 6px;
   }
   .dropped {
     width: 60vw !important;
