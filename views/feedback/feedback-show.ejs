@@ -5,25 +5,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <title>Show Feedback</title>
 </head>
 
 <body>
-    <div>
-        <a href="/feedback/<%=feedback._id%>/feedback-edit" class="btn btn-info">Edit</a>
-        <h1>
-            <%=feedback.title %>
-        </h1>
+    <div class="col-md">
+        <div class="container">
+            <div class="row offset-2">
+                <div class="col-sm">
 
-        <h1>
-            <%=feedback.category %>
-        </h1>
+                </div>
+                <div class="go-back-show">
 
-        <h1>
-            <%=feedback.description %>
-        </h1>
+
+
+                    <a href="/feedback">
+                        <span class="arrow "><img src="/assets/shared/icon-arrow-left.svg " alt=" "></span>Go Back
+                    </a>
+                    <a class="btn btn-primary edit-button" href="/feedback/<%=request._id%>/feedback-edit" type="button ">Edit Feedback</a>
+                    <!-- <a href="/ ">Go Back</a> -->
+                </div>
+                <div class="col-sm">
+                    <!-- <div class="feedback-suggestion "> -->
+                    <div>
+                        <div class="feedback-show">
+                            <div class="d-flex flex-row feedback-suggested">
+                                <div class="d-flex flex-column feedback-suggested-numvotes">
+                                    <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
+
+                                    <h6>
+                                        <%=request.upvotes%>
+                                    </h6>
+                                </div>
+                                <a class="feedback-navlink-show" href="/feedback/<%=request._id%>">
+                                    <div class="feeback-title-para">
+
+                                        <div class="feedback-suggested-title">
+                                            <%=request.productRequests.title%>
+                                        </div>
+                                        <div class="feedback-suggested-para">
+                                            <%=request.productRequests.description%>
+                                        </div>
+                                    </div>
+                                    <button class="btn-suggestion"><%=request.productRequests.category%></button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <div class="col-sm">
+                    <div class="comments">
+                        <div class="comment">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="add-comment">
+                        <label class="add-comment-label" for="addcomment">Add Comment</label>
+                        <textarea class="add-comment-text" name="reply[content]" id="content" cols="30" rows="4" placeholder="Type your comment here"></textarea>
+                    </div>
+                    <button>Post <i class="fa fa-comment" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+
     </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
 
 </html>

@@ -105,24 +105,27 @@
                 </div>
             </div>
             <div class="feedback-screen-active">
-                <% for(let feedback of feedbacks) { %>
+                <% for(let request of requests) { %>
                     <div class="feedback-suggestion">
                         <div class="d-flex flex-row feedback-suggested">
-                            <a class="feedback-navlink" href="/feedback/<%=feedback._id%>">
 
-                                <div class="d-flex flex-column feedback-suggested-numvotes">
-                                    <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-                                    <p>112</p>
-                                </div>
+
+                            <div class="d-flex flex-column feedback-suggested-numvotes">
+                                <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
+                                <h6>
+                                    <%=request.upvotes%>
+                                </h6>
+                            </div>
+                            <a class="feedback-navlink" href="/feedback/<%=request._id%>">
                                 <div class="feeback-title-para">
                                     <div class="feedback-suggested-title">
-                                        <%=feedback.title%>
+                                        <%=request.title%>
                                     </div>
                                     <div class="feedback-suggested-para">
-                                        <%=feedback.description%>
+                                        <%=request.description%>
                                     </div>
                                 </div>
-                                <button class="btn-suggestion"><%=feedback.category%></button>
+                                <button class="btn-suggestion"><%=request.category%></button>
                             </a>
                         </div>
                     </div>

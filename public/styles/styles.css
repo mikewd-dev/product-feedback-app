@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: #f7f8fd;
+    background-color: #f7f8fd !important;
     top: 0;
     bottom: 0;
     left: 0;
@@ -247,6 +247,12 @@ p {
 
 .feedback-navlink {
     text-decoration: none;
+    margin: 28px auto 4px 40px;
+}
+
+.feedback-navlink-show {
+    text-decoration: none;
+    margin: 28px 413px 4px 40px !important;
 }
 
 .feedback-suggestion {
@@ -275,9 +281,71 @@ p {
     border-radius: 0px;
 }
 
+.comments {
+    height: 747px;
+    width: 730px !important;
+    left: 355px;
+    top: 323px;
+    margin-top: 24px !important;
+    margin-right: 355px !important;
+    margin-left: 355px;
+    margin-bottom: 78px !important;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.comment {
+    height: 123px;
+    width: 666px;
+    left: 387px;
+    top: 401px;
+    border-radius: 0px;
+    margin: 24px 32px 32px 32px;
+}
+
+.add-comment {
+    width: 730px;
+    height: 246px;
+    left: 355px;
+    top: 1094px;
+    margin: 24px 355px 24px 355px;
+    background-color: #ffffff;
+}
+
+.add-comment-label {
+    width: 130px;
+    left: 4.66%;
+    right: 79.18%;
+    height: 26px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    /* line-height: 26px;
+    line-height: 100%; */
+    letter-spacing: -0.25px;
+    margin: 24px 578px 0px 34px;
+    color: #3a4374;
+}
+
+.add-comment-text {
+    height: 80px;
+    width: 664px;
+    left: 34px;
+    top: 74px;
+    border-radius: 0px;
+    left: 4.66%;
+    right: 4.38%;
+    top: 30.08%;
+    bottom: 37.4%;
+    background: #f7f8fd;
+    border-radius: 5px;
+    margin: 74px 32px 92px 34px;
+}
+
 .dropupCaret {
     height: 4px;
-    margin-left: 7px;
+    margin-left: 16.35px;
+    margin-right: 15.35px;
     margin-top: 14px;
     margin-bottom: 8px;
     width: 8px;
@@ -291,17 +359,16 @@ p {
 }
 
 .feedback-suggested-title {
+    height: 26px;
+    left: 10.51%;
+    right: 62.55%;
     top: calc(50% - 26px / 2 - 34.5px);
     font-weight: 700;
     font-size: 18px;
-    /* line-height: 26px; */
+    line-height: 26px;
     /* identical to box height */
     letter-spacing: -0.25px;
     color: #3a4374;
-    text-decoration: none;
-    margin-left: 80px;
-    margin-top: -99px;
-    margin-bottom: 97px;
 }
 
 .feedback-suggested-para {
@@ -315,12 +382,13 @@ p {
     font-size: 16px;
     line-height: 23px;
     color: #647196;
-    margin-left: 80px;
-    margin-top: -80px;
+    margin-left: 0px;
+    margin-top: 4px;
+    margin-bottom: 12px;
 }
 
 .feedback-suggested-votes {
-    margin-top: 10%;
+    margin: 28px 32px 28px 32px;
     /* bottom: 44.21%; */
     background: #f2f4fe;
     border-radius: 10px;
@@ -334,29 +402,39 @@ p {
 }
 
 .feedback-suggested-numvotes {
-    left: 0%;
     right: 94.74%;
-    top: 0%;
-    margin-top: 18px;
-    margin-bottom: 42px;
+    bottom: 44.21%;
+    margin: 28px 40px 70px 32px;
+    background-color: #f2f4fe;
     width: 40px;
     height: 53px;
-    bottom: 44.21%;
-    background-color: #f2f2f2;
-    color: #3a4374;
-    text-align: center;
     border-radius: 10px;
 }
 
 .btn-suggestion {
     background: #f2f4ff;
+    color: #4661e6;
     left: 10.51%;
-    right: 74.9%;
-    top: 68.42%;
     bottom: 0%;
     border-radius: 10px;
     margin-top: 12px;
-    margin-left: 124.5px;
+    margin-left: 0px;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    background: #f2f4ff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 17px 6px 16px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    line-height: 100%;
+}
+
+.edit-button {
+    margin-left: 536px;
 }
 
 .figure-item {
@@ -369,6 +447,14 @@ p {
 }
 
 .no-feedback {
+    width: 129.64px;
+    height: 136.74px;
+    left: 798.89px;
+    top: 301px;
+    margin: 111px 346.47px 53.26px 348.89px;
+}
+
+.no-feedback-new {
     width: 129.64px;
     height: 136.74px;
     /* margin-left: 34%; */
@@ -404,12 +490,13 @@ p {
 }
 
 .add-feedback-edit {
-    height: 20px;
+    /* padding: 10px; */
+    /* height: 20px; */
     left: 16.67%;
     right: 17.36%;
     top: calc(50% - 20px / 2 + 0.5px);
-    font-family: "Jost";
-    font-style: normal;
+    /* font-family: "Jost";
+    font-style: normal; */
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
@@ -433,13 +520,34 @@ p {
     height: 44px;
     width: 179.5804901123047px;
     left: 141.5048828125px;
-    margin-left: 168.78px;
+    margin-left: 141.5px;
+    margin-top: 145px;
+    padding: 12.5px 28.41px 11.5px 27.28px;
+    border-radius: 10px;
+    background: #ad1fea;
+    text-decoration: none;
+    color: #f2f4fe;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.add-feedback-new {
+    left: 30.37%;
+    right: 31.1%;
+    top: 76.72%;
+    bottom: 0%;
+    height: 44px;
+    width: 179.5804901123047px;
+    left: 141.5048828125px;
+    margin-left: 22.78px;
     top: 145px;
     padding: 12.5px 28.41px 11.5px 27.28px;
     border-radius: 10px;
     background: #ad1fea;
     text-decoration: none;
     color: #f2f4fe;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 .add-feedback-roadmap {
@@ -503,7 +611,7 @@ figcaption {
 .cancel-feedback-btn {
     padding: 10px;
     border-radius: 10px;
-    width: 93px;
+    /* width: 93px; */
     text-decoration: none;
     margin-right: -13px;
     top: 0%;
@@ -535,13 +643,21 @@ figcaption {
     flex-direction: row;
 }
 
+.delete-feedback {
+    position: relative;
+    margin-top: -113px;
+    margin-left: 81px;
+}
+
 .delete-feedback-btn {
+    position: absolute;
     padding: 10px;
     border-radius: 10px;
     width: 93px;
+    height: 53px;
     text-decoration: none;
-    margin-right: 115px;
-    margin-left: 0;
+    margin-left: 85px;
+    margin-top: 800px;
     top: 0%;
     bottom: 0%;
     background: #e98888;
@@ -609,6 +725,26 @@ figcaption {
     padding-bottom: 7%;
     margin-top: 10% !important;
     margin-left: 25%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #647196;
+}
+
+.feedback-show {
+    height: 151px;
+    width: 730px;
+    left: 355px;
+    top: 148px;
+    margin-left: 355px;
+    border-radius: 0px;
+    background-color: #ffffff;
+}
+
+.go-back-show {
+    z-index: 1000;
+    padding-bottom: 7%;
+    margin: 80px 355px 24px 355px !important;
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;

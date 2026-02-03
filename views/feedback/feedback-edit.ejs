@@ -14,101 +14,61 @@
     <title>Frontend Mentor | Product feedback app</title>
 </head>
 
-
 <body style="background-color: #F2F2F2;">
     <div class="container">
         <div class="row">
-            <div class="col-sm">
-
-            </div>
-            <div class="go-back">
-
-
+            <div class=" col-sm offset-3 go-back">
                 <a href="/feedback">
                     <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=" "></span>Go Back
                 </a>
-
-                <!-- <a href="/">Go Back</a> -->
             </div>
             <div class="col-sm offset-3">
-                <!-- <div class="d-flex justify-flex-start mt-5">
-                    <img src="/assets/shared/icon-arrow-left.svg" alt=" ">
-                    <a class="go-back " href="/ ">Go Back</a>
-                </div> -->
-
-
-                <!-- <div class="new-feedback-form"> -->
                 <embed class="new-feedback-icon" src="/assets/shared/icon-edit-feedback.svg" type="">
-                <div class="form-control-lg">
+                <div class="form-control">
+                    <form action="/feedback/<%=request._id%>?_method=PUT" class="form-control-lg" method="POST">
 
-                    <!-- <div class="create-feedback "> -->
-                    <h2 class="new-feedback ">Editing
-                        <%=feedback.title%>
-                    </h2>
-                    <h4 id='feedback-title' class="sub-heading ">
-                        Feedback Title
-                    </h4>
-                    <p class="sub-heading-paragraph ">Add a short, descriptive headline</p>
-                    <input class="feedback-text " name="feedback[title] " id="feedbacktitle " cols="5 " rows="1 " value="<%=feedback.title%>">
-                    <h4 id="category" class="sub-heading">Category</h4>
-                    <p class="sub-heading-paragraph">Choose a category for your feedback</p>
-                    <div class="select-options">
-                        <!-- <select name="" id="features"> -->
-                        <select name="feedback[category]" id="features" class="form-select">
+                        <!-- <div class="create-feedback"> -->
+                        <h2 class="new-feedback">Create New Feedback </h2>
+                        <h4 id='feedback-title' class="sub-heading">
+                            <%= request.title %>
+                                <%=request.category %>
+                        </h4>
+                        <label for="title" class="sub-heading-paragraph">Add a short, descriptive headline</label>
+                        <input class="feedback-text" name="request[title]" id="feedbacktitle" cols="5" rows="1" value="<%= request.title %>">
+                        <h4 id="category" class="sub-heading">Category</h4>
+                        <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
+                        <div class="select-options">
+                            <select name="request[category]" id="features" class="form-select">
                             <option value="Feature" class="feedback-options">Feature</option>
                             <option value="UI" class="feedback-options">UI</option>
                             <option value="UX" class="feedback-options">UX</option>
                             <option value="Enhancement" class="feedback-options">Enhancement</option>
                             <option value="Bug" class="feedback-options">Bug</option>
                             <!-- </select> -->
-                        </select>
-                    </div>
-
-
-                    <!-- <h4 id="feedback-detail" class="sub-heading">Update Status</h4>
-                    <p class="sub-heading-paragraph">Change Feature State</p>
-                    <div class="select-options">
-
-                        <select name="" id="" class="form-select">
-                            <option value="Change Feature State" class="feedback-options">Change Feature State</option>
-                            <option value="Suggestion" class="feedback-options">Suggestion</option>
-                            <option value="Plan" class="feedback-options">Plan</option>
-                            <option value="In-Progress" class="feedback-options">In-Progress</option>
-                            <option value="Live" class="feedback-options">Live</option>
-
-                        </select>
-                    </div> -->
-                    <p class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</p>
-                    <textarea name="feedback[description]" id="feedbackdetail" cols="20" rows="3"></textarea>
-                    <div class="d-inline-flex add-cancel-feedback">
-                        <div>
-                            <form method="POST" class="d-inline" action="/feedback/<%=feedback._id%>?_method=DELETE">
-                                <button class="delete-feedback-btn text-center">Delete</button>
-                            </form>
+                            </select>
                         </div>
-                        <!-- <div class="d-inline"> -->
-                        <div>
-                            <a class="cancel-feedback-btn text-center" href="/feedback/<%=feedback._id%>" type="button">Cancel</a>
+
+                        <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
+                        <label for="feedback" class="sub-heading-paragraph">Include any specific comments on what should
+                            be improved, added, etc.</label>
+                        <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3"><%=request.description %></textarea>
+
+
+                        <div class="add-cancel-feedback">
+
+                            <a class="cancel-feedback-btn" href="index" type="button">Cancel</a>
+
+                            <button class="add-feedback-edit">Edit Feedback</button>
                         </div>
-                        <div>
-                            <form action="/feedback/<%=feedback._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
-                                <div>
-                                    <button class="add-feedback-edit text-center">Add Feedback</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- </form> -->
+                    </form>
+
+                    <form method="POST" class="d-inline" action="/feedback/<%=request._id%>?_method=DELETE">
+                        <button class="delete-feedback-btn text-center">Delete</button>
+                    </form>
                 </div>
-                <!-- </div> -->
-
-
-            </div>
-            <div class="col-sm">
 
             </div>
         </div>
     </div>
-
 </body>
 <html
