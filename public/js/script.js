@@ -89,7 +89,7 @@ function liveDisplay() {
 
 // tabLive.style.display="none";
 
-
+  document.addEventListener("DOMContentLoaded", function() {
    if (window.innerWidth <= 768) {
         // Change the `div` element with the class `board` to a navbar with dropdown
         const board = document.querySelector('.board');
@@ -99,17 +99,10 @@ function liveDisplay() {
         // Add the `close-icon` element to the navbar
         const closeIcon = document.querySelector('.close-icon');
         board.appendChild(closeIcon);
+   }
+    })
 
-    }
 
-    function checkWidth() {
-       var boardDiv = document.querySelectorAll('board-text')
-
-    if(window.innerWidth > 768){
-      boardDiv.style.display="none"
-    }
-    }
-    checkWidth()
 
 
 window.onload = function checkMark() {
@@ -229,35 +222,28 @@ linkleastcomm.addEventListener('click', (e) => {
   checkmostup.style.display = 'none';
   checkmostcomm.style.display = 'none';
   checkleastcomm.style.display = 'inline';
-
-    //document.getElementById('menu-item').innerText = "Least Comments";
-
 });
-
-//
 
 };
 
-checkMark();
+// checkMark();
 
 function isLoggedIn(req, res, next){
-    // console.log("REQ.USER...", req.user);
     if(req.isAuthenticated()){
         return next();
     }
     res.redirect("/feedback/login");
 }
 function dropReply(id) {
-  // Get the textarea with the corresponding id.
   const textarea = document.getElementById(id);
-
-  // Focus the textarea.
   textarea.focus();
 }
 
-// Add the click event handler to the reply buttons.
 document.querySelectorAll(".reply-link").forEach(button => {
-  button.addEventListener("click", dropReply.bind(null, event.target.dataset.id));
+  button.addEventListener("click", function(event) {
+    const replyBoxId = event.target.dataset.id;
+    dropReply(replyBoxId);
+  });
 });
 
 function upvoteSuggestion(suggestionId) {
@@ -267,7 +253,6 @@ function upvoteSuggestion(suggestionId) {
   })
     .then(response => response.json())
     .then(data => {
-      // Update the value of req.upvotes in the DOM
       const upvotesElement = document.getElementById(`votes-${suggestionId}`);
       upvotesElement.textContent = data.upvotes;
     })
@@ -354,14 +339,16 @@ function upvoteUX(uxId) {
 
 
 
-function dropReply(replyBoxId){
-var rep = document.getElementById(replyBoxId)
-    if(rep.style.display == 'block'){
-       rep.style.display = 'none';
-    } else {
-        rep.style.display = 'block';
-    }
+function dropReply(replyBoxId) {
+  var rep = document.getElementById(replyBoxId);
+  if (rep.style.display === 'block') {
+    rep.style.display = 'none';
+  } else {
+    rep.style.display = 'block';
+    rep.querySelector(".reply-box").focus(); // Focus on the textarea
+  }
 }
+
 
 
 
@@ -377,4 +364,15 @@ $(document).ready(function(){
     $('#menu-item').html('Most Upvotes')
     })
   })
+
+
+ function checkWidth() {
+       var boardDiv = document.querySelectorAll('.board-text')
+
+    if(window.innerWidth > 768){
+      boardDiv.style.display="none"
+    }
+    }
+    checkWidth()
+
 
