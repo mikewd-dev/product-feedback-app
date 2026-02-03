@@ -259,7 +259,7 @@ router.post('/feedback/:id/comment/:commentId/reply/:replyId/replies', isLoggedI
 
 // ====GET ROUTES=======
 
-router.get('/feedback', catchAsync(async (req, res) => {
+router.get('/', catchAsync(async (req, res) => {
      const roadmap  = await Roadmap.find({}).where('status').equals('planned')
     const progress = await Roadmap.find({}).where('status').equals('in-progress');
     const live = await Roadmap.find({}).where('status').equals('live');
