@@ -107,117 +107,46 @@ function liveDisplay() {
   });
 }
 
-window.onload = function checkMark() {
-  console.log("Window loaded");
-  let linkmostup = document.getElementById("mostup");
 
-  let linkleastup = document.getElementById("leastup");
 
-  let linkmostcomm = document.getElementById("mostcomm");
 
-  let linkleastcomm = document.getElementById("leastcomm");
+window.addEventListener("DOMContentLoaded", () => {
+  console.log("Script Running...");
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentSort = urlParams.get('sort') || 'mostup'; 
+  const menuItem = document.getElementById("menu-item");
 
-  let checkmostup = document.getElementById("mostCheckUp");
-  let checkleastup = document.getElementById("leastCheckUp");
-  let checkmostcomm = document.getElementById("mostCheckComm");
-  let checkleastcomm = document.getElementById("leastCheckComm");
+  const sortMap = {
+    'mostup': { id: 'mostCheckUp', text: 'Most Upvotes' },
+    'leastup': { id: 'leastCheckUp', text: 'Least Upvotes' },
+    'mostcomm': { id: 'mostCheckComm', text: 'Most Comments' },
+    'leastcomm': { id: 'leastCheckComm', text: 'Least Comments' }
+  };
 
-  if (sessionStorage.getItem("mostupClicked") === "true") {
-    checkmostup.style.display = "inline";
-    checkleastup.style.display = "none";
-    checkmostcomm.style.display = "none";
-    checkleastcomm.style.display = "none";
-    document.getElementById("menu-item").innerHTML = "Most Upvotes";
-  }
 
-  if (sessionStorage.getItem("leastupClicked") === "true") {
-    checkleastup.style.display = "inline";
-    checkmostup.style.display = "none";
-    checkmostcomm.style.display = "none";
-    checkleastcomm.style.display = "none";
-    document.getElementById("menu-item").innerHTML = "Least Upvotes";
-  }
-
-  if (sessionStorage.getItem("mostcommClicked") === "true") {
-    checkleastup.style.display = "none";
-    checkmostup.style.display = "none";
-    checkmostcomm.style.display = "inline";
-    checkleastcomm.style.display = "none";
-    document.getElementById("menu-item").innerHTML = "Most Comments";
-  }
-
-  if (sessionStorage.getItem("leastcommClicked") === "true") {
-    checkleastup.style.display = "none";
-    checkmostup.style.display = "none";
-    checkmostcomm.style.display = "none";
-    checkleastcomm.style.display = "inline";
-    document.getElementById("menu-item").innerHTML = "Least Comments";
-  }
-
-  linkmostup.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    sessionStorage.setItem("mostupClicked", "true");
-    sessionStorage.setItem("leastupClicked", "false");
-    sessionStorage.setItem("mostcommClicked", "false");
-    sessionStorage.setItem("leastcommClicked", "false");
-
-    checkmostup.style.display = "inline";
-    checkleastup.style.display = "none";
-    checkmostcomm.style.display = "none";
-    checkleastcomm.style.display = "none";
+  const allChecks = document.querySelectorAll('.checked');
+  allChecks.forEach(img => {
+    img.setAttribute('style', 'display: none !important');
   });
 
-  linkleastup.addEventListener("click", (e) => {
-    e.stopPropagation();
 
-    sessionStorage.setItem("leastupClicked", "true");
-    sessionStorage.setItem("mostupClicked", "false");
-    sessionStorage.setItem("mostcommClicked", "false");
-    sessionStorage.setItem("leastcommClicked", "false");
+  const active = sortMap[currentSort];
+  if (active) {
+    const checkImg = document.getElementById(active.id);
+    console.log("Looking for element:", active.id);
+    
+    if (checkImg) {
+     
+      checkImg.setAttribute('style', 'display: inline !important');
+      console.log("Checkmark set to inline for:", active.id);
+    } else {
+      console.error("Could not find element with ID:", active.id);
+    }
 
-    checkleastup.style.display = "inline";
-    checkmostup.style.display = "none";
-    checkmostcomm.style.display = "none";
-    checkleastcomm.style.display = "none";
-  });
-
-  linkmostcomm.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    sessionStorage.setItem("leastupClicked", "false");
-    sessionStorage.setItem("mostupClicked", "false");
-    sessionStorage.setItem("mostcommClicked", "true");
-    sessionStorage.setItem("leastcommClicked", "false");
-
-    checkleastup.style.display = "none";
-    checkmostup.style.display = "none";
-    checkmostcomm.style.display = "inline";
-    checkleastcomm.style.display = "none";
-  });
-
-  linkleastcomm.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    sessionStorage.setItem("leastupClicked", "false");
-    sessionStorage.setItem("mostupClicked", "false");
-    sessionStorage.setItem("mostcommClicked", "false");
-    sessionStorage.setItem("leastcommClicked", "true");
-
-    checkleastup.style.display = "none";
-    checkmostup.style.display = "none";
-    checkmostcomm.style.display = "none";
-    checkleastcomm.style.display = "inline";
-  });
-};
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
+    if (menuItem) menuItem.innerHTML = active.text;
   }
-  res.redirect("/feedback/login");
-}
-
+});
 function dropReply(id) {
   const textarea = document.getElementById(id);
   textarea.focus();

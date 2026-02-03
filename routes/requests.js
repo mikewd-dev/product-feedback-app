@@ -15,18 +15,13 @@ const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const session = require("express-session");
 require("dotenv").config();
-mongoose
-  .connect(process.env.MONGO_URI, { useUnifiedTopology: true })
-  .then(() => console.log("DB Connected!!"))
-  .catch((err) => console.error(err));
+
 
 const ejsMate = require("ejs-mate");
 const User = require("../models/user");
 const Request = require("../models/request");
 const Comment = require("../models/comment");
-// const Reply = require("../models/reply");
 const Roadmap = require("../models/roadmap");
-// const bodyParser = require("body-parser");
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
 
@@ -90,10 +85,10 @@ router.post(
   "/feedback",
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const request = new Request(req.body.request);
-    await request.save();
+    const allRequest = new Request(req.body.request);
+    await allRequest.save();
     req.flash("success", "Thank you for your feedback");
-    res.redirect(`/feedback/${request._id}`);
+    res.redirect(`/feedback/${allRequest._id}`);
   }),
 );
 
@@ -253,7 +248,7 @@ router.post(
 router.get(
   "/",
   catchAsync(async (req, res) => {
-    let request = await Request.find({});
+    let allRequest = await Request.find({});
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
     const progress = await Roadmap.find({})
       .where("status")
@@ -261,7 +256,7 @@ router.get(
     const live = await Roadmap.find({}).where("status").equals("live");
 
     res.render("feedback/index", {
-      request,
+      request: allRequest,
       roadmap,
       progress,
       live,
@@ -312,14 +307,14 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let request = await Request.find({});
+    let allRequest = await Request.find({});
 
     if (sortOrder === "mostcomm") {
-      request = request.sort((a, b) => b.comments.length - a.comments.length);
+      allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
     } else if (sortOrder === "leastcomm") {
-      request = request.sort((a, b) => a.comments.length - b.comments.length);
+      allRequest = allRequest.sort((a, b) => a.comments.length - b.comments.length);
     } else {
-      request = request.sort(sortOrder || ((a, b) => 0));
+      allRequest = allRequest.sort(sortOrder || ((a, b) => 0));
     }
 
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
@@ -329,7 +324,7 @@ router.get(
     const live = await Roadmap.find({}).where("status").equals("live");
 
     res.render("feedback/suggestions", {
-      request,
+      request: allRequest,
       roadmap,
       progress,
       live,
@@ -352,16 +347,16 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let request = await Request.find({})
+    let allRequest = await Request.find({})
       .where("category")
       .equals("Enhancement");
 
     if (sortOrder === "mostcomm") {
-      request = request.sort((a, b) => b.comments.length - a.comments.length);
+      allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
     } else if (sortOrder === "leastcomm") {
-      request = request.sort((a, b) => a.comments.length - b.comments.length);
+      allRequest = allRequest.sort((a, b) => a.comments.length - b.comments.length);
     } else {
-      request = request.sort(sortOrder || ((a, b) => 0));
+      allRequest = allRequest.sort(sortOrder || ((a, b) => 0));
     }
 
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
@@ -369,11 +364,11 @@ router.get(
       .where("status")
       .equals("in-progress");
     const live = await Roadmap.find({}).where("status").equals("live");
-    if (!request || request.length === 0) {
+    if (!allRequest || allRequest.length === 0) {
       res.redirect("/feedback/none");
     } else {
       res.render("feedback/enhancement", {
-        request,
+        request: allRequest,
         roadmap,
         progress,
         live,
@@ -397,14 +392,14 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let request = await Request.find({}).where("category").equals("UI");
+    let allRequest = await Request.find({}).where("category").equals("UI");
 
     if (sortOrder === "mostcomm") {
-      request = request.sort((a, b) => b.comments.length - a.comments.length);
+      allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
     } else if (sortOrder === "leastcomm") {
-      request = request.sort((a, b) => a.comments.length - b.comments.length);
+      allRequest = allRequest.sort((a, b) => a.comments.length - b.comments.length);
     } else {
-      request = request.sort(sortOrder || ((a, b) => 0));
+      allRequest = allRequest.sort(sortOrder || ((a, b) => 0));
     }
 
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
@@ -412,11 +407,11 @@ router.get(
       .where("status")
       .equals("in-progress");
     const live = await Roadmap.find({}).where("status").equals("live");
-    if (!request || request.length === 0) {
+    if (!allRequest || allRequest.length === 0) {
       res.redirect("/feedback/none");
     } else {
       res.render("feedback/ui", {
-        request,
+        request: allRequest,
         roadmap,
         progress,
         live,
@@ -440,14 +435,14 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let request = await Request.find({}).where("category").equals("UX");
+    let allRequest = await Request.find({}).where("category").equals("UX");
 
     if (sortOrder === "mostcomm") {
-      request = request.sort((a, b) => b.comments.length - a.comments.length);
+      allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
     } else if (sortOrder === "leastcomm") {
-      request = request.sort((a, b) => a.comments.length - b.comments.length);
+      allRequest = allRequest.sort((a, b) => a.comments.length - b.comments.length);
     } else {
-      request = request.sort(sortOrder || ((a, b) => 0));
+      allRequest = allRequest.sort(sortOrder || ((a, b) => 0));
     }
 
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
@@ -455,11 +450,11 @@ router.get(
       .where("status")
       .equals("in-progress");
     const live = await Roadmap.find({}).where("status").equals("live");
-    if (!request || request.length === 0) {
+    if (!allRequest || allRequest.length === 0) {
       res.redirect("/feedback/none");
     } else {
       res.render("feedback/ux", {
-        request,
+        request: allRequest,
         roadmap,
         progress,
         live,
@@ -487,14 +482,14 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let request = await Request.find({}).where("category").equals("Feature");
+    let allRequest = await Request.find({}).where("category").equals("Feature");
 
     if (sortOrder === "mostcomm") {
-      request = request.sort((a, b) => b.comments.length - a.comments.length);
+      allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
     } else if (sortOrder === "leastcomm") {
-      request = request.sort((a, b) => a.comments.length - b.comments.length);
+      allRequest = allRequest.sort((a, b) => a.comments.length - b.comments.length);
     } else {
-      request = request.sort(sortOrder || ((a, b) => 0));
+      allRequest = allRequest.sort(sortOrder || ((a, b) => 0));
     }
 
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
@@ -502,11 +497,11 @@ router.get(
       .where("status")
       .equals("in-progress");
     const live = await Roadmap.find({}).where("status").equals("live");
-    if (!request || request.length === 0) {
+    if (!allRequest || allRequest.length === 0) {
       res.redirect("/feedback/none");
     } else {
       res.render("feedback/feature", {
-        request,
+        request: allRequest,
         roadmap,
         progress,
         live,
@@ -530,14 +525,14 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let request = await Request.find({}).where("category").equals("Bug");
+    let allRequest = await Request.find({}).where("category").equals("Bug");
 
     if (sortOrder === "mostcomm") {
-      request = request.sort((a, b) => b.comments.length - a.comments.length);
+      allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
     } else if (sortOrder === "leastcomm") {
-      request = request.sort((a, b) => a.comments.length - b.comments.length);
+      allRequest = allRequest.sort((a, b) => a.comments.length - b.comments.length);
     } else {
-      request = request.sort(sortOrder || ((a, b) => 0));
+      allRequest = allRequest.sort(sortOrder || ((a, b) => 0));
     }
 
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
@@ -545,11 +540,11 @@ router.get(
       .where("status")
       .equals("in-progress");
     const live = await Roadmap.find({}).where("status").equals("live");
-    if (!request || request.length === 0) {
+    if (!allRequest || allRequest.length === 0) {
       res.redirect("/feedback/none");
     } else {
       res.render("feedback/bug", {
-        request,
+        request: allRequest,
         roadmap,
         progress,
         live,
@@ -584,23 +579,18 @@ router.get("/feedback/roadmap", async (req, res) => {
 });
 
 router.get("/feedback/:id", isLoggedIn, async (req, res) => {
-  const request = await Request.findById(req.params.id);
-  if (isLoggedIn) {
-    const user = await User.findById(req.session.userId);
-    res.render("feedback/show", {
-      request,
-      user,
-    });
-  } else {
-    res.redirect("/login");
-    
-  }
+  const allRequest = await Request.findById(req.params.id);
+
+  res.render("feedback/show", {
+    request: allRequest,
+    user: req.user, 
+  });
 });
 
 router.get("/feedback/:id/comments", isLoggedIn, async (req, res) => {
-  const request = await Request.findById(req.params.id);
+  const allRequest = await Request.findById(req.params.id);
   const comment = await Comment.findById(req.params.id).populate("user");
-  res.render("feedback/show", { request, comment });
+  res.render("feedback/show", { allRequest, comment });
 });
 
 router.get("/feedback/user", isLoggedIn, async (req, res) => {
@@ -618,11 +608,11 @@ router.get(
   "/feedback/:id/edit",
   isLoggedIn,
   catchAsync(async (req, res) => {
-    const request = await Request.findById(req.params.id);
-    if (!request) {
+    const allRequest = await Request.findById(req.params.id);
+    if (!allRequest) {
       return res.status(404).render("error", { message: "Feedback not found" });
     }
-    res.render("feedback/edit", { request });
+    res.render("feedback/edit", { allRequest });
   }),
 );
 
@@ -653,10 +643,10 @@ router.put(
   isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const request = await Request.findByIdAndUpdate(id, {
+    const allRequest = await Request.findByIdAndUpdate(id, {
       ...req.body.request,
     });
-    res.redirect(`/feedback/${request._id}`);
+    res.redirect(`/feedback/${allRequest._id}`);
   }),
 );
 
@@ -675,7 +665,7 @@ router.delete(
   isLoggedIn,
   catchAsync(async (req, res, next) => {
     const { id } = req.params;
-    const request = await Request.findByIdAndDelete(id);
+    const allRequest = await Request.findByIdAndDelete(id);
     res.redirect("/feedback/suggestions");
   }),
 );
@@ -689,10 +679,6 @@ function isLoggedIn(req, res, next) {
   res.redirect("/feedback/login");
 }
 
-router.use((err, req, res, next) => {
-  const { statusCode = 500 } = err;
-  if (!err.message) err.message = "Something went wrong";
-  res.status(statusCode).render("feedback/error", { err });
-});
+
 
 module.exports = router;
