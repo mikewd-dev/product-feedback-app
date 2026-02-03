@@ -360,9 +360,7 @@ li {
   top: 255px;
   display: none;
 }
-.dropped {
-  width:255px;
-}
+
 .new-feedback-form {
   width: 100vw;
   position: fixed;
@@ -422,8 +420,8 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  width: 2290px;
-  left: 287px;
+  width: 85vw;
+  left: 271px;
   height: 72px;
   top: 0;
 }
@@ -652,9 +650,12 @@ p {
 
 .feedback-screen-active {
   position: absolute;
-  width: 80vw;
+  align-items: center;
+  left:275px;
+  right:0;
+  width: 85vw;
   border-radius: 10px;
-  margin-left: 334px;
+  252px;
   top: 146px;
 }
 
@@ -681,7 +682,7 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 70vw;
+  width: 100%;
   height: auto;
   margin: 40px 19px 28px 0;
   padding-top: 5px;
@@ -690,8 +691,6 @@ p {
 }
 
 .feedback-suggestion {
-  position: relative;
-  width: 70vw;
   height: auto;
   left: 22px;
   margin: 40px 0px 28px 0px;
@@ -701,7 +700,7 @@ p {
 
 .feedback {
   position: absolute;
-  width: 100%;
+  width: 265px;
   height: 529px;
   top: 50px;
   left: 0;
@@ -3084,7 +3083,7 @@ p {
 
   .feedback-suggestion {
     position: relative;
-    width: 85vw;
+    width: 95vw;
     height: auto;
     left: 0;
     right: 0;
@@ -3126,7 +3125,7 @@ p {
 
   .btn-login {
     justify-content: center;
-    width: 100% !important;
+    width: 90% !important;
   }
 
   .validated-form {
