@@ -1,15 +1,15 @@
-const mongoose = require ('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ReplySchema = new Schema({
   content: {
     type: String,
-    required: true
+    required: true,
   },
   replyingTo: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+    ref: "User",
+  },
 });
 
-module.exports = mongoose.model('Reply', ReplySchema)
+module.exports = mongoose.model("Reply", ReplySchema);
