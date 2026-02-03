@@ -91,11 +91,8 @@ app.post('/feedback', catchAsync(async (req, res, next) => {
 // app.post('feedback/:id/')
 
 app.get('/feedback/:id', async (req, res) => {
-    const comment = await Comment.findById(req.params.id)
     const request = await Request.findById(req.params.id).populate('comments')
-    res.render('feedback/show', { request, comment })
-    // res.status(200).json(request);
-
+    res.render('feedback/show', { request })
 });
 
 
