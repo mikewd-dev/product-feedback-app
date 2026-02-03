@@ -20,6 +20,7 @@ const Roadmap = require("./models/roadmap")
 const User = require("./models/user")
 const catchAsync = require("./utils/catchAsync");
 const bodyParser = require('body-parser');
+const upvotes = require("./models/upvotes");
 
 
 const db = mongoose.connection;
@@ -30,7 +31,8 @@ app.use('/js', express.static(__dirname + 'public/js'))
 app.use('/images', express.static(__dirname + 'public/images'))
 
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(bodyParser.json())
+// app.use(express.json())
 
 // app.use(express.json())
 
@@ -163,34 +165,23 @@ app.put('/feedback/:id', catchAsync(async (req, res) => {
     res.redirect(`/feedback/${request._id}`)
 }));
 
-// app.put('/feedback/:id/upvotes', (req, res) =>{
-//      Request.findById(req.params.id, (err, request)=>{
-//         console.log(req.params.id)
-//         if(err){
-//             console.log(err)
-//             res.redirect("back")
-//         } else {
-//             request.upvotes++;
-//             request.save();
-//             res.redirect("/feedback/suggestions" + req.params.id)
-//         }
-//     })
-// })
+app.get('/feedback/suggestions/:id', async(req, res)=>{
+    // const request = await Request.findById(req.params.id)
+    res.redirect('/feedback/suggestions')
+})
 
-// app.put('/feedback/suggestions', catchAsync(async (req, res) => {
-//         const {id} = req.params;
-//     const request = await Request.findByIdAndUpdate(id, {...req.params.request})
-//     if(buttonClick){
-//         requests.upvotes + 1;
-//     }
-//     res.render('/feedback/suggestions')
-// }));
+app.post('/feedback/suggestions/:id/upvote', async (req, res) => {
+//   const request = req.params.request;
+  const suggestion = await Request.findById(req.params.id);
 
-// app.put('/feedback/:id', catchAsync(async(req, res) =>{
-//     const upvotes = req.params.upvotes;
-//     const request = await Request.findByIdAndUpdate(id, {...req.body.request})
-//     res.render('/feedback/suggestions')
-// }))
+  // Update the upvotes value in your database
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes });
+});
+
+
 
 app.delete('/feedback/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
@@ -208,58 +199,6 @@ app.post('/feedback/:id/comments', async(req, res) =>{
     res.redirect(`/feedback/${request._id}`)
 })
 
-app.post('/feedback/:id', async(req, res) =>{
-    const request = await Request.findById(req.params.id);
-    request.upvotes++
-    await request.save();
-
-    // await comment.save();
-    // res.render('feedback/suggestions', {request})
-    res.send(request)
-})
-
-// app.get("/feedback/:id/suggestions", async(req, res)=>{
-//     const request = await Request.findById(req.params.id);
-//     request.upvotes +=1;
-//     request.save((err, updatedRequest) =>{
-//         if(err){
-//             console.log(err);
-//             res.status(500).send('An error occurred during upvote')
-//         } else {
-//             res.json({upvotes: updatedRequest.upvotes})
-//         }
-//     })
-//     // res.json({success: true, upvotes: request.upvotes })
-// })
-
-// app.put('/feedback/:id/upvotes', async(req, res) => {
-//     const request = await Request.findById({$inc: {upvotes: 1}})
-//         await request.save();
-//         res.send(request);
-// })
-
-
-// app.post('/feedback/suggestions/:id', async(req, res) => {
-// Requests.findById(id, function (err, user) {
-//   if (err) return handleError(err);
-
-//   requests.upvotes += 1;
-
-//   requests.save(function(err) {
-//     if (err) return handleError(err);
-//     res.send(requests); // Or redirect, basically finish request.
-//   });
-// });
-// });
-
-// app.get('/feedback/suggestions', async(req, res) =>{
-//     const request = Request.findByIdAndUpdate(req.params.id)
-//     const upvotes = Request.find(req.body.upvotes)
-//     request.upvotes++
-//     await request.save()
-//     res.render("feedback/show", {request})
-//     // res.send(request);
-// })
 
 
 
