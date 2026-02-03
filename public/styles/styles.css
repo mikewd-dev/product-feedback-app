@@ -2465,7 +2465,7 @@ p {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 380px) and (max-width: 600px) {
   body,
   html {
     top: 0 !important;
@@ -2729,13 +2729,13 @@ p {
   }
 
   .add-feedback-top {
-    display: inline-flex;
+    /* display: inline-flex; */
     position: absolute;
     width: 134px;
     font-size: 13px;
     height: 40px;
     flex-shrink: 0;
-    margin: 6px 12px 40px 217px;
+    margin: 6px 17px 40px 230px;
     padding: 10.5px 17px 10.5px 16px;
   }
 
@@ -2975,6 +2975,7 @@ p {
     flex-direction: column;
     float: right;
     margin-left: 118px;
+    position: fixed;
     z-index: 3;
   }
 
@@ -2988,8 +2989,8 @@ p {
   }
 
   .container-fluid {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-left: 17px !important;
+    padding-right: 0;
     z-index: 2;
   }
   .dropdown-menu.show {
@@ -3015,8 +3016,8 @@ p {
     color: #3a4374;
     text-align: center;
     font-style: normal;
-width:fit-content;
-margin-left:85%
+    width: fit-content;
+    margin-left: 85%;
   }
 
   .feedback-title {
@@ -3047,7 +3048,7 @@ margin-left:85%
     width: 102px;
     height: 108px;
     margin-top: 76px;
-margin-right: 0;
+    margin-right: 0;
     margin-bottom: 39px;
   }
 
@@ -3056,7 +3057,7 @@ margin-right: 0;
   }
 
   .add-feedback {
-    margin-left:0px;
+    margin-left: 0px;
     margin-top: 0px;
   }
 
