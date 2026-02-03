@@ -1,5 +1,3 @@
-// console.log("script.js loaded");
-// console.log("jQuery?", typeof $);
 
 const path = window.location.pathname;
 

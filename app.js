@@ -28,13 +28,11 @@ const bodyParser = require("body-parser");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 
-// --- MongoDB connection ---
 mongoose
   .connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   .then(() => console.log("DB Connected!!"))
   .catch((err) => console.error(err));
 
-// --- Session store ---
 const dbstore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI,
   touchAfter: 24 * 60 * 60,
@@ -44,6 +42,9 @@ const dbstore = MongoStore.create({
 dbstore.on("error", function (e) {
   console.log("Session Store Error", e);
 });
+
+app.set("trust proxy", 1); 
+
 
 const sessionConfig = {
   store: dbstore,
@@ -57,12 +58,12 @@ const sessionConfig = {
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), // 1 week
   },
 };
-// ✅ Session must come BEFORE Passport
+
 app.use(session(sessionConfig));
 app.use(flash());
 app.use(helmet());
 
-// --- Helmet CSP ---
+
 const scriptSrcUrls = [
   "https://stackpath.bootstrapcdn.com/",
   "https://kit.fontawesome.com/",
@@ -107,7 +108,7 @@ app.use(
         fontSrc: ["'self'", ...fontSrcUrls],
         mediaSrc: ["https://res.cloudinary.com/dxarelvy7/"],
         childSrc: ["blob:"],
-        scriptSrcAttr: ["'unsafe-inline'"], // <-- Add this line
+        scriptSrcAttr: ["'unsafe-inline'"], 
       },
     },
     crossOriginEmbedderPolicy: false,
@@ -121,7 +122,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// --- Flash & current user middleware ---
+
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
@@ -135,7 +136,6 @@ app.use(bodyParser.json());
 app.use(methodOverride("_method"));
 app.use(mongoSanitize());
 
-// Provide navbar-related data to all views
 app.use((req, res, next) => {
   res.locals.roadmap = [];
   res.locals.progress = [];
@@ -144,12 +144,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// --- View engine ---
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// --- Static assets ---
+
 app.use(express.static("public"));
 app.use("/styles", express.static(path.join(__dirname, "public/styles")));
 app.use("/js", express.static(path.join(__dirname, "public/js")));
@@ -166,9 +165,7 @@ app.use("/", requestRoutes);
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
-  //display error message and stack
   if (!err.message) err.message = "Oh no, something went wrong!";
-  //err should be passed through to the error template
   res.status(statusCode).render("error", { err });
 });
 
