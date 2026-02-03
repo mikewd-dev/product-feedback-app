@@ -4026,19 +4026,14 @@ p {
   }
 
   .add-feedback-roadmap {
-    left: 0;
-    margin-left: 179px;
-    top: 0;
-    margin-top: 30px;
-    margin-right: 24px;
-    width: 134px;
-    padding: 10.5px 17px 10.5px 16px;
+    position: absolute;
+    width: 114px;
+    font-size: 13px;
     height: 40px;
     flex-shrink: 0;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+    margin: 6px 4% 40px 0;
+    padding: 10.5px 2% 5px 2%;
+    top: 0;
   }
 
   .columns {
