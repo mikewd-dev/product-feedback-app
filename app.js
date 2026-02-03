@@ -34,7 +34,6 @@ const ExpressError = require("./utils/ExpressError");
 
 const db = mongoose.connection;
 
-// app.use('/.product-feedback-app/functions/product-feedback-app-figma', router)
 
 app.use("/", requestRoutes);
 
@@ -154,9 +153,9 @@ function isLoggedIn(req, res, next) {
   res.redirect("/feedback/login");
 }
 
-module.exports.handler = serverless(app);
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log("Serving on port 3002");
+  console.log(`✅ Server running on port ${PORT}`);
 });
