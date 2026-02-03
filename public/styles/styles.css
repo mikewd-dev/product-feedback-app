@@ -274,6 +274,7 @@ li {
       margin: 0 auto;
       left: 0;
       right: 0;
+  top:64px;
       flex-wrap: wrap;
       background-color: #ffff;
       border-radius: 10px;
@@ -1061,7 +1062,7 @@ figcaption {
 .add-cancel-feedback {
       display: flex;
       float: right;
-      margin-right: 0;
+      margin-right: 3%;
       margin-left: auto;
       margin-top: 9px;
 }
@@ -1230,7 +1231,7 @@ figcaption {
 .go-back {
   margin-top: 7%;
   margin-bottom: 36px;
-  margin-left: 85px;
+  margin-left: 8%;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -2248,8 +2249,7 @@ p {
     align-items: flex-start;
     left: 0;
     right: 0;
-    top: 50px;
-    
+    top: 50px; 
   }
 
   .feedback-screen {
@@ -2262,15 +2262,12 @@ p {
             left: 0;
             margin: 0 auto;
             right: 0;
-            /* margin-left: 0; */
             border-radius: 10px;
-            /* margin: 0 auto; */
-            display: flex;
+              display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            /* margin: 0; */
             align-content: center;
   }
 
@@ -2345,21 +2342,6 @@ p {
     font-weight: 400;
     line-height: normal;
   }
-  /* .post-comment {
-    position: absolute;
-    right: 69px;
-    bottom: 0;
-    width: 142px;
-    top: 168px;
-    height: 40px;
-    color: #f2f4fe;
-    font-size: 13px !important;
-    font-style: normal !important;
-    font-weight: 700;
-    line-height: normal;
-    border-radius: 10px;
-    background: #c75af6;
-  } */
   .comment {
     position: relative;
     background-color: #ffff;
@@ -2552,8 +2534,6 @@ p {
     width: 129.64px;
     height: 136.742px;
     flex-shrink: 0;
-    /* margin-left: 43.3%;
-    margin-right: 0; */
     margin-top: 126px;
     margin-bottom: 9px;
   }
@@ -2574,7 +2554,6 @@ p {
     flex-shrink: 0;
     margin-bottom: 50px;
     margin-right: 0px;
-    /* margin-top: 56px; */
     width: 191px;
     height: 178px;
     flex-shrink: 0;
@@ -2701,7 +2680,7 @@ p {
            /* left: 3%; */
            gap: 2rem;
            grid-template-columns: repeat(2, 1fr);
-
+ }
   .column {
     flex-shrink: 0;
     margin-right: 10px;
@@ -2840,9 +2819,14 @@ p {
     font-weight: 600;
     line-height: normal;
     text-decoration-line: underline;
-    margin-left: 24px;
+    margin-left: 46px;
   }
 
+  .char-left {
+    margin-top:13px;
+  }
+
+  
   .suggestion {
     color: #fff;
     font-size: 18px;
@@ -2924,7 +2908,7 @@ p {
   }
 
   .feedback-screen-active {
-           width: 100vw !important;
+           width: 100vw;
         border-radius: 10px;
         top: 370px;
         margin-left: 0px;

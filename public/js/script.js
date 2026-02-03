@@ -40,6 +40,13 @@ function columnLoad(){
   }
 }
 
+// function cancelledFeedback {
+//   const cancelled = document.getElementById('cancelbutton')
+//   if(cancelled.addEventListener('click'){
+//     if(FormData.isEmpty)
+//   })
+// }
+
 function plannedDisplay() {
   let columnPlanned = document.getElementById('column-planned');
   let columnProgress = document.getElementById('column-progress');

@@ -56,7 +56,9 @@
                         <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3" placeholder="Type your comment here" required></textarea>
                         <p class="char-left">250 Characters left</p>
                         <div class="add-cancel-feedback">
-                            <a class="cancel-feedback-btn text-center" href="index" type="button">Cancel</a>
+
+                            <a id="cancelbutton" class="cancel-feedback-btn text-center" href="javascript:history.back()">Cancel</a>
+
                             <button class="add-feedback-new">+Add Feedback</button>
                         </div>
                     </form>
