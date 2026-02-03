@@ -56,7 +56,8 @@ const sessionConfig = {
   saveUninitialized: false,
   cookie: {
       httpOnly: true,
-      // secure: true,
+      secure: false,
+     sameSite: 'lax',
       expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
   }
 }
@@ -85,18 +86,16 @@ router.post("/feedback/register", upload.single('image'), catchAsync(async (req,
 
         const { name, email, username, password } = req.body;
 
-        // Create a new User instance
+        
         const user = new User({ name, email, username });
 
-        // Check if a file was uploaded and set the image property accordingly
         if (req.file) {
             user.image.push({
-                url: req.file.path, // Store the Cloudinary URL here
-                filename: req.file.filename // Store the Cloudinary filename here
+                url: req.file.path, 
+                filename: req.file.filename 
             });
         }
 
-        // Register the user using passport-local-mongoose
         const registeredUser = await User.register(user, password);
 
         req.login(registeredUser, err => {
@@ -106,10 +105,9 @@ router.post("/feedback/register", upload.single('image'), catchAsync(async (req,
             }
 
             res.redirect("/feedback/suggestions");
-            req.flash('success', 'Registration successful'); // "success" instead of "Success"
+            req.flash('success', 'Registration successful');
         });
     } catch (err) {
-        console.log(err); // Log the error for debugging
         req.flash('error', err.message);
         res.redirect('register');
     }
@@ -265,13 +263,9 @@ router.get('/feedback/register', (req, res)=>{
     res.render('feedback/register')
 });
 
-router.post("/feedback/login", passport.authenticate("local",
-    {
-        successRedirect: "/feedback/suggestions",
-        failureRedirect: "/feedback/login"
-    }), (req, res)=> {
-        req.flash('success', 'Welcome Back!')
-})
+router.get('/feedback/login', (req, res) => {
+  res.render('feedback/login');
+});
 
 router.get("/feedback/logout", (req, res, next) => {
     req.logout(function(err) {

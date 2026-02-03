@@ -201,7 +201,7 @@
 
     <% for(let req of Object.values(request)){ %>
     <div class="feedback-suggestion">
-      <div class="d-flex flex-row feedback-suggested">
+      <div id="suggested-feedback"  class="feedback-suggested">
         <form id="vote" onsubmit="event.preventDefault();">
 <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= req._id %>">
