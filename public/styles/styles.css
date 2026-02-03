@@ -87,6 +87,10 @@ textarea.parsley-error {
   line-height: 100%;
 }
 
+.delete-form {
+  width: fit-content;
+}
+
 .container {
   margin: 0 !important;
 }
@@ -689,6 +693,7 @@ p {
 }
 
 .btn-suggestion {
+  width: auto;
   background: #f2f4ff;
   color: #4661e6;
   bottom: 0%;
@@ -894,7 +899,7 @@ figcaption {
   display: inline-flex;
   flex-direction: row;
   text-decoration: none;
-  margin-top: 32px;
+  margin-top: 20px;
   top: 145px;
 }
 
@@ -967,9 +972,14 @@ figcaption {
   margin-left: 81px;
 }
 
+.hidden-delete {
+  margin-top: 0;
+  display: none;
+}
+
 .delete-feedback-btn {
-  position: absolute;
-  left: 420px;
+  position: relative;
+  left: 123px;
   border-radius: 10px;
   width: 93px;
   height: 44px;
@@ -980,6 +990,7 @@ figcaption {
   font-size: 14px;
   line-height: 20px;
   color: #f2f4fe;
+  top: -100px;
 }
 
 .sr-only {
@@ -2093,7 +2104,7 @@ p {
   }
 
   .btn-suggestion {
-    width: 77px;
+    width: auto;
     height: 30px;
     flex-shrink: 0;
     margin-top: 12px;
@@ -2366,16 +2377,19 @@ p {
   }
 
   .delete-feedback-btn {
-    left: 154px;
-    margin-right: 110px;
+    position: relative;
+    left: 32px;
+    border-radius: 10px;
     width: 93px;
     height: 44px;
-    flex-shrink: 0;
-    color: #f2f4fe;
-    font-size: 14px;
-    font-style: normal;
+    text-decoration: none;
+    border-radius: 10px;
+    background: #d73737;
     font-weight: 700;
-    line-height: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #f2f4fe;
+    top: -210px;
   }
   .comment-content {
     color: #647196;
@@ -2878,6 +2892,7 @@ p {
     margin-left: 124px !important;
   }
   .btn-suggestion {
+    width: auto;
     margin-top: 13px;
     margin-left: 10px;
     font-size: 13px !important;
@@ -3445,8 +3460,8 @@ p {
     position: relative;
     width: 279px;
     height: 40px;
-    left: 0;
-    top: 154px;
+    left: 43px;
+    top: 3px;
     flex-shrink: 0;
   }
 
