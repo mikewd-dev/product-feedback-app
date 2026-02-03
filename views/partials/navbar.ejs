@@ -1,6 +1,7 @@
 <div class="container">
   <div class="grid-container">
     <div class="feedback">
+      
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,8 +10,8 @@
           
           <div class="navbar-collapse justify-content-between collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-              <li class="dropdown">
-                <div class="nav-link dropdown-toggle" id="navbarDropdownMenu" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+              <li class="nav-item">
+                <div class="nav-link" id="navbarDropdownMenu" role="group">
                   <div class="drop">
                     <div class="buttons">
                       <div class="d-flex">
@@ -22,72 +23,38 @@
                         <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>">Enhancement</a>
                         <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>">Bug</a>
                       </div>
-                      <div class="d-flex flex-row">
-                        <a href="/feedback/feature" class="blue <%= currentType === 'feature' ? 'active' : '' %>">Feature</a>
-                      </div>
                     </div>
-
-                    <div class="list">
-                      <div class="map">
-                        <h5 class="roadmap">Roadmap</h5>
-                        <span class="oval-planned"></span><span class="roadmap-options">Planned</span>
-                        <span class="oval-progress"></span><span class="roadmap-options">In-Progress</span>
-                        <span class="oval-live"></span><span class="roadmap-options">Live</span>
-                      </div>
-                      <ul class="view-roadmap">
-                        <li class="view"><a href="/feedback/roadmap">View</a></li>
-                      </ul>
-                      <div class="view-num">
-                        <p><%= roadmap.length %></p>
-                        <p><%= progress.length %></p>
-                        <p><%= live.length %></p>
-                      </div>
-                      <div class="login-register-mob">
-                        <% if (!currentUser) { %>
-                          <a class="nav-link-login" href="/feedback/login">Login</a>
-                          <a class="nav-link-register" href="/feedback/register">Register</a>
-                        <% } else { %>
-                          <p>Welcome <%= currentUser.username %></p>
-                          <a class="nav-link-logout" href="/feedback/logout">Logout</a>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  </div> 
+                </div> 
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      <div class="dropdown">
-        <nav class="navbar-expand-lg">
-          <div class="container-fluid d-flex align-items-center position-relative">
-            <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" alt="">
-            
-            <div class="suggestion-count" style="margin-left: 10px;">
-              <span><%= request.length %></span> Suggestions
-            </div>
+      <nav class="navbar-expand-lg bar-container">
+        <div class="container-fluid d-flex align-items-center position-relative">
+          <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" alt="">
+          
+          <div class="suggestion ms-2">
+            <span><%= request.length %></span> Suggestions
+          </div>
 
-            <div class="dropdown ms-3">
-              <a class="nav-link dropdown-toggle" href="#" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="dropdown ms-4">
+             <button class="btn btn-link dropdown-toggle text-white text-decoration-none" type="button" id="sortMenu" data-bs-toggle="dropdown" aria-expanded="false">
                 Sort by : <strong>Most Upvotes</strong>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+             </button>
+             <ul class="dropdown-menu" aria-labelledby="sortMenu">
                 <li><a class="dropdown-item" href="/feedback/bug?sort=mostup">Most Upvotes</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/feedback/bug?sort=leastup">Least Upvotes</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/feedback/bug?sort=mostcomm">Most Comments</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/feedback/bug?sort=leastcomm">Least Comments</a></li>
-              </ul>
-            </div>
-
-            <a class="add-feedback-top text-center" href="/feedback/new">+Add Feedback</a>
+             </ul>
           </div>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
+
+          <a class="add-feedback-top text-center" href="/feedback/new">+Add Feedback</a>
+        </div>
+      </nav>
+
+    </div> 
+  </div> 
+</div> 
