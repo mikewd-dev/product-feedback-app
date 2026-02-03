@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
-const serverless = require('serverless-http')
+// const serverless = require('serverless-http')
 const methodOverride = require("method-override");
 const flash = require('connect-flash')
 const Joi  = require('joi')
@@ -136,7 +136,7 @@ router.post("/feedback/register", upload.single('image'), catchAsync(async (req,
             name: Joi.string().required(),
             username: Joi.string().required(),
             password: Joi.string().required(),
-            // image: Joi.any().required()
+            image: Joi.any().required()
             // }).required()
         });
         const { error } = registerSchema.validate(req.body);
