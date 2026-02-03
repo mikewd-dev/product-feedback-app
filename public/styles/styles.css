@@ -426,14 +426,14 @@ li {
 
 .nav-link {
   margin-left: 36px;
-      left: 25%;
-      right: 0%;
-      top: calc(50% - 26px / 2);
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 26px;
-      letter-spacing: -0.25px;
-      color: #ffffff !important;
+  left: 25%;
+  right: 0%;
+  top: calc(50% - 26px / 2);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.25px;
+  color: #ffffff !important;
 }
 
 .dropdown-menu.show {
@@ -562,8 +562,8 @@ p {
   width: 80vw;
   left: 0;
   right: 0;
-  margin: 0 auto;
-  height: 540px;
+  margin: 135px auto auto;
+  height: 75vh;
   top: 15%;
   background-color: #fdfaff;
   border-radius: 10px;
@@ -2798,7 +2798,7 @@ p {
 
   .suggestion {
     color: #ffff;
-    align-content:center;
+    align-content: center;
     font-size: 18px;
     font-family: Jost;
     margin-top: 0;
@@ -2928,13 +2928,33 @@ p {
     flex-direction: column;
     align-content: center;
     width: 80vw;
-    margin: 0 auto;
+    margin: 115px auto 0 94px;
     right: 0;
     top: 15%;
     left: 0;
-    height: 540px;
+    height: 75vh;
   }
 
+  .btn-login {
+    justify-content: center;
+    width:100% !important;
+  }
+
+  .validated-form {
+      width: 100%;
+      align-items: center;
+  }
+
+  .form-control {
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 540px;
+    display: flex;
+    flex-direction: column;
+  }
+  
   .feedback-title {
     color: #3a4374;
     font-size: 24px;
@@ -3020,7 +3040,7 @@ p {
     margin: 0;
     overflow-x: hidden;
     background: #f5f5f5 !important;
-    }
+  }
 
   .dropdown {
     position: absolute;
@@ -3266,7 +3286,7 @@ p {
     flex-shrink: 0;
     border-radius: 0;
   }
-  
+
   .add-comment {
     width: 100vw;
   }
@@ -3826,13 +3846,14 @@ p {
   }
 
   .roadmap-nav {
-    width: 100vw;
+    width: 100vw !important;
     height: 100px;
     flex-shrink: 0;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 0;
+    border-radius: 0;
   }
 
   .go-back-roadmap {
@@ -3928,7 +3949,7 @@ p {
 
   .add-feedback-roadmap {
     left: 0;
-    margin-left: 217px;
+    margin-left: 179px;
     top: 0;
     margin-top: 30px;
     margin-right: 24px;
@@ -4046,7 +4067,7 @@ p {
 
   .tab {
     margin-top: 0;
-    margin-left: 13px;
+    margin-left: 37px;
     display: flex;
     flex-direction: row;
     color: #3a4374;
@@ -4445,7 +4466,7 @@ p {
     line-height: normal;
     margin-left: 60px;
   }
-  
+
   #category {
     position: relative;
     left: 0;
