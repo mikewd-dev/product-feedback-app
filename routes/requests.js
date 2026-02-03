@@ -78,21 +78,6 @@ passport.deserializeUser(User.deserializeUser())
 
 router.post("/feedback/register", upload.single('image'), catchAsync(async (req, res) => {
     try {
-        const registerSchema = Joi.object({
-            // register: Joi.object({
-                email: Joi.string().required(),
-                name: Joi.string().required(),
-                username: Joi.string().required(),
-                password: Joi.string().required(),
-                // image: Joi.any().required()
-            // }).required()
-        });
-        const { error } = registerSchema.validate(req.body);
-
-        if (error) {
-            const msg = error.details.map(el => el.message).join(',');
-            throw new ExpressError(msg, 400);
-        }
 
         const { name, email, username, password } = req.body;
 
@@ -126,61 +111,7 @@ router.post("/feedback/register", upload.single('image'), catchAsync(async (req,
     }
 }));
 
-// router.post("/feedback/register", upload.single('image'), catchAsync(async (req, res) => {
-//     try {
-//         console.log("Start of POST /feedback/register route"); // Add this line
 
-//         const registerSchema = Joi.object({
-//             // register: Joi.object({
-//             email: Joi.string().required(),
-//             name: Joi.string().required(),
-//             username: Joi.string().required(),
-//             password: Joi.string().required(),
-//             image: Joi.any().required()
-//             // }).required()
-//         });
-//         const { error } = registerSchema.validate(req.body);
-
-//         if (error) {
-//             const msg = error.details.map(el => el.message).join(',');
-//             throw new ExpressError(msg, 400);
-//         }
-
-//         const { name, email, username, password } = req.body;
-
-//         // Create a new User instance
-//         console.log("Creating a new User instance"); // Add this line
-//         const user = new User({ name, email, username });
-
-//         // Check if a file was uploaded and set the image property accordingly
-//         if (req.file) {
-//             console.log("File uploaded:", req.file); // Add this line
-//             user.image.push({
-//                 url: req.file.path, // Store the Cloudinary URL here
-//                 filename: req.file.filename // Store the Cloudinary filename here
-//             });
-//         }
-
-//         // Register the user using passport-local-mongoose
-//         console.log("Registering the user using passport-local-mongoose"); // Add this line
-//         const registeredUser = await User.register(user, password);
-
-//         req.login(registeredUser, err => {
-//             if (err) {
-//                 console.log("Error during login:", err); // Add this line
-//                 return res.render("feedback/register");
-//             }
-
-//             console.log("Successful login"); // Add this line
-//             res.redirect("/feedback/suggestions");
-//             req.flash('success', 'Registration successful'); // "success" instead of "Success"
-//         });
-//     } catch (err) {
-//         console.log("Error caught:", err); // Add this line
-//         req.flash('error', err.message);
-//         res.redirect('register');
-//     }
-// }));
 
 router.post("/feedback/login", passport.authenticate("local",
     {
