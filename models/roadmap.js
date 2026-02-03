@@ -10,9 +10,15 @@ const RoadmapSchema = new Schema({
     description:String,
     comments:[
             {
-                type: Schema.Types.ObjectId,
-                ref:"Comment"
+                id: Number,
+                content: String,
+            user: {
+                type: Object,
+                image:String,
+                name:String,
+                username:String,
             }
+        }
         ]
 })
 
