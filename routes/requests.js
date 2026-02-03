@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
+const sanitizeHtml = require('sanitize-html');
 // const serverless = require('serverless-http')
 const methodOverride = require("method-override");
 const flash = require('connect-flash')
@@ -48,14 +49,17 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 const sessionConfig = {
-    secret: 'thisshouldbeabettersecret!',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        expires: Date.now() * 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
+  name: 'prodfb-session',
+  secure: true,
+  secret: 'thisshouldbeabettersecret!',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      httpOnly: true,
+      // secure: true,
+      expires: Date.now() * 1000 * 60 * 60 * 24 * 7,
+      maxAge: 1000 * 60 * 60 * 24 * 7
+  }
 }
 router.use(session(sessionConfig));
 router.use(flash())
