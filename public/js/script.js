@@ -14,23 +14,10 @@ $(document).ready(function () {
   });
 });
 
-// function changeButton(){
-//   let button = document.querySelectorAll('.blue');
-//   if(button.addEventListener('click')){
-//     button.style.backgroundColor = '#4661e6';
-//     button.style.color = '#f2f2f2';
-//   } else {
-//     button.style.backgroundColor ='#f2f2f2';
-//     button.style.color = '#4661e6';
-// }
-//   }
 
 window.addEventListener("DOMContentLoaded", () => {
-  // More robust way to extract the type from the path
   const match = window.location.pathname.match(/\/feedback\/([^\/\?]+)/);
-  const currentType = match ? match[1] : "suggestions"; // fallback if nothing matches
-
-  // Select all .blue buttons
+  const currentType = match ? match[1] : "suggestions"; 
   const buttons = document.querySelectorAll(".blue");
   buttons.forEach((button) => {
     const dataType = button.getAttribute("data-type");
@@ -45,10 +32,8 @@ function navButton() {
   const overlay = document.querySelector(".overlay");
   const navbarNav = document.querySelector(".navbar-nav");
 
-  // Toggle the "icon-close" class on navbarToggler
   navbarToggler.classList.toggle("icon-close");
 
-  // Toggle the display of the navbar
   if (navbarNav.classList.contains("show")) {
     navbarNav.classList.remove("show");
     navbarNav.style.display = "none";
@@ -68,13 +53,6 @@ function columnLoad() {
     tabLive.style.display = "none";
   }
 }
-
-// function cancelledFeedback {
-//   const cancelled = document.getElementById('cancelbutton')
-//   if(cancelled.addEventListener('click'){
-//     if(FormData.isEmpty)
-//   })
-// }
 
 function plannedDisplay() {
   let columnPlanned = document.getElementById("column-planned");
@@ -121,10 +99,6 @@ function liveDisplay() {
   tabLive.style.display = "block";
   tabInProg.style.display = "none";
   tabPlanned.style.display = "none";
-  // }
-
-  // tabLive.style.display="none";
-
   document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth <= 768) {
       const board = document.querySelector(".board");
@@ -185,7 +159,6 @@ window.onload = function checkMark() {
 
   linkmostup.addEventListener("click", (e) => {
     console.log("Most up clicked");
-    // e.preventDefault();
     e.stopPropagation();
 
     sessionStorage.setItem("mostupClicked", "true");
@@ -241,8 +214,6 @@ window.onload = function checkMark() {
     checkleastcomm.style.display = "inline";
   });
 };
-
-// checkMark();
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
