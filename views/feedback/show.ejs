@@ -33,7 +33,7 @@
             <div class="feedback-show">
               <div class="d-flex flex-row feedback-suggested">
                 <form id="vote" onsubmit="event.preventDefault();">
-                  <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
+                  <button type="button" id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
                     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= request._id %>">
                       <path d="M1 6l4-4 4 4" stroke-width="2" />
                     </svg>
@@ -100,7 +100,7 @@
                     <span class="replyingto">@<%=reply.replyingTo %></span>
                     <%=reply.content %>
                   </p>
-                  <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form" data-parsley-validate novalidate>
+                  <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form reply-form" data-parsley-validate novalidate>
                     <div class="row-reply" id="reply-box-<%=reply._id%>">
                       <textarea name="reply[content]" class="reply-box" required></textarea>
                       <button class="post-reply">Post Reply</button>

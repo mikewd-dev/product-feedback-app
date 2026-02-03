@@ -68,14 +68,15 @@ dbstore.on("error", function(e) {
 });
 
 const sessionConfig = {
-    dbstore,
+    store: dbstore,
     secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        expires: Date.now() * 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
+          secure: true, 
+        sameSite: 'lax',
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)
     }
 }
 app.use(session(sessionConfig));
