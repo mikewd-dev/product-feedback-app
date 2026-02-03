@@ -4,8 +4,14 @@ const Schema = mongoose.Schema;
 const CommentSchema = new Schema({
     id: Number,
     content: String,
-    users:{
-        image: String,
+    user:{
+        type: Object,
+        image: [
+    {
+      url: String,
+      filename: String
+    }
+  ],
         name: String,
         username: String,
         },
@@ -13,11 +19,16 @@ const CommentSchema = new Schema({
                     content: String,
                     replyingTo: String,
                     user: {
-                        type: Object,
-                        image: String,
-                        name: String,
-                        username: String
-                    }
+                type: Object,
+                image: [
+    {
+      url: String,
+      filename: String
+    }
+  ],
+                name:String,
+                username:String,
+            },
                 }]
 
 })

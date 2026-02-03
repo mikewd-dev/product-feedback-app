@@ -31,31 +31,63 @@ function navButton() {
   }
 }
 
+function columnLoad(){
+  if(window.onload){
+    columnProgress.style.display = 'none';
+    columnLive.style.display = 'none';
+    tabInProg.style.display = 'none';
+    tabLive.style.display = 'none';
+  }
+}
 
-// function navButton() {
-//   const navbarToggler = document.querySelector('.navbar-toggler-icon');
-//   const overlay = document.querySelector('.overlay');
-//   const navbarNav = document.querySelector('.navbar-nav');
+function plannedDisplay() {
+  let columnPlanned = document.getElementById('column-planned');
+  let columnProgress = document.getElementById('column-progress');
+  let columnLive = document.getElementById('column-live');
+  let tabPlanned = document.getElementById('plan-bar');
+  let tabInProg = document.getElementById('inprog-bar');
+  let tabLive = document.getElementById('lve-bar');
+  columnPlanned.style.display = 'block';
+  columnProgress.style.display = 'none';
+  columnLive.style.display = 'none';
+  tabPlanned.style.display = 'block';
+  tabInProg.style.display = 'none';
+  tabLive.style.display = 'none';
+}
 
-//   // Toggle the "icon-close" class on navbarToggler
-//   navbarToggler.classList.toggle('icon-close');
+function progressDisplay() {
+  let columnPlanned = document.getElementById('column-planned');
+  let columnProgress = document.getElementById('column-progress');
+  let columnLive = document.getElementById('column-live');
+  let tabPlanned = document.getElementById('plan-bar')
+  let tabInProg = document.getElementById('inprog-bar')
+  let tabLive = document.getElementById('lve-bar')
 
-//   // Toggle the display of the navbar
-//   if (navbarNav.classList.contains('show')) {
-//     navbarNav.classList.remove('show');
-//     navbarNav.style.display = 'none';
-//     overlay.style.display = 'block';
-//     setTimeout(() => {
-//       navbarNav.style.display = 'block';
-//     }, 1000);
-//   } else {
-//     navbarNav.style.display = 'block';
-//     overlay.style.display = 'none';
-//   }
-// }
+  columnProgress.style.display = 'block';
+  columnPlanned.style.display = 'none';
+  columnLive.style.display = 'none';
+  tabInProg.style.display = 'block';
+  tabPlanned.style.display = 'none'
+  tabLive.style.display = 'none'
+}
 
+function liveDisplay() {
+  let columnPlanned = document.getElementById('column-planned');
+  let columnProgress = document.getElementById('column-progress');
+  let columnLive = document.getElementById('column-live');
+    let tabPlanned = document.getElementById('plan-bar')
+  let tabInProg = document.getElementById('inprog-bar')
+  let tabLive = document.getElementById('lve-bar')
 
-// window.onload = navButton(); // this is the line to add
+  columnLive.style.display = 'block';
+  columnPlanned.style.display = 'none';
+  columnProgress.style.display = 'none';
+  tabLive.style.display = 'block'
+  tabInProg.style.display = 'none';
+  tabPlanned.style.display = 'none';
+}
+
+// tabLive.style.display="none";
 
 
    if (window.innerWidth <= 768) {
@@ -67,7 +99,18 @@ function navButton() {
         // Add the `close-icon` element to the navbar
         const closeIcon = document.querySelector('.close-icon');
         board.appendChild(closeIcon);
+
     }
+
+    function checkWidth() {
+       var boardDiv = document.querySelectorAll('board-text')
+
+    if(window.innerWidth > 768){
+      boardDiv.style.display="none"
+    }
+    }
+    checkWidth()
+
 
 window.onload = function checkMark() {
   console.log('Window loaded')
@@ -197,7 +240,13 @@ linkleastcomm.addEventListener('click', (e) => {
 
 checkMark();
 
-
+function isLoggedIn(req, res, next){
+    // console.log("REQ.USER...", req.user);
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/feedback/login");
+}
 function dropReply(id) {
   // Get the textarea with the corresponding id.
   const textarea = document.getElementById(id);

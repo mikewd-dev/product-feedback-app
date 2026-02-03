@@ -64,16 +64,16 @@
                         </div>
                       </div>
                       <div class="d-flex flex-row list ">
-                        <div class="map">
+                       <div class="map">
                           <h5>
                             <p class="roadmap ">Roadmap</p>
                           </h5>
-                          <p class="roadmap-options">Planned </p>
-                          <p class="roadmap-options">In-Progress</p>
-                          <p class="roadmap-options">Live</p>
+                          <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
+                          <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
+                          <span class="oval-live"></span><p class="roadmap-options">Live</p>
                         </div>
                         <ul class="view-roadmap">
-                          <li class="view"><a href="roadmap">View</a></li>
+                          <li class="view"><a href="/feedback/roadmap">View</a></li>
                         </ul>
                         <div class="view-num">
                           <p>
@@ -95,6 +95,10 @@
 
               </ul>
             </div>
+          </div>
+           <div class="board-text">
+          <p class="navboard-title">Frontend Mentor</p>
+          <p class="navboard-subtitle">FeedBack Board</p>
           </div>
         </nav>
 
@@ -129,16 +133,16 @@
             </div>
           </div>
           <div class="d-flex flex-row list ">
-            <div class="map">
-              <h5>
-                <p class="roadmap ">Roadmap</p>
-              </h5>
-              <p class="roadmap-options">Planned </p>
-              <p class="roadmap-options">In-Progress</p>
-              <p class="roadmap-options">Live</p>
-            </div>
+             <div class="map">
+                          <h5>
+                            <p class="roadmap ">Roadmap</p>
+                          </h5>
+                          <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
+                          <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
+                          <span class="oval-live"></span><p class="roadmap-options">Live</p>
+                        </div>
             <ul class="view-roadmap">
-              <li class="view"><a href="roadmap">View</a></li>
+              <li class="view"><a href="/feedback/roadmap">View</a></li>
             </ul>
             <div class="view-num">
               <p>
@@ -212,7 +216,7 @@
         <form id="vote" onsubmit="event.preventDefault();">
           <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
             <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-            <div id="votes-<%= req._id %>">
+            <div class="votes" id="votes-<%= req._id %>">
               <%= req.upvotes %>
             </div>
           </button>

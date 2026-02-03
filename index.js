@@ -3,6 +3,9 @@ const app = express();
 const methodOverride = require("method-override");
 const flash = require('connect-flash')
 const path = require("path")
+const {storage} = require('./cloudinary')
+const multer = require('multer')
+const upload = multer({storage})
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const mongoose = require("mongoose");
@@ -363,9 +366,9 @@ app.get('/feedback/:id', isLoggedIn, async(req, res) => {
 
 app.get('/feedback/:id/comments', isLoggedIn, async(req, res)=>{
     const request = await Request.findById(req.params.id)
-    const comment = await Comment.findById(req.params.id).populate('user.name')
+    const comment = await Comment.findById(req.params.id).populate('user')
     //const user = await User.findById(comment.userId)
-    res.render('feedback/show', {request, comment, user})
+    res.render('feedback/show', {request, comment})
 })
 
 app.get('/feedback/user', isLoggedIn, async(req, res)=>{
@@ -467,12 +470,12 @@ app.post('/feedback/:id/comments', async (req, res) => {
     if (!request) {
       return res.status(404).send('Request not found');
     }
-
+    const imageUrl = req.user.image[0].url;
     const newComment = {
       content: req.body.comment.content,
       user: {
         _id: req.user._id,
-        //image: req.user.image,
+        image: imageUrl,
         name: req.user.name,
         username: req.user.username
       }
@@ -491,13 +494,15 @@ app.post('/feedback/:id/comments', async (req, res) => {
 app.post('/feedback/:id/comment/:commentId/replies', isLoggedIn, async (req, res) => {
   const request = await Request.findById(req.params.id);
   const comment = await request.comments.id(req.params.commentId);
+   const imageUrl = req.user.image[0].url;
+
   let reply = req.user.username;
    const newReply = {
       content: req.body.reply.content,
       replyingTo: comment.user.username,
       user: {
         _id: req.user._id,
-        //image: req.user.image,
+        image: imageUrl,
         name: req.user.name,
         username: req.user.username
       }
@@ -512,13 +517,14 @@ app.post('/feedback/:id/comment/:commentId/reply/:replyId/replies', isLoggedIn, 
   const request = await Request.findById(req.params.id);
   const comment = await request.comments.id(req.params.commentId);
   const reply = comment.replies.id(req.params.replyId);
-
+   const imageUrl = req.user.image[0].url;
   const newReply = {
     content: req.body.reply.content,
     replyingTo: reply.user.username, // Use the username of the user being replied to
     user: {
       _id: req.user._id,
       name: req.user.name,
+      image: imageUrl,
       username: req.user.username
     }
   };

@@ -15,7 +15,12 @@ const RequestSchema = new Schema({
                 content: String,
             user: {
                 type: Object,
-                image:String,
+                image: [
+    {
+      url: String,
+      filename: String
+    }
+  ],
                 name:String,
                 username:String,
             },
@@ -24,7 +29,12 @@ const RequestSchema = new Schema({
                     replyingTo: String,
                     user: {
                         type: Object,
-                        image: String,
+                        image: [
+                        {
+                        url: String,
+                        filename: String
+                        }
+                    ],
                         name: String,
                         username: String
                     }
