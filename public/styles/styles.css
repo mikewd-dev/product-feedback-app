@@ -13,7 +13,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  /* background: #F2F2Fe !important; */
+  background: #F2F2Fe !important;
 }
 
 .flash {
@@ -203,14 +203,16 @@ textarea.parsley-error {
   border-bottom-right-radius: 10px;
   border-color: #979797;
   margin-left: 10px;
+  left: 165px;
+  top: 94px;
 }
 
-.list {
+/* .list {
   display: none;
   height: 137px;
   left: 165px;
   top: 94px;
-}
+} */
 
 .drop {
   display: none;
@@ -221,10 +223,11 @@ li {
 }
 
 .view-num {
+  position: absolute;
   height: 23px;
   left: 94.69%;
   right: 0%;
-  margin-top: 45px;
+  top: 390px !important;
   top: calc(50% - 23px / 2);
   font-weight: 700;
   font-size: 16px;
@@ -339,6 +342,7 @@ li {
   border: 0;
   border-top: 0.01px solid;
   opacity: 0.12;
+  width: auto;
 }
 
 .suggest {
@@ -790,11 +794,7 @@ p {
   flex-shrink: 0;
 }
 
-.figure-item {
-  width: 825px;
-  height: 600px;
-  flex-shrink: 0;
-}
+
 
 .no-feedback {
   width: 129.64px;
@@ -973,9 +973,9 @@ figcaption {
 .add-cancel-feedback {
   display: flex;
   float: right;
-  margin-right: 0;
+  margin-right: -12px;
   margin-left: auto;
-  margin-top: -29px;
+  margin-top: 9px;
 }
 
 .column {
@@ -1020,12 +1020,13 @@ figcaption {
   color: #f2f4f2fe;
   margin-right: 16px;
   text-decoration: none;
+  width:144px;
 }
 
 .edit-feedback-btn {
   padding: 10px;
   border-radius: 10px;
-  width: 93px;
+  width: 144px;
   text-decoration: none;
   top: 0%;
   bottom: 0%;
@@ -1054,9 +1055,9 @@ figcaption {
 
 .delete-feedback-btn {
   position: relative;
-  left: 123px;
+  left: 15px;
   border-radius: 10px;
-  width: 93px;
+  width: 144px;
   height: 44px;
   text-decoration: none;
   border-radius: 10px;
@@ -1065,7 +1066,7 @@ figcaption {
   font-size: 14px;
   line-height: 20px;
   color: #f2f4fe;
-  top: -100px;
+  top: 2px;
 }
 
 .sr-only {
@@ -1132,7 +1133,7 @@ figcaption {
 .go-back {
   z-index: 1000;
   margin-top: 10% !important;
-  /* margin-left: 25%; */
+  margin-left: 17px;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -1613,7 +1614,7 @@ p {
 
 #feedbacktitle {
   position: relative;
-  width: 100vw;
+  width: 98vw;
   left: 0;
   right: 47.41%;
   top: 5px;
@@ -1679,7 +1680,7 @@ p {
 .new-feedback-icon {
   position: relative;
   top: 50px;
-  left: 0;
+  left: 17px;
 }
 
 #feedback-title {
@@ -1703,7 +1704,7 @@ p {
 }
 
 #features {
-  width:100vw;
+  width: 98vw;
   padding-left: 10px;
   padding-right: -10px;
   background-color: #ffff;
@@ -1719,7 +1720,7 @@ p {
 }
 
 #feedbackdetail {
-  width: 100vw;
+  width: 98vw;
   height: 96px;
   padding-left: 10px;
   padding-right: -10px;
@@ -1892,6 +1893,7 @@ p {
     right: 0;
     margin: 0;
     overflow-x: hidden;
+    background: #F2F2Fe !important;
   }
 
   .figure-item {
@@ -1929,7 +1931,12 @@ p {
   }
 
   .board-text {
-    display: block;
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
   }
 
   figcaption {
@@ -2061,12 +2068,12 @@ p {
     position: absolute;
     display: flex;
     flex-direction: row;
-    width: 728px;
+    min-width: 95vw;
     height: 178px;
     justify-content: left;
     align-items: flex-start;
     flex-shrink: 0;
-    left: 12.3%;
+    left: 0;
     top: 10px;
   }
   .feedback-screen {
@@ -2204,6 +2211,7 @@ p {
     margin-left: 57px;
   }
 
+
   .go-back-show {
     position: relative;
     left: 20px;
@@ -2315,10 +2323,12 @@ p {
     display: flex;
     flex-direction: row;
     background-color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
   .cancel-feedback-btn {
-    width: 93px;
+    width: 144px;
     height: 44px;
     flex-shrink: 0;
     border-radius: 10px;
@@ -2333,7 +2343,7 @@ p {
     padding: 12.5px 24px 11.5px 24px;
   }
 
-  .cancel-feedback-btn {
+  /* .cancel-feedback-btn {
     width: 93px;
     height: 44px;
     flex-shrink: 0;
@@ -2346,7 +2356,7 @@ p {
     font-weight: 700;
     line-height: normal;
     padding: 12.5px 24px 11.5px 24px;
-  }
+  } */
 
   .no-feedback {
     width: 129.64px;
@@ -2403,7 +2413,8 @@ p {
 
   .add-cancel-feedback {
     margin-left: auto;
-    margin-top: -29px;
+    margin-top: 8px;
+    margin-right: -31px;
   }
 
   .reply-replyto {
@@ -2426,13 +2437,26 @@ p {
   }
 
   .list {
-    width: 25vw;
+    width: 228px;
     justify-content: center;
     height: 178px;
     flex-shrink: 0;
     margin-left: 10px;
   }
 
+  .view-num {
+    position: absolute;
+    left: 0;
+    right: 105px;
+    /* bottom: 16px; */
+    top: 51px !important;
+    height: 16px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19px;
+    color: #3a4374;
+    margin-left: 24px;
+  }
   .roadmap {
     color: #3a4374;
     font-size: 18px;
@@ -2650,9 +2674,9 @@ p {
 
   .delete-feedback-btn {
     position: relative;
-    left: 79px;
+    left: 60px;
     border-radius: 10px;
-    width: 93px;
+    width: 144px;
     height: 44px;
     text-decoration: none;
     border-radius: 10px;
@@ -2661,7 +2685,7 @@ p {
     font-size: 14px;
     line-height: 20px;
     color: #f2f4fe;
-    top: -49px;
+    top: -44px;
   }
   .comment-content {
     color: #647196;
@@ -2685,7 +2709,7 @@ p {
     top: 0px;
     margin-top: 0px;
     margin-bottom: 5px;
-    left: 89px;
+    left: 0;
     right: 0;
     display: flex;
     flex-direction: row;
@@ -2698,10 +2722,13 @@ p {
   }
 
   .feedback-suggestion {
-    background-color: #ffff;
+    position: relative;
     width: 70vw;
-    left: 0px;
-    /* border: 1px solid red; */
+    height: auto;
+    left: 4px;
+    margin: 40px 0px 28px 0px;
+    border-radius: 10px;
+    background-color: #ffff;
   }
 
   .feedback-show-suggested {
@@ -3054,7 +3081,7 @@ p {
   .buttons {
     display: flex;
     flex-direction: column;
-    min-width: 100%;
+    width: 100%;
     height: auto;
     flex-shrink: 0;
     margin-left: 0px;
@@ -3083,7 +3110,7 @@ p {
 
   .list {
     display: block;
-    width: 274px;
+    width: 100%;
     height: 178px;
     flex-shrink: 0;
     display: none;
@@ -3183,15 +3210,13 @@ p {
     right: 0px;
     left: 0px;
     top: 0;
-    padding-top: 355px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     justify-items: center;
     width: 100vw;
-    height: 100vh;
-    overflow: none;
+    height: 100%;
     flex-wrap: nowrap;
   }
 
@@ -3416,7 +3441,6 @@ p {
     right: 0px;
     top: 75px;
     /* bottom: -99px; */
-    left: 325px;
     width: 40px;
     height: 19px;
     gap: 4px;
@@ -3573,6 +3597,10 @@ p {
   .figure-item {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 825px;
+    height: 600px;
+    flex-shrink: 0;
   }
 
   .add-feedback {

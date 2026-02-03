@@ -527,9 +527,13 @@ router.get('/feedback/user/:id', isLoggedIn, async(req, res) =>{
 })
 
 router.get('/feedback/:id/edit', isLoggedIn, catchAsync(async (req, res) => {
-    const request = await Request.findById(req.params.id)
-    res.render('feedback/edit', { request })
+  const request = await Request.findById(req.params.id);
+  if (!request) {
+      return res.status(404).render('error', { message: 'Feedback not found' });
+  }
+  res.render('feedback/edit', { request });
 }));
+
 
 router.get('/feedback/suggestions/:id', async(req, res) => {
 
