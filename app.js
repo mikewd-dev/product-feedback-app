@@ -156,6 +156,7 @@ function isLoggedIn(req, res, next) {
 
 module.exports.handler = serverless(app);
 
-app.listen(3002, () => {
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
   console.log("Serving on port 3002");
 });
