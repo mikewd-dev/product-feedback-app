@@ -5,7 +5,8 @@ const RoadmapSchema = new Schema({
   title: String,
   category: String,
   upvotes: {
-    type: Number, default: 0
+    type: Number,
+    default: 0,
   },
   status: String,
   description: String,

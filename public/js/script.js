@@ -1,22 +1,22 @@
-console.log("script.js loaded");
+// console.log("script.js loaded");
+// console.log("jQuery?", typeof $);
 
 const path = window.location.pathname;
 
 $(document).ready(function () {
-  $(".down-arrow").on({
-    click: function () {
-      var src =
-        $(this).attr("src") === "/assets/shared/icon-arrow-down.svg"
-          ? "./assets/shared/icon-arrow-up.svg"
-          : "/assets/shared/icon-arrow-down.svg";
-      $(this).attr("src", src);
-    },
+  $(".down-arrow").on("click", function () {
+    var src =
+      $(this).attr("src") === "/assets/shared/icon-arrow-down.svg"
+        ? "./assets/shared/icon-arrow-up.svg"
+        : "/assets/shared/icon-arrow-down.svg";
+    $(this).attr("src", src);
   });
 });
 
+const match = window.location.pathname.match(/\/feedback\/([^\/\?]+)/);
+const currentType = match ? match[1] : "suggestions";
+
 window.addEventListener("DOMContentLoaded", () => {
-  const match = window.location.pathname.match(/\/feedback\/([^\/\?]+)/);
-  const currentType = match ? match[1] : "suggestions";
   const buttons = document.querySelectorAll(".blue");
   buttons.forEach((button) => {
     const dataType = button.getAttribute("data-type");
@@ -258,74 +258,6 @@ function upvoteSuggestion(suggestionId) {
     })
     .catch((error) => console.error(error));
 }
-
-// function upvoteFeature(featureId) {
-//   fetch(`/feedback/feature/${featureId}/upvote?_=${new Date().getTime()}`, {
-//     method: "POST",
-//     mode: "cors",
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const upvotesElement = document.getElementById(`votes-${featureId}`);
-//       upvotesElement.textContent = data.upvotes;
-//     })
-//     .catch((error) => console.error(error));
-// }
-
-// function upvoteEnhancement(enhancementId) {
-//   fetch(
-//     `/feedback/suggestions/${enhancementId}/upvote?_=${new Date().getTime()}`,
-//     {
-//       method: "POST",
-//       mode: "cors",
-//     },
-//   )
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const upvotesElement = document.getElementById(`votes-${enhancementId}`);
-//       upvotesElement.textContent = data.upvotes;
-//     })
-//     .catch((error) => console.error(error));
-// }
-
-// function upvoteBug(bugId) {
-//   fetch(`/feedback/bug/${bugId}/upvote?_=${new Date().getTime()}`, {
-//     method: "POST",
-//     mode: "cors",
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const upvotesElement = document.getElementById(`votes-${bugId}`);
-//       upvotesElement.textContent = data.upvotes;
-//     })
-//     .catch((error) => console.error(error));
-// }
-
-// function upvoteUI(uiId) {
-//   fetch(`/feedback/ui/${uiId}/upvote?_=${new Date().getTime()}`, {
-//     method: "POST",
-//     mode: "cors",
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const upvotesElement = document.getElementById(`votes-${uiId}`);
-//       upvotesElement.textContent = data.upvotes;
-//     })
-//     .catch((error) => console.error(error));
-// }
-
-// function upvoteUX(uxId) {
-//   fetch(`/feedback/ux/${uxId}/upvote?_=${new Date().getTime()}`, {
-//     method: "POST",
-//     mode: "cors",
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const upvotesElement = document.getElementById(`votes-${uxId}`);
-//       upvotesElement.textContent = data.upvotes;
-//     })
-//     .catch((error) => console.error(error));
-// }
 
 function upvoteRoadmap(roadmapId) {
   fetch(`/feedback/roadmap/${roadmapId}/upvote?_=${new Date().getTime()}`, {
