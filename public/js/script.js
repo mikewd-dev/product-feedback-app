@@ -1,46 +1,3 @@
-const fs = require('fs');
-
-// Read the JSON file
-fs.readFile('data.json', 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading JSON file:', err);
-    return;
-  }
-
-  // Parse the JSON data
-  const jsonData = JSON.parse(data);
-
-  // Find the comment to add a reply to
-  const commentId = 4; // ID of the comment you want to reply to
-  const comment = jsonData.find((post) => post.comments.some((comment) => comment.id === commentId));
-
-  if (!comment) {
-    console.error('Comment not found');
-    return;
-  }
-
-  // Add the reply to the comment
-  const replyData = {
-    content: 'This is a new reply!',
-    user: {
-      image: './assets/user-images/image-john.jpg',
-      name: 'John Doe',
-      username: 'johndoe'
-    }
-  };
-  comment.comments.push(replyData);
-
-  // Write the updated JSON data back to the file
-  fs.writeFile('data.json', JSON.stringify(jsonData, null, 2), (err) => {
-    if (err) {
-      console.error('Error writing JSON file:', err);
-      return;
-    }
-    console.log('Reply added successfully');
-  });
-});
-
-
 $(document).ready(function(){
     $('.down-arrow').on({
         'click': function() {
@@ -53,14 +10,20 @@ $(document).ready(function(){
 })
 
 window.onload = function checkMark() {
+  console.log('Window loaded')
   let linkmostup = document.getElementById('mostup');
+
   let linkleastup = document.getElementById('leastup')
+
   let linkmostcomm = document.getElementById('mostcomm')
+
   let linkleastcomm = document.getElementById('leastcomm')
+
   let checkmostup = document.getElementById('mostCheckUp');
   let checkleastup = document.getElementById('leastCheckUp')
   let checkmostcomm = document.getElementById('mostCheckComm')
   let checkleastcomm = document.getElementById('leastCheckComm')
+
 
 
   // Check which link was clicked before and set the display of the checkmark accordingly
@@ -69,6 +32,7 @@ window.onload = function checkMark() {
       checkleastup.style.display = 'none'
       checkmostcomm.style.display = 'none'
       checkleastcomm.style.display = 'none'
+      document.getElementById('menu-item').innerHTML = "Most Upvotes";
     }
 
 if (sessionStorage.getItem('leastupClicked') === 'true'){
@@ -76,8 +40,7 @@ if (sessionStorage.getItem('leastupClicked') === 'true'){
   checkmostup.style.display = 'none'
   checkmostcomm.style.display = 'none'
   checkleastcomm.style.display = 'none'
-// } else {
-//   checkleastup.style.display = 'none'
+  document.getElementById('menu-item').innerHTML = "Least Upvotes";
 }
 
 if(sessionStorage.getItem('mostcommClicked') === 'true'){
@@ -85,6 +48,7 @@ if(sessionStorage.getItem('mostcommClicked') === 'true'){
   checkmostup.style.display = 'none'
   checkmostcomm.style.display = 'inline'
   checkleastcomm.style.display = 'none'
+  document.getElementById('menu-item').innerHTML = "Most Comments";
 }
 
 if(sessionStorage.getItem('leastcommClicked') === 'true'){
@@ -92,10 +56,12 @@ if(sessionStorage.getItem('leastcommClicked') === 'true'){
   checkmostup.style.display = 'none'
   checkmostcomm.style.display = 'none'
   checkleastcomm.style.display = 'inline'
+  document.getElementById('menu-item').innerHTML = "Least Comments";
 }
 
 
   linkmostup.addEventListener('click', (e) => {
+    console.log('Most up clicked')
     // e.preventDefault();
     e.stopPropagation();
 
@@ -109,6 +75,8 @@ if(sessionStorage.getItem('leastcommClicked') === 'true'){
     checkleastup.style.display ="none"
     checkmostcomm.style.display = 'none'
     checkleastcomm.style.display = 'none'
+
+
 
   });
 
@@ -124,6 +92,9 @@ if(sessionStorage.getItem('leastcommClicked') === 'true'){
     checkmostup.style.display = 'none';
     checkmostcomm.style.display = 'none'
     checkleastcomm.style.display = 'none'
+
+    //document.getElementById('menu-item').innerText = "Least Upvotes";
+
   })
 
   linkmostcomm.addEventListener('click', (e) => {
@@ -138,6 +109,9 @@ if(sessionStorage.getItem('leastcommClicked') === 'true'){
   checkmostup.style.display = 'none';
   checkmostcomm.style.display = 'inline';
   checkleastcomm.style.display = 'none';
+
+    //document.getElementById('menu-item').innerText = "Most Comments";
+
 });
 
 linkleastcomm.addEventListener('click', (e) => {
@@ -152,21 +126,30 @@ linkleastcomm.addEventListener('click', (e) => {
   checkmostup.style.display = 'none';
   checkmostcomm.style.display = 'none';
   checkleastcomm.style.display = 'inline';
+
+    //document.getElementById('menu-item').innerText = "Least Comments";
+
 });
 
+//
 
 };
 
+checkMark();
 
-function dropReply(replyBoxId){
-var rep = document.getElementById(replyBoxId)
-    if(rep.style.display == 'block'){
-       rep.style.display = 'none';
-    } else {
-        rep.style.display = 'block';
-    }
+
+function dropReply(id) {
+  // Get the textarea with the corresponding id.
+  const textarea = document.getElementById(id);
+
+  // Focus the textarea.
+  textarea.focus();
 }
 
+// Add the click event handler to the reply buttons.
+document.querySelectorAll(".reply-link").forEach(button => {
+  button.addEventListener("click", dropReply.bind(null, event.target.dataset.id));
+});
 
 function upvoteSuggestion(suggestionId) {
   fetch(`/feedback/suggestions/${suggestionId}/upvote?_=${new Date().getTime()}`, {
