@@ -63,7 +63,7 @@
                                         <% for (let comment of request.comments) { %>
                                         <div class="comment">
                                           <div class="user-details">
-                                            <img class="user-image" src="<%= comment.user.image %>" alt="">
+                                            <img class="user-image" src="<%= comment.user.image %>" alt="user image">
                                             <p class="comment-user">
                                               <%=comment.user.name %>
                                             </p>
@@ -87,7 +87,7 @@
                                           <% function displayReplies(reply) { %>
                                           <div class="reply">
                                             <div class="user-reply-details">
-                                              <img class="user-reply-image" src="<%=reply.user.image%>" alt="">
+                                              <img class="user-reply-image" src="<%=reply.user.image%>" alt="user image">
                                               <p class="reply-user">
                                                 <%=reply.user.name %>
                                               </p>
