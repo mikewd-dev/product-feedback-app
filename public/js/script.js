@@ -14,10 +14,9 @@ $(document).ready(function () {
   });
 });
 
-
 window.addEventListener("DOMContentLoaded", () => {
   const match = window.location.pathname.match(/\/feedback\/([^\/\?]+)/);
-  const currentType = match ? match[1] : "suggestions"; 
+  const currentType = match ? match[1] : "suggestions";
   const buttons = document.querySelectorAll(".blue");
   buttons.forEach((button) => {
     const dataType = button.getAttribute("data-type");
