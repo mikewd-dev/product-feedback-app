@@ -103,7 +103,7 @@ app.get('/feedback/:id', async (req, res) => {
                     .populate('comments.user')
                     .populate('comments.replies')
     // const user = await Request.findById(req.params.id).populate('comments.users.name')
-    // console.log(request)
+    // res.json(request)
     res.render('feedback/show', {request})
 
 

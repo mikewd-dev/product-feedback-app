@@ -18,10 +18,8 @@ const RequestSchema = new Schema({
                 image:String,
                 name:String,
                 username:String,
-
             },
             replies: [{
-                    type: Array,
                     content: String,
                     replyingTo: String,
                     user: {

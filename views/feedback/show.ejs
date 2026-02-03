@@ -74,12 +74,29 @@
                                         @
                                         <%=comment.user.username %>
                                     </p>
+
                                     <p>
                                         <%=comment.content %>
                                     </p>
-                                    <p>
-                                        <%=comment.replies.content %>
-                                    </p>
+                                    <% for(let reply of comment.replies) { %>
+                                        <img src="../<%= reply.user.image %>" alt="">
+                                        <p>
+                                            <%=reply.user.name %>
+                                        </p>
+                                        <p>
+                                            @
+                                            <%=reply.user.username %>
+                                        </p>
+                                        <p>
+                                            @
+                                            <%=reply.replyingTo %>
+                                        </p>
+                                        <p>
+                                            <%=reply.content %>
+                                        </p>
+
+                                        <% } %>
+
 
 
                                 </div>
