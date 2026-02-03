@@ -68,17 +68,6 @@ res.render('feedback/suggestions', { request })
 }));
 
 
-// app.post('/feedback/suggestions', async(req, res) => {
-//     await Request.find(req.params.request, (requests)=>{
-//       requests.upvotes++;
-//         requests.save();
-// }
-
-// })
-
-
-
-
 app.put('/feedback/:id', catchAsync(async (req, res) => {
         const {id} = req.params;
     const request = await Request.findByIdAndUpdate(id, {...req.body.request})
@@ -89,17 +78,22 @@ app.put('/feedback/:id', catchAsync(async (req, res) => {
 app.get('/feedback/ui', catchAsync(async(req, res, next) =>{
     const request = await Request.find().where('category').equals('UI')
     // console.log(request)
+    if(request == "" || null){
+        res.redirect('/feedback')
+    } else {
+        res.render('feedback/ux', {request})
+    }
     res.render('feedback/ui', {request})
 }))
 
 app.get('/feedback/ux', catchAsync(async(req, res, next) =>{
     const request = await Request.find().where('category').equals('UX')
-    // // console.log(request)
-    // if(request == "" || null){
-    //     res.redirect('/feedback')
-    // } else {
+
+    if(request == "" || null){
+        res.redirect('/feedback')
+    } else {
         res.render('feedback/ux', {request})
-    // }
+    }
 }))
 
 app.get('/feedback/bug', catchAsync(async(req, res, next) =>{
@@ -178,10 +172,87 @@ app.post('/feedback/suggestions/:id/upvote', async (req, res) => {
   suggestion.upvotes = suggestion.upvotes + 1;
   await suggestion.save();
 
-  res.json({ upvotes: suggestion.upvotes });
+  res.json({ upvotes: suggestion.upvotes});
 });
 
+app.get('/feedback/feature/:id', async(req, res)=>{
+    // const request = await Request.findById(req.params.id)
+    res.redirect('/feedback/feature')
+})
 
+app.post('/feedback/feature/:id/upvote', async (req, res) => {
+//   const request = req.params.request;
+  const suggestion = await Request.findById(req.params.id);
+
+  // Update the upvotes value in your database
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes});
+});
+
+app.get('/feedback/enhancement/:id', async(req, res)=>{
+    // const request = await Request.findById(req.params.id)
+    res.redirect('/feedback/enhancement')
+})
+
+app.post('/feedback/enhancement/:id/upvote', async (req, res) => {
+//   const request = req.params.request;
+  const suggestion = await Request.findById(req.params.id);
+
+  // Update the upvotes value in your database
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes});
+});
+
+app.get('/feedback/bug/:id', async(req, res)=>{
+    // const request = await Request.findById(req.params.id)
+    res.redirect('/feedback/bug')
+})
+
+app.post('/feedback/bug/:id/upvote', async (req, res) => {
+//   const request = req.params.request;
+  const suggestion = await Request.findById(req.params.id);
+
+  // Update the upvotes value in your database
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes});
+});
+
+app.get('/feedback/ui/:id', async(req, res)=>{
+    // const request = await Request.findById(req.params.id)
+    res.redirect('/feedback/ui')
+})
+
+app.post('/feedback/ui/:id/upvote', async (req, res) => {
+//   const request = req.params.request;
+  const suggestion = await Request.findById(req.params.id);
+
+  // Update the upvotes value in your database
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes});
+});
+app.get('/feedback/ux/:id', async(req, res)=>{
+    // const request = await Request.findById(req.params.id)
+    res.redirect('/feedback/ux')
+})
+
+app.post('/feedback/ux/:id/upvote', async (req, res) => {
+//   const request = req.params.request;
+  const suggestion = await Request.findById(req.params.id);
+
+  // Update the upvotes value in your database
+  suggestion.upvotes = suggestion.upvotes + 1;
+  await suggestion.save();
+
+  res.json({ upvotes: suggestion.upvotes});
+});
 
 app.delete('/feedback/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;

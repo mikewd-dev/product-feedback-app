@@ -78,15 +78,15 @@
 
                                     </p>
                                 </div>
-                                <button class="reply-link" id="reply" onclick="dropReply('reply-box');">Reply</button>
+                                <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=comment._id %>');">Reply</button>
 
 
                                 <p class="comment-content">
                                     <%=comment.content %>
                                 </p>
 
-                                <div class="row-reply" id="reply-box">
-                                    <textarea name="reply" class="reply-content">
+                                <div class="row-reply" id="reply-box-<%=comment._id%>">
+                                    <textarea name="reply" class="reply-box">
 
                                     </textarea>
 
@@ -105,7 +105,7 @@
                                                 <span>@<%=reply.user.username %></span>
                                             </p>
                                         </div>
-                                        <button class="reply-link" id="reply" onclick="dropReply('reply-box');">Reply</button>
+                                        <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=reply._id %>');">Reply</button>
                                         <div class="replyTo">
                                             <p class="reply-replyto">
 
@@ -113,11 +113,10 @@
                                                 <%=reply.content %>
                                             </p>
 
-                                            <div class="row-reply" id="reply-box">
-                                                <textarea name="reply" class="reply-reply-content">
+                                            <div class="row-reply" id="reply-box-<%=reply._id %>">
+                                                <textarea name="reply" class="reply-content">
 
-                                    </textarea>
-
+                                                 </textarea>
                                                 <button class="post-reply">Post Reply</button>
                                             </div>
 
@@ -134,6 +133,10 @@
 
                             <% } %>
 
+
+
+
+
                     </div>
                 </div>
                 <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
@@ -141,10 +144,10 @@
                     <div class="add-comment ">
                         <label class="add-comment-label " for="addcomment ">Add Comment</label>
                         <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
-
+                        <button class="post-comment">Post Comment</button>
                     </div>
                     <!-- </div> -->
-                    <button class="post-comment">Post Comment</button>
+
                 </form>
 
 

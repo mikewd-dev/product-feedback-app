@@ -125,25 +125,14 @@
             <div class="feedback-suggestion">
                 <div class="d-flex flex-row feedback-suggested">
 
-                    <form action="/feedback/suggestions/<%=req._id %>" method="POST ">
-                        <button id="content" class="btn feedback-suggested-numvotes" onclick="upvote('<%= req._id %>')">
+                    <form id="vote" action="/feedback/suggestions/<%=req._id %>" method="POST ">
+                        <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
                             <img class="dropupCaret " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
                                 <div id="votes ">
 
   <%= req.upvotes %>
 
 </button>
-
-                        <!-- <button id="content " class="btn feedback-suggested-numvotes" onclick="buttonClick()">
-
-                                <img class="dropupCaret " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
-                                <div id="votes ">
-
-
-
-                                </div>
-
-                            </button> -->
                     </form>
 
 
