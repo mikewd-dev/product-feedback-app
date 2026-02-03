@@ -92,73 +92,91 @@ router.post(
   }),
 );
 
-router.post(
-  "/feedback/suggestions/:id/upvote",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const suggestion = await Request.findById(req.params.id);
-    suggestion.upvotes = suggestion.upvotes + 1;
-    await suggestion.save();
+// router.post(
+//   "/feedback/suggestions/:id/upvote",
+//   isLoggedIn,
+//   catchAsync(async (req, res) => {
+//     const suggestion = await Request.findById(req.params.id);
+//     suggestion.upvotes = suggestion.upvotes + 1;
+//     await suggestion.save();
 
-    res.json({ upvotes: suggestion.upvotes });
-  }),
-);
+//     res.json({ upvotes: suggestion.upvotes });
+//   }),
+// );
 
-router.post(
-  "/feedback/enhancement/:id/upvote",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const suggestion = await Request.findById(req.params.id);
-    suggestion.upvotes = suggestion.upvotes + 1;
-    await suggestion.save();
-    res.json({ upvotes: suggestion.upvotes });
-  }),
-);
+// router.post(
+//   "/feedback/enhancement/:id/upvote",
+//   isLoggedIn,
+//   catchAsync(async (req, res) => {
+//     const suggestion = await Request.findById(req.params.id);
+//     suggestion.upvotes = suggestion.upvotes + 1;
+//     await suggestion.save();
+//     res.json({ upvotes: suggestion.upvotes });
+//   }),
+// );
 
-router.post(
-  "/feedback/bug/:id/upvote",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const suggestion = await Request.findById(req.params.id);
-    suggestion.upvotes = suggestion.upvotes + 1;
-    await suggestion.save();
-    res.json({ upvotes: suggestion.upvotes });
-  }),
-);
+// router.post(
+//   "/feedback/bug/:id/upvote",
+//   isLoggedIn,
+//   catchAsync(async (req, res) => {
+//     const suggestion = await Request.findById(req.params.id);
+//     suggestion.upvotes = suggestion.upvotes + 1;
+//     await suggestion.save();
+//     res.json({ upvotes: suggestion.upvotes });
+//   }),
+// );
 
-router.post(
-  "/feedback/ui/:id/upvote",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const suggestion = await Request.findById(req.params.id);
-    suggestion.upvotes = suggestion.upvotes + 1;
-    await suggestion.save();
-    res.json({ upvotes: suggestion.upvotes });
-  }),
-);
+// router.post(
+//   "/feedback/ui/:id/upvote",
+//   isLoggedIn,
+//   catchAsync(async (req, res) => {
+//     const suggestion = await Request.findById(req.params.id);
+//     suggestion.upvotes = suggestion.upvotes + 1;
+//     await suggestion.save();
+//     res.json({ upvotes: suggestion.upvotes });
+//   }),
+// );
 
-router.post(
-  "/feedback/ux/:id/upvote",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const suggestion = await Request.findById(req.params.id);
-    suggestion.upvotes = suggestion.upvotes + 1;
-    await suggestion.save();
-    res.json({ upvotes: suggestion.upvotes });
-  }),
-);
+// router.post(
+//   "/feedback/ux/:id/upvote",
+//   isLoggedIn,
+//   catchAsync(async (req, res) => {
+//     const suggestion = await Request.findById(req.params.id);
+//     suggestion.upvotes = suggestion.upvotes + 1;
+//     await suggestion.save();
+//     res.json({ upvotes: suggestion.upvotes });
+//   }),
+// );
 
-router.post(
-  "/feedback/roadmap/:id/upvote",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const suggestion = await Roadmap.findById(req.params.id);
-    suggestion.upvotes = suggestion.upvotes + 1;
-    await suggestion.save();
+// router.post(
+//   "/feedback/roadmap/:id/upvote",
+//   isLoggedIn,
+//   catchAsync(async (req, res) => {
+//     const suggestion = await Roadmap.findById(req.params.id);
+//     suggestion.upvotes = suggestion.upvotes + 1;
+//     await suggestion.save();
 
-    res.json({ upvotes: suggestion.upvotes });
-  }),
-);
+//     res.json({ upvotes: suggestion.upvotes });
+//   }),
+// );
+
+
+
+router.post("/feedback/:id/upvote", isLoggedIn, catchAsync(async (req, res) => {
+  console.log("UPVOTE HIT FOR ID:", req.params.id)
+    const { id } = req.params;
+    
+    // Search both models
+    let doc = await Request.findById(id) || await Roadmap.findById(id);
+
+    if (!doc) {
+        return res.status(404).json({ error: "Not found" });
+    }
+
+    doc.upvotes += 1;
+    await doc.save();
+    res.json({ upvotes: doc.upvotes });
+}));
 
 router.post(
   "/feedback/:id/comments",

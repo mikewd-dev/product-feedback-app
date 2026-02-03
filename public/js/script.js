@@ -241,3 +241,39 @@ function checkWidth() {
   }
 }
 document.addEventListener("DOMContentLoaded", checkWidth);
+
+
+  document.addEventListener('click', async (e) => {
+    // Check if we clicked the upvote button or something inside it (like the SVG)
+    const btn = e.target.closest('.upvote-btn');
+    
+    if (btn) {
+      // Prevent the link (<a>) behind it from being triggered
+      e.preventDefault();
+      e.stopPropagation();
+
+      const suggestionId = btn.getAttribute('data-id');
+      const voteCountDisplay = document.getElementById(`votes-${suggestionId}`);
+
+      try {
+        const response = await fetch(`/feedback/${suggestionId}/upvote`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        // If the user isn't logged in, redirect them to login page
+        if (response.redirected) {
+          window.location.href = response.url;
+          return;
+        }
+
+        const data = await response.json();
+        if (data.upvotes !== undefined) {
+          // Update the UI immediately without refreshing the page
+          voteCountDisplay.innerText = data.upvotes;
+        }
+      } catch (err) {
+        console.error("Upvote request failed:", err);
+      }
+    }
+  });

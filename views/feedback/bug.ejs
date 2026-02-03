@@ -12,33 +12,54 @@
             <button class="navbar-toggler" onclick="navButton();" id="toggler-item" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span id="ChangeToggle" class="navbar-toggler-icon"></span>
             </button>
-
             <div class="navbar-collapse justify-content-between collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
+
                 <li class="dropdowns">
-                  <div class="nav-link" id="navbarDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
-                    
+                  <a class="nav-link" href="#" id="navbarDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+
                     <div class="drop">
                       <div class="button">
                         <div class="d-flex">
-                          <a href="/feedback/suggestions" class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" data-type="suggestions">All</a>
-                          <a href="/feedback/ui" class="blue <%= currentType === 'ui' ? 'active' : '' %>" data-type="ui">UI</a>
-                          <a href="/feedback/ux" class="blue <%= currentType === 'ux' ? 'active' : '' %>" data-type="ux">UX</a>
-                        </div>
+                           <a href="/feedback/suggestions" >
+                             <button class="blue <%= currentType === 'suggestions' ? 'active' : '' %>" 
+                               data-type="suggestions">All</button>
+                                      </a>
+                                      <a href="/feedback/ui">
+                                        <button class="blue <%= currentType === 'ui' ? 'active' : '' %>" 
+                                          data-type="ui">UI</button>
+                                      </a>
+                                      <a href="/feedback/ux">
+                                        <button class="blue <%= currentType === 'ux' ? 'active' : '' %>" 
+                                            data-type="ux">UX</button>
+                                      </a>
+                                    </div>
 
-                        <div class="d-flex">
-                          <a href="/feedback/enhancement" class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" data-type="enhancement">Enhancement</a>
-                          <a href="/feedback/bug" class="blue <%= currentType === 'bug' ? 'active' : '' %>" data-type="bug">Bug</a>
-                        </div>
-                        
-                        <div class="d-flex flex-row">
-                          <a href="/feedback/feature" class="blue <%= currentType === 'feature' ? 'active' : '' %>" data-type="feature">Feature</a>
+                                    <div class="d-flex ">
+                                      <a href="/feedback/enhancement">
+                                      <button class="blue <%= currentType === 'enhancement' ? 'active' : '' %>" 
+                                        data-type="enhancement">Enhancement</button></a>
+                                      <a href="/feedback/bug">
+                                        <button 
+                                          class="blue <%= currentType === 'bug' ? 'active' : '' %>" 
+                                          data-type="bug"
+                                        >Bug</button>
+                                      </a>
+                                    </div>
+                                    <div class="d-flex flex-row ">
+                                      <a href="/feedback/feature" >
+                                        <button class="blue <%= currentType === 'feature' ? 'active' : '' %>" 
+                                          data-type="feature">Feature</button>
+                                      </a>
+                                      
                         </div>
                       </div>
-
                       <div class="list">
                         <div class="map">
-                          <h5><p class="roadmap">Roadmap</p></h5>
+                          <h5>
+                            <p class="roadmap">Roadmap</p>
+                          </h5>
                           <span class="oval-planned"></span><p class="roadmap-options">Planned </p>
                           <span class="oval-progress"></span><p class="roadmap-options">In-Progress</p>
                           <span class="oval-live"></span><p class="roadmap-options">Live</p>
@@ -47,20 +68,43 @@
                           <li class="view"><a href="/feedback/roadmap">View</a></li>
                         </ul>
                         <div class="view-num">
-                          <p><%=roadmap.length %></p>
-                          <p><%=progress.length %></p>
-                          <p><%=live.length %></p>
+                          <p>
+                            <%=roadmap.length %>
+                          </p>
+                          <p>
+                            <%=progress.length %>
+                          </p>
+                          <p>
+                            <%=live.length %>
+                          </p>
                         </div>
+                                                     <nav class="login-register-mob">
+        <div class="container d-flex justify-content-center py-2">
+            <% if (!currentUser) { %>
+                <a class="nav-link-login me-3" href="/feedback/login">Login</a>
+                <a class="nav-link-register" href="/feedback/register">Register</a>
+            <% } else { %>
+                 <span class="me-3">Welcome <strong><%= currentUser.username %></strong></span>
+                 <a class="nav-link-logout" href="/feedback/logout">Logout</a>
+            <% } %>
+        </div>
+    </nav>
                       </div>
+    
                     </div>
-                  </div> </li>
+
+                  </a>
+
+                </li>
+
               </ul>
             </div>
           </div>
           <div class="board-text">
-            <p class="navboard-title">Frontend Mentor</p>
-            <p class="navboard-subtitle">FeedBack Board</p>
+          <p class="navboard-title">Frontend Mentor</p>
+          <p class="navboard-subtitle">FeedBack Board</p>
           </div>
+         
         </nav>
 
         <div class="dropped">
@@ -94,6 +138,7 @@
               <p><%=live.length %></p>
             </div>
           </div>
+
         </div>
 
         <nav class="dropdown">
@@ -147,16 +192,14 @@
     <% for(let req of Object.values(request)){ %>
     <div class="feedback-suggestion">
       <div id="suggested-feedback" class= "feedback-suggested">
-        <form id="vote-<%= req._id %>" onsubmit="event.preventDefault();">
-<button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
+        <button type="button" id = "content" class="btn feedback-suggested-numvotes upvote-btn" data-id="<%= req._id %>">
     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= req._id %>">
-        <path d="M1 6l4-4 4 4" stroke-width="2"/>
-    </svg>
+                <path d="M1 6l4-4 4 4" stroke-width="2"/>
+            </svg>
     <div class="votes" id="votes-<%= req._id %>">
-        <%= req.upvotes %>
+      <%= req.upvotes %>
     </div>
-</button>
-        </form>
+  </button>
 
 
 

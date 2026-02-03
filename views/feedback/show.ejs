@@ -32,16 +32,16 @@
                                     <div class="col-sm">
                                         <div class="feedback-show">
                                           <div class="feedback-show-suggested">
-                                                    <form id="vote" onsubmit="event.preventDefault();">
-                                            <button id="content" class="feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= request._id %>')">
-                                                <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= request._id %>">
-                                                    <path d="M1 6l4-4 4 4" stroke-width="2"/>
-                                                </svg>
-                                                <div class="votes" id="votes-<%= request._id %>">
-                                                    <%= request.upvotes %>
-                                                </div>
-                                            </button>
-                                                    </form>
+                                                    <!-- <form id="vote" onsubmit="event.preventDefault();"> -->
+                                            <button type="button" id = "content" class="btn feedback-suggested-numvotes upvote-btn" data-id="<%= request._id %>">
+    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= request._id %>">
+                <path d="M1 6l4-4 4 4" stroke-width="2"/>
+            </svg>
+    <div class="votes" id="votes-<%= request._id %>">
+      <%= request.upvotes %>
+    </div>
+  </button>
+                                                    <!-- </form> -->
                                             <a class="feedback-navlink-show" href="/feedback/<%=request._id%>">
                                               <div class="feeback-title-para">
                                                 <div class="feedback-suggested-title">

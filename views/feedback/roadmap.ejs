@@ -1,18 +1,22 @@
-          <!DOCTYPE html>
-          <html lang="en">
 
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32x32.png">
-            <link rel="stylesheet" href="/styles/styles.css">
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-            <title>Frontend Mentor | Product feedback app</title>
-          </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A full-featured product feedback platform to collect and manage user feedback.">
+  <meta name="robots" content="index, follow">
+  <title>'Product Feedback App'</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32x32.png">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  
+</head>
+
 
           <body>
             <div class="roadmap-nav">
@@ -28,17 +32,17 @@
             </div>
 
             <div class="row row-roadmap">
-              <div class="tab">
-                <p onmouseover="plannedDisplay();" class="pln" id="plnd">
-                  Planned (<%= (roadmap || []).length %>)
-                </p>
-                <p onmouseover="progressDisplay();" class="in-prog" id="inprog">
-                  In-Progress (<%= (progress || []).length %>)
-                </p>
-                <p onmouseover="liveDisplay()" class="lve" id="lved">
-                  Live (<%= (live || []).length %>)
-                </p>
-              </div>
+           <div class="tab">
+  <p class="pln" id="plnd">
+    Planned (<%= (roadmap || []).length %>)
+  </p>
+  <p class="in-prog" id="inprog">
+    In-Progress (<%= (progress || []).length %>)
+  </p>
+  <p class="lve" id="lved">
+    Live (<%= (live || []).length %>)
+  </p>
+</div>
 
               <div class="tab-bars">
                 <div class="tab-planned-bar" id="plan-bar"></div>
@@ -67,14 +71,14 @@
                     <p class="report-desc"><%= rmap.description %></p>
                     <button class="btn-roadmap"><%= rmap.category %></button>
 
-                    <form onsubmit="event.preventDefault();">
-                      <button class="feedback-suggested-numvotes" onclick="upvoteRoadmap('<%= rmap._id %>')">
+                    <!-- <form onsubmit="event.preventDefault();"> -->
+                      <button type="button" id="rmapcontent" class="btn feedback-suggested-numvotes upvote-btn" data-id="<%= rmap._id %>">
                         <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= rmap._id %>">
                           <path d="M1 6l4-4 4 4" stroke-width="2" />
                         </svg>
                         <div class="votes" id="votes-<%= rmap._id %>"><%= rmap.upvotes %></div>
                       </button>
-                    </form>
+                    <!-- </form> -->
 
                     <div class="roadmap-comment-icon">
                       <img src="/assets/shared/icon-comments.svg" alt="comments icon">
@@ -98,9 +102,10 @@
                     </p>
                     <p class="report-title"><%= prog.title %></p>
                     <p class="report-desc"><%= prog.description %></p>
+                    <button class="btn-roadmap"><%= prog.category %></button>
 
-                    <form id="vote-<%= prog._id %>" onsubmit="event.preventDefault();">
-                    <button class=" feedback-suggested-numvotes" onclick="upvoteRoadmap('<%= prog._id %>')">
+                    <!-- <form id="vote-<%= prog._id %>" onsubmit="event.preventDefault();"> -->
+                    <button type="button" id="rmapcontent" class="btn feedback-suggested-numvotes upvote-btn" data-id="<%= prog._id %>">
                         <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= prog._id %>">
                             <path d="M1 6l4-4 4 4" stroke-width="2"/>
                         </svg>
@@ -108,7 +113,8 @@
                             <%= prog.upvotes %>
                         </div>
                     </button>
-                            </form>
+
+                            <!-- </form> -->
 
                     <div class="roadmap-comment-icon">
                       <img src="/assets/shared/icon-comments.svg" alt="comment">
@@ -136,8 +142,8 @@
                     <button class="btn-roadmap"><%= lv.category %></button>
 
                     <div class="roadmap-upvotes">
-                      <form id="vote-<%= lv._id %>" onsubmit="event.preventDefault();">
-                      <button class="feedback-suggested-numvotes" onclick="upvoteRoadmap('<%= lv._id %>')">
+                      <!-- <form id="vote-<%= lv._id %>" onsubmit="event.preventDefault();"> -->
+                      <button type="button" class="btn feedback-suggested-numvotes upvote-btn" id="rmapcontent" data-id="<%= lv._id %>">
                           <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= lv._id %>">
                               <path d="M1 6l4-4 4 4" stroke-width="2"/>
                           </svg>
@@ -145,7 +151,7 @@
                               <%= lv.upvotes %>
                           </div>
                       </button>
-                              </form>
+                              <!-- </form> -->
 
                       <div class="roadmap-comment-icon">
                         <img src="/assets/shared/icon-comments.svg" alt="comment icon">
@@ -158,9 +164,9 @@
               </div> 
             </div> 
 
-            
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script>
+             <%-include ('../partials/footer') %>
+                    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script src="/js/script.js"></script>
           </body>
-          </html>
+          </html> -->

@@ -76,7 +76,19 @@
                             <%=live.length %>
                           </p>
                         </div>
+                                             <nav class="login-register-mob">
+        <div class="container d-flex justify-content-center py-2">
+            <% if (!currentUser) { %>
+                <a class="nav-link-login me-3" href="/feedback/login">Login</a>
+                <a class="nav-link-register" href="/feedback/register">Register</a>
+            <% } else { %>
+                 <span class="me-3">Welcome <strong><%= currentUser.username %></strong></span>
+                 <a class="nav-link-logout" href="/feedback/logout">Logout</a>
+            <% } %>
+        </div>
+    </nav>
                       </div>
+  
                     </div>
 
                   </a>
