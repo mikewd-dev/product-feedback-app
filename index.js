@@ -51,9 +51,23 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.get('/feedback', catchAsync(async (req, res, next) => {
     res.render('feedback/index')
+    // res.redirect('/feedback/suggestion')
+    // if("" || null){
+    //     res.render('feedback/index')
+    // } else {
+    //     const request = res.render('feedback/suggestions', {request})
+    // }
 }));
 
+app.get('/feedback/new', catchAsync(async (req, res) => {
+    res.render('feedback/new')
+}));
 
+app.post('/feedback', catchAsync(async(req, res, next)=>{
+    const request = new Request(req.body.request)
+    await request.save();
+    res.redirect(`/feedback/${request._id}`)
+}))
 
 app.get('/feedback/none', catchAsync(async (req, res, next) => {
     res.render('feedback/none')
@@ -72,6 +86,48 @@ const request = await Request.find({})
 
 res.render('feedback/suggestions', { request })
 }));
+
+app.get('/feedback/ui', catchAsync(async(req, res, next) =>{
+    const request = await Request.find().where('category').equals('UI')
+    // console.log(request)
+    res.render('feedback/ui', {request})
+}))
+
+app.get('/feedback/ux', catchAsync(async(req, res, next) =>{
+    const request = await Request.find().where('category').equals('UX')
+    // console.log(request)
+    if(request == "" || null){
+        res.redirect('/feedback')
+    } else {
+        res.render('feedback/ux', {request})
+    }
+}))
+
+app.get('/feedback/bug', catchAsync(async(req, res, next) =>{
+    const request = await Request.find().where('category').equals('Bug')
+    // console.log(request)
+    if(request == "" || null){
+        res.redirect('/feedback')
+    } else {
+        res.render('feedback/bug', {request})
+    }
+}))
+
+app.get('/feedback/enhancement', catchAsync(async(req, res, next) =>{
+    const request = await Request.find().where('category').equals('enhancement')
+    // console.log(request)
+     if(request == "" || null){
+        res.redirect('/feedback')
+    } else {
+        res.render('feedback/enhancement', {request})
+    }
+}))
+
+app.get('/feedback/feature', catchAsync(async(req, res, next) =>{
+    const request = await Request.find().where('category').equals('feature')
+    // console.log(request)
+    res.render('feedback/feature', {request})
+}))
 
 app.get('/feedback/roadmap', catchAsync(async(req, res)=>{
 const roadmap = Roadmap.find({})
@@ -111,9 +167,9 @@ app.get('/feedback/:id', async (req, res) => {
 
 
 
-app.get('/feedback/new', catchAsync(async (req, res, next) => {
-    res.render('feedback/new')
-}));
+
+
+
 
 app.get('/feedback/user', async(req, res)=>{
     const currentuser = await CurrentUser.find({})

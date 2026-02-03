@@ -41,11 +41,11 @@
                             Feedback Title
                         </h4>
                         <label for="title" class="sub-heading-paragraph">Add a short, descriptive headline</label>
-                        <input class="feedback-text" name="" id="feedbacktitle" cols="5" rows="1">
+                        <input class="feedback-text" name="request[title]" id="feedbacktitle" cols="5" rows="1">
                         <h4 id="category" class="sub-heading">Category</h4>
                         <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
                         <div class="select-options">
-                            <select class="form-select" name="" id="features">
+                            <select class="form-select" name="request[category]" id="features">
                             <!-- <select name="" id="" class="form-select"> -->
                             <option value="Feature" class="feedback-options">Feature</option>
                             <option value="UI" class="feedback-options">UI</option>
@@ -58,7 +58,7 @@
 
                         <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
                         <label for="feedback" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
-                        <textarea name="" id="feedbackdetail" cols="20" rows="3"></textarea>
+                        <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3"></textarea>
 
 
                         <div class="add-cancel-feedback">

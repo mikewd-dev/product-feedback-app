@@ -5,8 +5,8 @@ const RequestSchema = new Schema({
 
     id: Number,
     title: String,
-    category:String,
-    upvotes: Number,
+    category: String,
+    upvotes: {type:Number, default: 0},
     status:String,
     description:String,
     comments:[

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon-32x32.png">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
+
+    <title>Frontend Mentor | Product feedback app</title>
+</head>
+
+<body style="background-color: #F2F2F2;">
+    <div class="col-lg">
+        <div class="container">
+            <div class="grid-container">
+
+                <div class="feedback">
+                    <div class="board">
+                        <img class="feedback-board" src="/images/feedback-board.png" alt="" srcset="">
+                    </div>
+                    <div class="buttons">
+                        <div class="d-flex">
+                            <a href="/feedback/suggestions">
+                                <img class='btn' src=" /images/allbtn.jpg " alt=" " srcset=" ">
+                            </a>
+                            <a href="/feedback/ui">
+                                <img class='btn' src="/images/UIbtn.jpg " alt=" " srcset=" ">
+                            </a>
+                            <a href="/feedback/ux">
+                                <img class='btn' src="/images/UXbtn.jpg " alt=" " srcset=" ">
+                            </a>
+                        </div>
+
+                        <div class="d-flex ">
+                            <a href="/feedback/enhancement">
+                                <img class='btn' src="/images/enhancementbtn.jpg " alt=" " srcset=" ">
+                            </a>
+                            <a href="/feedback/bug">
+                                <img class='btn' src="/images/bugbtn.jpg " alt=" " srcset=" ">
+                            </a>
+                        </div>
+                        <div class="d-flex flex-row ">
+                            <a href="/feedback/feature">
+                                <img class='btn' src="/images/featurebtn.jpg " alt=" " srcset=" ">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row list ">
+                        <!-- <div class="row "> -->
+                        <!-- <div class="column "> -->
+                        <div class="map">
+                            <h5>
+                                <p class="roadmap ">Roadmap</p>
+                            </h5>
+                            <p class="roadmap-options">Planned </p>
+                            <p class="roadmap-options">In-Progress</p>
+                            <p class="roadmap-options">Live</p>
+                        </div>
+                        <!-- <div class=" column "> -->
+                        <ul>
+                            <li class="view"><a href="roadmap">View</a></li>
+                        </ul>
+                        <div class="view-num">
+                            <p>1</p>
+                            <p>2</p>
+                            <p>3</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="navbar">
+
+                    <img src="/assets/suggestions/icon-suggestions.svg " class="suggestion-icon " alt=" " srcset=" ">
+                    <div class="suggestion ">
+                        <li class="nav-item suggestion ">
+                            <span>0</span> Suggestions</a>
+                        </li>
+                    </div>
+
+                    <div class=>
+                        <a class="sr-only " data-bs-toggle="dropdown " aria-expanded="false ">
+    Sort by :<strong>Most Upvotes</strong><img src="/assets/shared/icon-arrow-down.svg " class="dropdownCaret text-white " id="dropDownFeatures " alt=" ">
+
+                        <ul class="dropdown-menu ">
+                            <li><a class="dropdown-item " href="# ">Most Upvotes</a></li>
+                        <hr class="dropdown-divider ">
+                        <li><a class="dropdown-item " href="# ">Least Upvotes</a></li>
+                        <hr class="dropdown-divider ">
+                        <li><a class="dropdown-item " href="# ">Most Comments</a></li>
+                        <hr class="dropdown-divider ">
+                        <li><a class="dropdown-item " href="# ">Least Comments</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="my-lg-0 ">
+                        <a class="add-feedback-top text-center " href="/feedback/new " type="button ">+Add Feedback</a>
+                    </div>
+                </div>
+            </div>
+            <div class="feedback-screen-active">
+                <% for(let requests of request) { %>
+                    <div class="feedback-suggestion">
+                        <div class="d-flex flex-row feedback-suggested">
+
+
+                            <div class="d-flex flex-column feedback-suggested-numvotes">
+                                <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
+                                <h6>
+                                    <%=requests.upvotes%>
+                                </h6>
+                            </div>
+                            <a class="feedback-navlink" href="/feedback/<%=requests._id%>">
+                                <div class="feeback-title-para">
+                                    <div class="feedback-suggested-title">
+                                        <%=requests.title%>
+                                    </div>
+                                    <div class="feedback-suggested-para">
+                                        <%=requests.description%>
+                                    </div>
+                                </div>
+                                <button class="btn-suggestion"><%=requests.category%></button>
+                            </a>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Sidebar end -->
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
+
+
+</html>

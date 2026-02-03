@@ -61,48 +61,61 @@
                 </div>
                 <div class="col-sm">
                     <div class="comments">
-                        <div class="comment">
-                            <!-- <div class="mb-3"> -->
 
-                            <% for(let comment of request.comments) { %>
-                                <div class="mb-3">
-                                    <img src="../<%=comment.user.image%>" alt="">
-                                    <p>
+                        <!-- <div class="mb-3"> -->
+
+                        <% for(let comment of request.comments) { %>
+                            <div class="comment">
+                                <div class="user-details">
+                                    <img class="user-image" src="../<%=comment.user.image%>" alt="">
+
+                                    <p class="comment-user">
                                         <%=comment.user.name %>
                                     </p>
-                                    <p>
-                                        @
-                                        <%=comment.user.username %>
+                                    <p class="comment-username">
+                                        <span>@<%=comment.user.username %></span>
+
                                     </p>
-
-                                    <p>
-                                        <%=comment.content %>
-                                    </p>
-                                    <% for(let reply of comment.replies) { %>
-                                        <img src="../<%= reply.user.image %>" alt="">
-                                        <p>
-                                            <%=reply.user.name %>
-                                        </p>
-                                        <p>
-                                            @
-                                            <%=reply.user.username %>
-                                        </p>
-                                        <p>
-                                            @
-                                            <%=reply.replyingTo %>
-                                        </p>
-                                        <p>
-                                            <%=reply.content %>
-                                        </p>
-
-                                        <% } %>
-
-
-
                                 </div>
+                                <p class="reply-link">Reply</p>
 
-                                <% } %>
-                        </div>
+
+                                <p class="comment-content">
+                                    <%=comment.content %>
+                                </p>
+
+
+                                <% for(let reply of comment.replies) { %>
+                                    <div class="reply">
+                                        <div class="user-reply-details">
+                                            <img class="user-reply-image" src="../<%= reply.user.image %>" alt="">
+                                            <p class="reply-user">
+                                                <%=reply.user.name %>
+                                            </p>
+                                            <p class="reply-username">
+                                                <span>@<%=reply.user.username %></span>
+                                            </p>
+                                        </div>
+                                        <div class="replyTo">
+                                            <p class="reply-replyto">
+
+                                                <span class="replyingto">@<%=reply.replyingTo %></span>
+                                                <%=reply.content %>
+                                            </p>
+
+                                            <!-- <p class="reply-content">
+
+                                            </p> -->
+                                        </div>
+                                    </div>
+                                    <% } %>
+
+
+
+                            </div>
+
+                            <% } %>
+
                     </div>
                 </div>
                 <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
