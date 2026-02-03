@@ -58,8 +58,16 @@ textarea.parsley-error {
 }
 
 .row {
-  margin-top: 92.5px;
+display:flex;
+ width:95vw;
+flex-direction: row; 
+  position:relative;
+  top:0;
+  left:0;
+  right:0;
+  margin:0 auto;
 }
+
 
 #column-planned,
 #column-progress,
@@ -140,13 +148,11 @@ textarea.parsley-error {
 
 .columns {
   position: relative;
-  min-width: 100vw !important;
+  /* min-width: 100vw !important; */
   margin: 0 auto;
   display: grid;
   left: 3%;
   gap: 2rem;
-  padding: 1rem;
-  /* overflow: hidden; */
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -1311,7 +1317,15 @@ figcaption {
 }
 
 .go-back-heading {
-  margin-top: 4px;
+  /* margin-top: 4px; */
+  font-family: Jost;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 35px;
+  letter-spacing: -.333333px;
+  color: #fff;
+  margin: 0;
 }
 
 /* .go-back-show < a {
@@ -1524,7 +1538,7 @@ figcaption {
 .planned-reports,
 .progress-reports,
 .live-reports {
-  width: 253px;
+  width: 30vw;
     height: 272px;
     background: #fff;
     margin-top: 32px;
@@ -1572,7 +1586,7 @@ figcaption {
 .planned-heading,
 .live-heading {
  position: relative;
-    height: 53px;
+    height:30px;
     width: fit-content;
     left: 0%;
     right: 17.48%;
@@ -1708,7 +1722,7 @@ figcaption {
 .planned-bar,
 .progress-bar,
 .live-bar {
-  width: 254px;
+  width: 30vw;
 }
 p {
   margin-bottom: 1px !important;
@@ -2680,9 +2694,13 @@ p {
   }
 
  .columns {
-    grid-template-columns: repeat(2, 1fr);
-    margin-left: 5%;
-  }
+   position: relative;
+           width: 100vw !important;
+           margin: 0 auto;
+           display: grid;
+           /* left: 3%; */
+           gap: 2rem;
+           grid-template-columns: repeat(2, 1fr);
 
   .column {
     flex-shrink: 0;
@@ -3018,6 +3036,17 @@ p {
   .nav-link {
     margin-left: 0;
   }
+
+  .row {
+    display:flex;
+     width:95vw;
+    flex-direction: row; 
+      position:relative;
+      top:0;
+      left:0;
+      right:0;
+      margin:0 auto;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -3073,9 +3102,9 @@ p {
     border-radius: 0;
   }
 
-  .row {
+  /* .row {
     margin-top: 26px;
-  }
+  } */
 
   .custom {
     padding-left: 0 !important;
