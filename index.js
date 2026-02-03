@@ -19,9 +19,8 @@ const ejsMate = require("ejs-mate");
 const CurrentUser = require("./models/user");
 const Request = require("./models/request");
 const Comment = require("./models/comment");
-const ProductComment = require("./models/productcomment")
+const Data = require("./models/data")
 const User = require("./models/user")
-// const Data = require('./models/data')
 const catchAsync = require("./utils/catchAsync");
 const bodyParser = require('body-parser');
 
@@ -91,8 +90,11 @@ app.post('/feedback', catchAsync(async (req, res, next) => {
 // app.post('feedback/:id/')
 
 app.get('/feedback/:id', async (req, res) => {
+    // const comment = await Comment.findById(req.params.id)
     const request = await Request.findById(req.params.id).populate('comments')
-    res.render('feedback/show', { request })
+
+    res.render('feedback/show', {request})
+
 });
 
 

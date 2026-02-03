@@ -64,11 +64,13 @@
                         <div class="comment">
                             <div class="mb-3">
 
+                                <% for(let comments of request.comment) {%>
 
+                                    <p>
+                                        <%=comments.content %>
+                                    </p>
 
-
-
-
+                                    <% } %>
 
                             </div>
                         </div>
@@ -84,11 +86,7 @@
                     <!-- </div> -->
                 </form>
 
-                <%   for(var comment of request.comments) { %>
-                    <p>
-                        <%=  comments.content %>
-                    </p>
-                    <%  } %>
+
             </div>
         </div>
         <!-- </div> -->

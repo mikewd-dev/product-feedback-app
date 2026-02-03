@@ -11,11 +11,12 @@ const RequestSchema = new Schema({
     description:String,
     comments:[
             {
-                type: Array,
-
+                type: Schema.Types.ObjectId,
+                ref:"Comment"
             }
         ]
 })
 
 
 module.exports = mongoose.model('Request', RequestSchema);
+
