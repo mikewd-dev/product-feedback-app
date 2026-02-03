@@ -24,13 +24,13 @@
                     </div>
                     <div class="buttons">
                         <div class="d-flex">
-                            <a href="/feedback/feedback-suggestions">
+                            <a href="/feedback/suggestions">
                                 <img class='btn' src=" /images/allbtn.jpg " alt=" " srcset=" ">
                             </a>
-                            <a href="./feedback/feedback-ui">
+                            <a href="./feedback/ui">
                                 <img class='btn' src="/images/UIbtn.jpg " alt=" " srcset=" ">
                             </a>
-                            <a href="./feedback/feedback-ux">
+                            <a href="./feedback/ux">
                                 <img class='btn' src="/images/UXbtn.jpg " alt=" " srcset=" ">
                             </a>
                         </div>
@@ -100,12 +100,12 @@
 
 
                     <div class="my-lg-0 ">
-                        <a class="add-feedback-top text-center " href="/feedback/feedback-new " type="button ">+Add Feedback</a>
+                        <a class="add-feedback-top text-center " href="/feedback/new " type="button ">+Add Feedback</a>
                     </div>
                 </div>
             </div>
             <div class="feedback-screen-active">
-                <% for(let request of requests) { %>
+                <% for(let productcomments of productcomment) { %>
                     <div class="feedback-suggestion">
                         <div class="d-flex flex-row feedback-suggested">
 
@@ -113,19 +113,19 @@
                             <div class="d-flex flex-column feedback-suggested-numvotes">
                                 <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
                                 <h6>
-                                    <%=request.upvotes%>
+                                    <%=productcomments.upvotes%>
                                 </h6>
                             </div>
-                            <a class="feedback-navlink" href="/feedback/<%=request._id%>">
+                            <a class="feedback-navlink" href="/feedback/<%=productcomments ._id%>">
                                 <div class="feeback-title-para">
                                     <div class="feedback-suggested-title">
-                                        <%=request.title%>
+                                        <%=productcomments .title%>
                                     </div>
                                     <div class="feedback-suggested-para">
-                                        <%=request.description%>
+                                        <%=productcomments .description%>
                                     </div>
                                 </div>
-                                <button class="btn-suggestion"><%=request.category%></button>
+                                <button class="btn-suggestion"><%=productcomments .category%></button>
                             </a>
                         </div>
                     </div>
