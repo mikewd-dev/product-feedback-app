@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
+
+    <title>Frontend Mentor | Product feedback app</title>
+</head>
+
+
+<body style="background-color: #F2F2F2;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+
+            </div>
+            <div class="go-back">
+
+
+                <a href="/">
+                    <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=" "></span>Go Back
+                </a>
+
+                <!-- <a href="/">Go Back</a> -->
+            </div>
+            <div class="col-sm offset-3">
+
+                <div class="new-feedback-form">
+                    <embed class="new-feedback-icon" src="/assets/shared/icon-new-feedback.svg" type="">
+                    <form action="/feedback" class="form-control-lg" method="POST">
+
+                        <!-- <div class="create-feedback"> -->
+                        <h2 class="new-feedback">Create New Feedback </h2>
+                        <h4 id='feedback-title' class="sub-heading">
+                            Feedback Title
+                        </h4>
+                        <label for="title" class="sub-heading-paragraph">Add a short, descriptive headline</label>
+                        <input class="feedback-text" name="feedback[title]" id="feedbacktitle" cols="5" rows="1">
+                        <h4 id="category" class="sub-heading">Category</h4>
+                        <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
+                        <div class="select-options">
+                            <select class="form-select" name="feedback[category]" id="features">
+                            <!-- <select name="" id="" class="form-select"> -->
+                            <option value="Feature" class="feedback-options">Feature</option>
+                            <option value="UI" class="feedback-options">UI</option>
+                            <option value="UX" class="feedback-options">UX</option>
+                            <option value="Enhancement" class="feedback-options">Enhancement</option>
+                            <option value="Bug" class="feedback-options">Bug</option>
+                            <!-- </select> -->
+                            </select>
+                        </div>
+
+                        <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
+                        <label for="feedback" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
+                        <textarea name="feedback[description]" id="feedbackdetail" cols="20" rows="3"></textarea>
+
+
+                        <div class="add-cancel-feedback">
+                            <a class="cancel-feedback-btn text-center" href="index" type="button">Cancel</a>
+                            <button class="add-feedback">+Add Feedback</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- </div> -->
+
+
+            </div>
+            <div class="col-sm">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<html
