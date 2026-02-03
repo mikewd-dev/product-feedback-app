@@ -3015,6 +3015,7 @@ p {
     color: #3a4374;
     text-align: center;
     font-style: normal;
+width:fit-content;
   }
 
   .feedback-title {
@@ -3045,6 +3046,7 @@ p {
     width: 102px;
     height: 108px;
     margin-top: 76px;
+margin-right: 0;
     margin-bottom: 39px;
   }
 
