@@ -1,179 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
+          <!DOCTYPE html>
+          <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32x32.png">
-  <link rel="stylesheet" href="/styles/styles.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-  
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/favicon-32x32.png">
+            <link rel="stylesheet" href="/styles/styles.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
-  <title>Frontend Mentor | Product feedback app</title>
-</head>
+            <title>Frontend Mentor | Product feedback app</title>
+          </head>
 
-<body>
-  <div class="roadmap-nav">
-    <div class="go-back-roadmap">
-      <div class="go-back-rmap">
-        <a class="roadmap-go-back" href="/">
-          <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=" "></span>Go Back
-        </a>
-        <h1 class="go-back-heading">Roadmap</h1>
-        <!-- <div class="my-lg-0">
-
-            </div> -->
-      </div>
-      <a class="add-feedback-roadmap" href="/feedback/new" role="button">+Add Feedback</a>
-
-    </div>
-  </div>
-
-  <div class="row row-roadmap">
-
-    <div class="tab">
-      <p onmouseover="plannedDisplay();" class="pln" id="plnd">
-        Planned (<%=roadmap.length%>)
-      </p>
-
-      <p onmouseover="progressDisplay();" class="in-prog" id="inprog" >
-        In-Progress (<%=progress.length %>)
-      </p>
-      <p onmouseover="liveDisplay()" class="lve" id="lved">
-        Live (<%=live.length %>)
-      </p>
-    </div>
-    <div class="tab-bars">
-      <div class="tab-planned-bar" id="plan-bar"></div>
-      <div class="tab-inprog-bar" id="inprog-bar"></div>
-      <div class="tab-lv-bar" id="lve-bar"></div>
-    </div>
-    <hr style="display: none;">
-    <div class="columns">
-      <div class="column" id="column-planned">
-        <div class="planned">
-          Planned (<%=roadmap.length%>)
-        </div>
-        <div class="ideas">Ideas prioritized for research</div>
-
-        <% for(let rmap of Object.values(roadmap)){ %>
-
-
-        <div class="planned-reports">
-          <div class="planned-bar">
-
-          </div>
-
-          <p class="planned-heading"><span class="oval-planned"></span>
-            <%=rmap.status.charAt(0).toUpperCase() + rmap.status.slice(1)%>
-          </p>
-          <p class="report-title">
-            <%=rmap.title %>
-          </p>
-          <p class="report-desc">
-            <%=rmap.description %>
-          </p>
-          <button class="btn-roadmap"><%=rmap.category %></button>
-          <div class="roadmap-upvotes">
-            <button class="roadmap-btn-upvotes">
-              <img class="dropupCaret-rmap " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
-              <%=rmap.upvotes %>
-            </button>
-            <div class="roadmap-comment-icon">
-              <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
-
-              <span class="comment-num"><%=rmap.comments.length%></span>
-
+          <body>
+            <div class="roadmap-nav">
+              <div class="go-back-roadmap">
+                <div class="go-back-rmap">
+                  <a class="roadmap-go-back" href="/">
+                    <span class="arrow"><img src="/assets/shared/icon-arrow-left.svg" alt=""></span>Go Back
+                  </a>
+                  <h1 class="go-back-heading">Roadmap</h1>
+                </div>
+                <a class="add-feedback-roadmap" href="/feedback/new" role="button">+Add Feedback</a>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <% } %>
-      </div>
-      <div class="column" id="column-progress">
-        <div class="in-progress">
-          In-Progress (<%=progress.length %>)
-        </div>
-        <div class="progress">Currently being developed</div>
+            <div class="row row-roadmap">
+              <div class="tab">
+                <p onmouseover="plannedDisplay();" class="pln" id="plnd">
+                  Planned (<%= (roadmap || []).length %>)
+                </p>
+                <p onmouseover="progressDisplay();" class="in-prog" id="inprog">
+                  In-Progress (<%= (progress || []).length %>)
+                </p>
+                <p onmouseover="liveDisplay()" class="lve" id="lved">
+                  Live (<%= (live || []).length %>)
+                </p>
+              </div>
 
-        <% for(let prog of Object.values(progress)){ %>
+              <div class="tab-bars">
+                <div class="tab-planned-bar" id="plan-bar"></div>
+                <div class="tab-inprog-bar" id="inprog-bar"></div>
+                <div class="tab-lv-bar" id="lve-bar"></div>
+              </div>
 
-        <div class="progress-reports">
-          <div class="progress-bar">
+              <hr style="display: none;">
 
-          </div>
+              <div class="columns">
+                <!-- Planned Column -->
+                <div class="column" id="column-planned">
+                  <div class="planned">
+                    Planned (<%= roadmap.length %>)
+                  </div>
+                  <div class="ideas">Ideas prioritized for research</div>
 
-          <p class="progress-heading"><span class="oval-progress"></span>
-            <%=prog.status.charAt(0).toUpperCase() + prog.status.slice(1)%>
-          </p>
-          <p class="report-title">
-            <%=prog.title %>
-          </p>
-          <p class="report-desc">
-            <%=prog.description %>
-          </p>
-          <button class="btn-roadmap"><%=prog.category %></button>
-          <div class="roadmap-upvotes">
-            <button class="roadmap-btn-upvotes">
-              <img class="dropupCaret-rmap " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
-              <%=prog.upvotes %></button>
-            <div class="roadmap-comment-icon">
-              <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
+                  <% for (let rmap of Object.values(roadmap)) { %>
+                  <div class="planned-reports">
+                    <div class="planned-bar"></div>
 
-              <span class="comment-num"><%=prog.comments.length%></span>
+                    <p class="planned-heading"><span class="oval-planned"></span>
+                      <%= rmap.status.charAt(0).toUpperCase() + rmap.status.slice(1) %>
+                    </p>
+                    <p class="report-title"><%= rmap.title %></p>
+                    <p class="report-desc"><%= rmap.description %></p>
+                    <button class="btn-roadmap"><%= rmap.category %></button>
 
-            </div>
-          </div>
-        </div>
+                    <form onsubmit="event.preventDefault();">
+                      <button class="feedback-suggested-numvotes" onclick="upvoteRoadmap('<%= rmap._id %>')">
+                        <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= rmap._id %>">
+                          <path d="M1 6l4-4 4 4" stroke-width="2" />
+                        </svg>
+                        <div class="votes" id="votes-<%= rmap._id %>"><%= rmap.upvotes %></div>
+                      </button>
+                    </form>
 
-        <% } %>
-      </div>
-      <div class="column" id="column-live">
-        <div class="live">
-          Live (<%=live.length %>)
-        </div>
+                    <div class="roadmap-comment-icon">
+                      <img src="/assets/shared/icon-comments.svg" alt="">
+                      <span class="comment-num"><%= rmap.comments.length %></span>
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
 
-        <div class="prog">Released Features</div>
+                <!-- In-Progress Column -->
+                <div class="column" id="column-progress">
+                  <div class="in-progress">
+                    In-Progress (<%= progress.length %>)
+                  </div>
+                  <div class="progress">Currently being developed</div>
 
-        <% for(let lv of Object.values(live)){ %>
+                  <% for (let prog of Object.values(progress)) { %>
+                  <div class="progress-reports">
+                    <div class="progress-bar"></div>
 
+                    <p class="progress-heading"><span class="oval-progress"></span>
+                      <%= prog.status.charAt(0).toUpperCase() + prog.status.slice(1) %>
+                    </p>
+                    <p class="report-title"><%= prog.title %></p>
+                    <p class="report-desc"><%= prog.description %></p>
 
-        <div class="live-reports">
-          <div class="live-bar">
+                    <form id="vote-<%= prog._id %>" onsubmit="event.preventDefault();">
+                    <button class=" feedback-suggested-numvotes" onclick="upvoteRoadmap('<%= prog._id %>')">
+                        <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= prog._id %>">
+                            <path d="M1 6l4-4 4 4" stroke-width="2"/>
+                        </svg>
+                        <div class="votes" id="votes-<%= prog._id %>">
+                            <%= prog.upvotes %>
+                        </div>
+                    </button>
+                            </form>
 
-          </div>
-          <p class="live-heading"><span class="oval-live"></span>
-            <%=lv.status.charAt(0).toUpperCase() + lv.status.slice(1)%>
-          </p>
-          <p class="report-title">
-            <%=lv.title %>
-          </p>
-          <p class="report-desc">
-            <%=lv.description %>
-          </p>
-          <button class="btn-roadmap"><%=lv.category %></button>
-          <div class="roadmap-upvotes">
-            <button class="roadmap-btn-upvotes">
-              <img class="dropupCaret-rmap " src="/assets/shared/icon-arrow-up.svg " alt=" " srcset=" ">
-              <%=lv.upvotes %></button>
-            <div class="roadmap-comment-icon">
-              <img src="/assets/shared/icon-comments.svg" alt="" srcset="">
+                    <div class="roadmap-comment-icon">
+                      <img src="/assets/shared/icon-comments.svg" alt="">
+                      <span class="comment-num"><%= prog.comments.length %></span>
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
 
-              <span class="comment-num"><%=lv.comments.length%></span>
+                <!-- Live Column -->
+                <div class="column" id="column-live">
+                  <div class="live">
+                    Live (<%= live.length %>)
+                  </div>
+                  <div class="prog">Released Features</div>
 
-            </div>
-          </div>
-        </div>
+                  <% for (let lv of Object.values(live)) { %>
+                  <div class="live-reports">
+                    <div class="live-bar"></div>
 
-        <% } %>
-      </div>
-    </div>
-  </div>
+                    <p class="live-heading"><span class="oval-live"></span>
+                      <%= lv.status.charAt(0).toUpperCase() + lv.status.slice(1) %>
+                    </p>
+                    <p class="report-title"><%= lv.title %></p>
+                    <p class="report-desc"><%= lv.description %></p>
+                    <button class="btn-roadmap"><%= lv.category %></button>
+
+                    <div class="roadmap-upvotes">
+                      <form id="vote-<%= lv._id %>" onsubmit="event.preventDefault();">
+                      <button class="feedback-suggested-numvotes" onclick="upvoteRoadmap('<%= lv._id %>')">
+                          <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= lv._id %>">
+                              <path d="M1 6l4-4 4 4" stroke-width="2"/>
+                          </svg>
+                          <div class="votes" id="votes-<%= lv._id %>">
+                              <%= lv.upvotes %>
+                          </div>
+                      </button>
+                              </form>
+
+                      <div class="roadmap-comment-icon">
+                        <img src="/assets/shared/icon-comments.svg" alt="">
+                        <span class="comment-num"><%= lv.comments.length %></span>
+                      </div>
+                    </div>
+                  </div>
+                  <% } %>
+                </div>
+              </div> <!-- End of .columns -->
+            </div> <!-- End of .row-roadmap -->
+
+            <!-- Scripts -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-           <script src="/js/script.js"></script>
-</body>
-<html
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="/js/script.js"></script>
+          </body>
+          </html>

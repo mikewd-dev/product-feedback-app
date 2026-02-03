@@ -1,5 +1,5 @@
-<!-- <!DOCTYPE html>
-<html lang="en"> -->
+<!DOCTYPE html>
+<html lang="en">
 
 <%-include ('../layouts/boilerplate') %>
 <body>
@@ -12,7 +12,7 @@
     <% for(let req of Object.values(request)){ %>
     <div class="feedback-suggestion">
       <div id="suggested-feedback" class= "feedback-suggested">
-        <form id="vote" onsubmit="event.preventDefault();">
+        <form id="vote-<%= req._id %>" onsubmit="event.preventDefault();">
 <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= req._id %>">
         <path d="M1 6l4-4 4 4" stroke-width="2"/>
