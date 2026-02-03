@@ -1,32 +1,100 @@
-# Product-Feedback-App
+# Product Feedback App
 
-# ![License Badge](https://shields.io/badge/license-MIT-green)
+![License Badge](https://shields.io/badge/license-MIT-green)
 
-## Table of Contents
+## Overview
 
-- [Description](#description)
-- [How To Use](#how-to-use)
-- [How To Contribute](#how-to-contribute)
-- [Predevelopment](#predevelopment)
-- [Further Development](#further-development)
-- [License](#license)
+The **Product Feedback App** is a full-stack web application where users can submit feedback on products, comment on other users’ suggestions, reply to comments, and upvote ideas. This project demonstrates my skills in **Node.js, Express, MongoDB, Bootstrap, Cloudinary**, and **frontend-backend integration**.  
 
-## Description
+I built this project as a self-directed project to showcase real-world full-stack development, including **database design, user authentication, dynamic UI, and API integration**.
 
-This project is an application where users can register to provide feedback on a product. They can also comment on other users’ suggestions and reply to comments and upvote suggestions. This application was made using HTML, CSS, Bootstrap, Javascript, NodeJS, ExpressJS and running on a. MongoDB database. I also used Cloudinary to store user photos
+---
+
+## Live Demo
+
+Try the app here: [Product Feedback App Live](https://product-feedback-app-production.up.railway.app/)  
+
+> Note: Loading might be slightly delayed due to Railway free service spin-down.
+
+---
+
+## Features
+
+- User registration, login, and authentication with hashed passwords
+- Create, read, update, and delete (CRUD) functionality for feedback, comments, and replies
+- Upvoting system for feedback suggestions
+- Sorting feedback by upvotes or number of comments
+- Responsive UI built with Bootstrap
+- Cloudinary integration for user-uploaded images
+- Fully deployed backend on Railway
+
+---
+
+## My Contributions
+
+- Designed MongoDB schemas for feedback, comments, and replies
+- Implemented frontend search, sorting, and dynamic interactions using JavaScript and Bootstrap
+- Integrated Cloudinary to handle user-uploaded images
+- Built authentication and session management with Node.js and Express
+- Collaborated using Git for version control with feature branches and pull requests
+- Ensured responsive design and polished user interface
+
+---
+
+## Screenshots
+
+![Dashboard view](./assets/screenshots/dashboard.png)
+![Adding feedback](./assets/screenshots/add-feedback.png)
+
+---
 
 ## How To Use
 
-Head over to /https://product-feedback-app-e45s.onrender.com/. Sometimes loading maybe slow due to Render spinning down free web services. You will be presented with the options to log in or register. Once logged in you can add feedback by clicking on the Add Feedback button. To comment on other user’s feedback and reply to comments you can select individual feedbacks and see other comments and replies and to add your own comment type in a comment at the bottom and click Post Comment button. To reply click on the link showing reply. You can also arrange feedback by comments (least, most) or upvotes (least, most)
+1. Go to the live site: [Product Feedback App](https://product-feedback-app-production.up.railway.app/)  
+2. Register a new account or log in with an existing one  
+3. Add feedback by clicking **Add Feedback**  
+4. View and comment on other users’ feedback  
+5. Reply to comments by clicking **Reply**  
+6. Sort feedback by **upvotes** or **number of comments**  
+
+---
+
+## Future Improvements
+
+- Restrict edit/delete options to feedback authored by the logged-in user  
+- Implement real-time notifications for comments and replies  
+- Add AI-based sentiment analysis to feedback and comments  
+
+---
 
 ## How To Contribute
 
-Fork the project and make a pull request when ready
+1. Fork the repository  
+2. Create a new branch for your feature or bugfix  
+3. Make changes and submit a pull request  
 
-## Further Development
+---
 
-Disable the Edit button or hide the feedback, comment or reply was made by another user
+## Technologies Used
+
+- **Frontend:** HTML, CSS, Bootstrap, JavaScript  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB  
+- **File Storage:** Cloudinary  
+- **Version Control:** Git, GitHub  
+
+---
+
+## Lessons Learned
+
+- Designing relational schemas in MongoDB for hierarchical data (feedback, comments, replies)  
+- Integrating third-party APIs for image uploads  
+- Handling asynchronous requests in Node.js and Express  
+- Building a responsive and interactive frontend  
+- Deploying a full-stack app to a live server (Railway)  
+
+---
 
 ## License
 
-See the license description in the repo
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
