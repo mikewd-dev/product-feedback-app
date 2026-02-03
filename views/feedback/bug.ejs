@@ -210,17 +210,18 @@
   <div class="feedback-screen-active">
 <div class="overlay"></div>
 
-    <!-- for(let [key, value] of Object.entries(request)) -->
     <% for(let req of Object.values(request)){ %>
     <div class="feedback-suggestion">
       <div class="d-flex flex-row feedback-suggested">
         <form id="vote" onsubmit="event.preventDefault();">
-          <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
-            <svg class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-            <div class="votes" id="votes-<%= req._id %>">
-              <%= req.upvotes %>
-            </div>
-          </button>
+<button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
+    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= req._id %>">
+        <path d="M1 6l4-4 4 4" stroke-width="2"/>
+    </svg>
+    <div class="votes" id="votes-<%= req._id %>">
+        <%= req.upvotes %>
+    </div>
+</button>
         </form>
 
 

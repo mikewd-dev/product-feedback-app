@@ -165,12 +165,6 @@
                 <%=request.length %>
               </span> Suggestions
             </li>
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
-            <!-- <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown"> -->
             <a class="nav-link" href="/feedback/enhancement?sort=mostup" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Sort by :<strong id="menu-item">Most Upvotes</strong>
               <span><img class="down-arrow" src="/assets/shared/icon-arrow-down.svg" alt="" srcset=""></span>
@@ -213,13 +207,15 @@
     <% for(let req of Object.values(request)){ %>
     <div class="feedback-suggestion">
       <div class="d-flex flex-row feedback-suggested">
-        <form id="vote" onsubmit="event.preventDefault();">
-          <button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
-            <svg class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-            <div class="votes" id="votes-<%= req._id %>">
-              <%= req.upvotes %>
-            </div>
-          </button>
+                <form id="vote" onsubmit="event.preventDefault();">
+<button id="content" class="btn feedback-suggested-numvotes" onclick="upvoteSuggestion('<%= req._id %>')">
+    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id ="droparrow-<%= req._id %>">
+        <path d="M1 6l4-4 4 4" stroke-width="2"/>
+    </svg>
+    <div class="votes" id="votes-<%= req._id %>">
+        <%= req.upvotes %>
+    </div>
+</button>
         </form>
 
 

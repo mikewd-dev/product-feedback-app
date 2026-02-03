@@ -15,6 +15,10 @@ body {
   right: 0;
 }
 
+.flash {
+  background-color: #62bcfa;
+}
+
 .row {
   margin-top: 92.5px;
 }
@@ -628,7 +632,7 @@ p {
 }
 
 .dropupCaret {
-  fill: #3a4374;
+  stroke: #3a4374;
   height: 4px;
   padding-top: 0px;
   width: 8px;
@@ -643,13 +647,8 @@ p {
 
 #content:active .dropupCaret,
 #content:focus .dropupCaret {
-  fill: #fff; /* Change the fill color for the SVG */
+  stroke: #fff;
 }
-
-/* .dropupCaret:active,
-.dropupCaret:focus {
-  color: #fff;
-} */
 
 .btn-suggestion {
   background: #f2f4ff;
@@ -1546,7 +1545,7 @@ p {
 }
 
 .dropdown > .container-fluid {
-  margin-top: 13px;
+  margin-top: 24px;
   justify-content: left !important;
   gap: 16px;
 }
