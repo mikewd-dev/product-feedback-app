@@ -14,8 +14,13 @@
 
 <body>
   <div class="flash">
-    <%= messages %>
-  </div>
+    <% if (typeof messages !== 'undefined' && messages.length > 0) { %>
+      <div class="flash">
+        <% messages.forEach((msg) => { %>
+          <p><%= msg %></p>
+        <% }) %>
+      </div>
+    <% } %>
   <div class="col-md">
     <div class="row">
       <div class="container ">
