@@ -121,11 +121,12 @@ a {
   line-height: 100%;
   margin: 6px;
   color: #4661e6;
+  font-family: Jost;
+  
   /* font-size: 12px; */
 }
 
-.blue:active,
-.blue:focus {
+.blue.active {
   background-color: #4661e6 !important;
   color: #ffffff;
 
@@ -583,7 +584,7 @@ p {
   top: 150px;
   right: 0;
   left: 288px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   border-radius: 10px;
   height:53%
 }

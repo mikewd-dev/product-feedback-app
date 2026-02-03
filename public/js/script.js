@@ -26,14 +26,16 @@ $(document).ready(function(){
 //   }
 
 window.addEventListener('DOMContentLoaded', () => {
-  const url = window.location.pathname.split('/');
-  const currentURL = url[url.length - 1] || url[url.length - 2];
+  // More robust way to extract the type from the path
+  const match = window.location.pathname.match(/\/feedback\/([^\/\?]+)/);
+  const currentType = match ? match[1] : 'suggestions'; // fallback if nothing matches
 
-  const links = document.querySelectorAll('.blue');
-  links.forEach(link => {
-    const dataType = link.getAttribute('data-type');
-    if (dataType === currentURL) {
-      link.classList.add('active');
+  // Select all .blue buttons
+  const buttons = document.querySelectorAll('.blue');
+  buttons.forEach(button => {
+    const dataType = button.getAttribute('data-type');
+    if (dataType === currentType) {
+      button.classList.add('active');
     }
   });
 });
