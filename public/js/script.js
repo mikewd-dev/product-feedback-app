@@ -18,9 +18,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.split('/');
   const currentURL = url[url.length - 1] || url[url.length - 2];
 
-  const links = document.querySelectorAll('a.btn');
+  const links = document.querySelectorAll('.blue');
   links.forEach(link => {
-    const dataType = link.getAttribute('href').split('/').pop(); // e.g. 'bug'
+    const dataType = link.getAttribute('data-type');
     if (dataType === currentURL) {
       link.classList.add('active');
     }
