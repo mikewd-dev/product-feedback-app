@@ -96,8 +96,7 @@ flex-direction: row;
   line-height: 100%;
 }
 
-.btn:active,
-.btn:focus{
+.btn.active{
   background-color: #4661e6 !important;
   color: #f2f2f2 !important;
   outline:none;
