@@ -25,7 +25,8 @@
         "mongoose": "^6.8.0",
         "mongoose-schema-jsonschema": "^2.0.2",
         "mongosh": "^1.6.0",
-        "path": "^0.12.7"
+        "path": "^0.12.7",
+        "uuid": "^9.0.0"
     },
     "devDependencies": {
         "jest-cli": "^29.3.1"

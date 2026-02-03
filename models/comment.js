@@ -8,7 +8,17 @@ const CommentSchema = new Schema({
         image: String,
         name: String,
         username: String,
-        }
+        },
+          replies: [{
+                    content: String,
+                    replyingTo: String,
+                    user: {
+                        type: Object,
+                        image: String,
+                        name: String,
+                        username: String
+                    }
+                }]
 
 })
 
