@@ -21,6 +21,7 @@ const Request = require("./models/request");
 const Comment = require("./models/comment");
 const ProductComment = require("./models/productcomment")
 const UserComment = require("./models/usercomment")
+const Data = require('./models/data')
 const catchAsync = require("./utils/catchAsync");
 const bodyParser = require('body-parser');
 
@@ -89,11 +90,13 @@ app.post('/feedback', catchAsync(async (req, res, next) => {
 
 // app.post('feedback/:id/')
 
-app.get('/feedback/:id', catchAsync(async (req, res) => {
-    const productcomments = await ProductComment.findById(req.params.id).populate('comments');
-    console.log(productcomments)
-    res.render('feedback/show', { productcomments })
-}));
+app.get('/feedback/:id', async (req, res) => {
+    const comments = await Comment.findById(req.params.id)
+    const productcomment = await ProductComment.findById(req.params.id)
+    res.render('feedback/show', {productcomment, comments })
+    // console.log(productcomment)
+
+});
 
 
 

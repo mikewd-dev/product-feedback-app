@@ -9,12 +9,6 @@ const RequestSchema = new Schema({
     upvotes: Number,
     status:String,
     description:String,
-    comments:[
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Comment"
-            }
-    ]
 
 })
 

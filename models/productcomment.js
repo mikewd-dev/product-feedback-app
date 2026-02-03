@@ -8,7 +8,7 @@ const ProductCommentSchema = new Schema({
     upvotes: Number,
     status:String,
     description:String,
-    comments:[
+    comments: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Comment'

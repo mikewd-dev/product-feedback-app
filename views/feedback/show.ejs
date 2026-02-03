@@ -24,7 +24,7 @@
                     <a href="/feedback">
                         <span class="arrow "><img src="/assets/shared/icon-arrow-left.svg " alt=" "></span>Go Back
                     </a>
-                    <a class="btn btn-primary edit-button" href="/feedback/<%=productcomments._id%>/edit" type="button ">Edit Feedback</a>
+                    <a class="btn btn-primary edit-button" href="/feedback/<%=productcomment._id%>/edit" type="button ">Edit Feedback</a>
                     <!-- <a href="/ ">Go Back</a> -->
                 </div>
                 <div class="col-sm">
@@ -37,20 +37,20 @@
 
                                     <h6>
                                         <p>
-                                            <%=productcomments.upvotes%>
+                                            <%=productcomment.upvotes%>
                                         </p>
                                     </h6>
                                 </div>
-                                <a class="feedback-navlink-show" href="/feedback/<%=productcomments._id%>">
+                                <a class="feedback-navlink-show" href="/feedback/<%=productcomment._id%>">
                                     <div class="feeback-title-para">
                                         <div class="feedback-suggested-title">
-                                            <%=productcomments.title%>
+                                            <%=productcomment.title%>
                                         </div>
                                         <div class="feedback-suggested-para">
-                                            <%=productcomments.description%>
+                                            <%=productcomment.description%>
                                         </div>
                                     </div>
-                                    <button class="btn-suggestion"><%=productcomments.category%></button>
+                                    <button class="btn-suggestion"><%=productcomment.category%></button>
                                 </a>
 
                             </div>
@@ -62,12 +62,16 @@
                 <div class="col-sm">
                     <div class="comments">
                         <div class="comment">
-                            <div class="mb3">
-                                <% for(let comment of productcomments.comments) { %>
+                            <div class="mb-3">
+                                <% for(let comments of productcomment.comment) { %>
                                     <p>
-                                        <%=comment.content %>
+                                        <%=productcomment.comments %>
                                     </p>
+
                                     <% } %>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -77,7 +81,7 @@
                         <label class="add-comment-label" for="addcomment">Add Comment</label>
                         <textarea class="add-comment-text" name="reply[content]" id="content" cols="30" rows="4" placeholder="Type your comment here"></textarea>
                     </div>
-                    <button>Post <i class="fa fa-comment" aria-hidden="true"><%=productcomments.feature%></i></button>
+                    <button>Post <i class="fa fa-comment" aria-hidden="true"><%=productcomment.feature%></i></button>
                 </div>
             </div>
         </div>
