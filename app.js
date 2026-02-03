@@ -16,6 +16,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const mongoose = require("mongoose");
 const session = require('express-session')
+const MongoStore = require('connect-mongo');
 const helmet = require('helmet');
 require('dotenv').config()
 mongoose.connect(process.env.MONGO_URI,
@@ -54,8 +55,20 @@ app.set('view engine', 'ejs')
 
 app.set('views', path.join(__dirname, 'views'));
 
+const dbstore = MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    touchAfter: 24 * 60 * 60,
+    crypto:{
+        secret: 'thisshouldbeabettersecret!',
+    }
+});
+
+dbstore.on("error", function(e) {
+    console.log("Session Store Error", e)
+});
 
 const sessionConfig = {
+    dbstore,
     secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: false,
