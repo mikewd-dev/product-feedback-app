@@ -1561,7 +1561,7 @@ figcaption {
   flex-direction: column;
   overflow: hidden;
   }
-}
+
 .planned-heading,
 .report-title,
 .report-desc {
@@ -2752,7 +2752,7 @@ p {
     text-align: center;
     text-justify: auto;
     width: 158px;
-    right: 90px;
+    right: 0;
     top: 70px;
   }
 
@@ -3920,6 +3920,7 @@ p {
   }
 
   .roadmap-nav {
+
     width: 100vw !important;
     height: 100px;
     flex-shrink: 0;
@@ -3933,7 +3934,7 @@ p {
   .go-back-roadmap {
     margin-top: 0;
     margin-left: 0;
-    margin-right: 0;
+    
     margin-bottom: 0px;
     top: 0;
     left: 0;
@@ -4031,9 +4032,10 @@ p {
     font-size: 13px;
     height: 40px;
     flex-shrink: 0;
-    margin: 6px 4% 40px 0;
+    margin: 30px 0 30px auto;
     padding: 10.5px 2% 5px 2%;
     top: 0;
+    right:0;
   }
 
   .columns {
@@ -4088,13 +4090,16 @@ p {
   }
 
   .roadmap-comment-icon {
+    position: relative;
+    right: 0;
     display: flex;
     width: 40px;
     height: 19px;
-    justify-content: center;
-    align-items: flex-start;
+  float: right;;
     gap: 4px;
     flex-shrink: 0;
+    margin-left:auto;
+    margin-right:0;
   }
 
   .live ,
@@ -4139,45 +4144,48 @@ p {
     line-height: normal;
     letter-spacing: -0.181px;
     justify-content: space-evenly;
-    width: 420px;
+    width: 100vw;
   }
 
   .tab-bars {
     display: flex;
-    width: 375px;
+    width: 100vw;
   }
   .tab-planned-bar {
-    width: 25.3%;
+    width: 33.3%;
     height: 4px;
     flex-shrink: 0;
     background: #f49f85;
     top: 0;
-    margin-left:29px;
+    margin-left:0px;
   }
 
   .tab-inprog-bar {
-    width: 25.3%;
+    width: 33.3%;
     height: 4px;
     flex-shrink: 0;
     background: #ad1fea;
     top: 0;
-    margin-left: 139px;
+    margin-left: 145px;
     display: none;
   }
 
   .tab-lv-bar {
-    width: 25.3%;
+    width: 33.3%;
     height: 4px;
     flex-shrink: 0;
     background: #62bcfa;
     top: 0;
-    margin-left: 223px;
+    margin-left: 280px;
     display: none;
   }
   hr {
+    position: relative;
+    left:0;
+    right:0;
     margin-top: 0;
     margin-bottom: 24px;
-    width: 375px;
+    max-width:30vw;
     height: 1px;
     flex-shrink: 0;
     opacity: 0.25;
