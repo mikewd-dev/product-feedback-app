@@ -19,7 +19,7 @@ const ejsMate = require("ejs-mate");
 const CurrentUser = require("./models/user");
 const Request = require("./models/request");
 const Comment = require("./models/comment");
-const Data = require("./models/data")
+const Roadmap = require("./models/roadmap")
 const User = require("./models/user")
 const catchAsync = require("./utils/catchAsync");
 const bodyParser = require('body-parser');
@@ -69,9 +69,14 @@ app.get('/feedback/none', catchAsync(async (req, res, next) => {
 
 app.get('/feedback/suggestions', catchAsync(async (req, res, next) => {
 const request = await Request.find({})
-console.log(request)
+
 res.render('feedback/suggestions', { request })
 }));
+
+app.get('/feedback/roadmap', catchAsync(async(req, res)=>{
+const roadmap = Roadmap.find({})
+res.render('feedback/roadmap', {roadmap})
+}))
 
 // app.get('/feedback/:id/comment', async(req, res) =>{
 //     const comment = await Comment.find({});
@@ -80,20 +85,27 @@ res.render('feedback/suggestions', { request })
 // })
 
 
-app.post('/feedback', catchAsync(async (req, res, next) => {
-    const request = new Request(req.body.request)
-    console.log(request)
-    await request.save();
-    res.redirect(`/feedback/${request._id}`)
-}));
+// app.post('/feedback/:id/request', catchAsync(async (req, res, next) => {
+//     const request = await Request.findById(req.params.id)
+//     const comment = new Comment(req.body.comment)
+//     request.comments.push(comment)
+//     console.log(request)
+//     await comment.save()
+//     await request.save();
+//     res.redirect(`/feedback/${request._id}`)
+// }));
 
 // app.post('feedback/:id/')
 
 app.get('/feedback/:id', async (req, res) => {
     // const comment = await Comment.findById(req.params.id)
     const request = await Request.findById(req.params.id).populate('comments')
-
+                    .populate('comments.user')
+                    .populate('comments.replies')
+    // const user = await Request.findById(req.params.id).populate('comments.users.name')
+    // console.log(request)
     res.render('feedback/show', {request})
+
 
 });
 
@@ -159,6 +171,7 @@ app.post('/feedback/:id/comments', async(req, res) =>{
     await request.save();
     await comment.save();
     res.redirect(`/feedback/${request._id}`)
+
 })
 
 

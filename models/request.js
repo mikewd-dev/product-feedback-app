@@ -11,12 +11,39 @@ const RequestSchema = new Schema({
     description:String,
     comments:[
             {
-                type: Schema.Types.ObjectId,
-                ref:"Comment"
-            }
+                id: Number,
+                content: String,
+            user: {
+                type: Object,
+                image:String,
+                name:String,
+                username:String,
+
+            },
+            replies: [{
+                    type: Array,
+                    content: String,
+                    replyingTo: String,
+                    user: {
+                        type: Object,
+                        image: String,
+                        name: String,
+                        username: String
+                    }
+                }]
+        }
         ]
 })
 
+// RequestSchema.post('findOneAndUpdate', async function(doc) {
+//     if (doc) {
+//         await Comment.add({
+//             _id: {
+//                 $in: doc.comments
+//             }
+//         })
+//     }
+// })
 
 module.exports = mongoose.model('Request', RequestSchema);
 

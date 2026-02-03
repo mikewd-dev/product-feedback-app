@@ -62,28 +62,41 @@
                 <div class="col-sm">
                     <div class="comments">
                         <div class="comment">
-                            <div class="mb-3">
+                            <!-- <div class="mb-3"> -->
 
-                                <% for(let comments of request.comment) {%>
-
+                            <% for(let comment of request.comments) { %>
+                                <div class="mb-3">
+                                    <img src="../<%=comment.user.image%>" alt="">
                                     <p>
-                                        <%=comments.content %>
+                                        <%=comment.user.name %>
+                                    </p>
+                                    <p>
+                                        @
+                                        <%=comment.user.username %>
+                                    </p>
+                                    <p>
+                                        <%=comment.content %>
+                                    </p>
+                                    <p>
+                                        <%=comment.replies.content %>
                                     </p>
 
-                                    <% } %>
 
-                            </div>
+                                </div>
+
+                                <% } %>
                         </div>
                     </div>
                 </div>
-                <form action="/feedback/<%request._id%>/comments" method="POST" class="validated-form" novalidate>
+                <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
                     <!-- <div class="col-sm "> -->
                     <div class="add-comment ">
                         <label class="add-comment-label " for="addcomment ">Add Comment</label>
                         <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
-                        <button class="post-comment" aria-hidden="true ">Post Comment</button>
+
                     </div>
                     <!-- </div> -->
+                    <button class="post-comment">Post Comment</button>
                 </form>
 
 
