@@ -328,18 +328,14 @@ p {
 }
 
 .add-comment-text {
-    height: 80px;
+    background: #f7f8fd;
+    border: 1px solid #4661e6;
+    border-radius: 5px;
     width: 664px;
-    left: 34px;
-    top: 74px;
-    border-radius: 0px;
-    left: 4.66%;
-    right: 4.38%;
-    top: 30.08%;
-    bottom: 37.4%;
+    /* bottom: 37.4%; */
     background: #f7f8fd;
     border-radius: 5px;
-    margin: 74px 32px 92px 34px;
+    margin: 24px 32px 92px 34px;
 }
 
 .dropupCaret {
@@ -694,6 +690,16 @@ figcaption {
     height: 24px;
     top: 1px;
     margin: 24px 16px 24px 24px;
+}
+
+.post-comment {
+    height: 44px;
+    width: 142px;
+    margin: 16px 32px 32px 556px;
+    left: 0px;
+    top: 0px;
+    border-radius: 10px;
+    background: #c75af6;
 }
 
 .offer-suggestion {

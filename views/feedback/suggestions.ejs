@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="feedback-screen-active">
-                <% for(let productcomments of productcomment) { %>
+                <% for(let requests of request) { %>
                     <div class="feedback-suggestion">
                         <div class="d-flex flex-row feedback-suggested">
 
@@ -113,19 +113,19 @@
                             <div class="d-flex flex-column feedback-suggested-numvotes">
                                 <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
                                 <h6>
-                                    <%=productcomments.upvotes%>
+                                    <%=requests.upvotes%>
                                 </h6>
                             </div>
-                            <a class="feedback-navlink" href="/feedback/<%=productcomments ._id%>">
+                            <a class="feedback-navlink" href="/feedback/<%=requests._id%>">
                                 <div class="feeback-title-para">
                                     <div class="feedback-suggested-title">
-                                        <%=productcomments .title%>
+                                        <%=requests.title%>
                                     </div>
                                     <div class="feedback-suggested-para">
-                                        <%=productcomments .description%>
+                                        <%=requests.description%>
                                     </div>
                                 </div>
-                                <button class="btn-suggestion"><%=productcomments .category%></button>
+                                <button class="btn-suggestion"><%=requests.category%></button>
                             </a>
                         </div>
                     </div>

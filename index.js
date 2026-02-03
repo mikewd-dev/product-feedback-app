@@ -20,8 +20,8 @@ const CurrentUser = require("./models/user");
 const Request = require("./models/request");
 const Comment = require("./models/comment");
 const ProductComment = require("./models/productcomment")
-const UserComment = require("./models/usercomment")
-const Data = require('./models/data')
+const User = require("./models/user")
+// const Data = require('./models/data')
 const catchAsync = require("./utils/catchAsync");
 const bodyParser = require('body-parser');
 
@@ -32,8 +32,8 @@ app.use(express.static('public'))
 
 app.use(express.urlencoded({ extended: true }))
 
-app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json())
 
 app.use(methodOverride('_method'))
 
@@ -69,9 +69,9 @@ app.get('/feedback/none', catchAsync(async (req, res, next) => {
 
 
 app.get('/feedback/suggestions', catchAsync(async (req, res, next) => {
-const productcomment = await ProductComment.find({})
-// console.log(productcomment)
-res.render('feedback/suggestions', { productcomment })
+const request = await Request.find({})
+console.log(request)
+res.render('feedback/suggestions', { request })
 }));
 
 // app.get('/feedback/:id/comment', async(req, res) =>{
@@ -91,10 +91,10 @@ app.post('/feedback', catchAsync(async (req, res, next) => {
 // app.post('feedback/:id/')
 
 app.get('/feedback/:id', async (req, res) => {
-    const comments = await Comment.findById(req.params.id)
-    const productcomment = await ProductComment.findById(req.params.id)
-    res.render('feedback/show', {productcomment, comments })
-    // console.log(productcomment)
+    const comment = await Comment.findById(req.params.id)
+    const request = await Request.findById(req.params.id).populate('comments')
+    res.render('feedback/show', { request, comment })
+    // res.status(200).json(request);
 
 });
 

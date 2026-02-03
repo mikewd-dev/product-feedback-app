@@ -24,7 +24,7 @@
                     <a href="/feedback">
                         <span class="arrow "><img src="/assets/shared/icon-arrow-left.svg " alt=" "></span>Go Back
                     </a>
-                    <a class="btn btn-primary edit-button" href="/feedback/<%=productcomment._id%>/edit" type="button ">Edit Feedback</a>
+                    <a class="btn btn-primary edit-button" href="/feedback/<%=request._id%>/edit" type="button ">Edit Feedback</a>
                     <!-- <a href="/ ">Go Back</a> -->
                 </div>
                 <div class="col-sm">
@@ -37,20 +37,20 @@
 
                                     <h6>
                                         <p>
-                                            <%=productcomment.upvotes%>
+                                            <%=request.upvotes%>
                                         </p>
                                     </h6>
                                 </div>
-                                <a class="feedback-navlink-show" href="/feedback/<%=productcomment._id%>">
+                                <a class="feedback-navlink-show" href="/feedback/<%=request._id%>">
                                     <div class="feeback-title-para">
                                         <div class="feedback-suggested-title">
-                                            <%=productcomment.title%>
+                                            <%=request.title%>
                                         </div>
                                         <div class="feedback-suggested-para">
-                                            <%=productcomment.description%>
+                                            <%=request.description%>
                                         </div>
                                     </div>
-                                    <button class="btn-suggestion"><%=productcomment.category%></button>
+                                    <button class="btn-suggestion"><%=request.category%></button>
                                 </a>
 
                             </div>
@@ -63,12 +63,10 @@
                     <div class="comments">
                         <div class="comment">
                             <div class="mb-3">
-                                <% for(let comments of productcomment.comment) { %>
-                                    <p>
-                                        <%=productcomment.comments %>
-                                    </p>
 
-                                    <% } %>
+
+
+
 
 
 
@@ -76,13 +74,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="add-comment">
-                        <label class="add-comment-label" for="addcomment">Add Comment</label>
-                        <textarea class="add-comment-text" name="reply[content]" id="content" cols="30" rows="4" placeholder="Type your comment here"></textarea>
+                <form action="/feedback/<%request._id%>/comments" method="POST" class="validated-form" novalidate>
+                    <!-- <div class="col-sm "> -->
+                    <div class="add-comment ">
+                        <label class="add-comment-label " for="addcomment ">Add Comment</label>
+                        <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
+                        <button class="post-comment" aria-hidden="true ">Post Comment</button>
                     </div>
-                    <button>Post <i class="fa fa-comment" aria-hidden="true"><%=productcomment.feature%></i></button>
-                </div>
+                    <!-- </div> -->
+                </form>
+
+                <%   for(var comment of request.comments) { %>
+                    <p>
+                        <%=  comments.content %>
+                    </p>
+                    <%  } %>
             </div>
         </div>
         <!-- </div> -->
