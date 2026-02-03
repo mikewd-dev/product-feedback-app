@@ -58,8 +58,9 @@ router.post(
           return res.render("feedback/register");
         }
 
-        res.redirect("/feedback/suggestions");
         req.flash("success", "Registration successful");
+        res.redirect("/feedback/suggestions");
+        
       });
     } catch (err) {
       req.flash("error", err.message);
@@ -68,17 +69,22 @@ router.post(
   }),
 );
 
-router.post(
-  "/feedback/login",
-  passport.authenticate("local", {
-    successRedirect: "/feedback/suggestions",
-    failureRedirect: "/feedback/login",
-    failureFlash: true,
-  }),
-  (req, res) => {
-    req.flash("success", "Welcome Back!");
-  },
-);
+router.post("/feedback/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err || !user) {
+      req.flash("error", "Unable to log you in, please check your username and/or password");
+      return res.redirect("/feedback/login");
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        req.flash("error", "Something went wrong during login.");
+        return res.redirect("/feedback/login");
+      }
+      req.flash("success", "Welcome back!");
+      return res.redirect("/feedback/suggestions");
+    });
+  })(req, res, next);
+});
 
 router.post(
   "/feedback",
@@ -268,9 +274,11 @@ router.get("/feedback/register", (req, res) => {
   res.render("feedback/register");
 });
 
+
 router.get("/feedback/login", (req, res) => {
   res.render("feedback/login");
 });
+
 
 router.get("/feedback/logout", (req, res, next) => {
   req.logout(function (err) {
@@ -585,6 +593,7 @@ router.get("/feedback/:id", isLoggedIn, async (req, res) => {
     });
   } else {
     res.redirect("/login");
+    
   }
 });
 
