@@ -28,16 +28,6 @@ const RequestSchema = new Schema({
                         name: String,
                         username: String
                     }
-                }],
-                rep: [{
-                    content: String,
-                    replyingTo: String,
-                    user: {
-                        type: Object,
-                        image: String,
-                        name: String,
-                        username: String
-                    }
                 }]
         }
         ]

@@ -488,19 +488,13 @@ app.post('/feedback/:id/comments', async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
 app.post('/feedback/:id/comment/:commentId/replies', isLoggedIn, async (req, res) => {
   const request = await Request.findById(req.params.id);
   const comment = await request.comments.id(req.params.commentId);
-
+  let reply = req.user.username;
    const newReply = {
       content: req.body.reply.content,
+      replyingTo: comment.user.username,
       user: {
         _id: req.user._id,
         //image: req.user.image,
@@ -508,10 +502,33 @@ app.post('/feedback/:id/comment/:commentId/replies', isLoggedIn, async (req, res
         username: req.user.username
       }
     };
+
   comment.replies.push(newReply);
   await request.save();
   res.redirect(`/feedback/${request._id}`);
 });
+
+app.post('/feedback/:id/comment/:commentId/reply/:replyId/replies', isLoggedIn, async (req, res) => {
+  const request = await Request.findById(req.params.id);
+  const comment = await request.comments.id(req.params.commentId);
+  const reply = comment.replies.id(req.params.replyId);
+
+  const newReply = {
+    content: req.body.reply.content,
+    replyingTo: reply.user.username, // Use the username of the user being replied to
+    user: {
+      _id: req.user._id,
+      name: req.user.name,
+      username: req.user.username
+    }
+  };
+
+  comment.replies.push(newReply);
+  await request.save();
+  console.log(newReply);
+  res.redirect(`/feedback/${request._id}`);
+});
+
 
 // app.post('/feedback/:id/comment/:commentId/reply/:replyId/rep', isLoggedIn, async (req, res) => {
 //   const request = await Request.findById(req.params.id);

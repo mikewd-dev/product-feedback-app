@@ -79,57 +79,59 @@
                 </div>
               </form>
               <% for (let reply of comment.replies) { %>
-                <% function displayReplies(reply) { %>
-                  <div class="reply">
-                    <div class="user-reply-details">
-                      <img class="user-reply-image" src="" alt="">
-                      <p class="reply-user">
-                        <%=reply.user.name %>
-                      </p>
-                      <p class="reply-username">
-                        <span>@<%=reply.user.username %></span>
-                      </p>
-                    </div>
-                    <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=reply._id %>');">Reply</button>
-                    <div class="replyTo">
-                      <p class="reply-replyto">
-                        <span class="replyingto">@<%=reply.replyingTo %></span>
-                        <%=reply.content %>
-                      </p>
-                      <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" novalidate>
-                <div class="row-reply" id="reply-box-<%=reply._id%>">
-                  <textarea name="reply[content]" class="reply-box"></textarea>
-                  <button class="post-reply">Post Reply</button>
+              <% function displayReplies(reply) { %>
+              <div class="reply">
+                <div class="user-reply-details">
+                  <img class="user-reply-image" src="<%=reply.user.image%>" alt="">
+                  <p class="reply-user">
+                    <%=reply.user.name %>
+                  </p>
+                  <p class="reply-username">
+                    <span>@<%=reply.user.username %></span>
+                  </p>
                 </div>
-              </form>
+                <button class="reply-link" id="reply" onclick="dropReply('reply-box-<%=reply._id %>');">Reply</button>
+                <div class="replyTo">
+                  <p class="reply-replyto">
+                    <span class="replyingto">@<%=reply.replyingTo %></span>
+                    <%=reply.content %>
+                  </p>
+                  <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form" novalidate>
+                    <div class="row-reply" id="reply-box-<%=reply._id%>">
+                      <textarea name="reply[content]" class="reply-box"></textarea>
+                      <button class="post-reply">Post Reply</button>
                     </div>
-                    <% if (reply.replies) { %>
-                      <% for (let childReply of reply.replies) { %>
-                        <%= displayReplies(childReply) %>
-                      <% } %>
-                    <% } %>
-                  </div>
+                  </form>
+                </div>
+                <% if (reply.replies) { %>
+                <% for (let childReply of reply.replies) { %>
+                <%= displayReplies(childReply) %>
                 <% } %>
-                <%= displayReplies(reply) %>
+                <% } %>
+              </div>
+              <% } %>
+              <%= displayReplies(reply) %>
               <% } %>
             </div>
             <% } %>
             <% } %>
+
+          </div>
+          <div class="add-comment ">
+          <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
+
+              <label class="add-comment-label " for="addcomment ">Add Comment</label>
+              <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
+              <button class="post-comment">Post Comment</button>
+          </form>
           </div>
         </div>
-        <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
-          <!-- <div class="col-sm "> -->
-          <div class="add-comment ">
-            <label class="add-comment-label " for="addcomment ">Add Comment</label>
-            <textarea class="add-comment-text " name="comment[content] " id="content " cols="30 " rows="4 " placeholder="Type your comment here "></textarea>
-            <button class="post-comment">Post Comment</button>
-          </div>
-          <!-- </div> -->
-        </form>
+
       </div>
     </div>
     <!-- </div> -->
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+
 </html>

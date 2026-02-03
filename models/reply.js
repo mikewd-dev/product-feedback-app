@@ -8,7 +8,7 @@ const ReplySchema = new Schema({
   },
   replyingTo: {
     type: Schema.Types.ObjectId,
-    ref: 'Comment'
+    ref: 'User'
   }
 });
 
