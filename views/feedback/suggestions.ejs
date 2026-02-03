@@ -4,16 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon-32x32.png">
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js "></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
     <title>Frontend Mentor | Product feedback app</title>
 </head>
 
 <body style="background-color: #F2F2F2;">
+
     <div class="col-lg">
         <div class="container">
             <div class="grid-container">
@@ -108,17 +110,23 @@
                     <div class="feedback-suggestion">
                         <div class="d-flex flex-row feedback-suggested">
 
+                            <form action="/feedback/suggestions/<%=requests._id%>" method="POST">
+                                <button id="content" class="feedback-suggested-numvotes">
 
-                            <div class="d-flex flex-column feedback-suggested-numvotes">
                                 <img class="dropupCaret" src="/assets/shared/icon-arrow-up.svg" alt="" srcset="">
-                                <h6>
-                                    <%=requests.upvotes%>
-                                </h6>
-                            </div>
+                                <div id="votes">
+                                 <%= requests.upvotes %>
+                                </div>
+
+                            </button>
+                            </form>
+
+
                             <a class="feedback-navlink" href="/feedback/<%=requests._id%>">
                                 <div class="feeback-title-para">
-                                    <div class="feedback-suggested-title">
+                                    <div id="counter" class="feedback-suggested-title">
                                         <%=requests.title%>
+
                                     </div>
                                     <div class="feedback-suggested-para">
                                         <%=requests.description%>
@@ -137,8 +145,11 @@
 
 
     <!-- Sidebar end -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <script src="/js/javascript.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
+
+
 
 
 </html>
