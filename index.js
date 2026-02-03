@@ -3,7 +3,6 @@ const app = express();
 const methodOverride = require("method-override");
 const path = require("path")
 const fetch = require('fetch')
-const buttonClick = require('./public/js/javascript')
 const mongoose = require("mongoose");
 // const addNewCount = require("./public/javascript/javascript")
 require('dotenv').config()
@@ -16,6 +15,7 @@ const ejsMate = require("ejs-mate");
 const CurrentUser = require("./models/user");
 const Request = require("./models/request");
 const Comment = require("./models/comment");
+const Upvote = require("./models/upvotes")
 const Roadmap = require("./models/roadmap")
 const User = require("./models/user")
 const catchAsync = require("./utils/catchAsync");
@@ -92,12 +92,12 @@ app.get('/feedback/ui', catchAsync(async(req, res, next) =>{
 
 app.get('/feedback/ux', catchAsync(async(req, res, next) =>{
     const request = await Request.find().where('category').equals('UX')
-    // console.log(request)
-    if(request == "" || null){
-        res.redirect('/feedback')
-    } else {
+    // // console.log(request)
+    // if(request == "" || null){
+    //     res.redirect('/feedback')
+    // } else {
         res.render('feedback/ux', {request})
-    }
+    // }
 }))
 
 app.get('/feedback/bug', catchAsync(async(req, res, next) =>{
@@ -208,13 +208,59 @@ app.post('/feedback/:id/comments', async(req, res) =>{
     res.redirect(`/feedback/${request._id}`)
 })
 
-app.post('/feedback/suggestions/:id', async(req, res) =>{
+app.post('/feedback/:id', async(req, res) =>{
     const request = await Request.findById(req.params.id);
     request.upvotes++
     await request.save();
+
     // await comment.save();
-    res.render('feedback/suggestions', {request})
+    // res.render('feedback/suggestions', {request})
+    res.send(request)
 })
+
+// app.get("/feedback/:id/suggestions", async(req, res)=>{
+//     const request = await Request.findById(req.params.id);
+//     request.upvotes +=1;
+//     request.save((err, updatedRequest) =>{
+//         if(err){
+//             console.log(err);
+//             res.status(500).send('An error occurred during upvote')
+//         } else {
+//             res.json({upvotes: updatedRequest.upvotes})
+//         }
+//     })
+//     // res.json({success: true, upvotes: request.upvotes })
+// })
+
+// app.put('/feedback/:id/upvotes', async(req, res) => {
+//     const request = await Request.findById({$inc: {upvotes: 1}})
+//         await request.save();
+//         res.send(request);
+// })
+
+
+// app.post('/feedback/suggestions/:id', async(req, res) => {
+// Requests.findById(id, function (err, user) {
+//   if (err) return handleError(err);
+
+//   requests.upvotes += 1;
+
+//   requests.save(function(err) {
+//     if (err) return handleError(err);
+//     res.send(requests); // Or redirect, basically finish request.
+//   });
+// });
+// });
+
+// app.get('/feedback/suggestions', async(req, res) =>{
+//     const request = Request.findByIdAndUpdate(req.params.id)
+//     const upvotes = Request.find(req.body.upvotes)
+//     request.upvotes++
+//     await request.save()
+//     res.render("feedback/show", {request})
+//     // res.send(request);
+// })
+
 
 
 app.listen(3000, () => {
