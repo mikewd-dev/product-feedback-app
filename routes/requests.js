@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const sanitizeHtml = require("sanitize-html");
-const serverless = require('serverless-http')
+const serverless = require('serverless-http');
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const Joi = require("joi");
@@ -92,78 +92,9 @@ router.post(
   }),
 );
 
-// router.post(
-//   "/feedback/suggestions/:id/upvote",
-//   isLoggedIn,
-//   catchAsync(async (req, res) => {
-//     const suggestion = await Request.findById(req.params.id);
-//     suggestion.upvotes = suggestion.upvotes + 1;
-//     await suggestion.save();
-
-//     res.json({ upvotes: suggestion.upvotes });
-//   }),
-// );
-
-// router.post(
-//   "/feedback/enhancement/:id/upvote",
-//   isLoggedIn,
-//   catchAsync(async (req, res) => {
-//     const suggestion = await Request.findById(req.params.id);
-//     suggestion.upvotes = suggestion.upvotes + 1;
-//     await suggestion.save();
-//     res.json({ upvotes: suggestion.upvotes });
-//   }),
-// );
-
-// router.post(
-//   "/feedback/bug/:id/upvote",
-//   isLoggedIn,
-//   catchAsync(async (req, res) => {
-//     const suggestion = await Request.findById(req.params.id);
-//     suggestion.upvotes = suggestion.upvotes + 1;
-//     await suggestion.save();
-//     res.json({ upvotes: suggestion.upvotes });
-//   }),
-// );
-
-// router.post(
-//   "/feedback/ui/:id/upvote",
-//   isLoggedIn,
-//   catchAsync(async (req, res) => {
-//     const suggestion = await Request.findById(req.params.id);
-//     suggestion.upvotes = suggestion.upvotes + 1;
-//     await suggestion.save();
-//     res.json({ upvotes: suggestion.upvotes });
-//   }),
-// );
-
-// router.post(
-//   "/feedback/ux/:id/upvote",
-//   isLoggedIn,
-//   catchAsync(async (req, res) => {
-//     const suggestion = await Request.findById(req.params.id);
-//     suggestion.upvotes = suggestion.upvotes + 1;
-//     await suggestion.save();
-//     res.json({ upvotes: suggestion.upvotes });
-//   }),
-// );
-
-// router.post(
-//   "/feedback/roadmap/:id/upvote",
-//   isLoggedIn,
-//   catchAsync(async (req, res) => {
-//     const suggestion = await Roadmap.findById(req.params.id);
-//     suggestion.upvotes = suggestion.upvotes + 1;
-//     await suggestion.save();
-
-//     res.json({ upvotes: suggestion.upvotes });
-//   }),
-// );
-
 
 
 router.post("/feedback/:id/upvote", isLoggedIn, catchAsync(async (req, res) => {
-  console.log("UPVOTE HIT FOR ID:", req.params.id)
     const { id } = req.params;
     
     // Search both models
