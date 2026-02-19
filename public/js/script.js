@@ -1,33 +1,27 @@
+// -------------------------
+// UTILITY
+// -------------------------
+function safeQuerySelector(selector) {
+  const el = document.querySelector(selector);
+  return el || null;
+}
 
+// -------------------------
+// PAGE DETECTION
+// -------------------------
 const path = window.location.pathname;
-
-$(document).ready(function () {
-  $(".down-arrow").on("click", function () {
-    var src =
-      $(this).attr("src") === "/assets/shared/icon-arrow-down.svg"
-        ? "./assets/shared/icon-arrow-up.svg"
-        : "/assets/shared/icon-arrow-down.svg";
-    $(this).attr("src", src);
-  });
-});
-
-const match = window.location.pathname.match(/\/feedback\/([^\/\?]+)/);
+const match = path.match(/\/feedback\/([^\/\?]+)/);
 const currentType = match ? match[1] : "suggestions";
 
-window.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".blue");
-  buttons.forEach((button) => {
-    const dataType = button.getAttribute("data-type");
-    if (dataType === currentType) {
-      button.classList.add("active");
-    }
-  });
-});
-
+// -------------------------
+// NAVBAR TOGGLER & OVERLAY
+// -------------------------
 function navButton() {
-  const navbarToggler = document.querySelector(".navbar-toggler-icon");
-  const overlay = document.querySelector(".overlay");
-  const navbarNav = document.querySelector(".navbar-nav");
+  const navbarToggler = safeQuerySelector(".navbar-toggler-icon");
+  const overlay = safeQuerySelector(".overlay");
+  const navbarNav = safeQuerySelector(".navbar-nav");
+
+  if (!navbarToggler || !overlay || !navbarNav) return;
 
   navbarToggler.classList.toggle("icon-close");
 
@@ -42,13 +36,142 @@ function navButton() {
   }
 }
 
-function columnLoad() {
-  if (window.onload) {
-    columnProgress.style.display = "none";
-    columnLive.style.display = "none";
-    tabInProg.style.display = "none";
-    tabLive.style.display = "none";
+// -------------------------
+// HIGHLIGHT CURRENT TYPE BUTTON
+// -------------------------
+window.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".blue");
+  buttons.forEach((button) => {
+    const dataType = button.getAttribute("data-type");
+    if (dataType === currentType) button.classList.add("active");
+  });
+});
+
+// -------------------------
+// DROPDOWN MENU SELECTION
+// -------------------------
+$(document).ready(function () {
+  $(".dropdown-menu > li > a").click(function () {
+    $(".dropdown-menu > li > a").removeClass("selected");
+    $(this).addClass("selected");
+  });
+});
+
+// -------------------------
+// UPVOTE FUNCTIONS
+// -------------------------
+function upvoteSuggestion(suggestionId) {
+  fetch(`/feedback/${suggestionId}/upvote?_=${new Date().getTime()}`, {
+    method: "POST",
+    mode: "cors",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const upvotesElement = document.getElementById(`votes-${suggestionId}`);
+      if (upvotesElement) upvotesElement.textContent = data.upvotes;
+    })
+    .catch(console.error);
+}
+
+function upvoteRoadmap(roadmapId) {
+  fetch(`/feedback/${roadmapId}/upvote?_=${new Date().getTime()}`, {
+    method: "POST",
+    mode: "cors",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const upvotesElement = document.getElementById(`votes-${roadmapId}`);
+      if (upvotesElement) upvotesElement.textContent = data.upvotes;
+    })
+    .catch(console.error);
+}
+
+document.querySelectorAll(".upvote-btn").forEach((button) => {
+  button.addEventListener("click", function () {
+    const suggestionId = this.getAttribute("data-id");
+    upvoteSuggestion(suggestionId);
+  });
+});
+// -------------------------
+// REPLY & REPLY-TO-REPLY
+// -------------------------
+function toggleDisplay(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (el.style.display === "block") {
+    el.style.display = "none";
+  } else {
+    el.style.display = "block";
+    const textarea = el.querySelector(".reply-box");
+    if (textarea) textarea.focus();
   }
+}
+
+// Inline onclick already used in HTML; JS event listener not required
+window.dropReply = toggleDisplay;
+window.dropReplyReply = toggleDisplay;
+
+// -------------------------
+// SORT MENU CHECKS
+// -------------------------
+function initSortMenu() {
+  const linkmostup = document.getElementById("mostup");
+  const linkleastup = document.getElementById("leastup");
+  const linkmostcomm = document.getElementById("mostcomm");
+  const linkleastcomm = document.getElementById("leastcomm");
+
+  const checkmostup = document.getElementById("mostCheckUp");
+  const checkleastup = document.getElementById("leastCheckUp");
+  const checkmostcomm = document.getElementById("mostCheckComm");
+  const checkleastcomm = document.getElementById("leastCheckComm");
+
+  if (!linkmostup || !linkleastup || !linkmostcomm || !linkleastcomm) return;
+
+  // Restore previous session state
+  if (sessionStorage.getItem("mostupClicked") === "true") checkmostup.style.display = "inline" ;
+  if (sessionStorage.getItem("leastupClicked") === "true") checkleastup.style.display = "inline";
+  if (sessionStorage.getItem("mostcommClicked") === "true") checkmostcomm.style.display = "inline";
+  if (sessionStorage.getItem("leastcommClicked") === "true") checkleastcomm.style.display = "inline";
+
+  // Event listeners
+  const setSort = (mostup, leastup, mostcomm, leastcomm, label) => {
+    sessionStorage.setItem("mostupClicked", mostup);
+    sessionStorage.setItem("leastupClicked", leastup);
+    sessionStorage.setItem("mostcommClicked", mostcomm);
+    sessionStorage.setItem("leastcommClicked", leastcomm);
+    document.getElementById("menu-item").innerHTML = label;
+  };
+
+  linkmostup.addEventListener("click", () => setSort("true", "false", "false", "false", "Most Upvotes"));
+  linkleastup.addEventListener("click", () => setSort("false", "true", "false", "false", "Least Upvotes"));
+  linkmostcomm.addEventListener("click", () => setSort("false", "false", "true", "false", "Most Comments"));
+  linkleastcomm.addEventListener("click", () => setSort("false", "false", "false", "true", "Least Comments"));
+}
+window.addEventListener("DOMContentLoaded", initSortMenu);
+
+// -------------------------
+// RESPONSIVE BOARD CHECK
+// -------------------------
+function checkWidth() {
+  const boardDiv = safeQuerySelector(".board-text");
+  if (boardDiv && window.innerWidth <= 600) boardDiv.style.display = "none";
+}
+window.addEventListener("DOMContentLoaded", checkWidth);
+
+// -------------------------
+// DOWN ARROW TOGGLE
+// -------------------------
+$(document).ready(function () {
+  $(".down-arrow").on("click", function () {
+    const src = $(this).attr("src") === "/assets/shared/icon-arrow-down.svg"
+      ? "./assets/shared/icon-arrow-up.svg"
+      : "/assets/shared/icon-arrow-down.svg";
+    $(this).attr("src", src);
+  });
+});
+
+window.onload = function () {
+  plannedDisplay();
 }
 
 function plannedDisplay() {
@@ -81,7 +204,6 @@ function progressDisplay() {
   tabPlanned.style.display = "none";
   tabLive.style.display = "none";
 }
-
 function liveDisplay() {
   let columnPlanned = document.getElementById("column-planned");
   let columnProgress = document.getElementById("column-progress");
@@ -89,13 +211,14 @@ function liveDisplay() {
   let tabPlanned = document.getElementById("plan-bar");
   let tabInProg = document.getElementById("inprog-bar");
   let tabLive = document.getElementById("lve-bar");
-
   columnLive.style.display = "block";
   columnPlanned.style.display = "none";
   columnProgress.style.display = "none";
   tabLive.style.display = "block";
   tabInProg.style.display = "none";
   tabPlanned.style.display = "none";
+}
+
   document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth <= 768) {
       const board = document.querySelector(".board");
@@ -105,175 +228,7 @@ function liveDisplay() {
       board.appendChild(closeIcon);
     }
   });
-}
 
 
-
-
-window.addEventListener("DOMContentLoaded", () => {
-  console.log("Script Running...");
   
-  const urlParams = new URLSearchParams(window.location.search);
-  const currentSort = urlParams.get('sort') || 'mostup'; 
-  const menuItem = document.getElementById("menu-item");
 
-  const sortMap = {
-    'mostup': { id: 'mostCheckUp', text: 'Most Upvotes' },
-    'leastup': { id: 'leastCheckUp', text: 'Least Upvotes' },
-    'mostcomm': { id: 'mostCheckComm', text: 'Most Comments' },
-    'leastcomm': { id: 'leastCheckComm', text: 'Least Comments' }
-  };
-
-
-  const allChecks = document.querySelectorAll('.checked');
-  allChecks.forEach(img => {
-    img.setAttribute('style', 'display: none !important');
-  });
-
-
-  const active = sortMap[currentSort];
-  if (active) {
-    const checkImg = document.getElementById(active.id);
-    console.log("Looking for element:", active.id);
-    
-    if (checkImg) {
-     
-      checkImg.setAttribute('style', 'display: inline !important');
-      console.log("Checkmark set to inline for:", active.id);
-    } else {
-      console.error("Could not find element with ID:", active.id);
-    }
-
-    if (menuItem) menuItem.innerHTML = active.text;
-  }
-});
-function dropReply(id) {
-  const textarea = document.getElementById(id);
-  textarea.focus();
-}
-
-document.querySelectorAll(".reply-link").forEach((button) => {
-  button.addEventListener("click", function (event) {
-    const replyBoxId = event.target.dataset.id;
-    dropReply(replyBoxId);
-  });
-});
-
-function dropReplyReply(id) {
-  const replytextarea = document.getElementById(id);
-  replytextarea.focus();
-}
-
-document.querySelectorAll(".reply-reply-link").forEach((button) => {
-  button.addEventListener("click", function (event) {
-    const replyReplyBoxId = event.target.dataset.id;
-    dropReplyReply(replyReplyBoxId);
-  });
-});
-
-function upvoteSuggestion(suggestionId) {
-  fetch(
-    `/feedback/suggestions/${suggestionId}/upvote?_=${new Date().getTime()}`,
-    {
-      method: "POST",
-      mode: "cors",
-    },
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`votes-${suggestionId}`);
-      upvotesElement.textContent = data.upvotes;
-    })
-    .catch((error) => console.error(error));
-}
-
-function upvoteRoadmap(roadmapId) {
-  fetch(`/feedback/roadmap/${roadmapId}/upvote?_=${new Date().getTime()}`, {
-    method: "POST",
-    mode: "cors",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`votes-${roadmapId}`);
-      upvotesElement.textContent = data.upvotes;
-    })
-    .catch((error) => console.error(error));
-}
-
-function dropReply(replyBoxId) {
-  var rep = document.getElementById(replyBoxId);
-  if (rep.style.display === "block") {
-    rep.style.display = "none";
-  } else {
-    rep.style.display = "block";
-    rep.querySelector(".reply-box").focus();
-  }
-}
-
-function dropReplyReply(replyReplyBoxId) {
-  var rep = document.getElementById(replyReplyBoxId);
-  if (rep.style.display === "block") {
-    rep.style.display = "none";
-  } else {
-    rep.style.display = "block";
-    rep.querySelector(".reply-box").focus();
-  }
-}
-
-$(document).ready(function () {
-  $(".dropdown-menu > li > a").click(function () {
-    $(".dropdown-menu > li > a").removeClass("selected");
-    $(this).addClass("selected");
-  });
-});
-
-$(document).ready(function () {
-  $("#mostup").click(function () {
-    $("#menu-item").html("Most Upvotes");
-  });
-});
-
-function checkWidth() {
-  var boardDiv = document.querySelector(".board-text");
-
-  if (boardDiv && window.innerWidth <= 600) {
-    boardDiv.style.display = "none";
-  }
-}
-document.addEventListener("DOMContentLoaded", checkWidth);
-
-
-  document.addEventListener('click', async (e) => {
-    // Check if we clicked the upvote button or something inside it (like the SVG)
-    const btn = e.target.closest('.upvote-btn');
-    
-    if (btn) {
-      // Prevent the link (<a>) behind it from being triggered
-      e.preventDefault();
-      e.stopPropagation();
-
-      const suggestionId = btn.getAttribute('data-id');
-      const voteCountDisplay = document.getElementById(`votes-${suggestionId}`);
-
-      try {
-        const response = await fetch(`/feedback/${suggestionId}/upvote`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' }
-        });
-
-        // If the user isn't logged in, redirect them to login page
-        if (response.redirected) {
-          window.location.href = response.url;
-          return;
-        }
-
-        const data = await response.json();
-        if (data.upvotes !== undefined) {
-          // Update the UI immediately without refreshing the page
-          voteCountDisplay.innerText = data.upvotes;
-        }
-      } catch (err) {
-        console.error("Upvote request failed:", err);
-      }
-    }
-  });

@@ -29,16 +29,16 @@
                                             <embed class="new-feedback-icon" src="/assets/shared/icon-edit-feedback.svg" alt="Edit Icon" />
 
                                           
-                                            <form action="/feedback/<%= request._id %>?_method=PUT" method="POST"
+                                            <form action="/feedback/<%= allRequest._id %>?_method=PUT" method="POST"
                                               class="form-control-lg validated-form" data-parsley-validate novalidate>
                                               <h4 class="sub-heading">Feedback Title</h4>
                                               <label for="feedbacktitle" class="sub-heading-paragraph">Add a short, descriptive headline</label>
-                                              <input class="feedback-text" type="text" name="request[title]" id="feedbacktitle"
-                                                value="<%= request.title %>" required />
+                                              <input class="feedback-text" type="text" name="allRequest[title]" id="feedbacktitle"
+                                                value="<%= allRequest.title %>" required />
                                               <h4 id="category" class="sub-heading">Category</h4>
                                               <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
                                              <div >
-                            <select class="form-select" name="request[category]" id="features">
+                            <select class="form-select" name="allRequest[category]" id="features">
                             <option value="Feature" class="feedback-options">Feature</option>
                             <option value="UI" class="feedback-options">UI</option>
                             <option value="UX" class="feedback-options">UX</option>
@@ -48,18 +48,18 @@
                         </div>
                         <h4 id="feedback-detail" class="sub-heading">Feedback Detail</h4>
                         <label for="feedback" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
-                                              <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3"
-                                                required><%= request.description %></textarea>
+                                              <textarea name="allRequest[description]" id="feedbackdetail" cols="20" rows="3"
+                                                required><%= allRequest.description %></textarea>
 
                               
                                               <div class="add-cancel-feedback">
                                                 <a href="/feedback/suggestions">
                                                   <button class="cancel-feedback-btn text-center" type="button">Cancel</button>
                                                 </a>
-                                                <button class="add-feedback-edit" type="submit">Save Changes</button>
+                                                <button class="" type="submit">Save Changes</button>
                                               </div>
                                             </form>                            
-                                            <form action="/feedback/<%= request._id %>?_method=DELETE" method="POST" class="delete-form">
+                                            <form action="/feedback/<%= allRequest._id %>?_method=DELETE" method="POST" class="delete-form">
                                               <button class="delete-feedback-btn">Delete</button>
                                             </form>
                                           </div>

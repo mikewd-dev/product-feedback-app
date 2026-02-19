@@ -97,7 +97,7 @@ router.post(
 router.post("/feedback/:id/upvote", isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     
-    // Search both models
+
     let doc = await Request.findById(id) || await Roadmap.findById(id);
 
     if (!doc) {
@@ -298,7 +298,7 @@ router.get(
 
     let allRequest = await Request.find({})
       .where("category")
-      .equals("Enhancement");
+      .equals("enhancement");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -341,7 +341,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("UI");
+    let allRequest = await Request.find({}).where("category").equals("ui");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -384,7 +384,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("UX");
+    let allRequest = await Request.find({}).where("category").equals("ux");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -431,7 +431,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("Feature");
+    let allRequest = await Request.find({}).where("category").equals("feature");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -474,7 +474,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("Bug");
+    let allRequest = await Request.find({}).where("category").equals("bug");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -527,14 +527,7 @@ router.get("/feedback/roadmap", async (req, res) => {
   res.render("feedback/roadmap", { roadmap, progress, live });
 });
 
-router.get("/feedback/:id", isLoggedIn, async (req, res) => {
-  const allRequest = await Request.findById(req.params.id);
 
-  res.render("feedback/show", {
-    request: allRequest,
-    user: req.user, 
-  });
-});
 
 router.get("/feedback/:id/comments", isLoggedIn, async (req, res) => {
   const allRequest = await Request.findById(req.params.id);
@@ -586,9 +579,28 @@ router.get("/feedback/ui/:id", async (req, res) => {
   res.redirect("/feedback/ui");
 });
 
+// router.get("/feedback/:id", isLoggedIn, async (req, res) => {
+//   const allRequest = await Request.findById(req.params.id);
+
+//   res.render("feedback/show", {
+//     request: allRequest,
+//     user: req.user, 
+//   });
+// });
+
+
+router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res) => {
+  const allRequest = await Request.findById(req.params.id);
+
+  res.render("feedback/show", {
+    request: allRequest,
+    user: req.user, 
+  });
+});
+
 // =====EDIT AND DELETE ROUTES========
 router.put(
-  "/feedback/:id",
+  "/feedback/:id/",
   isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;

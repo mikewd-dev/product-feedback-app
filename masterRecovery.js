@@ -1,23 +1,65 @@
-const express = require("express");
-const app = express();
-const { ObjectId } = require("mongodb");
+require("dotenv").config();
 const mongoose = require("mongoose");
-const { ObjectID} = mongoose.Types;
+const { ObjectId } = mongoose.Types;
 const User = require("./models/user");
 const Request = require("./models/request");
 const Comment = require("./models/comment");
 const Reply = require("./models/reply");
-require("dotenv").config();
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
-  .then(() => console.log("DB Connected!!"))
-  .catch((err) => console.error(err));
+const Roadmap = require("./models/roadmap");
 
-const db = mongoose.connection;
+// Cloudinary image mapping
+const imageMapping = {
+  "image-anne.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692055492/ProductFeedback/pyrqyjxv3bkzbmoqxnt8.jpg",
+    filename: "ProductFeedback/pyrqyjxv3bkzbmoqxnt8"
+  },
+  "image-elijah.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692048771/ProductFeedback/p7d97voyfwqdwklwcujl.jpg",
+    filename: "ProductFeedback/p7d97voyfwqdwklwcujl"
+  },
+  "image-george.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692120802/ProductFeedback/fr7rpluwcsca6igjagjj.jpg",
+    filename: "ProductFeedback/fr7rpluwcsca6igjagjj"
+  },
+  "image-jackson.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692120669/ProductFeedback/spewaeshwcadglalsr1c.jpg",
+    filename: "ProductFeedback/spewaeshwcadglalsr1c"
+  },
+  "image-james.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692106247/ProductFeedback/sglkn0touie42qjbsfdr.jpg",
+    filename: "ProductFeedback/sglkn0touie42qjbsfdr"
+  },
+  "image-javier.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692055687/ProductFeedback/h3127x73mfmznnhelk0h.jpg",
+    filename: "ProductFeedback/h3127x73mfmznnhelk0h"
+  },
+  "image-roxanne.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692125338/ProductFeedback/ksuenfisvgsuzceyqt8j.jpg",
+    filename: "ProductFeedback/ksuenfisvgsuzceyqt8j"
+  },
+  "image-ryan.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692125432/ProductFeedback/durp2krd8p9nmrfngmkr.jpg",
+    filename: "ProductFeedback/durp2krd8p9nmrfngmkr"
+  },
+  "image-suzanne.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692106501/ProductFeedback/ane6bztuuh8dhixnncdo.jpg",
+    filename: "ProductFeedback/ane6bztuuh8dhixnncdo"
+  },
+  "image-thomas.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692106055/ProductFeedback/vsy1fpbdlnmcomzudthy.jpg",
+    filename: "ProductFeedback/vsy1fpbdlnmcomzudthy"
+  },
+  "image-victoria.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692055900/ProductFeedback/iprnib3m2rarhhbw46rb.jpg",
+    filename: "ProductFeedback/iprnib3m2rarhhbw46rb"
+  },
+  "image-zena.jpg": {
+    url: "https://res.cloudinary.com/dxarelvy7/image/upload/v1692055034/ProductFeedback/qr8p9v7ekixi9ww0xzkz.jpg",
+    filename: "ProductFeedback/qr8p9v7ekixi9ww0xzkz"
+  }
+};
 
-const collection = db.collection("requests");
-
-data = [
+const data = [
   {
     _id: new ObjectId("647a3c230e32043824952da1"),
     id: 1,
@@ -67,7 +109,7 @@ data = [
         _id: new ObjectId("647a3c230e32043824952ca3"),
         id: 3,
         content:
-          "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.",
+          "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device's dark mode turns on without the bright background it currently has.",
         user: {
           _id: new ObjectId("647a3c230e32043824952ea2"),
           image: "/assets/user-images/image-elijah.jpg",
@@ -79,7 +121,7 @@ data = [
         _id: new ObjectId("647a3c230e32043824952ca4"),
         id: 4,
         content:
-          "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It’s also quite a trend with modern apps and  apparently saves battery life.",
+          "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It's also quite a trend with modern apps and  apparently saves battery life.",
         user: {
           _id: new ObjectId("647a3c230e32043824952ea3"),
           image: "/assets/user-images/image-james.jpg",
@@ -197,7 +239,7 @@ data = [
           {
             _id: new ObjectId("647a3c230e32043824952da1"),
             content:
-              "Bumping this. It would be good to have a tab with a feed of people I follow so it's easy to see what challenges they’ve done lately. I learn a lot by reading good developers' code.",
+              "Bumping this. It would be good to have a tab with a feed of people I follow so it's easy to see what challenges they've done lately. I learn a lot by reading good developers' code.",
             replyingTo: "arlen_the_marlin",
             user: {
               _id: new ObjectId("647a3c230e32043824952fa1"),
@@ -212,7 +254,7 @@ data = [
         _id: new ObjectId("647a3c230e32043824952da2"),
         id: 9,
         content:
-          "I've been saving the profile URLs of a few people and I check what they’ve been doing from time to time. Being able to follow them solves that",
+          "I've been saving the profile URLs of a few people and I check what they've been doing from time to time. Being able to follow them solves that",
         user: {
           _id: new ObjectId("647a3c230e32043824952fa2"),
           image: "/assets/user-images/image-jackson.jpg",
@@ -347,7 +389,7 @@ data = [
     upvotes: 9,
     status: "in-progress",
     description:
-      "Screenshots of solutions with animations don’t display correctly.",
+      "Screenshots of solutions with animations don't display correctly.",
   },
   {
     _id: new ObjectId("647a3c230e32043824952db3"),
@@ -388,11 +430,126 @@ data = [
   },
 ];
 
-collection.insertMany(data, function (err, result) {
-  if (err) {
-    console.error("Error inserting data:", err);
-  } else {
-    console.log(`${result.insertedCount} documents inserted successfully`);
-  }
+async function masterRecovery() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Connected to DB. Starting Full Deep Recovery...");
 
-});
+    // 1. Clear ALL collections
+    await Promise.all([
+      User.deleteMany({}),
+      Request.deleteMany({}),
+      Roadmap.deleteMany({})
+    ]);
+    console.log("Database wiped clean.");
+
+    for (const reqData of data) {
+      // Create the main Request document
+      const newRequest = new Request({
+        id: reqData.id,
+        title: reqData.title,
+        category: reqData.category,
+        upvotes: reqData.upvotes,
+        status: reqData.status,
+        description: reqData.description,
+        comments: [] // Will populate below
+      });
+
+      // 2. Handle Roadmaps
+      if (['planned', 'in-progress', 'live'].includes(reqData.status)) {
+        const newRoadmap = new Roadmap({
+          title: reqData.title,
+          category: reqData.category,
+          upvotes: reqData.upvotes,
+          status: reqData.status,
+          description: reqData.description,
+          comments: reqData.comments?.map(c => ({
+            content: c.content,
+            user: {
+              image: c.user.image,
+              name: c.user.name,
+              username: c.user.username
+            }
+          })) || []
+        });
+        await newRoadmap.save();
+        console.log(`Roadmap synced: ${reqData.title}`);
+      }
+
+      // 3. Handle Comments & Replies (Embedded)
+      if (reqData.comments) {
+        for (const commData of reqData.comments) {
+          await registerUser(commData.user);
+
+          const commentObj = {
+            id: commData.id,
+            content: commData.content,
+            user: formatUser(commData.user),
+            replies: []
+          };
+
+          if (commData.replies) {
+            for (const replyData of commData.replies) {
+              await registerUser(replyData.user);
+
+              commentObj.replies.push({
+                content: replyData.content,
+                replyingTo: replyData.replyingTo,
+                user: formatUser(replyData.user)
+              });
+            }
+          }
+
+          // Push the complete embedded comment object
+          newRequest.comments.push(commentObj);
+        }
+      }
+
+      await newRequest.save();
+      console.log(`Request restored: ${newRequest.title}`);
+    }
+
+    console.log("\n--- MASTER RECOVERY SUCCESSFUL ---");
+    console.log("All collections are now in sync.");
+  } catch (err) {
+    console.error("Recovery failed:", err);
+  } finally {
+    mongoose.connection.close();
+  }
+}
+
+// Helpers
+function formatUser(userData) {
+  const fileNameOnly = userData.image.split('/').pop(); 
+  const cloudinaryData = imageMapping[fileNameOnly];
+  
+  if (cloudinaryData) {
+    return {
+      ...userData,
+      image: [{
+        url: cloudinaryData.url,
+        filename: cloudinaryData.filename
+      }]
+    };
+  } else {
+    // Fallback if image not in mapping
+    return {
+      ...userData,
+      image: [{ 
+        url: userData.image,
+        filename: 'recovered' 
+      }]
+    };
+  }
+}
+
+async function registerUser(userData) {
+  const exists = await User.findOne({ username: userData.username });
+  if (!exists) {
+    const newUser = new User(formatUser(userData));
+    await User.register(newUser, 'password123');
+    console.log(`User registered: ${userData.username}`);
+  }
+}
+
+masterRecovery();
