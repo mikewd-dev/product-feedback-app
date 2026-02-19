@@ -11,8 +11,7 @@ describe('POST /feedback', () => {
     });
 
     beforeEach(async () => {
-        await User.deleteMany({});
-        await Request.deleteMany({});
+        
 
         const user = new User({
             email: 'test@gmail.com', 

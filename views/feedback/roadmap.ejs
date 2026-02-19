@@ -33,13 +33,13 @@
 
             <div class="row row-roadmap">
            <div class="tab">
-  <p class="pln" id="plnd">
+  <p onmouseover="plannedDisplay();" class="pln" id="plnd">
     Planned (<%= (roadmap || []).length %>)
   </p>
-  <p class="in-prog" id="inprog">
+  <p onmouseover="progressDisplay();" class="in-prog" id="inprog" >
     In-Progress (<%= (progress || []).length %>)
   </p>
-  <p class="lve" id="lved">
+  <p onmouseover="liveDisplay()" class="lve" id="lved">
     Live (<%= (live || []).length %>)
   </p>
 </div>
