@@ -7,12 +7,15 @@ describe('POST /feedback', () => {
     let agent;
 
     beforeAll(async () => {
+         await User.deleteMany({});
+    await Request.deleteMany({});
         agent = request.agent(app);
     });
 
-    beforeEach(async () => {
+  beforeEach(async () => {
+       
         await User.deleteMany({});
-        await Request.deleteMany({});
+
 
         const user = new User({
             email: 'test@gmail.com', 
@@ -24,13 +27,21 @@ describe('POST /feedback', () => {
             }]
         });
 
+        
         await User.register(user, 'testpassword');
 
-        await agent
+       
+        const loginRes = await agent
             .post('/feedback/login')
             .send({ username: 'testuser', password: 'testpassword' });
-    });
 
+       
+        if (loginRes.status !== 302) {
+            console.error("Login failed! Response body:", loginRes.text);
+        }
+        expect(loginRes.status).toBe(302);
+        expect(loginRes.header.location).toBe('/feedback/suggestions');
+    });
     it('should create a new feedback and redirect', async () => {
         const res = await agent
             .post('/feedback')

@@ -1,42 +1,33 @@
-const { MongoMemoryServer } = require('mongodb-memory-server');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const mongoose = require('mongoose');
 
 process.env.NODE_ENV = 'test';
-process.env.SECRET = 'testsecret';
+process.env.SECRET = process.env.SECRET || "thisshouldbeabettersecret";
 process.env.CLOUDINARY_CLOUD_NAME = 'test-cloud';
 
-let mongoServer;
-
 beforeAll(async () => {
-    try {
-        mongoServer = await MongoMemoryServer.create();
-        const uri = mongoServer.getUri();
+  if (process.env.NODE_ENV !== 'test') {
+    throw new Error("Refusing to connect to non-test DB!");
+  }
 
-        await mongoose.connect(uri);
-        console.log('Test DB connected');
-    } catch (error) {
-        console.error('Setup error:', error);
-        throw error;
-    }
-});
+  const dbUri = process.env.MONGO_URI_TEST; 
+  if (!dbUri) throw new Error("MONGO_URI_TEST is not defined!");
 
-afterAll(async () => {
-    try {
-        if (mongoose.connection.readyState !== 0) {
-            await mongoose.disconnect();
-        }
-        if (mongoServer) {
-            await mongoServer.stop();
-        }
-        console.log('Test DB disconnected');
-    } catch (error) {
-        console.error('Teardown error:', error);
-    }
+  await mongoose.connect(dbUri, {
+ 
+  });
+  console.log("Connected to test DB:", mongoose.connection.name);
 });
 
 afterEach(async () => {
-    const collections = mongoose.connection.collections;
-    for (const key in collections) {
-        await collections[key].deleteMany({});
-    }
+  const collections = mongoose.connection.collections;
+  for (const key in collections) {
+    await collections[key].deleteMany({});
+  }
+});
+
+afterAll(async () => {
+  await mongoose.disconnect();
+  console.log('Test DB disconnected');
 });

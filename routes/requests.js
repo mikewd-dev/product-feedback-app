@@ -27,7 +27,6 @@ const ExpressError = require("../utils/ExpressError");
 
 const db = mongoose.connection;
 
-// ========POST ROUTES==========
 
 router.post(
   "/feedback/register",
@@ -67,6 +66,7 @@ router.post(
 router.post("/feedback/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err || !user) {
+       console.log("LOGIN FAILED IN TEST. Reason:", info.message); 
       req.flash("error", "Unable to log you in, please check your username and/or password");
       return res.redirect("/feedback/login");
     }
@@ -80,6 +80,7 @@ router.post("/feedback/login", (req, res, next) => {
     });
   })(req, res, next);
 });
+
 
 router.post(
   "/feedback",
@@ -97,7 +98,7 @@ router.post(
 router.post("/feedback/:id/upvote", isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     
-    // Search both models
+
     let doc = await Request.findById(id) || await Roadmap.findById(id);
 
     if (!doc) {
@@ -192,7 +193,7 @@ router.post(
   }),
 );
 
-// ====GET ROUTES=======
+
 
 router.get(
   "/",
@@ -298,7 +299,7 @@ router.get(
 
     let allRequest = await Request.find({})
       .where("category")
-      .equals("Enhancement");
+      .equals("enhancement");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -341,7 +342,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("UI");
+    let allRequest = await Request.find({}).where("category").equals("ui");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -384,7 +385,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("UX");
+    let allRequest = await Request.find({}).where("category").equals("ux");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -431,7 +432,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("Feature");
+    let allRequest = await Request.find({}).where("category").equals("feature");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -474,7 +475,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("Bug");
+    let allRequest = await Request.find({}).where("category").equals("bug");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -527,14 +528,7 @@ router.get("/feedback/roadmap", async (req, res) => {
   res.render("feedback/roadmap", { roadmap, progress, live });
 });
 
-router.get("/feedback/:id", isLoggedIn, async (req, res) => {
-  const allRequest = await Request.findById(req.params.id);
 
-  res.render("feedback/show", {
-    request: allRequest,
-    user: req.user, 
-  });
-});
 
 router.get("/feedback/:id/comments", isLoggedIn, async (req, res) => {
   const allRequest = await Request.findById(req.params.id);
@@ -586,9 +580,18 @@ router.get("/feedback/ui/:id", async (req, res) => {
   res.redirect("/feedback/ui");
 });
 
-// =====EDIT AND DELETE ROUTES========
+router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res) => {
+  const allRequest = await Request.findById(req.params.id);
+
+  res.render("feedback/show", {
+    request: allRequest,
+    user: req.user, 
+  });
+});
+
+
 router.put(
-  "/feedback/:id",
+  "/feedback/:id/",
   isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -619,7 +622,7 @@ router.delete(
   }),
 );
 
-// ===============END OF ROUTES==============
+
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
