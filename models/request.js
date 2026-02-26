@@ -8,6 +8,10 @@ const RequestSchema = new Schema({
   upvotes: { type: Number, default: 0 },
   status: String,
   description: String,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   comments: [
     {
       id: Number,

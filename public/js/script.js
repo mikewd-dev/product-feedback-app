@@ -1,14 +1,11 @@
-
 function safeQuerySelector(selector) {
   const el = document.querySelector(selector);
   return el || null;
 }
 
-
 const path = window.location.pathname;
 const match = path.match(/\/feedback\/([^\/\?]+)/);
 const currentType = match ? match[1] : "suggestions";
-
 
 function navButton() {
   const navbarToggler = safeQuerySelector(".navbar-toggler-icon");
@@ -30,23 +27,66 @@ function navButton() {
   }
 }
 
+function updateRoadmapDisplay(state) {
+  const elements = {
+    'planned': { col: 'column-planned', tab: 'plan-bar' },
+    'progress': { col: 'column-progress', tab: 'inprog-bar' },
+    'live': { col: 'column-live', tab: 'lve-bar' }
+  };
+
+  if (!document.getElementById('column-planned')) return;
+
+  Object.keys(elements).forEach(key => {
+    const isCurrent = (key === state);
+    const colEl = document.getElementById(elements[key].col);
+    const tabEl = document.getElementById(elements[key].tab);
+
+    if (colEl) colEl.style.display = isCurrent ? "block" : "none";
+    if (tabEl) tabEl.style.display = isCurrent ? "block" : "none";
+  });
+}
+
+window.plannedDisplay = () => updateRoadmapDisplay('planned');
+window.progressDisplay = () => updateRoadmapDisplay('progress');
+window.liveDisplay = () => updateRoadmapDisplay('live');
+window.dropReply = toggleDisplay;
+window.dropReplyReply = toggleDisplay;
 
 window.addEventListener("DOMContentLoaded", () => {
+
+  updateRoadmapDisplay('planned');
+
+  
   const buttons = document.querySelectorAll(".blue");
   buttons.forEach((button) => {
     const dataType = button.getAttribute("data-type");
     if (dataType === currentType) button.classList.add("active");
   });
-});
 
-
-$(document).ready(function () {
-  $(".dropdown-menu > li > a").click(function () {
-    $(".dropdown-menu > li > a").removeClass("selected");
-    $(this).addClass("selected");
+  
+  document.querySelectorAll(".upvote-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const suggestionId = this.getAttribute("data-id");
+      upvoteSuggestion(suggestionId);
+    });
   });
-});
 
+  
+  initSortMenu();
+  
+  
+  checkWidth();
+
+  
+  if (window.innerWidth <= 768) {
+    const board = document.querySelector(".board");
+    const closeIcon = document.querySelector(".close-icon");
+    if (board && closeIcon) {
+      board.classList.add("navbar", "dropdown");
+      board.appendChild(closeIcon);
+    }
+  }
+});
 
 function upvoteSuggestion(suggestionId) {
   fetch(`/feedback/${suggestionId}/upvote?_=${new Date().getTime()}`, {
@@ -61,26 +101,6 @@ function upvoteSuggestion(suggestionId) {
     .catch(console.error);
 }
 
-function upvoteRoadmap(roadmapId) {
-  fetch(`/feedback/${roadmapId}/upvote?_=${new Date().getTime()}`, {
-    method: "POST",
-    mode: "cors",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`votes-${roadmapId}`);
-      if (upvotesElement) upvotesElement.textContent = data.upvotes;
-    })
-    .catch(console.error);
-}
-
-document.querySelectorAll(".upvote-btn").forEach((button) => {
-  button.addEventListener("click", function () {
-    const suggestionId = this.getAttribute("data-id");
-    upvoteSuggestion(suggestionId);
-  });
-});
-
 function toggleDisplay(id) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -93,122 +113,36 @@ function toggleDisplay(id) {
   }
 }
 
-
-window.dropReply = toggleDisplay;
-window.dropReplyReply = toggleDisplay;
-
-
 function initSortMenu() {
   const linkmostup = document.getElementById("mostup");
-  const linkleastup = document.getElementById("leastup");
-  const linkmostcomm = document.getElementById("mostcomm");
-  const linkleastcomm = document.getElementById("leastcomm");
+  if (!linkmostup) return;
 
   const checkmostup = document.getElementById("mostCheckUp");
   const checkleastup = document.getElementById("leastCheckUp");
   const checkmostcomm = document.getElementById("mostCheckComm");
   const checkleastcomm = document.getElementById("leastCheckComm");
 
-  if (!linkmostup || !linkleastup || !linkmostcomm || !linkleastcomm) return;
-
-
-  if (sessionStorage.getItem("mostupClicked") === "true") checkmostup.style.display = "inline" ;
-  if (sessionStorage.getItem("leastupClicked") === "true") checkleastup.style.display = "inline";
-  if (sessionStorage.getItem("mostcommClicked") === "true") checkmostcomm.style.display = "inline";
-  if (sessionStorage.getItem("leastcommClicked") === "true") checkleastcomm.style.display = "inline";
-
-
-  const setSort = (mostup, leastup, mostcomm, leastcomm, label) => {
-    sessionStorage.setItem("mostupClicked", mostup);
-    sessionStorage.setItem("leastupClicked", leastup);
-    sessionStorage.setItem("mostcommClicked", mostcomm);
-    sessionStorage.setItem("leastcommClicked", leastcomm);
-    document.getElementById("menu-item").innerHTML = label;
-  };
-
-  linkmostup.addEventListener("click", () => setSort("true", "false", "false", "false", "Most Upvotes"));
-  linkleastup.addEventListener("click", () => setSort("false", "true", "false", "false", "Least Upvotes"));
-  linkmostcomm.addEventListener("click", () => setSort("false", "false", "true", "false", "Most Comments"));
-  linkleastcomm.addEventListener("click", () => setSort("false", "false", "false", "true", "Least Comments"));
+  if (sessionStorage.getItem("mostupClicked") === "true" && checkmostup) checkmostup.style.display = "inline";
+  if (sessionStorage.getItem("leastupClicked") === "true" && checkleastup) checkleastup.style.display = "inline";
+  if (sessionStorage.getItem("mostcommClicked") === "true" && checkmostcomm) checkmostcomm.style.display = "inline";
+  if (sessionStorage.getItem("leastcommClicked") === "true" && checkleastcomm) checkleastcomm.style.display = "inline";
 }
-window.addEventListener("DOMContentLoaded", initSortMenu);
-
 
 function checkWidth() {
   const boardDiv = safeQuerySelector(".board-text");
   if (boardDiv && window.innerWidth <= 600) boardDiv.style.display = "none";
 }
-window.addEventListener("DOMContentLoaded", checkWidth);
-
 
 $(document).ready(function () {
+  $(".dropdown-menu > li > a").click(function () {
+    $(".dropdown-menu > li > a").removeClass("selected");
+    $(this).addClass("selected");
+  });
+
   $(".down-arrow").on("click", function () {
-    const src = $(this).attr("src") === "/assets/shared/icon-arrow-down.svg"
+    const src = $(this).attr("src").includes("down")
       ? "./assets/shared/icon-arrow-up.svg"
       : "/assets/shared/icon-arrow-down.svg";
     $(this).attr("src", src);
   });
 });
-
-window.onload = function () {
-  plannedDisplay();
-}
-
-function plannedDisplay() {
-  let columnPlanned = document.getElementById("column-planned");
-  let columnProgress = document.getElementById("column-progress");
-  let columnLive = document.getElementById("column-live");
-  let tabPlanned = document.getElementById("plan-bar");
-  let tabInProg = document.getElementById("inprog-bar");
-  let tabLive = document.getElementById("lve-bar");
-  columnPlanned.style.display = "block";
-  columnProgress.style.display = "none";
-  columnLive.style.display = "none";
-  tabPlanned.style.display = "block";
-  tabInProg.style.display = "none";
-  tabLive.style.display = "none";
-}
-
-function progressDisplay() {
-  let columnPlanned = document.getElementById("column-planned");
-  let columnProgress = document.getElementById("column-progress");
-  let columnLive = document.getElementById("column-live");
-  let tabPlanned = document.getElementById("plan-bar");
-  let tabInProg = document.getElementById("inprog-bar");
-  let tabLive = document.getElementById("lve-bar");
-
-  columnProgress.style.display = "block";
-  columnPlanned.style.display = "none";
-  columnLive.style.display = "none";
-  tabInProg.style.display = "block";
-  tabPlanned.style.display = "none";
-  tabLive.style.display = "none";
-}
-function liveDisplay() {
-  let columnPlanned = document.getElementById("column-planned");
-  let columnProgress = document.getElementById("column-progress");
-  let columnLive = document.getElementById("column-live");
-  let tabPlanned = document.getElementById("plan-bar");
-  let tabInProg = document.getElementById("inprog-bar");
-  let tabLive = document.getElementById("lve-bar");
-  columnLive.style.display = "block";
-  columnPlanned.style.display = "none";
-  columnProgress.style.display = "none";
-  tabLive.style.display = "block";
-  tabInProg.style.display = "none";
-  tabPlanned.style.display = "none";
-}
-
-  document.addEventListener("DOMContentLoaded", function () {
-    if (window.innerWidth <= 768) {
-      const board = document.querySelector(".board");
-      board.classList.add("navbar");
-      board.classList.add("dropdown");
-      const closeIcon = document.querySelector(".close-icon");
-      board.appendChild(closeIcon);
-    }
-  });
-
-
-  
-

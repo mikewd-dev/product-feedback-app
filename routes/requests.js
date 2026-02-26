@@ -24,7 +24,8 @@ const Comment = require("../models/comment");
 const Roadmap = require("../models/roadmap");
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
-
+const comment = require("../models/comment");
+const { isLoggedIn, currentUser } = require("../middleware");
 const db = mongoose.connection;
 
 
@@ -87,6 +88,7 @@ router.post(
   isLoggedIn,
   catchAsync(async (req, res) => {
     const allRequest = new Request(req.body.request);
+    allRequest.author = req.user._id
     await allRequest.save();
     req.flash("success", "Thank you for your feedback");
     res.redirect(`/feedback/${allRequest._id}`);
@@ -385,7 +387,7 @@ router.get(
       sortOrder = "leastcomm";
     }
 
-    let allRequest = await Request.find({}).where("category").equals("ux");
+    let allRequest = await Request.find({}).where("category").equals("UX");
 
     if (sortOrder === "mostcomm") {
       allRequest = allRequest.sort((a, b) => b.comments.length - a.comments.length);
@@ -408,7 +410,7 @@ router.get(
         roadmap,
         progress,
         live,
-        currentType: "ux",
+        currentType: "UX",
       });
     }
   }),
@@ -592,7 +594,7 @@ router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res) => {
 
 router.put(
   "/feedback/:id/",
-  isLoggedIn,
+  isLoggedIn, currentUser,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const allRequest = await Request.findByIdAndUpdate(id, {
@@ -602,7 +604,7 @@ router.put(
   }),
 );
 
-router.put("/feedback/:id/comments", isLoggedIn, catchAsync(async (req, res) => {
+router.put("/feedback/:id/comments", isLoggedIn, currentUser, catchAsync(async (req, res) => {
     const { id } = req.params;
     const commentData = req.body.comment;
 
@@ -614,7 +616,7 @@ router.put("/feedback/:id/comments", isLoggedIn, catchAsync(async (req, res) => 
 
 router.delete(
   "/feedback/:id",
-  isLoggedIn,
+  isLoggedIn, currentUser,
   catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const allRequest = await Request.findByIdAndDelete(id);
@@ -623,13 +625,6 @@ router.delete(
 );
 
 
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/feedback/login");
-}
 
 
 
