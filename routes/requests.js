@@ -26,6 +26,8 @@ const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
 const comment = require("../models/comment");
 const { isLoggedIn, currentUser } = require("../middleware");
+const { isUint8Array } = require("util/types");
+const { isArray } = require("util");
 const db = mongoose.connection;
 
 
@@ -82,6 +84,14 @@ router.post("/feedback/login", (req, res, next) => {
   })(req, res, next);
 });
 
+router.post("/feedback/logout", (req, res, nrxt) => {
+  req.logout (function (err) {
+    if (err) {
+      return next (err);
+      return res.redirect("/feedback/login");
+    }
+  })
+})
 
 router.post(
   "/feedback",
@@ -219,6 +229,9 @@ router.get(
 
 router.get("/feedback/register", (req, res) => {
   res.render("feedback/register");
+  if (req.isAuthenticated()) {
+    res.redirect("/feedback");
+  }
 });
 
 
@@ -226,16 +239,16 @@ router.get("/feedback/login", (req, res) => {
   res.render("feedback/login");
 });
 
-
-router.get("/feedback/logout", (req, res, next) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    req.flash("success", "Logged out successfully.");
-    res.redirect("/");
-  });
+router.get('/feedback/logout', (req, res, next) => {
+    req.logout(function (err) {
+        if (err) return next(err);
+        req.session.destroy(() => {
+            res.clearCookie('connect.sid'); // Clear the specific session cookie
+            res.redirect('/feedback/login');
+        });
+    });
 });
+
 
 router.get(
   "/feedback/new",
@@ -246,7 +259,7 @@ router.get(
 );
 
 router.get(
-  "/feedback/suggestions",
+  "/feedback/suggestions", isLoggedIn,
   catchAsync(async (req, res, next) => {
     let sortOrder;
     if (req.query.sort === "mostup") {
@@ -286,7 +299,7 @@ router.get(
 );
 
 router.get(
-  "/feedback/enhancement",
+  "/feedback/enhancement", isLoggedIn,
   catchAsync(async (req, res, next) => {
     let sortOrder;
     if (req.query.sort === "mostup") {
@@ -331,7 +344,7 @@ router.get(
 );
 
 router.get(
-  "/feedback/ui",
+  "/feedback/ui", isLoggedIn,
   catchAsync(async (req, res, next) => {
     let sortOrder;
     if (req.query.sort === "mostup") {
@@ -374,7 +387,7 @@ router.get(
 );
 
 router.get(
-  "/feedback/ux",
+  "/feedback/ux", isLoggedIn,
   catchAsync(async (req, res, next) => {
     let sortOrder;
     if (req.query.sort === "mostup") {

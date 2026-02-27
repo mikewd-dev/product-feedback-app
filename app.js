@@ -12,6 +12,7 @@ const MongoStore = require("connect-mongo");
 const User = require("./models/user");
 const requestRoutes = require("./routes/requests");
 const ExpressError = require("./utils/ExpressError");
+const { isLoggedIn } = require("./middleware");
 
 const app = express();
 
@@ -70,7 +71,7 @@ app.use((req, res, next) => {
 
 app.use("/", requestRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", isLoggedIn, (req, res) => {
   res.render("home");
 });
 

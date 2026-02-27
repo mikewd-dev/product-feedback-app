@@ -113,6 +113,13 @@ function toggleDisplay(id) {
   }
 }
 
+  window.onpageshow = function(event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  }
+
+
 function initSortMenu() {
   const urlParams = new URLSearchParams(window.location.search);
   const currentSort = urlParams.get('sort');

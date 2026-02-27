@@ -8,10 +8,11 @@ const catchAsync = require("./utils/catchAsync");
 
 
 function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
+  if (!req.isAuthenticated()) {
+    req.flash("error", "You must be logged in to do that!");
+    return res.redirect("/feedback/login");
   }
-  res.redirect("/feedback/login");
+  next();
 }
 
 
