@@ -4144,16 +4144,6 @@ p {
     top: 0px !important;
   }
 
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 1;
-  }
 
   figcaption {
     position: relative;
@@ -4647,10 +4637,10 @@ svg .new-feedback-form {
   flex-shrink: 0;
 }
 
-.board.navbar.dropdown {
+.board.navbar.dropdown.show {
   position: fixed !important; 
   top: 0;
-  right: 0;
+  right: -100%;
   height: 100vh;
   width: 270px;
   z-index: 9999; /* Higher than the Sort bar */
@@ -4660,12 +4650,17 @@ svg .new-feedback-form {
 
 .overlay {
   position: fixed;
+  display: none;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 9998;
   background: rgba(0, 0, 0, 0.5);
+}
+
+.overlay.active {
+  display:block;
 }
 
 
