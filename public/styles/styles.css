@@ -1519,14 +1519,14 @@ figcaption {
 }
 
 .comment-icon {
-  display: inline-flex;
   flex-direction: row;
   position: absolute;
   justify-content: flex-end;
   width: 44px;
+  gap:5px;
   height: 16px;
-  margin-right: 8px;
-  margin-top: -26px;
+  margin-left: 100%;
+  margin-top: 0;
   right: 0;
   font-weight: 700;
   left: 100%;
@@ -4733,7 +4733,7 @@ svg .new-feedback-form {
 
 .feedback-navlink {
   position: relative;
-  margin: 0;
+  margin: 4%;
 }
 
 .user-image {
