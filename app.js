@@ -8,7 +8,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-
+const MongoStore = require("connect-mongo");
 const User = require("./models/user");
 const requestRoutes = require("./routes/requests");
 const ExpressError = require("./utils/ExpressError");
@@ -40,10 +40,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use(session({
+  store: MongoStore.create({ mongoUrl:dbUri, 
+    touchAfter:24 * 3600
+  }),
   secret: process.env.SECRET || "thisshouldbeabettersecret",
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 1000 * 60 * 60 * 24 } 
+  cookie: { maxAge: 1000 * 60 * 60 * 24,
+    httpOnly:true
+   } 
 }));
 app.use(flash());
 
