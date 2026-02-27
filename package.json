@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
     "test:watch": "NODE_ENV=test jest --watchAll",
-    "start": "node app.js",
+    "start": "node server.js",
     "dev": "nodemon app.js"
   },
   "author": "",
