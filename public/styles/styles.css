@@ -2192,8 +2192,7 @@ p {
 }
 
 .checked {
-  margin-left: 100px;
-  display: none; 
+  margin-left: 100px; 
   position: relative;
   height: 16px;
   background: url(/assets/shared/icon-check.svg) no-repeat center center;
@@ -3839,7 +3838,7 @@ p {
 
   #content {
     position: relative;
-    left: 45px;
+    left: 62px;
     top: 71px;
     background-color: #dee2e6;
     width: 44px;
@@ -4054,8 +4053,9 @@ p {
     flex-direction: row;
     background-color: #f2f4fe;
     right: 0px;
+    margin-left:22px;
     left: 338px;
-    top: 88px;
+    top: 72px;
     width: 32px;
     height: 19px;
     gap: 4px;
@@ -4646,6 +4646,28 @@ svg .new-feedback-form {
   margin-bottom: 6px;
   flex-shrink: 0;
 }
+
+.board.navbar.dropdown {
+  position: fixed !important; 
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 270px;
+  z-index: 9999; /* Higher than the Sort bar */
+  background-color: white;
+  box-shadow: -10px 0 20px rgba(0,0,0,0.1);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 
 .delete-feedback-btn {
   position: relative;

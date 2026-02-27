@@ -142,43 +142,7 @@
         </div>
 
         <nav class="dropdown">
-          <div class="container-fluid">
-            <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" class="suggestion-icon" alt="Suggestions Icon">
-            <li class="suggestion">
-              <span class="fw-bold"><%= request.length %><span/> Suggestions
-            </li>
-
-            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sort by : <strong id="menu-item">Most Upvotes</strong>
-              <span><img class="down-arrow" src="/assets/shared/icon-arrow-down.svg" alt=""></span>
-            </a>
-
-           <ul id="mydropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <li>
-    <a class="dropdown-item" id="mostup" href="/feedback/<%= currentType %>?sort=mostup">Most Upvotes
-      <img class='checked' id="mostCheckUp" src="/assets/shared/icon-check.svg" alt="check">
-    </a>
-  </li>
-  <hr class="dropdown-divider">
-  <li>
-    <a class="dropdown-item" id="leastup" href="/feedback/<%= currentType %>?sort=leastup">Least Upvotes
-      <img class='checked' id="leastCheckUp" src="/assets/shared/icon-check.svg" alt="">
-    </a>
-  </li>
-  <hr class="dropdown-divider">
-  <li>
-    <a class="dropdown-item" id="mostcomm" href="/feedback/<%= currentType %>?sort=mostcomm">Most Comments
-      <img class='checked' id="mostCheckComm" src="/assets/shared/icon-check.svg" alt="">
-    </a>
-  </li>
-  <hr class="dropdown-divider">
-  <li>
-    <a class="dropdown-item" id="leastcomm" href="/feedback/<%= currentType %>?sort=leastcomm">Least Comments
-      <img class='checked' id="leastCheckComm" src="/assets/shared/icon-check.svg" alt="">
-    </a>
-  </li>
-</ul>
-          </div>
+          <div class="container-fluid"></span></div>
           <a class="add-feedback-top text-center" href="/feedback/new">+Add Feedback</a>
         </nav>
       </div>

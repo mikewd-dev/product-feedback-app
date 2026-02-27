@@ -222,7 +222,7 @@
           <div class="container-fluid">
             <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" class="suggestion-icon" alt="Suggestions Icon">
             <li class="suggestion">
-              <span class="fw-bold"><%= request.length %><span/> Suggestions
+              <span class="fw-bold"><%= request &&request.length %></span> Suggestions
             </li>
 
             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -362,7 +362,7 @@
           <div class="container-fluid">
             <img class="arrows" src="/assets/suggestions/icon-suggestions.svg" class="suggestion-icon" alt="Suggestions Icon">
             <li class="suggestion">
-             <span class="fw-bold"><%= request.length %><span/> Suggestions
+             <span class="fw-bold"><%= request && request.length %></span> Suggestions
             </li>
 
             <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

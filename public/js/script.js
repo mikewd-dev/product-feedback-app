@@ -114,19 +114,39 @@ function toggleDisplay(id) {
 }
 
 function initSortMenu() {
-  const linkmostup = document.getElementById("mostup");
-  if (!linkmostup) return;
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentSort = urlParams.get('sort');
 
-  const checkmostup = document.getElementById("mostCheckUp");
-  const checkleastup = document.getElementById("leastCheckUp");
-  const checkmostcomm = document.getElementById("mostCheckComm");
-  const checkleastcomm = document.getElementById("leastCheckComm");
+  const mapping = {
+    'mostup': 'mostCheckUp',
+    'leastup': 'leastCheckUp',
+    'mostcomm': 'mostCheckComm',
+    'leastcomm': 'leastCheckComm'
+  };
 
-  if (sessionStorage.getItem("mostupClicked") === "true" && checkmostup) checkmostup.style.display = "inline";
-  if (sessionStorage.getItem("leastupClicked") === "true" && checkleastup) checkleastup.style.display = "inline";
-  if (sessionStorage.getItem("mostcommClicked") === "true" && checkmostcomm) checkmostcomm.style.display = "inline";
-  if (sessionStorage.getItem("leastcommClicked") === "true" && checkleastcomm) checkleastcomm.style.display = "inline";
+  Object.values(mapping).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+
+  if (currentSort && mapping[currentSort]) {
+    const activeCheck = document.getElementById(mapping[currentSort]);
+    if (activeCheck) {
+      activeCheck.style.display = 'inline';
+      
+      const menuText = document.getElementById('menu-item');
+      const activeLink = document.getElementById(currentSort);
+      if (menuText && activeLink) {
+        menuText.textContent = activeLink.firstChild.textContent.trim();
+      }
+    }
+  } else {
+    const defaultCheck = document.getElementById('mostCheckUp');
+    if (defaultCheck) defaultCheck.style.display = 'inline';
+  }
 }
+
+
 
 function checkWidth() {
   const boardDiv = safeQuerySelector(".board-text");
