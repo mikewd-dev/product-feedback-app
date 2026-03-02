@@ -2144,8 +2144,8 @@ p {
   background: #f7f8fd;
   border: 1px solid #4661e6;
   margin-right: 32px;
-  margin-left: 70px;
-  width: 416px;
+  margin-left: 72px;
+  width: 65vw !important;
   color: #3a4374;
   font-size: 15px;
   font-style: normal;
@@ -4925,13 +4925,9 @@ svg .new-feedback-form {
   line-height: normal;
 }
 
-.post-reply {
+/*.post-reply-reply {
   margin-left: 170px;
-}
-
-.post-reply-reply {
-  margin-left: 170px;
-}
+}*/
 
 .arrow {
   margin-left: 4.17px;
