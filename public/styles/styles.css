@@ -1384,7 +1384,7 @@ figcaption {
   position: absolute;
   right: 3%;
   bottom: 0;
-  width: 85vw;
+  width: 85vw !important;
   top: 74%;
   height: 40px;
   color: #f2f4fe;
@@ -2629,7 +2629,7 @@ p {
     position: absolute;
     right: 8%;
     bottom: 0;
-    width: 85vw;
+    width: 95vw !important;
     top: 80%;
     height: 40px;
     color: #f2f4fe;
