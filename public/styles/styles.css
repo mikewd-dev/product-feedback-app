@@ -4982,7 +4982,6 @@ svg .new-feedback-form {
   flex-direction: column;
   gap: 24px;
   width: 85vw;   
-  max-width: 825px; 
 }
 
 .content-wrapper .go-back-show,
