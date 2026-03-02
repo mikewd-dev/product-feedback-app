@@ -4977,7 +4977,7 @@ svg .new-feedback-form {
 }
 
 .content-wrapper {
-  margin: 40px auto; 
+  margin: 40px auto 0 auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
