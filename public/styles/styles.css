@@ -690,7 +690,7 @@ p {
   align-items: center;
   left: 275px;
   right: 0;
-  width: 80vw;
+  width: 85vw;
   border-radius: 10px;
   top: 146px;
 }
@@ -716,7 +716,7 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: auto;
+  height: 66px !important;
   margin: 40px 5px 28px 0 !important;
   padding-top: 5px;
   border-radius: 10px;
@@ -729,6 +729,7 @@ p {
   margin: 40px 0px 28px 0px;
   border-radius: 10px;
   background-color: #ffff;
+  width: 100% !important;
 }
 
 .feedback {
@@ -3124,7 +3125,7 @@ p {
   }
 
   .feedback-suggestion {
-    width: 95vw;
+    width: 95% important;
     height: auto;
     left: 0;
     right: 0;
