@@ -83,7 +83,7 @@ textarea.parsley-error {
 #column-planned,
 #column-progress,
 #column-live {
-  display: block;
+  display: block !important;
 }
 
 .show {
@@ -561,7 +561,6 @@ li {
   line-height: normal;
   margin-bottom: -24px;
   height: 20px;
-  background-color: #f4d7d5 !important;
   width: 25vw;
   padding-left: 5px;
 }
@@ -1820,7 +1819,7 @@ figcaption {
   height: 6px;
   left: 165px;
   top: 324px;
-  background: #f49f85;
+  background: #f49f85 ! important;
   border-radius: 5px 5px 0px 0px;
 }
 
@@ -1828,7 +1827,7 @@ figcaption {
   height: 6px;
   left: 165px;
   top: 324px;
-  background: #62bcfa;
+  background: #62bcfa !important;
   border-radius: 5px 5px 0px 0px;
 }
 
@@ -4627,10 +4626,10 @@ svg .new-feedback-form {
   left: 0;
 }
 
-#column-progress,
+/*#column-progress,
 #column-live {
   display: none;
-}
+}*/
 
 .feedback-show {
   position: relative;

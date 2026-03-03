@@ -27,7 +27,7 @@ function navButton() {
   }
 }
 
-function updateRoadmapDisplay(state) {
+/* function updateRoadmapDisplay(state) {
   const elements = {
     'planned': { col: 'column-planned', tab: 'plan-bar' },
     'progress': { col: 'column-progress', tab: 'inprog-bar' },
@@ -44,7 +44,38 @@ function updateRoadmapDisplay(state) {
     if (colEl) colEl.style.display = isCurrent ? "block" : "none";
     if (tabEl) tabEl.style.display = isCurrent ? "block" : "none";
   });
+} */
+
+ function updateRoadmapDisplay(state) {
+  const elements = {
+    'planned': { col: 'column-planned', tab: 'plan-bar' },
+    'progress': { col: 'column-progress', tab: 'inprog-bar' },
+    'live': { col: 'column-live', tab: 'lve-bar' }
+  };
+
+  if (!document.getElementById('column-planned')) return;
+
+  // Check if we are on a mobile device (768px is the standard breakpoint)
+  const isMobile = window.innerWidth <= 768;
+
+  Object.keys(elements).forEach(key => {
+    const isCurrent = (key === state);
+    const colEl = document.getElementById(elements[key].col);
+    const tabEl = document.getElementById(elements[key].tab);
+
+    if (colEl) {
+      // Logic: If NOT mobile, always show all columns. 
+      // If mobile, only show the current selected column.
+      colEl.style.display = (!isMobile || isCurrent) ? "block" : "none";
+    }
+    
+    if (tabEl) {
+      // The colored underline bars only exist on mobile tabs
+      tabEl.style.display = isCurrent ? "block" : "none";
+    }
+  });
 }
+ 
 
 window.plannedDisplay = () => updateRoadmapDisplay('planned');
 window.progressDisplay = () => updateRoadmapDisplay('progress');
