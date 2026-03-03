@@ -458,9 +458,10 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  left: 271px;
+  left: 272px;
   height: 72px;
   top: 0;
+  width: 85vw
 }
 
 .dropdown-main {
@@ -710,16 +711,13 @@ p {
 
 #suggested-feedback {
   position: relative;
-  margin-top: 0px;
-  margin-bottom: 0px;
   left: 0;
   right: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
   height: auto;
-  margin: 40px 9px 28px 0;
+  margin: 40px 5px 28px 0 !important;
   padding-top: 5px;
   border-radius: 10px;
   background-color: #ffff;
@@ -3126,12 +3124,11 @@ p {
   }
 
   .feedback-suggestion {
-    position: relative;
     width: 95vw;
     height: auto;
     left: 0;
     right: 0;
-    margin: 15px auto;
+    margin: 0 auto 20px auto !important;
     border-radius: 10px;
     background-color: #ffff;
   }
@@ -4005,8 +4002,7 @@ p {
     flex-direction: row;
     background-color: #f2f4fe;
     right: 0px;
-    margin-left:-25px;
-    left: 19% !important;
+    left: 7% !important;
     top: 72px;
     width: 32px;
     height: 19px;
