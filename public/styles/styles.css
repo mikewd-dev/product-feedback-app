@@ -792,7 +792,7 @@ p {
   font-size: 15px;
   line-height: 22px;
   color: #647196;
-  margin-left: 72px;
+  margin-left: 72px !important;
 }
 
 .replyTo {
@@ -4925,9 +4925,14 @@ svg .new-feedback-form {
   line-height: normal;
 }
 
-/*.post-reply-reply {
-  margin-left: 170px;
-}*/
+post-reply {
+  position: relative;
+  right: 0;
+  left: 748px;
+  text-align: center;
+  width: 94px;
+  bottom: 88px;
+}
 
 .arrow {
   margin-left: 4.17px;
