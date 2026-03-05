@@ -97,7 +97,7 @@
 
                     <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form" novalidate>
                         <div class="row-reply" id="reply-box-<%=reply._id%>" style="display: none;">
-                            <textarea name="reply[content]" class="reply-box" required placeholder="Replying to @<%=reply.user.username%>..."></textarea>
+                            <textarea name="reply[content]" class="reply-box" placeholder="Replying to @<%=reply.user.username%>..."></textarea>
                             <button class="post-reply btn-purple">Post Reply</button>
                         </div>
                     </form>

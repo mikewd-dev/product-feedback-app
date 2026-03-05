@@ -964,6 +964,7 @@ a {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.181px;
+    width: fit-content;
   }
 
   .comment-username {
@@ -2048,6 +2049,7 @@ p {
   color: #3a4374;
   margin-top: -41px;
   left: 73px;
+  width: fit-content;
 }
 
 .comment-username {
@@ -3358,7 +3360,6 @@ p {
 
 .reply-content {
   height: 80px;
-  background: #f7f8fd;
   margin-right: 32px;
   width: 65%;
 }
@@ -3387,7 +3388,7 @@ p {
   margin-right: 32px;
   margin-left: 0px;
   margin-top: 24px;
-  width: 416px;
+  width: fit-content;
   color: #3a4374;
   font-size: 15px;
   font-style: normal;
@@ -3744,6 +3745,7 @@ p {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.194px;
+    width: fit-content;
   }
 
   .comment-username {
@@ -5121,6 +5123,7 @@ p {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.181px;
+    width: fit-content;
   }
 
   .comment-username {
@@ -5151,6 +5154,7 @@ p {
     flex-wrap: wrap;
     line-height: normal;
     margin-top: 20px;
+    margin-left: 72px;
   }
 
   .comment-username {
