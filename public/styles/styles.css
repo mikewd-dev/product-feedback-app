@@ -1120,9 +1120,7 @@ a {
     font-size: 13px;
   }
 
-  .dropped {
-    display: none;
-  }
+
 
   .drop {
     background-color: #fff;
@@ -2160,9 +2158,6 @@ p {
 
 .feedback-suggested-title {
   height: 26px;
-  left: 15.34%;
-  right: 56.58%;
-  top: calc(50% - 26px / 2 - 34.5px);
   font-weight: 700;
   font-size: 18px;
   line-height: 26px;
@@ -2172,9 +2167,6 @@ p {
 
 .feedback-suggested-para {
   height: 23px;
-  left: 10.51%;
-  right: 40.34%;
-  top: calc(50% - 23px / 2 - 6px);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -3081,6 +3073,7 @@ figcaption {
   margin-bottom: 24px;
   padding-top: 9px;
   left: 10px;
+  top: 153px;
 }
 
 .navbar-expand-lg {
@@ -3923,7 +3916,7 @@ p {
 
   .dropped {
     width: 65vw !important;
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     background-color: #fff;
     border-top-right-radius: 10px;
