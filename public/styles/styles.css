@@ -3358,9 +3358,7 @@ p {
 
 .reply-content {
   height: 80px;
-  border-radius: 5px;
   background: #f7f8fd;
-  border: 1px solid #4661e6;
   margin-right: 32px;
   width: 65%;
 }

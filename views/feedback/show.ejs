@@ -34,220 +34,93 @@
         </a>
     </div>
 
-
-    <!-- FEEDBACK -->
     <section class="feedback-container">
-
         <div class="feedback-show-suggested">
-
             <button type="button" id="content" class="btn upvote-btn" data-id="<%= request._id %>">
                 <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= request._id %>">
                     <path d="M1 6l4-4 4 4" stroke-width="2"/>
                 </svg>
-
                 <div class="votes" id="votes-<%= request._id %>">
                     <%= request.upvotes %>
                 </div>
             </button>
 
             <div class="feedback-content-area">
-
                 <div class="feeback-title-para">
-                    <h1 class="feedback-suggested-title">
-                        <%=request.title%>
-                    </h1>
-
-                    <p class="feedback-suggested-para">
-                        <%=request.description%>
-                    </p>
+                    <h1 class="feedback-suggested-title"><%=request.title%></h1>
+                    <p class="feedback-suggested-para"><%=request.description%></p>
                 </div>
-
-                <button class="btn-suggestion">
-                    <%=request.category%>
-                </button>
-
+                <button class="btn-suggestion"><%=request.category%></button>
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- COMMENTS -->
     <section class="comments-container">
-
         <p class="comment-length">
             <%=request.comments.length%> Comments
         </p>
 
-
         <% for (let comment of request.comments) { %>
-
         <div class="comment">
-
             <div class="user-details">
-
-                <img src="<%= Array.isArray(comment.user.image) ? (Array.isArray(comment.user.image[0]) ? comment.user.image[0][0].url : comment.user.image[0].url) : (comment.user.image.url || comment.user.image) %>"
-                     class="user-reply-image">
-
-                <p class="comment-user">
-                    <%=comment.user.name %>
-                </p>
-
-                <p class="comment-username">
-                    @<%=comment.user.username %>
-                </p>
-
+                <img src="<%= Array.isArray(comment.user.image) ? (Array.isArray(comment.user.image[0]) ? comment.user.image[0][0].url : comment.user.image[0].url) : (comment.user.image.url || comment.user.image) %>" class="user-reply-image">
+                <p class="comment-user"><%=comment.user.name %></p>
+                <p class="comment-username">@<%=comment.user.username %></p>
             </div>
 
+            <button class="reply-link" onclick="dropReply('reply-box-<%=comment._id %>');">Reply</button>
+            <p class="comment-content"><%=comment.content %></p>
 
-            <button class="reply-link"
-                    onclick="dropReply('reply-box-<%=comment._id %>');">
-                Reply
-            </button>
+            <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies" method="POST" class="validated-form" novalidate>
+                <div class="row-reply" id="reply-box-<%=comment._id%>" style="display: none;">
+                    <textarea name="reply[content]" class="comment-box" required placeholder="Type your reply here..."></textarea>
+                    <button class="post-reply btn-purple">Post Reply</button>
+                </div>
+            </form>
 
-
-            <p class="comment-content">
-                <%=comment.content %>
-            </p>
-
-
-
-            <!-- REPLIES -->
             <% if (comment.replies && comment.replies.length > 0) { %>
-
             <div class="replies-wrapper" style="margin-left: 40px; border-left: 1px solid rgba(100, 113, 150, 0.1);">
-
                 <% for (let reply of comment.replies) { %>
-
-                <div class="comment-reply" style="padding-left: 20px;">
-
+                <div class="comment-reply" style="padding-left: 20px; margin-bottom: 20px;">
                     <div class="user-details">
-
-                        <img src="<%= Array.isArray(reply.user.image) ? reply.user.image[0].url : reply.user.image %>"
-                             class="user-reply-image">
-
-                        <p class="comment-user">
-                            <%=reply.user.name %>
-                        </p>
-
-                        <p class="comment-username">
-                            @<%=reply.user.username %>
-                        </p>
-
+                        <img src="<%= Array.isArray(reply.user.image) ? reply.user.image[0].url : (reply.user.image.url || reply.user.image) %>" class="user-reply-image">
+                        <p class="comment-user"><%=reply.user.name %></p>
+                        <p class="comment-username">@<%=reply.user.username %></p>
                     </div>
 
-
-                    <button class="reply-link"
-                            onclick="dropReply('reply-box-<%=reply._id %>');">
-                        Reply
-                    </button>
-
-
-                    <span class="replyingto" style="color: #ad1fea; font-weight: bold;">
-                        @<%= reply.replyingTo %>
-                    </span>
-
-
+                    <button class="reply-link" onclick="dropReply('reply-box-<%=reply._id %>');">Reply</button>
+                    
                     <p class="reply-content">
+                        <span class="replyingto" style="color: #ad1fea; font-weight: bold;">@<%= reply.replyingTo %></span>
                         <%= reply.content %>
                     </p>
 
-
-
-                    <!-- REPLY TO REPLY -->
-                    <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies"
-                          method="POST"
-                          class="validated-form"
-                          data-parsley-validate
-                          novalidate>
-
-                        <div class="row-reply" id="reply-box-<%=reply._id%>">
-
-                            <textarea name="reply[content]"
-                                      class="reply-box"
-                                      required></textarea>
-
-                            <button class="post-reply btn-purple">
-                                Post Reply
-                            </button>
-
+                    <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/reply/<%=reply._id%>/replies" method="POST" class="validated-form" novalidate>
+                        <div class="row-reply" id="reply-box-<%=reply._id%>" style="display: none;">
+                            <textarea name="reply[content]" class="reply-box" required placeholder="Replying to @<%=reply.user.username%>..."></textarea>
+                            <button class="post-reply btn-purple">Post Reply</button>
                         </div>
-
                     </form>
-
                 </div>
-
                 <% } %>
-
             </div>
-
             <% } %>
-
-
-
-            <!-- REPLY TO COMMENT -->
-            <form action="/feedback/<%=request._id%>/comment/<%=comment._id%>/replies"
-                  method="POST"
-                  class="validated-form"
-                  data-parsley-validate
-                  novalidate>
-
-                <div class="row-reply" id="reply-box-<%=comment._id%>">
-
-                    <textarea name="reply[content]"
-                              class="comment-box"
-                              required></textarea>
-
-                    <button class="post-reply btn-purple">
-                        Post Reply
-                    </button>
-
-                </div>
-
-            </form>
-
         </div>
-
+        <hr class="comment-divider">
         <% } %>
 
-
-
-        <!-- ADD COMMENT -->
         <div class="add-comment">
-
-            <form action="/feedback/<%=request._id%>/comments"
-                  method="POST"
-                  data-parsley-validate
-                  class="validated-form"
-                  novalidate>
-
-                <label class="add-comment-label">
-                    Add Comment
-                </label>
-
-                <textarea class="add-comment-text"
-                          name="comment[content]"
-                          placeholder="Type your comment here"
-                          required></textarea>
-
-                <button class="post-comment btn-purple">
-                    Post Comment
-                </button>
-
+            <form action="/feedback/<%=request._id%>/comments" method="POST" class="validated-form" novalidate>
+                <label class="add-comment-label">Add Comment</label>
+                <textarea class="add-comment-text" name="comment[content]" placeholder="Type your comment here" required></textarea>
+                <button class="post-comment btn-purple">Post Comment</button>
             </form>
-
         </div>
-
     </section>
-
 </main>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
-
 <script src="/js/script.js"></script>
 
 </body>
