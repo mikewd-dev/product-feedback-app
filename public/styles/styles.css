@@ -3915,12 +3915,12 @@ p {
 
 
   .dropped {
-    width: 65vw !important;
     display: flex !important;
-    flex-direction: row;
+    position: relative;
     background-color: #fff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    right:59px;
   }
 
   .cancel-feedback-btn {
@@ -3963,7 +3963,7 @@ p {
     flex-shrink: 0;
     margin-bottom: 50px;
     margin-right: 0px;
-    width: 235px;
+    width: 277px;
     height: 178px;
     flex-shrink: 0;
     background-image: url("../assets/suggestions/tablet/background-header.png");
@@ -4020,15 +4020,15 @@ p {
 
 
   .button {
-    width: 235px;
+    width: 185px;
     height: 178px;
-    flex-shrink: 0;
     margin-left: 0;
     margin-bottom: 0;
     margin-top: 0px;
     border-radius: 10px;
     background-color: #ffff;
     padding-top: 9px;
+    top:0;
   }
 
   #column-planned {
@@ -4036,12 +4036,14 @@ p {
   }
 
   .list {
-    width: 235px;
+    position: relative;
     justify-content: center;
     height: 178px;
     flex-shrink: 0;
     margin-left: 0;
-    padding-left: 12px
+    padding-left: 12px;
+    top:19px;
+    left:58px;
   }
 
   .view-num {
@@ -4778,6 +4780,7 @@ p {
   .button {
     top:0;
     left:10px;
+    height: 139px;
   }
 
   .buttons {
