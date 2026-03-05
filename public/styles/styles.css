@@ -3066,14 +3066,14 @@ figcaption {
 .button {
   position: relative;
   width: 255px;
-  height: auto;
+  height: 282px;
   flex-shrink: 0;
   border-radius: 10px;
   background: #fff;
   margin-bottom: 24px;
   padding-top: 9px;
   left: 10px;
-  top: 153px;
+  top: 137px;
 }
 
 .navbar-expand-lg {
@@ -4773,6 +4773,11 @@ p {
 
   .add-comment {
     width: 100vw;
+  }
+
+  .button {
+    top:0;
+    left:10px;
   }
 
   .buttons {
