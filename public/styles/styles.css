@@ -2353,7 +2353,6 @@ p {
   height: 44px;
   width: 179.5804901123047px;
   left: 141.5048828125px;
-  margin-left: 141.5px;
   margin-top: 145px;
   padding: 12.5px 28.41px 11.5px 27.28px;
   border-radius: 10px;
@@ -2468,8 +2467,6 @@ p {
 figcaption {
   width: 466px;
   height: 189px;
-  left: 659px;
-  top: 491px;
   margin-left: 233px;
   margin-right: 206px;
   font-weight: 400;
@@ -2631,7 +2628,6 @@ figcaption {
   height: 46px;
   left: 0%;
   right: 9.66%;
-  top: calc(50% - 46px / 2 - 20.5px);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -3074,7 +3070,7 @@ figcaption {
   padding-top: 9px;
   left: 10px;
   top: 137px;
-  width: 41.3%;
+  width: 100%;
 }
 
 .navbar-expand-lg {
