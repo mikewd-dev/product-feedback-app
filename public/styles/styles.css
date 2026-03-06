@@ -1961,7 +1961,7 @@ p {
 }
 
 .feedback {
-  position: relative;
+  position: absolute;
   width: 265px;
   height: 529px;
   top: 50px;
@@ -3476,7 +3476,7 @@ p {
   }
 
   .board-text {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: center;
     align-content: center;
@@ -3629,7 +3629,7 @@ p {
     position: absolute;
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 85%;
     height: 178px;
     justify-content: center;
     align-items: flex-start;
@@ -3921,8 +3921,7 @@ p {
     background-color: #fff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    right:0;
-    width:47.3%;
+    width:31.3%;
   }
 
   .cancel-feedback-btn {
@@ -3965,7 +3964,7 @@ p {
     flex-shrink: 0;
     margin-bottom: 50px;
     margin-right: 0px;
-    width: 26.3%;
+    width: 34.3%;
     height: 178px;
     flex-shrink: 0;
     background-image: url("../assets/suggestions/tablet/background-header.png");
@@ -4042,8 +4041,8 @@ p {
     margin-left: 0;
     padding-left: 12px;
     top:19px;
-    width:62.3%;
-    left: 83px;
+    width:110.3%;
+    left: 134px;
   }
 
   .view-num {
