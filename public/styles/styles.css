@@ -3636,6 +3636,7 @@ p {
     left: 0;
     right: 0;
     top: 65px;
+    margin: 0 auto;
   }
 
   .feedback-screen {
