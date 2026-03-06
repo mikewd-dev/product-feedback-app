@@ -1961,7 +1961,7 @@ p {
 }
 
 .feedback {
-  position: absolute;
+  position: relative;
   width: 265px;
   height: 529px;
   top: 50px;
@@ -3520,6 +3520,7 @@ p {
     margin-top: 0;
     justify-content: left !important;
     gap: 16px;
+    margin-top: 0 auto;
   }
 
   .grid-container {
@@ -3984,7 +3985,6 @@ p {
     top: 216px;
     left: 0;
     right: 0;
-    width: 95vw;
   }
 
   .dropdown-main {
@@ -4021,7 +4021,7 @@ p {
 
 
   .button {
-    width: 41.3;
+    width: 41.3%;
     height: 178px;
     margin:0 auto;
     border-radius: 10px;
@@ -4265,8 +4265,8 @@ p {
     height: 44px;
     flex-shrink: 0;
     flex-shrink: 0;
-    padding: 12.5px 25px 11.5px 31px;
-    right:28px;
+    padding: 12.5px 0 11.5px 31px;
+    right:82px;
   }
 
   .edit-button {
