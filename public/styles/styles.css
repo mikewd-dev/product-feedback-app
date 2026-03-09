@@ -182,7 +182,7 @@ a {
   box-shadow: 0 0 8px rgba(70, 97, 230, 0.6);
 }
 
-#content {
+/*#content {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -193,7 +193,7 @@ a {
   text-align: center;
   border-radius: 10px;
   border: none;
-}
+}*/
 
 #rmapcontent {
   display: flex;
@@ -208,9 +208,10 @@ a {
   border: none;
 }
 
-#content:active,
-#content:focus {
-   display: flex;
+#content:active .votes,
+#content:focus .votes {
+  left:4%;
+  display: flex;
   justify-content: center;
   flex-direction: column;
   width: 40px;
@@ -220,7 +221,7 @@ a {
   border-radius: 10px;
   border: none;
   background-color: #4661e6;
-
+  color: #ffffff;
 }
 
 
@@ -859,7 +860,7 @@ a {
 
   #content {
     position: relative;
-    left: 62px;
+    left: 4%;
     top: 71px;
     background-color: #dee2e6;
     width: 44px;
@@ -1381,17 +1382,22 @@ a {
     position: absolute;
     width: 114px;
     font-size: 13px;
+    font-weight: 400;
     height: 40px;
     flex-shrink: 0;
     margin: 30px 9px 30px auto;
     padding: 10.5px 2% 5px 2%;
-    top: 0;
+    top: 74px;
+    color: #f2f4fe;
+    height:44px;
     right: 0;
+    width: 158px;
+    right: 90px;
+    background-color: #ad1fea;
+
   }
 
   .columns {
-    grid-template-columns: 1fr;
-    left: 0;
     padding-right: 0;
   }
 
@@ -1501,7 +1507,7 @@ a {
   }
 
   .tab-bars {
-    display: flex;
+    display:grid;
     width: 100vw;
     justify-content: space-evenly;
   }
@@ -2245,10 +2251,10 @@ p {
   border-radius: 0px;
 }
 
-#content:active .votes,
+/* #content:active .votes,
 #content:focus .votes {
   color: #fff;
-}
+}*/
 
 #content:active .dropupCaret,
 #content:focus .dropupCaret {
@@ -2447,7 +2453,7 @@ p {
   margin: 28px 0px 28px 0px;
 }
 
-.add-feedback-roadmap {
+/*.add-feedback-roadmap {
   position: absolute;
   font-weight: 700;
   height: 44px;
@@ -2466,7 +2472,7 @@ p {
   width: 158px;
   right: 90px;
   top: 113px;
-}
+}*/
 
 figcaption {
   width: 466px;
