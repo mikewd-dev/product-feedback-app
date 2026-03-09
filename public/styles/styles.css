@@ -83,7 +83,7 @@ textarea.parsley-error {
 #column-planned,
 #column-progress,
 #column-live {
-  display: block;
+  display: block !important;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
@@ -1508,36 +1508,35 @@ a {
 
   .tab-bars {
     display:grid;
-    width: 100vw;
-    justify-content: space-evenly;
+    grid-template-rows: repeat(3, 1fr);
   }
 
   .tab-planned-bar {
-    position: relative;
-    width: 75px;
+    width: 137px;
     height: 4px;
     flex-shrink: 0;
     background: #f49f85;
-    margin-right: auto;
+    margin-right: 0 54% auto;
     left: 32px;
+    display: block;
   }
 
   .tab-inprog-bar {
-    width: 75px;
+    width: 137px;
     height: 4px;
     flex-shrink: 0;
     background: #ad1fea;
     margin: 0 auto;
+    display: block;
   }
 
   .tab-lv-bar {
-    position: relative;
-    width: 75px;
+    width: 137px;
     height: 4px;
     flex-shrink: 0;
     background: #62bcfa;
-    margin-left: auto;
-    right: 59px;
+    margin-left: 0 10% auto;
+    display: block;
   }
 
 
@@ -5705,6 +5704,7 @@ p {
     flex-shrink: 0;
     background: #ad1fea;
     margin: 0 auto;
+    display: none;
   }
 
   .tab-lv-bar {
@@ -5715,6 +5715,7 @@ p {
     background: #62bcfa;
     margin-left: auto;
     right: 59px;
+    display: none;
   }
 }
 
