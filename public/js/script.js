@@ -56,7 +56,7 @@ function navButton() {
   if (!document.getElementById('column-planned')) return;
 
   // Check if we are on a mobile device (768px is the standard breakpoint)
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth < 768;
 
   Object.keys(elements).forEach(key => {
     const isCurrent = (key === state);

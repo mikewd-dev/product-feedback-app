@@ -83,7 +83,7 @@ textarea.parsley-error {
 #column-planned,
 #column-progress,
 #column-live {
-  display: block !important;
+  display: block;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
@@ -1384,7 +1384,7 @@ a {
   position: absolute;
   margin: 14px 5% 14px 0px;
   padding: 12.5px 25px 11.5px 24px;
-  top: 0;
+  top: 77px;
   right: 0;
   text-decoration: none;
   bottom: 0%;
@@ -1492,7 +1492,7 @@ a {
   .tab {
     margin: auto 0 !important;
 
-    display: flex;
+    display: none;
     flex-direction: row;
     color: #3a4374;
     font-size: 13px;
@@ -1505,19 +1505,18 @@ a {
     width: 100vw;
   }
 
-  .tab-bars {
+  /* .tab-bars {
     display:grid;
     grid-template-rows: repeat(3, 1fr);
-  }
+  }*/
 
-  .tab-planned-bar {
+  /*.tab-planned-bar {
     width: 137px;
     height: 4px;
     flex-shrink: 0;
     background: #f49f85;
     margin-right: 0 54% auto;
     left: 32px;
-    display: block;
   }
 
   .tab-inprog-bar {
@@ -1526,7 +1525,6 @@ a {
     flex-shrink: 0;
     background: #ad1fea;
     margin: 0 auto;
-    display: block;
   }
 
   .tab-lv-bar {
@@ -1535,8 +1533,8 @@ a {
     flex-shrink: 0;
     background: #62bcfa;
     margin-left: 0 10% auto;
-    display: block;
-  }
+    display: none;
+  } */
 
 
 .container-fluid {
@@ -2657,7 +2655,7 @@ figcaption {
 
 .go-back-rmap {
   position: absolute;
-  margin-top: 27px;
+  margin-top: 14px;
 }
 
 .go-back-show {
@@ -5886,6 +5884,7 @@ svg .new-feedback-form {
 #column-live {
   display: none;
 }
+
 
 .feedback-show {
   position: relative;
