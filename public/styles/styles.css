@@ -1273,7 +1273,7 @@ a {
 
   .roadmap-nav {
     width: 100vw !important;
-    height: 100px;
+    height: 72px;
     flex-shrink: 0;
     margin-top: 0;
     margin-left: 0;
@@ -1379,23 +1379,22 @@ a {
   }
 
   .add-feedback-roadmap {
-    position: absolute;
-    width: 114px;
-    font-size: 13px;
-    font-weight: 400;
-    height: 40px;
-    flex-shrink: 0;
-    margin: 30px 9px 30px auto;
-    padding: 10.5px 2% 5px 2%;
-    top: 74px;
-    color: #f2f4fe;
-    height:44px;
-    right: 0;
-    width: 158px;
-    right: 90px;
-    background-color: #ad1fea;
-
-  }
+  width: 172px;
+  height: 44px;
+  position: absolute;
+  margin: 14px 5% 14px 0px;
+  padding: 12.5px 25px 11.5px 24px;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+  bottom: 0%;
+  background: #ad1fea;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: normal;
+  color: #f2f4fe !important;
+}
 
   .columns {
     padding-right: 0;
@@ -2706,7 +2705,7 @@ figcaption {
 
 .roadmap-nav {
   width: 95vw !important;
-  height: 113px;
+  height: 72px;
   background-color: #373f68;
   border-radius: 10px;
   margin: 0 auto;
