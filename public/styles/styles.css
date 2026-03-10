@@ -1044,7 +1044,7 @@ a {
   .feedback-navlink {
     text-decoration: none;
     margin: 0px 2px 4px 2px;
-    width: 80%;
+    width: 80% !important;
   }
 
   .feedback-navlink-show {
@@ -1053,7 +1053,7 @@ a {
     text-decoration: none;
     margin: 0;
     flex-shrink: 0;
-    width:80%;
+    width:80% !important;
   }
 
   .reply-link {
@@ -1917,15 +1917,15 @@ p {
   top: 146px;
 }
 
-.feedback-navlink {
+/*.feedback-navlink {
   text-decoration: none;
   margin: 12px auto 4px 40px;
-}
+}*/
 
-.feedback-navlink-show {
+/*.feedback-navlink-show {
   text-decoration: none;
   margin: 18px 0px 0px 40px;
-}
+}*/
 
 .feedback-suggested-para {
   margin-bottom: 17px;
