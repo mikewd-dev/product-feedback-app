@@ -5294,7 +5294,7 @@ p {
 
   .drop {
     background-color: #fff;
-    width: 50vw;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     float: right;
