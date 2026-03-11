@@ -2564,7 +2564,7 @@ figcaption {
   font-size: 14px;
   line-height: 20px;
   color: #f2f4fe;
-  top: -46px;
+  top: 0;
 }
 
 .sr-only {
@@ -4297,7 +4297,7 @@ p {
     font-size: 14px;
     line-height: 20px;
     color: #f2f4fe;
-    top: -44px;
+    top: 0;
   }
 
   .comment-content {
@@ -5193,7 +5193,7 @@ p {
 
   .new-feedback-icon {
     position: absolute;
-    top: -18px;
+    top: 56px;
     left: 31px;
     bottom: 0px;
   }
@@ -5819,7 +5819,7 @@ left:10px;
 
 .add-feedback-new {
   display: block;
-  width: 90vw;
+  width: 80vw;
   height: 40px;
   flex-shrink: 0;
   margin: 0 auto 5px auto;
@@ -5868,7 +5868,7 @@ left:10px;
   margin-bottom: 16px;
   flex-shrink: 0;
   bottom: 0;
-  top: -2px;
+  top: 0;
   left: 0;
 }
 
