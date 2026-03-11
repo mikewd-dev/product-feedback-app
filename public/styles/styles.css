@@ -5734,17 +5734,17 @@ svg .new-feedback-form {
 }
 
 .new-feedback {
-  position: relative;
-  left: 0;
+left:10px;
+  right: 15px;
   color: #3a4374;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.25px;
-  margin-top: 0px;
-  top: 0;
-  height: 100%;
+  margin-top: 10px;
+  top: 20px;
+  height: fit-content;
   padding-left: 20px;
 }
 
