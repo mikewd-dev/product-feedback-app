@@ -843,7 +843,7 @@ a {
     flex-wrap: nowrap;
   }
 
-  .form-control-lg {
+  /*.form-control-lg {
     flex-direction: column;
     align-content: center;
     padding: 0 !important;
@@ -852,7 +852,7 @@ a {
     left: 0;
     right: 0;
     top: 0;
-  }
+  }*/
 
   /*.feeback-title-para {
     display: flex;
@@ -1627,17 +1627,12 @@ li {
 }
 
 .new-feedback-form {
-  width: 100vw;
-  position: fixed;
   display: flex;
   flex-direction: column;
   width: 85vw;
   justify-content: center;
   align-content: center;
   margin: 0 auto;
-  left: 0;
-  right: 0;
-  top: 64px;
   flex-wrap: wrap;
   background-color: #ffff;
   border-radius: 10px;
@@ -1647,15 +1642,14 @@ li {
   position: relative;
   margin-left: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-content: center;
-  justify-content: flex-start;
+  flex-direction: row;
   flex-shrink: 0;
+  flex-wrap: wrap;
   top: 6px;
   margin: 0;
+  left: 0;
+  right: 0;
   overflow: hidden;
-  width: 100%;
   background-color: #ffff;
 }
 
@@ -3292,6 +3286,7 @@ p {
   margin-bottom: 24px;
   position: relative;
   left: 0;
+  overflow: visible;
 }
 
 .feedback-options {
@@ -4036,7 +4031,7 @@ p {
     padding-left: 12px;
     top:19px;
     width:110.3%;
-    left: 134px;
+    left: 112px;
   }
 
   .view-num {
@@ -5762,8 +5757,9 @@ svg .new-feedback-form {
 
 #features {
   margin-bottom: 24px;
-  width: 90vw;
+  width: 80vw;
   padding-left: 15px;
+  overflow: visible;
 }
 
 .feedback-options {
@@ -5784,9 +5780,9 @@ svg .new-feedback-form {
 }
 
 .form-select {
-  width: 75vw;
+  width: 80vw;
   height: 48px;
-  flex-shrink: 0;
+  flex-shrink: 0; 
 }
 
 #feedbackdetail {
