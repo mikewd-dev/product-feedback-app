@@ -1628,10 +1628,8 @@ li {
 
 .new-feedback-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 85vw;
-  justify-content: center;
-  align-content: center;
   margin: 0 auto;
   flex-wrap: wrap;
   background-color: #ffff;
@@ -5756,10 +5754,10 @@ svg .new-feedback-form {
 }
 
 #features {
-  margin-bottom: 24px;
   width: 80vw;
   padding-left: 15px;
   overflow: visible;
+  margin: 0 auto;
 }
 
 .feedback-options {
@@ -5791,7 +5789,8 @@ svg .new-feedback-form {
   margin: 0 auto;
   top: 0;
   left: 0;
-  width: 90vw;
+  width: 80vw;
+  overflow-y: visible;
   height: 120px;
   flex-shrink: 0;
 }
@@ -5799,18 +5798,23 @@ svg .new-feedback-form {
 .add-cancel-feedback {
   display: flex;
   flex-direction: column-reverse;
-  width: 100vw;
-  margin-left: 0;
-  margin-top: 16px;
-  margin-right: 0;
+  width: 80vw;
+  margin: 0 auto;
 }
 
 .cancel-feedback-btn {
   display: block;
-  width: 100vw;
+  width: 80vw;
   height: 40px;
-  flex-shrink: 0;
-  margin: 0 auto 5px auto;
+  margin: 5px auto 5px auto;
+}
+
+.save-feedback-btn {
+  display: block;
+  width: 80vw;
+  height: 40px;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
 .add-feedback-new {
@@ -5858,7 +5862,7 @@ svg .new-feedback-form {
 
 .delete-feedback-btn {
   position: relative;
-  width: 100vw;
+  width: 80vw;
   height: 40px;
   margin-left: 0;
   margin-bottom: 16px;
