@@ -273,12 +273,15 @@ a {
 }
 
 .feeback-title-para {
+  display: flex;
+  flex-direction: column;
   color: #3a4374;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.25px;
+  width:278px;
 }
 
 .menu-icon {
@@ -851,12 +854,12 @@ a {
     top: 0;
   }
 
-  .feeback-title-para {
+  /*.feeback-title-para {
     display: flex;
     width: 278px;
     flex-direction: column;
     font-size: 13px !important;
-  }
+  }*/
 
   #content {
     position: relative;
@@ -1039,6 +1042,7 @@ a {
   .feeback-title-para {
     font-size: 13px !important;
     margin-left: 0px;
+    text-decoration: none;
   }
 
   .feedback-navlink {
@@ -2146,9 +2150,9 @@ p {
   margin-left: 24px;
 }
 
-.feeback-title-para {
+/*.feeback-title-para {
   text-decoration: none;
-}
+}*/
 
 .feedback-suggested-title {
   height: 26px;
@@ -4273,7 +4277,7 @@ p {
     padding: 12.5px 25px 11.5px 24px;
   }
 
-  .feedback-suggested-para {
+  /*.feedback-suggested-para {
     color: #647196;
     font-family: Jost;
     font-size: 15px;
@@ -4281,7 +4285,7 @@ p {
     font-weight: 400;
     line-height: normal;
     width: 553px;
-  }
+  }*/
 
   .col-sm {
     width: 689px;
@@ -5005,7 +5009,8 @@ p {
 
   .feeback-title-para {
     display: flex;
-    width: 278px;
+    width: 266px;
+    margin-left: 0%;
     flex-direction: column;
     font-size: 13px !important;
   }
@@ -5200,10 +5205,10 @@ p {
     bottom: 0px;
   }
 
-  .feeback-title-para {
+  /*.feeback-title-para {
     font-size: 13px !important;
     margin-left: 0px;
-  }
+  }*/
 
   .feedback-navlink {
     text-decoration: none;
@@ -5306,8 +5311,8 @@ p {
 
   .feedback-suggested-para {
     position: relative;
-    width: 100%;
-    flex-wrap: nowrap;
+    width: 90%;
+    flex-wrap: wrap;
     left: 0;
     color: #647196;
     margin-left: 10px;
@@ -5932,7 +5937,7 @@ svg .new-feedback-form {
   flex-direction: row;
   align-items: center;
   left: 0;
-  width: 100vw;
+  max-width: 85vw;
   height: 200px;
   margin-left: 0;
   z-index: 0;
