@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <title>Show Feedback</title>
-</head>
+</head> -->
+
+<%- include('../layouts/boilerplate') %>
 
 <body>
 
@@ -35,8 +37,9 @@
     </div>
 
     <section class="feedback-container">
-        <div class="feedback-show-suggested">
-            <button type="button" id="content" class="btn upvote-btn" data-id="<%= request._id %>">
+        <div class="feedback-show-suggested" id="suggested-feedback">
+            <form id="vote-<%= request._id %>" onsubmit="event.preventDefault();">
+            <button type="button" id="show-content" class="btn upvote-btn" data-id="<%= request._id %>">
                 <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= request._id %>">
                     <path d="M1 6l4-4 4 4" stroke-width="2"/>
                 </svg>
@@ -44,6 +47,7 @@
                     <%= request.upvotes %>
                 </div>
             </button>
+            </form>
 
             <div class="feedback-content-area">
                 <div class="feeback-title-para">
