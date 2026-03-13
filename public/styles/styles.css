@@ -1934,8 +1934,8 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 66px !important;
-  margin: 40px 5px 28px 0 !important;
+  height: auto !important;
+  margin: 15px 5px 7px 0 !important;
   padding-top: 5px;
   border-radius: 10px;
   background-color: #ffff;
@@ -5026,9 +5026,15 @@ p {
 
   #show-content {
     position: relative;
+    left: 62px;
+    top: 71px;
+    border-radius: 10px;
     background-color: #dee2e6;
     width: 44px;
     height: 25px;
+    text-align: center;
+    flex-direction: row;
+    padding-left: 1px;
   } 
 
 
@@ -5930,7 +5936,7 @@ left:10px;
   align-items: center;
   width: 100vw;
   height: auto;
-  margin: 40px 0 28px 0;
+  margin: 15px 0 7px 0;
   padding-top: 5px;
   background-color: #ffff;
 }
@@ -6288,7 +6294,7 @@ post-reply {
   }
   
   .content-wrapper .feedback-show-suggested {
-    flex-direction: column; 
+    flex-direction: row; 
     align-items: flex-start;
   }
 }
