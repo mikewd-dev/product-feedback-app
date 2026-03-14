@@ -1709,7 +1709,7 @@ li {
   left: 272px;
   height: 72px;
   top: 0;
-  width: 85vw
+  width: 75vw
 }
 
 .dropdown-main {
@@ -1937,7 +1937,7 @@ p {
   align-items: center;
   left: 275px;
   right: 0;
-  width: 85vw;
+  width: 75vw;
   border-radius: 10px;
   top: 146px;
 }
@@ -3644,7 +3644,7 @@ p {
     position: absolute;
     display: flex;
     flex-direction: row;
-    width: 85%;
+    width: 75%;
     height: 178px;
     justify-content: center;
     align-items: flex-start;
@@ -4341,7 +4341,7 @@ p {
 
   .feedback-screen-active {
     position: absolute;
-    width: 100vw;
+    width: 75vw;
     border-radius: 10px;
     top: 370px;
     margin-left: 0px;
