@@ -362,7 +362,7 @@ a {
     margin-left: 0px;
     padding-left: 25px;
     width: 100vw;
-    left: 0;
+    left: 311px;
     top: 65px;
     height: 56px;
     flex-shrink: 0;
@@ -1759,7 +1759,6 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
   height: 45px;
   gap: 22px;
   width: 100%;
@@ -1972,7 +1971,7 @@ p {
 
 .feedback-suggestion {
   height: auto;
-  left: 22px;
+  left: 36px;
   margin: 40px 0px 28px 0px;
   border-radius: 10px;
   background-color: #ffff;
@@ -3702,7 +3701,6 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
     height: 45px;
     gap: 22px;
     width: 100%;
@@ -6268,6 +6266,10 @@ post-reply {
   flex-direction: column;
   gap: 24px;
   width: 85vw;   
+}
+
+.feedback-content-area {
+  margin:4%;
 }
 
 .content-wrapper .go-back-show,
