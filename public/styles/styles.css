@@ -1701,8 +1701,7 @@ li {
   right: 62%;
   border-bottom-right-radius: 10px;
 }
-
-/*.dropdown {
+.dropdown {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
@@ -1710,7 +1709,7 @@ li {
   height: 72px;
   top: 0;
   width: 75vw
-}*/
+}
 
 .dropdown-main {
   position: absolute !important;
