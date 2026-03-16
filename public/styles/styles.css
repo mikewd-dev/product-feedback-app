@@ -361,7 +361,7 @@ a {
     position: absolute;
     margin-left: 0px;
     padding-left: 25px;
-    width: 100vw;
+    width: 90vw;
     left: 311px;
     top: 65px;
     height: 56px;
@@ -809,7 +809,7 @@ a {
     margin-left: 19px;
   }
 
-  .feedback-screen-active {
+  /*.feedback-screen-active {
     border-radius: 10px;
     margin-top: 0px;
     margin-left: 0px;
@@ -818,9 +818,9 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    width: 90vw;
     height: auto;
-  }
+  }*/
 
   #feedback-title {
     position: relative;
@@ -1702,7 +1702,7 @@ li {
   border-bottom-right-radius: 10px;
 }
 
-.dropdown {
+/*.dropdown {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
@@ -1710,7 +1710,7 @@ li {
   height: 72px;
   top: 0;
   width: 75vw
-}
+}*/
 
 .dropdown-main {
   position: absolute !important;
@@ -1936,7 +1936,7 @@ p {
   align-items: center;
   left: 275px;
   right: 0;
-  width: 75vw;
+  width: 90vw;
   border-radius: 10px;
   top: 146px;
 }
@@ -3643,7 +3643,7 @@ p {
     position: absolute;
     display: flex;
     flex-direction: row;
-    width: 75%;
+    width: 85%;
     height: 178px;
     justify-content: center;
     align-items: flex-start;
@@ -3998,6 +3998,7 @@ p {
     top: 216px;
     left: 0;
     right: 0;
+    max-width: 85vw;
   }
 
   .dropdown-main {
@@ -4339,7 +4340,7 @@ p {
 
   .feedback-screen-active {
     position: absolute;
-    width: 75vw;
+    width: 85vw;
     border-radius: 10px;
     top: 370px;
     margin-left: 0px;
