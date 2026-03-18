@@ -5280,10 +5280,10 @@ p {
 
   .comment-icon {
     display: flex;
-    position: relative;
     flex-direction: row;
     background-color: #f2f4fe;
     right: 0px;
+    left:9%;
     top:64px;
     width: 0;
     height: 19px;
