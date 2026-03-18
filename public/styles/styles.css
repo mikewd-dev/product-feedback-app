@@ -5038,9 +5038,8 @@ p {
   }
 
   #content {
-    position: relative;
-    left: 62px;
-    top: 71px;
+    left: 52px;
+    top:64px;
     background-color: #dee2e6;
     width: 44px;
     height: 25px;
@@ -5274,8 +5273,9 @@ p {
   .btn-suggestion {
     width: auto;
     margin-bottom: 13px;
-    margin-left: 0px;
+    margin-left:0;
     font-size: 13px !important;
+    padding: 0;
   }
 
   .comment-icon {
@@ -5284,7 +5284,7 @@ p {
     flex-direction: row;
     background-color: #f2f4fe;
     right: 0px;
-    top: 72px;
+    top:64px;
     width: 0;
     height: 19px;
     gap: 4px;
@@ -5982,12 +5982,12 @@ left:10px;
   margin-left: 0;
   z-index: 0;
   margin-right: 0;
+  padding-bottom: 5%;
 }
 
 .feedback-navlink {
   position: relative;
-  margin: 4%;
-  width: 46%;
+  margin: 0 auto;
 }
 
 .user-image {
