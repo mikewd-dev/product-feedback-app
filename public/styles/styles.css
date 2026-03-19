@@ -933,6 +933,12 @@ a {
     margin-right: 6px;
   }
 
+  .post-reply {
+    background: #ad1fea;
+    border-radius: 10px;
+    
+  }
+
   .votes {
     color: #3a4374;
     font-size: 13px;
@@ -1841,7 +1847,7 @@ li {
   border: 0;
   border-top: 0.01px solid;
   opacity: 0.12;
-  width: auto;
+  width: 100%
 }
 
 .suggest {
@@ -3376,14 +3382,14 @@ p {
 }
 
 .comment-box {
-  margin-top: 24px;
-  height: 80px;
+  margin-top: 19px;
+  height: 68px;
   border-radius: 5px;
   background: #f7f8fd;
   border: 1px solid #4661e6;
   margin-right: 32px;
   margin-left: 72px;
-  width: 65vw !important;
+  width: 55vw;
   color: #3a4374;
   font-size: 15px;
   font-style: normal;
@@ -5059,8 +5065,8 @@ p {
     display: flex;
     align-items: center;
     position: relative;
-    left: 43px;
-    top: 71px;
+    left: 52px;
+    top: 62px;
     border-radius: 10px;
     background-color: #dee2e6;
     width: 44px;
