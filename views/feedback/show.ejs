@@ -36,8 +36,8 @@
         </a>
     </div>
 
-    <section class="feedback-container">
-        <div class="feedback-suggestion">
+    <section class="feedback-suggestion">
+        <div id="suggested-feedback">
             <form id="vote-<%= request._id %>" onsubmit="event.preventDefault();">
             <button type="button" id="show-content" class="btn upvote-btn" data-id="<%= request._id %>">
                 <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" class="dropupCaret" id="droparrow-<%= request._id %>">
