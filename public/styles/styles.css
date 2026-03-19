@@ -936,6 +936,8 @@ a {
   .post-reply {
     background: #ad1fea;
     border-radius: 10px;
+    position: absolute;
+    top: 143px;
     
   }
 
@@ -5059,6 +5061,16 @@ p {
     display: flex;
     flex-direction: row;
     margin-right: 0;
+  }
+
+  .post-reply {
+    position: relative;
+    left: 0;
+    right: 0;
+    width:55vw;
+    margin-left: 72px;
+    margin-right: 32px;
+    top: 3px ;
   }
 
   #show-content {
