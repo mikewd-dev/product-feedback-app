@@ -900,6 +900,9 @@ a {
     width: 31px;
     height: 49px;
     text-align: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
     border-radius: 10px;
     border: none;
     padding-left: 1px;
