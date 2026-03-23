@@ -1684,7 +1684,7 @@ li {
   flex-direction: row;
   flex-shrink: 0;
   flex-wrap: wrap;
-  top: 6px;
+  top: 60px;
   margin: 0;
   left: 0;
   right: 0;
@@ -3268,7 +3268,7 @@ p {
 }
 
 #category {
-  width: 85vw;
+  width: 80vw;
   left: 42px;
   top: 155px;
 }
@@ -3816,7 +3816,7 @@ p {
     align-content: center;
     justify-content: flex-start;
     flex-shrink: 0;
-    top: 6px;
+    top: 60px;
     margin: 0;
     overflow: hidden;
     width: 100%;
@@ -5040,7 +5040,7 @@ p {
     flex-shrink: 0;
     left: 0;
     right: 0;
-    top: 0;
+    top: 60px;
   }
 
   .feeback-title-para {
@@ -5805,7 +5805,7 @@ svg .new-feedback-form {
 }
 
 .new-feedback {
-left:10px;
+left:0;
   right: 15px;
   color: #3a4374;
   font-size: 18px;
@@ -5814,7 +5814,7 @@ left:10px;
   line-height: normal;
   letter-spacing: -0.25px;
   margin-top: 10px;
-  top: 20px;
+  top: 34px;
   height: fit-content;
   padding-left: 20px;
 }
@@ -5860,7 +5860,7 @@ left:10px;
   margin: 0 auto;
   top: 0;
   left: 0;
-  width: 85vw;
+  width: 80vw;
   overflow-y: visible;
   height: 120px;
   flex-shrink: 0;
@@ -6159,7 +6159,7 @@ left:10px;
 #category {
   position: relative;
   left: 0;
-  width: 85vw;
+  width: 80vw;
   top: 0;
   margin: 0 auto;
 }
