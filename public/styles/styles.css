@@ -227,7 +227,7 @@ a {
 #show-content:active .votes,
 #show-content:focus .votes {
   position: relative;
-  left:4%;
+  left:70%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -894,7 +894,7 @@ a {
 
 #show-content {
     position: relative;
-    left: 15%;
+    left: 70%;
     top: 0;
     background-color: #dee2e6;
     width: 31px;
@@ -1114,7 +1114,7 @@ a {
     margin-bottom: 13px;
     margin-left: 0px;
     font-size: 13px !important;
-    background-color: #dee2e6;
+    background: #dee2e6 !important;
   }
 
 
@@ -3289,7 +3289,7 @@ p {
 }
 
 #feedbackdetail {
-  width: 80vw;
+  width: 85vw;
   height: 96px;
   padding-left: 10px;
   padding-right: -10px;
@@ -5053,7 +5053,7 @@ p {
 
   #content {
     left: 52px;
-    top:64px;
+    top:52px;
     background-color: #dee2e6;
     width: 44px;
     height: 25px;
@@ -5080,7 +5080,7 @@ p {
     display: flex;
     align-items: center;
     position: relative;
-    left: 52px;
+    left: 62px;
     top: 62px;
     border-radius: 10px;
     background-color: #dee2e6;
@@ -5089,6 +5089,7 @@ p {
     text-align: center;
     flex-direction: row;
     padding-left: 1px;
+    margin: 0;
   } 
 
 
@@ -5301,6 +5302,7 @@ p {
     margin-left:0;
     font-size: 13px !important;
     padding: 0;
+
   }
 
   .comment-icon {
@@ -5309,7 +5311,7 @@ p {
     background-color: #f2f4fe;
     right: 0px;
     left:9%;
-    top:125px;
+    top:112px;
     width: 0;
     height: 19px;
     gap: 4px;
@@ -5554,7 +5556,7 @@ p {
   #feedbacktitle {
     display: block;
     margin: 0 auto;
-    width: 90vw;
+    width: 85vw;
   }
 
   .plan,
@@ -5858,7 +5860,7 @@ left:10px;
   margin: 0 auto;
   top: 0;
   left: 0;
-  width: 80vw;
+  width: 85vw;
   overflow-y: visible;
   height: 120px;
   flex-shrink: 0;
@@ -6157,8 +6159,9 @@ left:10px;
 #category {
   position: relative;
   left: 0;
-  width: 90vw;
+  width: 85vw;
   top: 0;
+  margin: 0 auto;
 }
 
 .char-left {
@@ -6293,7 +6296,7 @@ post-reply {
 }
 
 .feedback-content-area {
-  margin: 0 39px auto 12px;
+  margin: 0 39px auto 51px;
 }
 
 .content-wrapper .go-back-show,
