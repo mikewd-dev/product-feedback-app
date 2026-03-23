@@ -825,7 +825,7 @@ a {
   #feedback-title {
     position: relative;
     width: auto;
-    left: 0;
+    left: 27px;
     top: 0px;
     color: #3a4374;
     font-size: 13px;
@@ -1355,7 +1355,7 @@ a {
   #feedbacktitle {
     display: block;
     margin: 0 auto;
-    width: 90vw;
+    width: 80vw;
   }
 
   .plan,
@@ -1669,12 +1669,13 @@ li {
 
 .new-feedback-form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 85vw;
   margin: 0 auto;
   flex-wrap: wrap;
   background-color: #ffff;
   border-radius: 10px;
+  align-content: center;
 }
 
 .form-control-lg {
@@ -3184,7 +3185,7 @@ p {
 .new-feedback {
   position: relative;
   height: 35px;
-  left: 0;
+  left: 27px;
   right: 47.41%;
   top: calc(50% - 35px / 2 - 245px);
   font-weight: 700;
@@ -3201,11 +3202,12 @@ p {
   line-height: 20px;
   letter-spacing: -0.194444px;
   color: #3a4374;
+  left: 27px;
 }
 
 .sub-heading-paragraph {
   position: relative;
-  left: 0;
+  left: 27px;
   top: 0;
   color: #647196;
   font-size: 13px;
@@ -3223,7 +3225,7 @@ p {
   color: #647196;
   margin-bottom: 0px;
   position: relative;
-  left: 0;
+  left: 27px;
   right: 47.41%;
 }
 
@@ -3256,7 +3258,7 @@ p {
 #feedback-title {
   position: relative;
   width: 85vw;
-  left: 0;
+  left: 27px;
   right: 47.41%;
   top: 5px;
 }
@@ -3561,7 +3563,7 @@ p {
 
   .new-feedback {
     position: relative;
-    left: 0;
+    left: 27px;
     color: #3a4374;
     font-size: 18px;
     font-style: normal;
@@ -3601,7 +3603,7 @@ p {
     font-weight: 400;
     line-height: normal;
     position: relative;
-    left: 0;
+    left: 27px;
     top: 0;
     color: #647196;
     font-size: 13px;
@@ -3627,7 +3629,7 @@ p {
   }
 
   #feedbacktitle {
-    width: 85vw;
+    width: 80vw;
     left: 0;
     color: #3a4374;
     font-size: 15px;
@@ -4270,6 +4272,7 @@ p {
 
   .char-left {
     margin-top: 13px;
+    left: 27px;
   }
 
   .suggestion {
@@ -4999,7 +5002,7 @@ p {
   #feedback-title {
     position: relative;
     width: auto;
-    left: 0;
+    left: 27px;
     top: 0px;
     color: #3a4374;
     font-size: 13px;
@@ -5556,7 +5559,7 @@ p {
   #feedbacktitle {
     display: block;
     margin: 0 auto;
-    width: 85vw;
+    width: 80vw;
   }
 
   .plan,
@@ -5805,7 +5808,7 @@ svg .new-feedback-form {
 }
 
 .new-feedback {
-left:0;
+left: 27px;
   right: 15px;
   color: #3a4374;
   font-size: 18px;
@@ -5822,6 +5825,7 @@ left:0;
 .sub-heading,
 .sub-heading-paragraph {
   padding-left: 20px;
+  left: 27px;
 }
 
 #features {
@@ -6168,6 +6172,7 @@ left:0;
   margin-top: 5px;
   margin-bottom: 5px;
   padding-left: 20px;
+  left: 27px;
 }
 
 .reply-form {
