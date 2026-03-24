@@ -3251,7 +3251,7 @@ p {
 .new-feedback-icon {
   position: relative;
   top: -28px;
-  left: 17px;
+  left: 62px;
 }
 
 #feedback-title {
@@ -4298,7 +4298,8 @@ p {
     flex-shrink: 0;
     flex-shrink: 0;
     padding: 12.5px 0 11.5px 31px;
-    right:82px;
+    right:0;
+    z-index: 999;
   }
 
   .edit-button {
@@ -5267,7 +5268,7 @@ p {
   .new-feedback-icon {
     position: absolute;
     top: 56px;
-    left: 31px;
+    left: 13px;
     bottom: 0px;
   }
 
