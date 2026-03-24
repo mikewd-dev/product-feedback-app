@@ -1,35 +1,43 @@
 <div class="new-feedback-form">
   <embed class="new-feedback-icon" src="/assets/shared/icon-edit-feedback.svg" alt="Edit Icon" />
-
   <h2 class="new-feedback">Editing: <%= allRequest.title %></h2>
 
-  <form action="/feedback/<%= allRequest._id %>?_method=PUT" method="POST" class="form-control-lg validated-form" data-parsley-validate novalidate>
+  <form action="/feedback/<%= allRequest._id %>?_method=PUT" method="POST" class="validated-form" data-parsley-validate novalidate>
     
-    <h4 class="sub-heading">Feedback Title</h4>
-    <label for="feedbacktitle" class="sub-heading-paragraph">Add a short, descriptive headline</label>
-    <input class="feedback-text" type="text" name="request[title]" id="feedbacktitle" value="<%= allRequest.title %>" required />
-
-    <h4 class="sub-heading">Category</h4>
-    <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
-    <select class="form-select" name="request[category]" id="features">
-      <option value="Feature">Feature</option>
-      <option value="UI">UI</option>
-      <option value="UX">UX</option>
-      <option value="Enhancement">Enhancement</option>
-      <option value="Bug">Bug</option>
-    </select>
-
-    <h4 class="sub-heading">Feedback Detail</h4>
-    <label for="feedbackdetail" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
-    <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3" required><%= allRequest.description %></textarea>
-
-    <div class="add-cancel-feedback">
-      <a href="/feedback/suggestions" class="cancel-feedback-btn text-center" style="text-decoration: none;">Cancel</a>
-      <button class="save-feedback-btn" type="submit">Save Changes</button>
+    <div class="input-section">
+        <h4 class="sub-heading">Feedback Title</h4>
+        <label for="feedbacktitle" class="sub-heading-paragraph">Add a short, descriptive headline</label>
+        <input class="feedback-text" type="text" name="request[title]" id="feedbacktitle" value="<%= allRequest.title %>" required />
     </div>
-  </form> <form action="/feedback/<%= allRequest._id %>?_method=DELETE" method="POST" class="delete-form">
-    <button class="delete-feedback-btn" type="submit">Delete</button>
+
+    <div class="input-section">
+        <h4 class="sub-heading">Category</h4>
+        <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
+        <select class="form-select" name="request[category]" id="features">
+            <% const categories = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'] %>
+            <% for(let category of categories) { %>
+                <option value="<%= category %>" <%= allRequest.category === category ? 'selected' : '' %> ><%= category %></option>
+            <% } %>
+        </select>
+    </div>
+
+    <div class="input-section">
+        <h4 class="sub-heading">Feedback Detail</h4>
+        <label for="feedbackdetail" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
+        <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3" required><%= allRequest.description %></textarea>
+    </div>
+
+    <div class="edit-form-actions">
+        <button type="submit" form="delete-form" class="delete-feedback-btn">Delete</button>
+        
+        <div class="right-actions">
+            <a href="/feedback/suggestions" class="cancel-feedback-btn">Cancel</a>
+            <button class="save-feedback-btn" type="submit">Save Changes</button>
+        </div>
+    </div>
   </form>
+
+  <form id="delete-form" action="/feedback/<%= allRequest._id %>?_method=DELETE" method="POST" style="display:none;"></form>
 </div>
 
 <% include ('../partials/footer') %>
