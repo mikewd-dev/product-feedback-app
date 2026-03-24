@@ -5809,7 +5809,6 @@ svg .new-feedback-form {
 }
 
 .new-feedback {
-left: 73px;
   right: 15px;
   color: #3a4374;
   font-size: 18px;
@@ -5819,11 +5818,6 @@ left: 73px;
   letter-spacing: -0.25px;
   top: 15px;
   height: fit-content;
-}
-
-.sub-heading,
-.sub-heading-paragraph {
-  left: 73px;
 }
 
 #features {
