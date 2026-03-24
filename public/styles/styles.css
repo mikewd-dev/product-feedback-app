@@ -1719,10 +1719,10 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  left: 272px;
+  left: 282px;
   height: 72px;
   top: 0;
-  width: 75vw
+  width: 90vw
 }
 
 .dropdown-main {
@@ -1947,9 +1947,9 @@ p {
 .feedback-screen-active {
   position: absolute;
   align-items: center;
-  left: 275px;
+  left: 282px;
   right: 0;
-  width: 75vw;
+  width: 90vw;
   border-radius: 10px;
   top: 146px;
 }
@@ -3258,7 +3258,7 @@ p {
 #feedback-title {
   position: relative;
   width: 85vw;
-  left: 27px;
+  left: 73px;
   right: 47.41%;
   top: 5px;
 }
@@ -3797,8 +3797,6 @@ p {
     display: flex;
     flex-direction: column;
     width: 90vw;
-    justify-content: center;
-    align-content: center;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -5301,7 +5299,7 @@ p {
 
   .btn-suggestion {
     width: auto;
-    margin-bottom: 13px;
+    margin-bottom: 32px;
     margin-left:0;
     font-size: 13px !important;
     padding: 0;
@@ -5808,7 +5806,7 @@ svg .new-feedback-form {
 }
 
 .new-feedback {
-left: 27px;
+left: 73px;
   right: 15px;
   color: #3a4374;
   font-size: 18px;
@@ -5816,16 +5814,13 @@ left: 27px;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.25px;
-  margin-top: 10px;
-  top: 34px;
+  top: 15px;
   height: fit-content;
-  padding-left: 20px;
 }
 
 .sub-heading,
 .sub-heading-paragraph {
-  padding-left: 20px;
-  left: 27px;
+  left: 73px;
 }
 
 #features {
@@ -6165,14 +6160,15 @@ left: 27px;
   left: 0;
   width: 80vw;
   top: 0;
-  margin: 0 auto;
+  margin:7px auto 12px auto;
 }
 
 .char-left {
   margin-top: 5px;
   margin-bottom: 5px;
   padding-left: 20px;
-  left: 27px;
+  left: 73px;
+  position: relative;
 }
 
 .reply-form {
@@ -6218,7 +6214,7 @@ left: 27px;
 #feedback-detail {
   position: relative;
   width: 90vw;
-  left: 0;
+  left: 73px;
   top: 0;
 }
 

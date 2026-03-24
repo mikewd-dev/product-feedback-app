@@ -29,10 +29,8 @@
                 <div class="new-feedback-form">
                     <embed class="new-feedback-icon" src="/assets/shared/icon-new-feedback.svg" type="">
                         <h2 class="new-feedback">Create New Feedback</h2>
-                    <form action="/feedback" class="form-control-lg validated-form" method="POST" data-parsley-validate novalidate></form>
-                        <h4 id='feedback-title' class="sub-heading">
-                            Feedback Title
-                        </h4>
+                    <form action="/feedback" class="validated-form" method="POST" data-parsley-validate novalidate></form>
+                        <h4 id='feedback-title' class="sub-heading">Feedback Title</h4>
                         <label for="feedbacktitle" class="sub-heading-paragraph">Add a short, descriptive headline</label>
                         <input type="text" class="feedback-text" name="request[title]" id="feedbacktitle" required>
                         <h4 id="category" class="sub-heading">Category</h4>
