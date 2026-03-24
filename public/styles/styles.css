@@ -280,6 +280,7 @@ a {
 
 .char-left {
   margin-top: 18px;
+  margin-left: 25px;
   color: #647196;
   font-size: 15px;
   font-style: normal;
@@ -1666,7 +1667,7 @@ li {
   display: flex;
   flex-direction: column;
   width: 85vw;
-  margin: 0 auto;
+  margin: 48px auto 0 auto;
   flex-wrap: wrap;
   background-color: #ffff;
   border-radius: 10px;
@@ -3191,6 +3192,7 @@ p {
 }
 
 .sub-heading {
+  position: relative;
   margin-top: 20px;
   font-weight: 700;
   font-size: 14px;
@@ -3558,7 +3560,7 @@ p {
 
   .new-feedback {
     position: relative;
-    left: 27px;
+    left: 38px !important;
     color: #3a4374;
     font-size: 18px;
     font-style: normal;
@@ -3598,7 +3600,7 @@ p {
     font-weight: 400;
     line-height: normal;
     position: relative;
-    left: 27px;
+    left: 39px !important;
     top: 0;
     color: #647196;
     font-size: 13px;
@@ -3647,7 +3649,7 @@ p {
   }
 
   .select-options {
-    width: 85vw;
+    width: 80vw;
   }
 
   .feedback {
@@ -3743,12 +3745,14 @@ p {
   }
 
   .sub-heading {
+    position: relative;
     margin-top: 20px;
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.194444px;
     color: #3a4374;
+    left:38px !important;
   }
 
   .comment-length {
@@ -4268,8 +4272,7 @@ p {
   }
 
   .char-left {
-    margin-top: 13px;
-    left: 27px;
+    margin-left:38px !important;
   }
 
   .suggestion {
