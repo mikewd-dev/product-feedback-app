@@ -1,3 +1,7 @@
+
+<% include ('../partials/header') %>
+
+
 <div class="new-feedback-form">
   <embed class="new-feedback-icon" src="/assets/shared/icon-edit-feedback.svg" alt="Edit Icon" />
   <h2 class="new-feedback">Editing: <%= allRequest.title %></h2>
@@ -40,4 +44,4 @@
   <form id="delete-form" action="/feedback/<%= allRequest._id %>?_method=DELETE" method="POST" style="display:none;"></form>
 </div>
 
-<% include ('../partials/footer') %>
+<% include ()
