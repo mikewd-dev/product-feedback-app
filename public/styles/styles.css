@@ -4588,8 +4588,8 @@ p {
     margin-top: 0 !important;
   }
 
-  .feedback-content-area{
-    left:0;
+  .feedback-content-area {
+    margin-left: 0 !important;
   }
 
   #comment-reply-box {
