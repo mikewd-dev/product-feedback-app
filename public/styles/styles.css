@@ -4270,7 +4270,7 @@ p {
   }
 
   .char-left {
-    left:0px !important;
+    left:6% !important;
   }
 
   .suggestion {
@@ -5086,7 +5086,7 @@ p {
     display: flex;
     align-items: center;
     position: relative;
-    left: 62px;
+    left: 42px;
     top: 62px;
     border-radius: 10px;
     background-color: #dee2e6;
@@ -6162,7 +6162,7 @@ svg .new-feedback-form {
   margin-top: 5px;
   margin-bottom: 5px;
   padding-left: 20px;
-  left: 73px;
+  left: 3%;
   position: relative;
 }
 
