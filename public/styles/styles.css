@@ -280,7 +280,7 @@ a {
 
 .char-left {
   margin-top: 18px;
-  margin-left: 25px;
+  left: 0;
   color: #647196;
   font-size: 15px;
   font-style: normal;
@@ -3181,7 +3181,7 @@ p {
 .new-feedback {
   position: relative;
   height: 35px;
-  left: 27px;
+  left: 3%;
   right: 47.41%;
   top: calc(50% - 35px / 2 - 245px);
   font-weight: 700;
@@ -3222,7 +3222,7 @@ p {
   color: #647196;
   margin-bottom: 0px;
   position: relative;
-  left: 27px;
+  left: 3%;
   right: 47.41%;
 }
 
@@ -4272,7 +4272,7 @@ p {
   }
 
   .char-left {
-    margin-left:38px !important;
+    left:0px !important;
   }
 
   .suggestion {
@@ -5866,7 +5866,6 @@ svg .new-feedback-form {
   display: flex;
   flex-direction: column-reverse;
   width: 80vw;
-  margin: 0 auto;
 }
 
 .cancel-feedback-btn {
