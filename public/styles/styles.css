@@ -296,7 +296,6 @@ a {
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.25px;
-  width:278px;
 }
 
 .menu-icon {
@@ -3669,6 +3668,10 @@ p {
     margin: 0 auto;
   }
 
+  .feedback-content-area {
+    margin: 0 39px auto 51px;
+  }
+
   .feedback-screen {
     position: fixed;
     width: 85vw;
@@ -4012,7 +4015,7 @@ p {
     top: 216px;
     left: 0;
     right: 0;
-    max-width: 85vw;
+    max-width: 75vw;
   }
 
   .dropdown-main {
@@ -6297,7 +6300,7 @@ post-reply {
 }
 
 .feedback-content-area {
-  margin: 0 39px auto 51px;
+  margin: 0 15px auto 19px;
 }
 
 .content-wrapper .go-back-show,
