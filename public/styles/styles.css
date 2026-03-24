@@ -2556,6 +2556,7 @@ figcaption {
   margin-right: 16px;
   text-decoration: none;
   width: 144px;
+  text-align: center;
 }
 
 .edit-feedback-btn {
@@ -3666,9 +3667,6 @@ p {
     margin: 0 auto;
   }
 
-  .feedback-content-area {
-    margin: 0 39px auto 51px;
-  }
 
   .feedback-screen {
     position: fixed;
@@ -3690,7 +3688,7 @@ p {
   }
 
   #features {
-    width: 85vw !important;
+    width: 80vw !important;
   }
 
   .comment-num {
@@ -4037,9 +4035,9 @@ p {
   }
 
   .add-cancel-feedback {
-    margin-left: auto;
+    margin-left: 0;
     margin-top: 8px;
-    margin-right: 0;
+    margin-right:5%;
   }
 
   .reply-replyto {
@@ -4588,6 +4586,10 @@ p {
     font-weight: 700;
     font-size: 13px;
     margin-top: 0 !important;
+  }
+
+  .feedback-content-area{
+    left:0;
   }
 
   #comment-reply-box {
@@ -5252,14 +5254,11 @@ p {
   }
 
   .new-feedback-form {
-    left: 0;
-    top: 64px;
-    right: 0;
     background-color: #ffff;
     margin-top: 0;
     height: 100%;
     border-radius: 10px;
-    padding: 0;
+    padding: 25px;
     margin-top:77px;
     width: 100vw;
   }
@@ -6293,7 +6292,7 @@ post-reply {
 }
 
 .feedback-content-area {
-  margin: 0 15px auto 19px;
+  margin: 0 15px auto 66px;
 }
 
 .content-wrapper .go-back-show,
