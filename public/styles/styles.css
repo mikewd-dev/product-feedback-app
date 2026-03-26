@@ -1943,9 +1943,10 @@ p {
   align-items: center;
   left: 282px;
   right: 0;
-  width: 90vw;
+  width: 75vw;
   border-radius: 10px;
   top: 146px;
+  margin: 0 auto;
 }
 
 /*.feedback-navlink {
@@ -4361,8 +4362,9 @@ p {
     width: 75vw;
     border-radius: 10px;
     top: 370px;
-    margin-left: 0px;
-    left: 96px;
+    margin:0 auto;
+    left: 0;
+    right: 0;
   }
 
   #suggested-feedback {
