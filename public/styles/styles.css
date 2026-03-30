@@ -1427,7 +1427,7 @@ a {
     padding-right: 0;
   }
 
-  .report-title {
+  .report-title, .planned-title, .progress-title {
     width: 278px;
     color: #3a4374;
     font-size: 13px;
@@ -1437,7 +1437,7 @@ a {
     letter-spacing: -0.181px;
   }
 
-  .report-desc {
+  .report-desc, .planned-desc, .progress-desc, .live-desc {
     color: #647196;
     font-size: 13px;
     font-style: normal;
@@ -1493,7 +1493,6 @@ a {
     margin-left: 0px;
     left: 0;
     top: 0;
-    margin-top: 5px;
     width: 100vw;
   }
 

@@ -67,8 +67,8 @@
                     <p class="planned-heading"><span class="oval-planned"></span>
                       <%= rmap.status.charAt(0).toUpperCase() + rmap.status.slice(1) %>
                     </p>
-                    <p class="report-title"><%= rmap.title %></p>
-                    <p class="report-desc"><%= rmap.description %></p>
+                    <p class="planned-title"><%= rmap.title %></p>
+                    <p class="planned-desc"><%= rmap.description %></p>
                     <button class="btn-roadmap"><%= rmap.category %></button>
 
                     <!-- <form onsubmit="event.preventDefault();"> -->
@@ -100,8 +100,8 @@
                     <p class="progress-heading"><span class="oval-progress"></span>
                       <%= prog.status.charAt(0).toUpperCase() + prog.status.slice(1) %>
                     </p>
-                    <p class="report-title"><%= prog.title %></p>
-                    <p class="report-desc"><%= prog.description %></p>
+                    <p class="progress-title"><%= prog.title %></p>
+                    <p class="progress-desc"><%= prog.description %></p>
                     <button class="btn-roadmap"><%= prog.category %></button>
 
                     <!-- <form id="vote-<%= prog._id %>" onsubmit="event.preventDefault();"> -->
@@ -137,8 +137,8 @@
                     <p class="live-heading"><span class="oval-live"></span>
                       <%= lv.status.charAt(0).toUpperCase() + lv.status.slice(1) %>
                     </p>
-                    <p class="report-title"><%= lv.title %></p>
-                    <p class="report-desc"><%= lv.description %></p>
+                    <p class="live-title"><%= lv.title %></p>
+                    <p class="live-desc"><%= lv.description %></p>
                     <button class="btn-roadmap"><%= lv.category %></button>
 
                     <div class="roadmap-upvotes">
