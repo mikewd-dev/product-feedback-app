@@ -1427,7 +1427,7 @@ a {
     padding-right: 0;
   }
 
-  .report-title, .planned-title, .progress-title {
+  .live-title, .planned-title, .progress-title {
     width: 278px;
     color: #3a4374;
     font-size: 13px;
@@ -1435,6 +1435,7 @@ a {
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.181px;
+    margin-left: 14px;
   }
 
   .report-desc, .planned-desc, .progress-desc, .live-desc {
@@ -1443,6 +1444,7 @@ a {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-left: 14px;
   }
 
   .btn-roadmap {
