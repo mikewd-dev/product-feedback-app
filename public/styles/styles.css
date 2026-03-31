@@ -1941,7 +1941,7 @@ p {
 .feedback-screen-active {
   position: absolute;
   align-items: center;
-  left: 282px;
+  left: 262px;
   right: 0;
   width: 75vw;
   border-radius: 10px;
