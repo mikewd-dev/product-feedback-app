@@ -1714,10 +1714,9 @@ li {
   position: absolute !important;
   background: #373f68;
   border-radius: 10px;
-  left: 282px;
   height: 72px;
   top: 0;
-  width: 90vw
+  width: 75vw
 }
 
 .dropdown-main {
@@ -2768,11 +2767,13 @@ figcaption {
   position: absolute;
   justify-content: flex-end;
   width: 44px;
+  display: flex;
+  align-items: center;
   gap:5px;
   height: 16px;
   margin-left: 90%;
   right: 0;
-  top: 35px;
+  top: 81px;
   font-weight: 700;
 }
 
@@ -3128,6 +3129,8 @@ figcaption {
   letter-spacing: -0.222222px;
   color: #3a4374;
   gap: 5px;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .planned-bar,
@@ -3287,7 +3290,7 @@ p {
   margin-top: 24px;
   justify-content: left !important;
   gap: 16px;
-  width: 90vw;
+  width: 75vw;
 }
 
 #feedbackdetail {
