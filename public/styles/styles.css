@@ -1715,8 +1715,10 @@ li {
   background: #373f68;
   border-radius: 10px;
   height: 72px;
-  top: 0;
-  width: 75vw
+  top: 60px;
+  width: 75vw;
+  right: 0;
+  margin: 0 auto;
 }
 
 .dropdown-main {
