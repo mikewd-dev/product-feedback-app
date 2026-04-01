@@ -87,6 +87,7 @@ textarea.parsley-error {
   width: 100%;
   margin-left: 0;
   margin-right: 0;
+  height: fit-content;
 }
 
 .show {
@@ -5641,7 +5642,7 @@ p {
   .columns {
     grid-template-columns: 1fr;
     left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
   }
 
   .report-title {
@@ -5762,10 +5763,11 @@ p {
     flex-shrink: 0;
     background: #f49f85;
     margin-right: auto;
-    left: 32px;
+    left: -2px;
   }
 
   .tab-inprog-bar {
+    position: relative;
     width: 75px;
     height: 4px;
     flex-shrink: 0;
@@ -5781,7 +5783,7 @@ p {
     flex-shrink: 0;
     background: #62bcfa;
     margin-left: auto;
-    right: 59px;
+    right: 45px;
     display: none;
   }
 }
