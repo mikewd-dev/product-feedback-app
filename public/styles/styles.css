@@ -4602,6 +4602,12 @@ p {
     margin-left: 0 !important;
   }
 
+  .sub-heading,
+  .sub-heading-paragraph,
+  .new-feedback {
+    left: 6%;
+  }
+
   #comment-reply-box {
     position: relative;
     bottom: 30px;
@@ -4884,7 +4890,7 @@ p {
   }
 
   .select-options {
-    width: 90vw;
+    width: 80vw;
     display: block;
     margin: 0 auto;
   }
@@ -5754,6 +5760,10 @@ p {
     display: flex;
     width: 100vw;
     justify-content: space-evenly;
+  }
+
+  .add-cancel-feedback {
+    margin: 0 auto;
   }
 
   .tab-planned-bar {
