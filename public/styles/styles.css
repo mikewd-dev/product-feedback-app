@@ -5272,7 +5272,7 @@ p {
   .new-feedback-form {
     background-color: #ffff;
     margin-top: 0;
-    height: 100%;
+    height: 80%;
     border-radius: 10px;
     padding: 25px;
     margin-top:77px;
@@ -5281,7 +5281,7 @@ p {
 
   .new-feedback-icon {
     position: absolute;
-    top: 56px;
+    top: 5px;
     left: 13px;
     bottom: 0px;
   }
@@ -5764,6 +5764,10 @@ p {
 
   .add-cancel-feedback {
     margin: 0 auto;
+    position:absolute;
+    left:0;
+    right:0;
+    bottom: 99px;
   }
 
   .tab-planned-bar {
