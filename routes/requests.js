@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
 const sanitizeHtml = require("sanitize-html");
 const serverless = require('serverless-http');
@@ -111,7 +110,7 @@ router.post("/feedback/:id/upvote", isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
     
 
-    let doc = await Request.findById(id) || await Roadmap.findById(id);
+    const doc = await Request.findById(id) || await Roadmap.findById(id);
 
     if (!doc) {
         return res.status(404).json({ error: "Not found" });
@@ -597,12 +596,19 @@ router.get("/feedback/ui/:id", async (req, res) => {
 });
 
 router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res) => {
+  try{
   const allRequest = await Request.findById(req.params.id);
+  if(!allRequest) {
+    return res.status(404).render("error", {message: "Feedback not found"});
+  }
 
   res.render("feedback/show", {
     request: allRequest,
     user: req.user, 
   });
+} catch (err) {
+  next(err)
+} 
 });
 
 
@@ -618,7 +624,7 @@ router.put(
   }),
 );
 
-router.put("/feedback/:id/comments", isLoggedIn, currentUser, catchAsync(async (req, res) => {
+router.put("/feedback/:feedbackId/comments/:commentId", isLoggedIn, currentUser, catchAsync(async (req, res) => {
     const { feedbackId, commentId} = req.params;
     const commentData = req.body.comment;
 
