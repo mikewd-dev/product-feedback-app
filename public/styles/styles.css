@@ -1603,7 +1603,7 @@ a {
   margin-bottom: 50px;
   flex-shrink: 0;
   background-image: url("../images/feedback-board.png");
-  background-size: center;
+  background-size:auto;
   background-repeat: no-repeat;
   bottom: 0;
   left: 10px;
@@ -1674,7 +1674,7 @@ li {
   align-content: center;
 }
 
-.form-control-lg {
+/*.form-control-lg {
   position: relative;
   margin-left: 10px;
   display: flex;
@@ -1687,7 +1687,7 @@ li {
   right: 0;
   overflow: hidden;
   background-color: #ffff;
-}
+}*/
 
 .roadmap-options {
   margin-left: 48px;
@@ -3815,7 +3815,7 @@ p {
     border-radius: 10px;
   }
 
-  .form-control-lg {
+  /*.form-control-lg {
     position: relative;
     margin-left: 10px;
     display: flex;
@@ -3829,7 +3829,7 @@ p {
     overflow: hidden;
     width: 100%;
     background-color: #ffff;
-  }
+  }*/
 
   .offset-3 {
     margin-left: 114px !important;
@@ -5054,7 +5054,7 @@ p {
     flex-wrap: nowrap;
   }
 
-  .form-control-lg {
+  /*.form-control-lg {
     flex-direction: column;
     align-content: center;
     padding: 0 !important;
@@ -5063,7 +5063,7 @@ p {
     left: 0;
     right: 0;
     top: 60px;
-  }
+  }*/
 
   .feeback-title-para {
     display: flex;
