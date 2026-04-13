@@ -619,12 +619,15 @@ router.put(
 );
 
 router.put("/feedback/:id/comments", isLoggedIn, currentUser, catchAsync(async (req, res) => {
-    const { id } = req.params;
+    const { feedbackId, commentId} = req.params;
     const commentData = req.body.comment;
 
-    const comment = await Comment.findByIdAndUpdate(id, commentData, { new: true });
-
-    res.redirect(`/feedback/comment/${comment._id}`);
+    const comment = await Comment.findByIdAndUpdate(commentId, commentData, { new: true });
+    
+    if(!comment) {
+      req.flash("error", "Comment not found")
+    }
+    res.redirect(`/feedback/${feedbackId}#comment-${comment._id}`);
   }));
 
 
