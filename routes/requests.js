@@ -88,8 +88,8 @@ router.post("/feedback/logout", (req, res, next) => {
   req.logout (function (err) {
     if (err) {
       return next (err);
-      isLoggedIn();
     }
+    return res.redirect("/feedback/login");
   })
 })
 
@@ -159,7 +159,7 @@ router.post(
   catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
     const comment = await request.comments.id(req.params.commentId);
-    const imageUrl = req.user.image[0].url;
+    const imageUrl = req.user?.image?.[0]?.url;
 
     const newReply = {
       content: req.body.reply.content,
