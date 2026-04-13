@@ -595,8 +595,8 @@ router.get("/feedback/ui/:id", async (req, res) => {
   res.redirect("/feedback/ui");
 });
 
-router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res) => {
-  try{
+router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res, next) => {
+  try {
   const allRequest = await Request.findById(req.params.id);
   if(!allRequest) {
     return res.status(404).render("error", {message: "Feedback not found"});
@@ -606,9 +606,9 @@ router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res) => {
     request: allRequest,
     user: req.user, 
   });
-} catch (err) {
+} catch (err){
   next(err)
-} 
+}
 });
 
 
