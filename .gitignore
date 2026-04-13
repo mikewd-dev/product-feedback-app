@@ -16,7 +16,7 @@
 .prettierignore
 node_modules
 .env
-.seed.js
-.seeds.js
+seed.js
+seeds.js
 # Local Netlify folder
 .netlify
