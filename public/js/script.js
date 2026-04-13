@@ -4,7 +4,7 @@ function safeQuerySelector(selector) {
 }
 
 const path = window.location.pathname;
-const match = path.match(/\/feedback\/([^\/\?]+)/);
+const match = path.match(/\/feedback\/([^\/?]+)/);
 const currentType = match ? match[1] : "suggestions";
 
 function navButton() {

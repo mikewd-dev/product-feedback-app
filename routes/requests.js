@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const sanitizeHtml = require("sanitize-html");
 const serverless = require('serverless-http');
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
@@ -210,7 +209,7 @@ router.post(
 router.get(
   "/",
   catchAsync(async (req, res) => {
-    let allRequest = await Request.find({});
+    const allRequest = await Request.find({});
     const roadmap = await Roadmap.find({}).where("status").equals("planned");
     const progress = await Roadmap.find({})
       .where("status")
