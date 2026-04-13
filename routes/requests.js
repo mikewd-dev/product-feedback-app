@@ -131,8 +131,8 @@ router.post(
     }
 
     const imageUrl = Array.isArray(req.user.image)
-      ? req.user.image[0]?.url
-      : req.user.image;
+      ? req.user?.image?.[0]?.url
+      : req.user?.image;
 
     const newComment = {
       content: req.body.comment.content,
@@ -185,7 +185,7 @@ router.post(
     const request = await Request.findById(req.params.id);
     const comment = await request.comments.id(req.params.commentId);
     const reply = comment.replies.id(req.params.replyId);
-    const imageUrl = req.user.image[0].url;
+    const imageUrl = req.user?.image?.[0]?.url;
     const newReply = {
       content: req.body.reply.content,
       replyingTo: reply.user.username,
