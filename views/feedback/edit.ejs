@@ -19,13 +19,13 @@
 
   <form action="/feedback/<%= allRequest._id %>?_method=PUT" method="POST" class="validated-form" data-parsley-validate novalidate>
     
-    <div class="input-section">
+    
         <h4 class="sub-heading">Feedback Title</h4>
         <label for="feedbacktitle" class="sub-heading-paragraph">Add a short, descriptive headline</label>
         <input class="feedback-text" type="text" name="request[title]" id="feedbacktitle" value="<%= allRequest.title %>" required />
-    </div>
+    
 
-    <div class="input-section">
+
         <h4 class="sub-heading">Category</h4>
         <label for="features" class="sub-heading-paragraph">Choose a category for your feedback</label>
         <select class="form-select" name="request[category]" id="features">
@@ -34,9 +34,6 @@
                 <option value="<%= category %>" <%= allRequest.category === category ? 'selected' : '' %> ><%= category %></option>
             <% } %>
         </select>
-    </div>
-
-    <div class="input-section">
         <h4 class="sub-heading">Feedback Detail</h4>
         <label for="feedbackdetail" class="sub-heading-paragraph">Include any specific comments on what should be improved, added, etc.</label>
         <textarea name="request[description]" id="feedbackdetail" cols="20" rows="3" required><%= allRequest.description %></textarea>
