@@ -84,11 +84,11 @@ router.post("/feedback/login", (req, res, next) => {
   })(req, res, next);
 });
 
-router.post("/feedback/logout", (req, res, nrxt) => {
+router.post("/feedback/logout", (req, res, next) => {
   req.logout (function (err) {
     if (err) {
       return next (err);
-      return res.redirect("/feedback/login");
+      isLoggedIn();
     }
   })
 })
@@ -229,10 +229,10 @@ router.get(
 );
 
 router.get("/feedback/register", (req, res) => {
-  res.render("feedback/register");
   if (req.isAuthenticated()) {
     res.redirect("/feedback");
   }
+  res.render("feedback/register");
 });
 
 
