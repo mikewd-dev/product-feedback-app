@@ -1031,6 +1031,10 @@ a {
     height: 10px;
   }
 
+  .edit-form-actions {
+    position: relative;
+  }
+
   .delete-form {
     width: 100vw;
     display: flex;

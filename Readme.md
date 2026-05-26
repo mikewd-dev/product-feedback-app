@@ -43,9 +43,12 @@ Try the app here: [Product Feedback App Live](https://product-feedback-app-produ
 
 ## Screenshots
 
-![Dashboard view](./assets/screenshots/dashboard.png)
-![Adding feedback](./assets/screenshots/add-feedback.png)
-
+![Frontpage view](../assets/shared/frontpage.png)
+![Login](/assets/shared/login.png)
+![Feedbacks](/assets/shared/feedback.png)
+![View Feedback](/assets/shared/viewfeedback.png)
+![Add New Feedback](/assets/shared/new.png)
+![Roadmap](/assets/shared/roadmap.png)
 ---
 
 ## How To Use
