@@ -43,12 +43,12 @@ Try the app here: [Product Feedback App Live](https://product-feedback-app-produ
 
 ## Screenshots
 
-![Frontpage view](./assets/shared/frontpage.png)
-![Login](./assets/shared/login.png)
-![Feedbacks](./assets/shared/feedback.png)
-![View Feedback](./assets/shared/viewfeedback.png)
-![Add New Feedback](./assets/shared/new.png)
-![Roadmap](./assets/shared/roadmap.png)
+![Frontpage view](public/assets/shared/frontpage.png)
+![Login](public/assets/shared/login.png)
+![Feedbacks](public/assets/shared/feedback.png)
+![View Feedback](public/assets/shared/viewfeedback.png)
+![Add New Feedback](public/assets/shared/new.png)
+![Roadmap](public/assets/shared/roadmap.png)
 ---
 
 ## How To Use
