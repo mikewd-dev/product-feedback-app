@@ -48,6 +48,7 @@ Try the app here: [Product Feedback App Live](https://product-feedback-app-produ
 ![Feedbacks](public/assets/shared/feedback.png)
 ![View Feedback](public/assets/shared/viewfeedback.png)
 ![Add New Feedback](public/assets/shared/new.png)
+![Edit Feedback](public/assets/shared/edit.png)
 ![Roadmap](public/assets/shared/roadmap.png)
 ---
 
