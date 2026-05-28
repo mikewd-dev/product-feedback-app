@@ -91,11 +91,11 @@ Try the app here: [Product Feedback App Live](https://product-feedback-app-produ
 
 ## Lessons Learned
 
-- Designing relational schemas in MongoDB for hierarchical data (feedback, comments, replies)  
-- Integrating third-party APIs for image uploads  
-- Handling asynchronous requests in Node.js and Express  
-- Building a responsive and interactive frontend  
-- Deploying a full-stack app to a live server (Railway)  
+- **Denormalized Schema Architecture:** Designed an embedded subdocument strategy for the commenting engine. By nesting replies as an array directly within the Comment document, the application fetches full conversation trees in a single database read operation, significantly reducing query overhead and eliminating the need for expensive `$lookup` aggregations.
+- **Third-Party API Integration:** Managed an asset pipeline with Cloudinary to handle multi-part form data and secure user-uploaded images.
+- **Asynchronous Flow Control:** Handled complex asynchronous logic and middleware integration within Node.js and Express to ensure robust request-response cycles.
+- **Responsive Engineering:** Built a fluid, interactive frontend utilizing JavaScript and Bootstrap to ensure state consistency across device sizes.
+- **Production Deployment:** Configured environment variables and successfully managed live deployment infrastructure using Railway.
 
 ---
 
