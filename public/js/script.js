@@ -27,26 +27,7 @@ function navButton() {
   }
 }
 
-
-  const elements = {
-    'planned': { col: 'column-planned', tab: 'plan-bar' },
-    'progress': { col: 'column-progress', tab: 'inprog-bar' },
-    'live': { col: 'column-live', tab: 'lve-bar' }
-  };
-
-  if (!document.getElementById('column-planned')) return;
-
-  Object.keys(elements).forEach(key => {
-    const isCurrent = (key === state);
-    const colEl = document.getElementById(elements[key].col);
-    const tabEl = document.getElementById(elements[key].tab);
-
-    if (colEl) colEl.style.display = isCurrent ? "block" : "none";
-    if (tabEl) tabEl.style.display = isCurrent ? "block" : "none";
-  });
-
-
- function updateRoadmapDisplay(state) {
+function updateRoadmapDisplay(state) {
   const elements = {
     'planned': { col: 'column-planned', tab: 'plan-bar' },
     'progress': { col: 'column-progress', tab: 'inprog-bar' },
@@ -73,81 +54,36 @@ function navButton() {
     }
   });
 }
- 
 
 window.plannedDisplay = () => updateRoadmapDisplay('planned');
 window.progressDisplay = () => updateRoadmapDisplay('progress');
 window.liveDisplay = () => updateRoadmapDisplay('live');
-window.dropReply = toggleDisplay;
-window.dropReplyReply = toggleDisplay;
 
-window.addEventListener("DOMContentLoaded", () => {
-
-  updateRoadmapDisplay('planned');
-
-  
-  const buttons = document.querySelectorAll(".blue");
-  buttons.forEach((button) => {
-    const dataType = button.getAttribute("data-type");
-    if (dataType === currentType) button.classList.add("active");
-  });
-
-  
-  document.querySelectorAll(".upvote-btn").forEach((button) => {
-    button.addEventListener("click", function () {
-      const suggestionId = this.getAttribute("data-id");
-      upvoteSuggestion(suggestionId);
-    });
-  });
-
-  
-  initSortMenu();
-  
-  
-  checkWidth();
-
-  
-  if (window.innerWidth <= 768) {
-    const board = document.querySelector(".board");
-    const closeIcon = document.querySelector(".close-icon");
-    if (board && closeIcon) {
-      board.classList.add("navbar", "dropdown");
-      board.appendChild(closeIcon);
-    }
-  }
-});
-
-function upvoteSuggestion(suggestionId) {
-  fetch(`/feedback/${suggestionId}/upvote?_=${new Date().getTime()}`, {
-    method: "POST",
-    mode: "cors",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      const upvotesElement = document.getElementById(`votes-${suggestionId}`);
-      if (upvotesElement) upvotesElement.textContent = data.upvotes;
-    })
-    .catch(console.error);
-}
-
-function toggleDisplay(id) {
+// Globally exposed toggle display functions
+window.dropReply = function(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  if (el.style.display === "block") {
+
+  if (el.style.display === "block" || el.classList.contains("show-box")) {
     el.style.display = "none";
+    el.classList.remove("show-box");
   } else {
     el.style.display = "block";
-    const textarea = el.querySelector(".reply-box");
+    el.classList.add("show-box");
+    
+    const textarea = el.querySelector(".comment-box") || 
+                     el.querySelector(".reply-box") || 
+                     el.querySelector("textarea");
     if (textarea) textarea.focus();
   }
-}
+};
+window.dropReplyReply = window.dropReply;
 
-  window.onpageshow = function(event) {
-    if (event.persisted) {
-      window.location.reload();
-    }
+window.onpageshow = function(event) {
+  if (event.persisted) {
+    window.location.reload();
   }
-
+};
 
 function initSortMenu() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -182,12 +118,53 @@ function initSortMenu() {
   }
 }
 
-
-
 function checkWidth() {
   const boardDiv = safeQuerySelector(".board-text");
   if (boardDiv && window.innerWidth <= 600) boardDiv.style.display = "none";
 }
+
+function upvoteSuggestion(suggestionId) {
+  fetch(`/feedback/${suggestionId}/upvote?_=${new Date().getTime()}`, {
+    method: "POST",
+    mode: "cors",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const upvotesElement = document.getElementById(`votes-${suggestionId}`);
+      if (upvotesElement) upvotesElement.textContent = data.upvotes;
+    })
+    .catch(console.error);
+}
+
+// Event Listeners
+window.addEventListener("DOMContentLoaded", () => {
+  updateRoadmapDisplay('planned');
+
+  const buttons = document.querySelectorAll(".blue");
+  buttons.forEach((button) => {
+    const dataType = button.getAttribute("data-type");
+    if (dataType === currentType) button.classList.add("active");
+  });
+
+  document.querySelectorAll(".upvote-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const suggestionId = this.getAttribute("data-id");
+      upvoteSuggestion(suggestionId);
+    });
+  });
+
+  initSortMenu();
+  checkWidth();
+
+  if (window.innerWidth <= 768) {
+    const board = document.querySelector(".board");
+    const closeIcon = document.querySelector(".close-icon");
+    if (board && closeIcon) {
+      board.classList.add("navbar", "dropdown");
+      board.appendChild(closeIcon);
+    }
+  }
+});
 
 $(document).ready(function () {
   $(".dropdown-menu > li > a").click(function () {
