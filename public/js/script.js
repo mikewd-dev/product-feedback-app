@@ -27,7 +27,7 @@ function navButton() {
   }
 }
 
-/* function updateRoadmapDisplay(state) {
+
   const elements = {
     'planned': { col: 'column-planned', tab: 'plan-bar' },
     'progress': { col: 'column-progress', tab: 'inprog-bar' },
@@ -44,7 +44,7 @@ function navButton() {
     if (colEl) colEl.style.display = isCurrent ? "block" : "none";
     if (tabEl) tabEl.style.display = isCurrent ? "block" : "none";
   });
-} */
+
 
  function updateRoadmapDisplay(state) {
   const elements = {
