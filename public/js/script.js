@@ -64,8 +64,6 @@ function navButton() {
     const tabEl = document.getElementById(elements[key].tab);
 
     if (colEl) {
-      // Logic: If NOT mobile, always show all columns. 
-      // If mobile, only show the current selected column.
       colEl.style.display = (!isMobile || isCurrent) ? "block" : "none";
     }
     

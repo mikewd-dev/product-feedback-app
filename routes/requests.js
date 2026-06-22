@@ -63,19 +63,11 @@ router.get('/feedback/logout', (req, res, next) => {
     req.logout(function (err) {
         if (err) return next(err);
         req.session.destroy(() => {
-            res.clearCookie('connect.sid'); // Clear the specific session cookie
+            res.clearCookie('connect.sid'); 
             res.redirect('/feedback/login');
         });
     });
 });
-
-router.get(
-  "/feedback/new",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    res.render("feedback/new");
-  }),
-);
 
 router.get(
   "/feedback/suggestions",
@@ -118,7 +110,7 @@ router.get(
 );
 
 router.get(
-  "/feedback/enhancement", isLoggedIn,
+  "/feedback/enhancement", 
   catchAsync(async (req, res, next) => {
     let sortOrder;
     if (req.query.sort === "mostup") {
@@ -163,7 +155,7 @@ router.get(
 );
 
 router.get(
-  "/feedback/ui", isLoggedIn,
+  "/feedback/ui", 
   catchAsync(async (req, res, next) => {
     let sortOrder;
     if (req.query.sort === "mostup") {
@@ -206,7 +198,7 @@ router.get(
 );
 
 router.get(
-  "/feedback/ux", isLoggedIn,
+  "/feedback/ux", 
   catchAsync(async (req, res, next) => {
     let sortOrder;
     if (req.query.sort === "mostup") {
@@ -358,34 +350,22 @@ router.get("/feedback/roadmap", async (req, res) => {
   res.render("feedback/roadmap", { roadmap, progress, live });
 });
 
-router.get("/feedback/:id/comments", isLoggedIn, async (req, res) => {
+
+router.get("/feedback/:id/comments", async (req, res) => {
   const allRequest = await Request.findById(req.params.id);
   const comment = await Comment.findById(req.params.id).populate("user");
   res.render("feedback/show", { allRequest, comment });
 });
 
-router.get("/feedback/user", isLoggedIn, async (req, res) => {
+router.get("/feedback/user", async (req, res) => {
   const user = await User.find({});
-  console.log(user);
   res.render("feedback/user", { user });
 });
 
-router.get("/feedback/user/:id", isLoggedIn, async (req, res) => {
+router.get("/feedback/user/:id", async (req, res) => {
   const user = await User.findById(req.params.id);
   res.render(`feedback/user/${user._id}`, { user });
 });
-
-router.get(
-  "/feedback/:id/edit",
-  isLoggedIn,
-  catchAsync(async (req, res) => {
-    const allRequest = await Request.findById(req.params.id);
-    if (!allRequest) {
-      return res.status(404).render("error", { message: "Feedback not found" });
-    }
-    res.render("feedback/edit", { allRequest });
-  }),
-);
 
 router.get("/feedback/suggestions/:id", async (req, res) => {
   const suggestion = await Request.findById(req.params.id);
@@ -408,13 +388,13 @@ router.get("/feedback/ui/:id", async (req, res) => {
   res.redirect("/feedback/ui");
 });
 
-router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res, next) => {
+
+router.get("/feedback/:id([0-9a-fA-F]{24})", async (req, res, next) => {
   try {
     const allRequest = await Request.findById(req.params.id);
     if(!allRequest) {
       return res.status(404).render("error", {message: "Feedback not found"});
     }
-
     res.render("feedback/show", {
       request: allRequest,
       user: req.user, 
@@ -424,10 +404,32 @@ router.get("/feedback/:id([0-9a-fA-F]{24})", isLoggedIn, async (req, res, next) 
   }
 });
 
+
+router.get(
+  "/feedback/new",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    res.render("feedback/new");
+  }),
+);
+
+router.get(
+  "/feedback/:id/edit",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const allRequest = await Request.findById(req.params.id);
+    if (!allRequest) {
+      return res.status(404).render("error", { message: "Feedback not found" });
+    }
+    res.render("feedback/edit", { allRequest });
+  }),
+);
+
 router.get("/test", (req, res) => {
   console.log("User from req.user", req.user);
   res.send("Check console");
 });
+
 
 
 router.post(
@@ -436,7 +438,6 @@ router.post(
   catchAsync(async (req, res) => {
     try {
       const { name, email, username, password } = req.body;
-
       const user = new User({ name, email, username });
 
       if (req.file) {
@@ -447,13 +448,8 @@ router.post(
       }
 
       const registeredUser = await User.register(user, password);
-
       req.login(registeredUser, (err) => {
-        if (err) {
-          console.log(err);
-          return res.render("feedback/register");
-        }
-
+        if (err) return res.render("feedback/register");
         req.flash("success", "Registration successful");
         res.redirect("/feedback/suggestions");
       });
@@ -467,7 +463,6 @@ router.post(
 router.post("/feedback/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err || !user) {
-       console.log("LOGIN FAILED IN TEST. Reason:", info.message); 
       req.flash("error", "Unable to log you in, please check your username and/or password");
       return res.redirect("/feedback/login");
     }
@@ -484,9 +479,7 @@ router.post("/feedback/login", (req, res, next) => {
 
 router.post("/feedback/logout", (req, res, next) => {
   req.logout (function (err) {
-    if (err) {
-      return next (err);
-    }
+    if (err) return next (err);
     return res.redirect("/feedback/login");
   })
 });
@@ -505,12 +498,9 @@ router.post(
 
 router.post("/feedback/:id/upvote", isLoggedIn, catchAsync(async (req, res) => {
     const { id } = req.params;
-    
     const doc = await Request.findById(id) || await Roadmap.findById(id);
 
-    if (!doc) {
-        return res.status(404).json({ error: "Not found" });
-    }
+    if (!doc) return res.status(404).json({ error: "Not found" });
 
     doc.upvotes += 1;
     await doc.save();
@@ -522,9 +512,7 @@ router.post(
   isLoggedIn,
   catchAsync(async (req, res) => {
     const request = await Request.findById(req.params.id);
-    if (!request) {
-      return res.status(404).send("Request not found");
-    }
+    if (!request) return res.status(404).send("Request not found");
 
     const imageUrl = Array.isArray(req.user.image)
       ? req.user?.image?.[0]?.url
@@ -596,23 +584,16 @@ router.post(
     comment.replies.push(newReply);
     await request.save();
     req.flash("success", "Your reply was successfull");
-    console.log(newReply);
     res.redirect(`/feedback/${request._id}`);
   }),
 );
-
-// ==========================================
-// 3. PUT ROUTES
-// ==========================================
 
 router.put(
   "/feedback/:id/",
   isLoggedIn, currentUser,
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const allRequest = await Request.findByIdAndUpdate(id, {
-      ...req.body.request,
-    });
+    const allRequest = await Request.findByIdAndUpdate(id, { ...req.body.request });
     res.redirect(`/feedback/${allRequest._id}`);
   }),
 );
@@ -622,10 +603,7 @@ router.put("/feedback/:feedbackId/comments/:commentId", isLoggedIn, currentUser,
     const commentData = req.body.comment;
 
     const comment = await Comment.findByIdAndUpdate(commentId, commentData, { new: true });
-    
-    if(!comment) {
-      req.flash("error", "Comment not found")
-    }
+    if(!comment) req.flash("error", "Comment not found");
     res.redirect(`/feedback/${feedbackId}#comment-${comment._id}`);
 }));
 
@@ -635,7 +613,7 @@ router.delete(
   isLoggedIn, currentUser,
   catchAsync(async (req, res, next) => {
     const { id } = req.params;
-    const allRequest = await Request.findByIdAndDelete(id);
+    await Request.findByIdAndDelete(id);
     res.redirect("/feedback/suggestions");
   }),
 );
